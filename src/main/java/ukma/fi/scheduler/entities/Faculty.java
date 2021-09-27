@@ -1,7 +1,7 @@
-package ukma.fi.scheduler.db.entities;
+package ukma.fi.scheduler.entities;
+
 import lombok.Data;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -9,7 +9,6 @@ import javax.persistence.Id;
 @Data
 public class Faculty {
     @Id
-    @Column(name = "id", nullable = false)
     private Long id;
 
     private String name;

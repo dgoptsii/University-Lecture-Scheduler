@@ -1,20 +1,17 @@
-package ukma.fi.scheduler.db.entities;
+package ukma.fi.scheduler.entities;
+
 import lombok.Data;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 @Data
 public class Lesson {
     @Id
-    @Column(name = "id", nullable = false)
     private Long id;
-
-    @JoinColumn()
-    private Subject subject;
 
     private String dayOfWeek;
 
@@ -22,4 +19,9 @@ public class Lesson {
 
     private Integer groupNumber;
 
+    @ManyToOne
+    private Subject subject;
+
+    @OneToOne
+    private Faculty faculty;
 }

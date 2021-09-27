@@ -2,23 +2,27 @@ package ukma.fi.scheduler.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ukma.fi.scheduler.db.entities.Lesson;
-import ukma.fi.scheduler.db.entities.User;
-import ukma.fi.scheduler.service.interf.LessonServiceInterface;
-import ukma.fi.scheduler.service.interf.ShiftServiceInterface;
-import ukma.fi.scheduler.service.interf.UserServiceInterface;
+import ukma.fi.scheduler.entities.Faculty;
+import ukma.fi.scheduler.entities.Lesson;
+import ukma.fi.scheduler.entities.Subject;
+import ukma.fi.scheduler.entities.User;
+import ukma.fi.scheduler.service.LessonService;
+import ukma.fi.scheduler.service.ShiftService;
+import ukma.fi.scheduler.service.UserService;
 
 import java.util.List;
 
 @Service
-public class UserService implements UserServiceInterface {
+public class UserServiceImpl implements UserService {
 
-    private final LessonServiceInterface scheduleService;
+    //for operations with lessons
+    private final LessonService scheduleService;
 
-    private final ShiftServiceInterface shiftService;
+    //for getting info about canceled and shifted lessons
+    private final ShiftService shiftService;
 
     @Autowired
-    public UserService(LessonServiceInterface scheduleService, ShiftServiceInterface shiftService) {
+    public UserServiceImpl(LessonService scheduleService, ShiftService shiftService) {
         this.scheduleService = scheduleService;
         this.shiftService = shiftService;
     }
@@ -48,5 +52,15 @@ public class UserService implements UserServiceInterface {
     @Override
     public void addLessonToUser(User user, Lesson lesson) {
         //TODO add lesson to user's list
+    }
+
+    @Override
+    public void showFacultySubjects(Faculty faculty) {
+
+    }
+
+    @Override
+    public void showFacultyLessons(Subject subject) {
+
     }
 }
