@@ -34,7 +34,7 @@
         </dependency>
 
         <dependency>
-            <groupId>com.db</groupId>
+            <groupId>ukma.db</groupId>
             <artifactId>db-jpa-boot-starter</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
