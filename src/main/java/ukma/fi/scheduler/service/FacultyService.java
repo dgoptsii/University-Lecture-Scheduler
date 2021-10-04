@@ -1,6 +1,7 @@
 package ukma.fi.scheduler.service;
 
-import ukma.fi.scheduler.entities.Faculty;
+
+import ukma.fi.scheduler.entities.*;
 
 public interface FacultyService {
 

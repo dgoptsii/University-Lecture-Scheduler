@@ -1,8 +1,7 @@
 package ukma.fi.scheduler.service.impl;
-
 import org.springframework.stereotype.Service;
-import ukma.fi.scheduler.entities.Subject;
-import ukma.fi.scheduler.service.SubjectService;
+import ukma.fi.scheduler.entities.*;
+import ukma.fi.scheduler.service.*;
 
 @Service
 public class SubjectServiceImpl implements SubjectService {

@@ -1,15 +1,8 @@
 package ukma.fi.scheduler.service.impl;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ukma.fi.scheduler.entities.Faculty;
-import ukma.fi.scheduler.entities.Lesson;
-import ukma.fi.scheduler.entities.Subject;
-import ukma.fi.scheduler.entities.User;
-import ukma.fi.scheduler.service.LessonService;
-import ukma.fi.scheduler.service.ShiftService;
-import ukma.fi.scheduler.service.UserService;
-
+import ukma.fi.scheduler.entities.*;
+import ukma.fi.scheduler.service.*;
 import java.util.List;
 
 @Service

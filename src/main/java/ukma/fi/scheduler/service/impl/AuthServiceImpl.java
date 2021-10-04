@@ -1,10 +1,8 @@
 package ukma.fi.scheduler.service.impl;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ukma.fi.scheduler.entities.User;
-import ukma.fi.scheduler.service.AuthService;
-import ukma.fi.scheduler.service.UserService;
+import ukma.fi.scheduler.entities.*;
+import ukma.fi.scheduler.service.*;
 
 @Service
 public class AuthServiceImpl implements AuthService {

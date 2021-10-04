@@ -1,7 +1,5 @@
 package ukma.fi.scheduler.service;
-
-import ukma.fi.scheduler.entities.Lesson;
-import ukma.fi.scheduler.entities.Shift;
+import ukma.fi.scheduler.entities.*;
 
 public interface ShiftService {
 
