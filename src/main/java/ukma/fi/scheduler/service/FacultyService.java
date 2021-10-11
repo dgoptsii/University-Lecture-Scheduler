@@ -5,11 +5,11 @@ import ukma.fi.scheduler.entities.*;
 
 public interface FacultyService {
 
-    void create(String name);
+    Faculty create(String name);
 
-    void delete(Faculty faculty);
+    boolean delete(Long id);
 
-    void edit(Faculty faculty);
+    Faculty edit(Faculty faculty);
 
-    void show(Long id);
+    Faculty show(Long id);
 }

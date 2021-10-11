@@ -1,28 +1,71 @@
 package ukma.fi.scheduler.service.impl;
+import com.sun.media.sound.InvalidDataException;
+import com.sun.org.apache.bcel.internal.generic.FCMPG;
+import javassist.NotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import ukma.fi.scheduler.entities.*;
+import ukma.fi.scheduler.repository.FacultyRepository;
 import ukma.fi.scheduler.service.*;
 import org.springframework.stereotype.Service;
 
 
 @Service
 public class FacultyServiceImpl implements FacultyService {
-    @Override
-    public void create(String name) {
 
+    @Autowired
+    private FacultyRepository facultyRepository;
+    @Override
+    public Faculty create(String name) {
+        checkParams(name);
+        return facultyRepository.save(new Faculty(name));
     }
 
     @Override
-    public void delete(Faculty faculty) {
-
+    public boolean delete(Long id) {
+        if(facultyRepository.findById(id).isPresent()) {
+            facultyRepository.deleteById(id);
+        } else {
+            try {
+                throw new NotFoundException("Faculty not found.");
+            } catch (NotFoundException e) {
+                e.printStackTrace();
+            }
+            return false;
+        }
+        return !facultyRepository.findById(id).isPresent();
     }
 
     @Override
-    public void edit(Faculty faculty) {
-
+    public Faculty edit(Faculty faculty) {
+        if (!facultyRepository.findById(faculty.getId()).isPresent()) {
+            try {
+                throw new NotFoundException("Faculty not found.");
+            } catch (NotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        checkParams(faculty.getName());
+        return facultyRepository.save(faculty);
     }
 
     @Override
-    public void show(Long facultyId) {
-
+    public Faculty show(Long facultyId) {
+        if (!facultyRepository.findById(facultyId).isPresent()) {
+            try {
+                throw new NotFoundException("Faculty not found.");
+            } catch (NotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        return facultyRepository.findById(facultyId).get();
+    }
+    private void checkParams(String name) {
+        if (facultyRepository.findByName(name).isPresent()) {
+            try {
+                throw new InvalidDataException("Faculty with this name is already exist.");
+            } catch (InvalidDataException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

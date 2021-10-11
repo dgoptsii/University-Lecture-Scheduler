@@ -15,10 +15,27 @@ public class LessonServiceImpl implements LessonService {
     @Autowired
     private LessonRepository lessonRepository;
 
+    @Autowired
+    private SubjectRepository subjectRepository;
+
     @Override
     public Lesson create(Long subject_id, Integer groupNumber, Integer lessonNumber, String dayOfWeek) {
-        Lesson lesson = new Lesson(subject_id,groupNumber,lessonNumber,dayOfWeek);
-        checkParams(lesson);
+
+        if(!subjectRepository.findById(subject_id).isPresent()){
+            try {
+                throw new InvalidDataException("Subject id is incorrect");
+            } catch (InvalidDataException e) {
+                e.printStackTrace();
+            }
+        }
+        if(groupNumber<=0 || dayOfWeek == null || lessonNumber<=0){
+            try {
+                throw new InvalidDataException("Invalid input data.");
+            } catch (InvalidDataException e) {
+                e.printStackTrace();
+            }
+        }
+        Lesson lesson = new Lesson(subjectRepository.findById(subject_id).get(),groupNumber,lessonNumber,dayOfWeek);
         return lessonRepository.save(lesson);
     }
 
@@ -46,7 +63,13 @@ public class LessonServiceImpl implements LessonService {
                 e.printStackTrace();
             }
         }
-        checkParams(lesson);
+        if(lesson.getGroupNumber()<=0 || lesson.getDayOfWeek() == null || lesson.getGroupNumber()<=0){
+            try {
+                throw new InvalidDataException("Invalid input data.");
+            } catch (InvalidDataException e) {
+                e.printStackTrace();
+            }
+        }
         return lessonRepository.save(lesson);
     }
 
@@ -64,9 +87,9 @@ public class LessonServiceImpl implements LessonService {
 
     @Override
     public List<Lesson> findAllBySubject(Long subject_id) {
-        if(!lessonRepository.findAllBySubject(subject_id).isPresent()) {
+        if(!subjectRepository.findById(subject_id).isPresent()){
             try {
-                throw new InvalidDataException("Lesson id is incorrect");
+                throw new InvalidDataException("Subject id is incorrect");
             } catch (InvalidDataException e) {
                 e.printStackTrace();
             }
@@ -74,7 +97,4 @@ public class LessonServiceImpl implements LessonService {
         return lessonRepository.findAllBySubject(subject_id);
     }
 
-    private void checkParams(Lesson lesson) {
-
-    }
 }

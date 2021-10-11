@@ -11,7 +11,7 @@ public interface AdminService {
 
     void editLesson(Lesson lesson);
 
-    Subject addSubject(Subject subject);
+    Subject addSubject(String name, Long facultyId,String normative);
 
     String deleteSubject(Long id);
 

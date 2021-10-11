@@ -2,22 +2,38 @@ package ukma.fi.scheduler.entities;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 @Data
 public class Shift {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private Integer weekNumber;
+    private Integer weekNumber = null;
 
-    private String dayOfWeek;
+    private String dayOfWeek  = null;
 
-    private Integer number;
+    private Integer number  = null;
 
+    private String isCancel = "N";
     @OneToOne
     private Lesson lesson;
+
+    public Shift createCancel(Lesson lesson,Integer weekNumber){
+        Shift cancel = new Shift();
+        cancel.setLesson(lesson);
+        cancel.setWeekNumber(weekNumber);
+        cancel.setIsCancel("Y");
+        return cancel;
+    }
+    public Shift createShift(Integer weekNumber, String dayOfWeek, Integer number, Lesson lesson){
+        Shift cancel = new Shift();
+        cancel.setLesson(lesson);
+        cancel.setWeekNumber(weekNumber);
+        cancel.setDayOfWeek(dayOfWeek);
+        cancel.setNumber(number);
+        return cancel;
+    }
 }

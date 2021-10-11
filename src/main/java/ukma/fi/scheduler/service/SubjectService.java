@@ -4,7 +4,7 @@ import ukma.fi.scheduler.entities.*;
 import java.util.List;
 
 public interface SubjectService {
-    Subject create(Subject subject);
+    Subject create(String name, Long facultyId,String normative);
 
     Subject edit(Subject subject);
 

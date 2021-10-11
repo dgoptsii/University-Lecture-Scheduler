@@ -3,15 +3,13 @@ package ukma.fi.scheduler.entities;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 @Data
 public class Lesson {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String dayOfWeek;
@@ -23,7 +21,8 @@ public class Lesson {
     @ManyToOne
     private Subject subject;
 
-    public Lesson(Long subject_id, Integer groupNumber, Integer lessonNumber, String dayOfWeek) {
+    public Lesson(Subject subject, Integer groupNumber, Integer lessonNumber, String dayOfWeek) {
+        this.subject = subject;
         this.groupNumber = groupNumber;
         this.lessonNumber = lessonNumber;
         this.dayOfWeek = dayOfWeek;

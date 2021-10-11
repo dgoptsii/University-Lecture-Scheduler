@@ -9,6 +9,7 @@ import ukma.fi.scheduler.repository.FacultyRepository;
 import ukma.fi.scheduler.repository.SubjectRepository;
 import ukma.fi.scheduler.service.*;
 
+import javax.persistence.OneToOne;
 import java.util.List;
 
 @Service
@@ -20,9 +21,17 @@ public class SubjectServiceImpl implements SubjectService {
     private FacultyRepository facultyRepository;
 
     @Override
-    public Subject create(Subject subject) {
-        checkParams(subject);
-        return subjectRepository.save(subject);
+    public Subject create(String name, Long facultyId,String normative) {
+        if(!facultyRepository.findById(facultyId).isPresent()){
+            try {
+                throw new InvalidDataException("Faculty id is incorrect");
+            } catch (InvalidDataException e) {
+                e.printStackTrace();
+            }
+        }
+        checkParams(name,normative);
+        Subject toSave = new Subject(name,facultyRepository.findById(facultyId).get(),normative);
+        return subjectRepository.save(toSave);
     }
 
     @Override
@@ -34,7 +43,7 @@ public class SubjectServiceImpl implements SubjectService {
                 e.printStackTrace();
             }
         }
-        checkParams(subject);
+        checkParams(subject.getName(),subject.getNormative());
         return subjectRepository.save(subject);
     }
 
@@ -77,15 +86,15 @@ public class SubjectServiceImpl implements SubjectService {
         return  subjectRepository.findByFaculty_Id(id);
     }
 
-    private void checkParams(Subject subject) {
-        if (subjectRepository.findByName(subject.getName()).isPresent()) {
+    private void checkParams(String name,String normative) {
+        if (subjectRepository.findByName(name).isPresent()) {
             try {
                 throw new InvalidDataException("Subject with this name is already exist.");
             } catch (InvalidDataException e) {
                 e.printStackTrace();
             }
         }
-        if (!subject.getNormative().equals("Y") && !subject.getNormative().equals("N")) {
+        if (!normative.equals("Y") && !normative.equals("N")) {
             try {
                 throw new InvalidDataException("Invalid status.");
             } catch (InvalidDataException e) {
