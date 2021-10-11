@@ -27,7 +27,7 @@ public class SubjectServiceImpl implements SubjectService {
 
     @Override
     public Subject edit(Subject subject) {
-        if (subjectRepository.findById(subject.getId()).isPresent()) {
+        if (!subjectRepository.findById(subject.getId()).isPresent()) {
             try {
                 throw new NotFoundException("Subject not found.");
             } catch (NotFoundException e) {
