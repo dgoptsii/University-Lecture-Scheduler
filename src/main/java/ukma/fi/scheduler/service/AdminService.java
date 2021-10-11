@@ -5,16 +5,15 @@ import java.util.List;
 
 public interface AdminService {
 
-    void addLesson(Subject subject, Integer lessonNumber, Integer dayOfWeek);
+    Lesson addLesson(Long subject_id, Integer lessonNumber, Integer dayOfWeek);
 
-    void deleteLesson(Long id);
+    String deleteLesson(Long id);
 
     void editLesson(Lesson lesson);
 
-
     Subject addSubject(Subject subject);
 
-    void deleteSubject(Long id);
+    String deleteSubject(Long id);
 
     void editSubject(Subject subject);
 
