@@ -16,17 +16,11 @@ public class Lesson {
 
     private String dayOfWeek;
 
-    private Integer weekStart;
-    private Integer weekEnd;
-
-    //lection or practice
-    private String type;
-
     private Integer lessonNumber;
 
-    // or maybe if groupNumber = 0 then it is lection
     private Integer groupNumber;
 
     @ManyToOne
     private Subject subject;
+
 }
