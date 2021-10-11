@@ -1,12 +1,16 @@
 package ukma.fi.scheduler.service;
 import ukma.fi.scheduler.entities.*;
 
+import java.util.List;
+
 public interface SubjectService {
-    void create(Subject subject);
+    Subject create(Subject subject);
 
-    void edit(Subject subject);
+    Subject edit(Subject subject);
 
-    void delete(Subject subject);
+    boolean delete(Long id);
 
-    void show(Long id);
+    Subject show(Long id);
+
+    List<Subject> findByFaculty(Long id);
 }

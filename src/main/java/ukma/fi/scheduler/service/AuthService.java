@@ -4,9 +4,9 @@ import ukma.fi.scheduler.entities.*;
 
 public interface AuthService {
 
-    void login(String login, String password);
+    User login(String login, String password);
 
-    void registration(User user);
+    User registration(User user);
 
-    void getUserInfo(Long id);
+    User getUserInfo(Long id);
 }

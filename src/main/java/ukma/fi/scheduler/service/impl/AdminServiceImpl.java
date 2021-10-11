@@ -4,6 +4,8 @@ import ukma.fi.scheduler.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AdminServiceImpl implements AdminService {
     @Autowired
@@ -22,37 +24,39 @@ public class AdminServiceImpl implements AdminService {
     public void addLesson(Subject subject, Integer lessonNumber, Integer dayOfWeek) { }
 
     @Override
-    public void deleteLesson(Lesson lesson) {
-
+    public void deleteLesson(Long id) {
     }
 
     @Override
     public void editLesson(Lesson lesson) {
-
     }
 
     @Override
-    public void addSubject(Subject subject) {
-
+    public Subject addSubject(Subject subject) {
+        return subjectService.create(subject);
     }
 
     @Override
-    public void deleteSubject(Subject subject) {
-
+    public void deleteSubject(Long id) {
+        if(subjectService.delete(id)){
+            System.out.println("Deleting subject id:"+id+" completed.");
+        }else{
+            System.out.println("ERROR");
+        }
     }
 
     @Override
     public void editSubject(Subject subject) {
-
+        subjectService.edit(subject);
     }
 
     @Override
-    public void showFacultySubjects(Faculty faculty) {
-
+    public List<Subject> showFacultySubjects(Long faculty_id) {
+        return subjectService.findByFaculty(faculty_id);
     }
 
     @Override
-    public void showFacultyLessons(Subject subject) {
-
+    public List<Lesson> showSubjectLessons(Long subject_id) {
+        return null;
     }
 }

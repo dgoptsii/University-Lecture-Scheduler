@@ -1,6 +1,7 @@
 package ukma.fi.scheduler.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ukma.fi.scheduler.repository.UserRepository;
 import ukma.fi.scheduler.entities.*;
 import ukma.fi.scheduler.service.*;
 import java.util.List;
@@ -9,25 +10,30 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     //for operations with lessons
-    private final LessonService scheduleService;
+    @Autowired
+    private LessonService scheduleService;
 
     //for getting info about canceled and shifted lessons
-    private final ShiftService shiftService;
+    @Autowired
+    private ShiftService shiftService;
 
     @Autowired
-    public UserServiceImpl(LessonService scheduleService, ShiftService shiftService) {
-        this.scheduleService = scheduleService;
-        this.shiftService = shiftService;
-    }
+    private UserRepository userRepository;
 
     @Override
     public User findUserById(Long id) {
-        return null;
+        if(userRepository.findById(id).isPresent())
+            return userRepository.findById(id).get();
+        else
+            return null;
     }
 
     @Override
     public User findUserByLogin(String login) {
-        return null;
+        if(userRepository.findByLogin(login).isPresent())
+            return userRepository.findByLogin(login).get();
+        else
+            return null;
     }
 
     @Override
