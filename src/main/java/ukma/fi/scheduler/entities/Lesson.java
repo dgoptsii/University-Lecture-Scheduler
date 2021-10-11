@@ -23,4 +23,10 @@ public class Lesson {
     @ManyToOne
     private Subject subject;
 
+    public Lesson(Long subject_id, Integer groupNumber, Integer lessonNumber, String dayOfWeek) {
+        this.groupNumber = groupNumber;
+        this.lessonNumber = lessonNumber;
+        this.dayOfWeek = dayOfWeek;
+    }
+
 }

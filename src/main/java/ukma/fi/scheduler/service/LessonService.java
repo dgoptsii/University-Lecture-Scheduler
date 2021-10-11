@@ -1,13 +1,17 @@
 package ukma.fi.scheduler.service;
 import ukma.fi.scheduler.entities.*;
 
+import java.util.List;
+
 public interface LessonService {
 
-    Lesson create(Subject subject, Integer lessonNumber, Integer dayOfWeek);
+    Lesson create(Long subject_id, Integer groupNumber, Integer lessonNumber, String dayOfWeek);
 
-    void delete(Lesson lesson);
+    boolean delete(Long id);
 
-    void edit(Lesson lesson);
+    Lesson edit(Lesson lesson);
 
-    void show(Long id);
+    Lesson show(Long id);
+
+    List<Lesson> findAllBySubject(Long subject_id);
 }

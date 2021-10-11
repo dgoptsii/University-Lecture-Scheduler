@@ -21,17 +21,21 @@ public class AdminServiceImpl implements AdminService {
     private FacultyService facultyService;
 
     @Override
-    public Lesson addLesson(Long subject_id, Integer lessonNumber, Integer dayOfWeek) {
+    public Lesson addLesson(Long subject_id, Integer groupNumber, Integer lessonNumber, String dayOfWeek) {
         return null;
     }
 
     @Override
     public String deleteLesson(Long id) {
-        return null;
+        if(lessonService.delete(id)){
+            return "Deleting lesson id:"+id+" completed.";
+        }
+        return "ERROR";
     }
 
     @Override
     public void editLesson(Lesson lesson) {
+        lessonService.edit(lesson);
     }
 
     @Override
@@ -59,6 +63,6 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public List<Lesson> showSubjectLessons(Long subject_id) {
-        return null;
+        return lessonService.findAllBySubject(subject_id);
     }
 }
