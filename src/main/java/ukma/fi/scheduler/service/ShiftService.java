@@ -3,12 +3,11 @@ import ukma.fi.scheduler.entities.*;
 
 public interface ShiftService {
 
-    void create(Lesson lesson, Integer oldWeek,
-                Integer newWeek, Integer dayOfWeek, Integer lessonNum);
+    Shift createShift(Long OldLessonId, Integer newWeek, String dayOfWeek, Integer lessonNum);
 
-    void edit(Shift shift);
+    Shift edit(Shift shift);
 
-    void delete(Shift shift);
+    boolean delete(Long id);
 
-    void cancelLesson(Lesson lesson, Integer week);
+    Shift cancelLesson(Long lessonId, Integer week);
 }

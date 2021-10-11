@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Data
@@ -27,4 +28,10 @@ public class Subject {
 
     @OneToMany(fetch = FetchType.LAZY)
     private List<Lesson> lessons = new ArrayList<>();
+
+    public Subject(String name, Faculty faculty, String normative) {
+        this.name = name;
+        this.faculty = faculty;
+        this.normative = normative;
+    }
 }

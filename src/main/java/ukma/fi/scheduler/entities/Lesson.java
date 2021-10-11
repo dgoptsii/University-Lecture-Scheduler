@@ -2,11 +2,13 @@ package ukma.fi.scheduler.entities;
 
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class Lesson {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,5 +26,12 @@ public class Lesson {
 
     @ManyToOne(optional = false)
     private Subject subject;
+
+    public Lesson(Subject subject, Integer groupNumber, Integer lessonNumber, String dayOfWeek) {
+        this.subject = subject;
+        this.groupNumber = groupNumber;
+        this.lessonNumber = lessonNumber;
+        this.dayOfWeek = dayOfWeek;
+    }
 
 }

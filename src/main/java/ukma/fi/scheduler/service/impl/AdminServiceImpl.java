@@ -1,4 +1,5 @@
 package ukma.fi.scheduler.service.impl;
+import com.sun.media.sound.InvalidDataException;
 import ukma.fi.scheduler.entities.*;
 import ukma.fi.scheduler.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,22 +22,26 @@ public class AdminServiceImpl implements AdminService {
     private FacultyService facultyService;
 
     @Override
-    public Lesson addLesson(Long subject_id, Integer lessonNumber, Integer dayOfWeek) {
-        return null;
+    public Lesson addLesson(Long subject_id, Integer groupNumber, Integer lessonNumber, String dayOfWeek) {
+       return lessonService.create(subject_id,groupNumber,lessonNumber,dayOfWeek);
     }
 
     @Override
     public String deleteLesson(Long id) {
-        return null;
+        if(lessonService.delete(id)){
+            return "Deleting lesson id:"+id+" completed.";
+        }
+        return "ERROR";
     }
 
     @Override
     public void editLesson(Lesson lesson) {
+        lessonService.edit(lesson);
     }
 
     @Override
-    public Subject addSubject(Subject subject) {
-        return subjectService.create(subject);
+    public Subject addSubject(String name, Long facultyId,String normative) {
+        return subjectService.create(name,facultyId,normative);
     }
 
     @Override
@@ -59,6 +64,6 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public List<Lesson> showSubjectLessons(Long subject_id) {
-        return null;
+        return lessonService.findAllBySubject(subject_id);
     }
 }

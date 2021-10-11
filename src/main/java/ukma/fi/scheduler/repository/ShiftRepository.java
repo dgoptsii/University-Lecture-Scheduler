@@ -2,11 +2,12 @@ package ukma.fi.scheduler.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import ukma.fi.scheduler.entities.Faculty;
+import ukma.fi.scheduler.entities.Shift;
 import ukma.fi.scheduler.entities.User;
 
 import java.util.Optional;
+
 @Repository
-public interface FacultyRepository extends CrudRepository<Faculty, Long> {
-    Optional<Faculty> findByName(String name);
+public interface ShiftRepository extends CrudRepository<Shift, Long> {
+    Optional<Shift> findByLesson_IdAndAndWeekNumberAndIsCancelEquals(Long id,Long numb,String res);
 }
