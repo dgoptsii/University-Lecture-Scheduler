@@ -9,15 +9,21 @@ import javax.persistence.*;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false, unique = true)
     private Long id;
 
+    @Column(nullable = false, unique = true)
     private String login;
 
+
+    @Column(nullable = false)
     private String password;
 
     // STUDENT, ADMIN, TEACHER
+
+    @Column(nullable = false)
     private String status;
 
-    @OneToOne
+    @OneToOne(optional = false)
     private Faculty faculty;
 }

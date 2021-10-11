@@ -2,14 +2,14 @@ package ukma.fi.scheduler.entities;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 @Data
 public class Shift {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false, unique = true)
     private Long id;
 
     private Integer weekNumber;
@@ -18,6 +18,6 @@ public class Shift {
 
     private Integer number;
 
-    @OneToOne
+    @OneToOne(optional = false)
     private Lesson lesson;
 }
