@@ -1,7 +1,9 @@
 package ukma.fi.scheduler.appender;
 
 
+import java.io.*;
 import java.time.Instant;
+import java.util.Scanner;
 import java.util.concurrent.ConcurrentHashMap;
 
 import ch.qos.logback.classic.spi.ILoggingEvent;
@@ -16,22 +18,27 @@ import java.util.concurrent.ConcurrentMap;
 
 public class MapAppender extends AppenderBase<ILoggingEvent> {
 
-    private final ConcurrentMap<String, ILoggingEvent> eventMap
-            = new ConcurrentHashMap<>();
-
     private String prefix;
 
-
-    MapHolder holder = MapHolder.create();
+    private final File file = new File("./logs/my-custom-logs.log");
 
     @Override
     protected void append(final ILoggingEvent event) {
-        if (prefix == null || "".equals(prefix)) {
-            addError("Prefix is not set for MapAppender.");
-            return;
+        try {
+            BufferedWriter out = new BufferedWriter(
+                    new FileWriter(file, true));
+            out
+                    .append(prefix)
+                    .append(' ')
+                    .append(String.valueOf(System.currentTimeMillis()))
+                    .append(' ')
+                    .append(event.toString())
+                    .append('\n');
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        holder.putEvent(prefix + System.currentTimeMillis(), event.toString());
     }
 
     public String getPrefix() {
@@ -40,10 +47,6 @@ public class MapAppender extends AppenderBase<ILoggingEvent> {
 
     public void setPrefix(final String prefix) {
         this.prefix = prefix;
-    }
-
-    public Map<String, ILoggingEvent> getEventMap() {
-        return eventMap;
     }
 
 }

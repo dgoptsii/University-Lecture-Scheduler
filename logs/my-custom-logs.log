@@ -1,0 +1,62 @@
+test1634573458291[INFO] Closing JPA EntityManagerFactory for persistence unit 'default'test1634573458294[INFO] HikariPool-1 - Shutdown initiated...test1634573458296[INFO] HikariPool-1 - Shutdown completed.test1634573463847[INFO] Starting SchedulerApplication using Java 1.8.0_302 on DESKTOP-6DLED20 with PID 19232 (C:\Users\atcat\Documents\scheduler\target\classes started by atcat in C:\Users\atcat\Documents\scheduler)
+test1634573463848[INFO] The following profiles are active: test
+test1634573464538[INFO] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+test1634573464618[INFO] Finished Spring Data repository scanning in 70 ms. Found 5 JPA repository interfaces.
+test1634573465078[INFO] Tomcat initialized with port(s): 8080 (http)
+test1634573465087[INFO] Initializing ProtocolHandler ["http-nio-8080"]
+test1634573465088[INFO] Starting service [Tomcat]
+test1634573465089[INFO] Starting Servlet engine: [Apache Tomcat/9.0.52]
+test1634573465179[INFO] Initializing Spring embedded WebApplicationContext
+test1634573465180[INFO] Root WebApplicationContext: initialization completed in 1276 ms
+test1634573465213[INFO] HikariPool-1 - Starting...
+test1634573465323[INFO] HikariPool-1 - Start completed.
+test1634573465330[INFO] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:scheduler'
+test1634573465480[INFO] HHH000204: Processing PersistenceUnitInfo [name: default]
+test1634573465564[INFO] HHH000412: Hibernate ORM core version 5.4.32.Final
+test1634573465684[INFO] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+test1634573465801[INFO] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+test1634573466316[INFO] HHH000182: No default (no-argument) constructor for class: ukma.fi.scheduler.entities.Subject (class must be instantiated by Interceptor)
+test1634573466513[INFO] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+test1634573466527[INFO] Initialized JPA EntityManagerFactory for persistence unit 'default'
+test1634573466971[WARN] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+test1634573467219[WARN] Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+test1634573467329[INFO] Starting ProtocolHandler ["http-nio-8080"]
+test1634573467346[INFO] Tomcat started on port(s): 8080 (http) with context path ''
+test1634573467357[INFO] Started SchedulerApplication in 3.878 seconds (JVM running for 4.81)
+test1634573549475[INFO] Closing JPA EntityManagerFactory for persistence unit 'default'
+test1634573549477[INFO] HikariPool-1 - Shutdown initiated...
+test1634573549479[INFO] HikariPool-1 - Shutdown completed.
+test 1634573565814 [INFO] Starting SchedulerApplication using Java 1.8.0_302 on DESKTOP-6DLED20 with PID 21148 (C:\Users\atcat\Documents\scheduler\target\classes started by atcat in C:\Users\atcat\Documents\scheduler)
+test 1634573565815 [INFO] The following profiles are active: test
+test 1634573566484 [INFO] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+test 1634573566562 [INFO] Finished Spring Data repository scanning in 68 ms. Found 5 JPA repository interfaces.
+test 1634573567027 [INFO] Tomcat initialized with port(s): 8080 (http)
+test 1634573567037 [INFO] Initializing ProtocolHandler ["http-nio-8080"]
+test 1634573567039 [INFO] Starting service [Tomcat]
+test 1634573567040 [INFO] Starting Servlet engine: [Apache Tomcat/9.0.52]
+test 1634573567127 [INFO] Initializing Spring embedded WebApplicationContext
+test 1634573567127 [INFO] Root WebApplicationContext: initialization completed in 1268 ms
+test 1634573567158 [INFO] HikariPool-1 - Starting...
+test 1634573567267 [INFO] HikariPool-1 - Start completed.
+test 1634573567274 [INFO] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:scheduler'
+test 1634573567423 [INFO] HHH000204: Processing PersistenceUnitInfo [name: default]
+test 1634573567507 [INFO] HHH000412: Hibernate ORM core version 5.4.32.Final
+test 1634573567648 [INFO] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+test 1634573567765 [INFO] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+test 1634573568283 [INFO] HHH000182: No default (no-argument) constructor for class: ukma.fi.scheduler.entities.Subject (class must be instantiated by Interceptor)
+test 1634573568482 [INFO] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+test 1634573568495 [INFO] Initialized JPA EntityManagerFactory for persistence unit 'default'
+test 1634573568913 [WARN] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+test 1634573569142 [WARN] Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+test 1634573569235 [INFO] Starting ProtocolHandler ["http-nio-8080"]
+test 1634573569252 [INFO] Tomcat started on port(s): 8080 (http) with context path ''
+test 1634573569263 [INFO] Started SchedulerApplication in 3.868 seconds (JVM running for 4.812)
+test 1634573572206 [INFO] Initializing Spring DispatcherServlet 'dispatcherServlet'
+test 1634573572207 [INFO] Initializing Servlet 'dispatcherServlet'
+test 1634573572208 [INFO] Completed initialization in 1 ms
+test 1634573572228 [INFO] some info logging...
+test 1634573572229 [WARN] some warn logging...
+test 1634573572230 [ERROR] some error logging...
+test 1634573613179 [INFO] Closing JPA EntityManagerFactory for persistence unit 'default'
+test 1634573613183 [INFO] HikariPool-1 - Shutdown initiated...
+test 1634573613185 [INFO] HikariPool-1 - Shutdown completed.
