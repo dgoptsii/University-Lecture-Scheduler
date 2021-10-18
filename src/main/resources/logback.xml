@@ -12,12 +12,22 @@
         </layout>
     </appender>
 
+
+    <appender name="map" class="ukma.fi.scheduler.appender.MapAppender">
+        <prefix>test</prefix>
+    </appender>
+
+
     <appender name="RollingFile"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOGS}/spring-boot-logger.log</file>
-        <encoder
-                class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <Pattern>%d %p %C{1.} [%t] %m%n</Pattern>
+
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+            <layout class="ukma.fi.scheduler.layout.LayoutSimple" >
+            <prefix>Some new prefix to new Layout</prefix>
+                <printThreadName>true</printThreadName>
+
+            </layout>
         </encoder>
 
         <rollingPolicy
@@ -36,12 +46,16 @@
     <root level="info">
         <appender-ref ref="RollingFile" />
         <appender-ref ref="Console" />
+        <appender-ref ref="map"/>
     </root>
+
 
     <!-- LOG "com.baeldung*" at TRACE level -->
     <logger name="com.baeldung" level="trace" additivity="false">
         <appender-ref ref="RollingFile" />
         <appender-ref ref="Console" />
+        <appender-ref ref="map"/>
     </logger>
 
 </configuration>
+
