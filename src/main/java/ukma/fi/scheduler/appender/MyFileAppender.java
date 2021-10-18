@@ -16,7 +16,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 
-public class MapAppender extends AppenderBase<ILoggingEvent> {
+public class MyFileAppender extends AppenderBase<ILoggingEvent> {
 
     private String prefix;
 

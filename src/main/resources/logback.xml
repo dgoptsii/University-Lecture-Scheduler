@@ -13,7 +13,7 @@
     </appender>
 
 
-    <appender name="map" class="ukma.fi.scheduler.appender.MapAppender">
+    <appender name="map" class="ukma.fi.scheduler.appender.MyFileAppender">
         <prefix>test</prefix>
     </appender>
 
