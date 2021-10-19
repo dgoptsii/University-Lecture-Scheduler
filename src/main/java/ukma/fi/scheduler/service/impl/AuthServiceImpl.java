@@ -4,12 +4,14 @@ import com.sun.media.sound.InvalidDataException;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ukma.fi.scheduler.ServiceMarker;
 import ukma.fi.scheduler.repository.UserRepository;
 import ukma.fi.scheduler.entities.*;
 import ukma.fi.scheduler.service.*;
 
 import java.util.regex.Pattern;
 
+@ServiceMarker
 @Service
 public class AuthServiceImpl implements AuthService {
 

@@ -25,4 +25,8 @@ public class TestController {
         return authService.getUserInfo(1l);
     }
 
+    @GetMapping("/test")
+    public String test(){
+        return "Login ..."+authService.login("test","121212");
+    }
 }
