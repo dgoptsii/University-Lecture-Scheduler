@@ -2,8 +2,10 @@ package ukma.fi.scheduler.service.impl;
 
 import com.sun.media.sound.InvalidDataException;
 import javassist.NotFoundException;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ukma.fi.scheduler.ServiceMarker;
 import ukma.fi.scheduler.entities.*;
 import ukma.fi.scheduler.repository.FacultyRepository;
 import ukma.fi.scheduler.repository.SubjectRepository;
@@ -12,7 +14,9 @@ import ukma.fi.scheduler.service.*;
 import javax.persistence.OneToOne;
 import java.util.List;
 
+@ServiceMarker
 @Service
+@Log4j2
 public class SubjectServiceImpl implements SubjectService {
 
     @Autowired
@@ -31,6 +35,7 @@ public class SubjectServiceImpl implements SubjectService {
         }
         checkParams(name,normative);
         Subject toSave = new Subject(name,facultyRepository.findById(facultyId).get(),normative);
+        log.info("created shift -> name:" + name);
         return subjectRepository.save(toSave);
     }
 
@@ -44,6 +49,7 @@ public class SubjectServiceImpl implements SubjectService {
             }
         }
         checkParams(subject.getName(),subject.getNormative());
+        log.info("edit shift -> subject id:" + subject.getId());
         return subjectRepository.save(subject);
     }
 
@@ -59,6 +65,7 @@ public class SubjectServiceImpl implements SubjectService {
             }
             return false;
         }
+        log.info("delete shift -> id:" + id);
         return !subjectRepository.findById(id).isPresent();
     }
 
@@ -71,6 +78,7 @@ public class SubjectServiceImpl implements SubjectService {
                 e.printStackTrace();
             }
         }
+        log.info("show shift -> id:" + id);
         return subjectRepository.findById(id).get();
     }
 
@@ -83,6 +91,7 @@ public class SubjectServiceImpl implements SubjectService {
                 e.printStackTrace();
             }
         }
+        log.info("found by id -> faculty id:" + id);
         return  subjectRepository.findByFaculty_Id(id);
     }
 
@@ -101,5 +110,6 @@ public class SubjectServiceImpl implements SubjectService {
                 e.printStackTrace();
             }
         }
+        log.info("check params -> name:" + name + " "+"normative:"+normative);
     }
 }

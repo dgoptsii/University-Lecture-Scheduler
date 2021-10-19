@@ -2,14 +2,18 @@ package ukma.fi.scheduler.service.impl;
 import com.sun.media.sound.InvalidDataException;
 import com.sun.org.apache.bcel.internal.generic.FCMPG;
 import javassist.NotFoundException;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import ukma.fi.scheduler.ServiceMarker;
 import ukma.fi.scheduler.entities.*;
 import ukma.fi.scheduler.repository.FacultyRepository;
 import ukma.fi.scheduler.service.*;
 import org.springframework.stereotype.Service;
 
 
+@ServiceMarker
 @Service
+@Log4j2
 public class FacultyServiceImpl implements FacultyService {
 
     @Autowired
@@ -17,6 +21,7 @@ public class FacultyServiceImpl implements FacultyService {
     @Override
     public Faculty create(String name) {
         checkParams(name);
+        log.info("created faculty -> name:" + name);
         return facultyRepository.save(new Faculty(name));
     }
 
@@ -32,6 +37,7 @@ public class FacultyServiceImpl implements FacultyService {
             }
             return false;
         }
+        log.info("deleted faculty -> id:" + id);
         return !facultyRepository.findById(id).isPresent();
     }
 
@@ -45,6 +51,7 @@ public class FacultyServiceImpl implements FacultyService {
             }
         }
         checkParams(faculty.getName());
+        log.info("edit faculty -> id:" + faculty.getId());
         return facultyRepository.save(faculty);
     }
 
@@ -57,6 +64,7 @@ public class FacultyServiceImpl implements FacultyService {
                 e.printStackTrace();
             }
         }
+        log.info("show faculty -> id:" + facultyId);
         return facultyRepository.findById(facultyId).get();
     }
     private void checkParams(String name) {
@@ -67,5 +75,6 @@ public class FacultyServiceImpl implements FacultyService {
                 e.printStackTrace();
             }
         }
+        log.info("check params -> name:" + name);
     }
 }

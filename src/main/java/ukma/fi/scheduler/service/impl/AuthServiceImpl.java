@@ -81,6 +81,7 @@ public class AuthServiceImpl implements AuthService {
                 e.printStackTrace();
             }
         }
+        log.info("registration -> user:" + user.getLogin() );
         return userRepository.save(user);
     }
 
@@ -94,6 +95,7 @@ public class AuthServiceImpl implements AuthService {
                 e.printStackTrace();
             }
         }
+        log.info("get user info -> user id:" + id );
         return userInDb;
     }
 

@@ -1,15 +1,19 @@
 package ukma.fi.scheduler.service.impl;
 import com.sun.media.sound.InvalidDataException;
 import javassist.NotFoundException;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ukma.fi.scheduler.ServiceMarker;
 import ukma.fi.scheduler.entities.*;
 import ukma.fi.scheduler.repository.*;
 import ukma.fi.scheduler.service.*;
 
 import java.util.List;
 
+@ServiceMarker
 @Service
+@Log4j2
 public class LessonServiceImpl implements LessonService {
 
     @Autowired
@@ -36,6 +40,7 @@ public class LessonServiceImpl implements LessonService {
             }
         }
         Lesson lesson = new Lesson(subjectRepository.findById(subject_id).get(),groupNumber,lessonNumber,dayOfWeek);
+        log.info("created lesson -> subject id:" + subject_id);
         return lessonRepository.save(lesson);
     }
 
@@ -51,6 +56,7 @@ public class LessonServiceImpl implements LessonService {
             }
             return false;
         }
+        log.info("delete lesson -> id:" + id);
         return !lessonRepository.findById(id).isPresent();
     }
 
@@ -70,6 +76,7 @@ public class LessonServiceImpl implements LessonService {
                 e.printStackTrace();
             }
         }
+        log.info("edit lesson -> id:" + lesson.getId());
         return lessonRepository.save(lesson);
     }
 
@@ -82,6 +89,7 @@ public class LessonServiceImpl implements LessonService {
                 e.printStackTrace();
             }
         }
+        log.info("show lesson -> id:" + id);
         return lessonRepository.findById(id).get();
     }
 
@@ -94,6 +102,7 @@ public class LessonServiceImpl implements LessonService {
                 e.printStackTrace();
             }
         }
+        log.info("found by id -> subject id:" + subject_id);
         return lessonRepository.findAllBySubject(subject_id);
     }
 
