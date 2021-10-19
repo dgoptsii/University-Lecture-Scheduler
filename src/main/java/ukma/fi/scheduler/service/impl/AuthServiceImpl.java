@@ -2,6 +2,8 @@ package ukma.fi.scheduler.service.impl;
 
 import com.sun.media.sound.InvalidDataException;
 import javassist.NotFoundException;
+import jdk.nashorn.internal.runtime.logging.Logger;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ukma.fi.scheduler.ServiceMarker;
@@ -13,6 +15,7 @@ import java.util.regex.Pattern;
 
 @ServiceMarker
 @Service
+@Log4j2
 public class AuthServiceImpl implements AuthService {
 
     //for searching users in DB
@@ -37,6 +40,7 @@ public class AuthServiceImpl implements AuthService {
                 e.printStackTrace();
             }
         }
+        log.info("Login successfully -> " + login);
         return userInDb;
     }
 
