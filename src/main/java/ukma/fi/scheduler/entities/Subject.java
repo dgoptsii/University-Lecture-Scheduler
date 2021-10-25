@@ -1,6 +1,7 @@
 package ukma.fi.scheduler.entities;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -9,12 +10,12 @@ import java.util.Optional;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, unique = true)
     private Long id;
-
 
     @Column(nullable = false, unique = true)
     private String name;
@@ -22,7 +23,6 @@ public class Subject {
     @OneToOne(optional = false)
     private Faculty faculty;
 
-    //normative or not
     @Column(nullable = false)
     private String normative;
 

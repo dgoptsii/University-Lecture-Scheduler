@@ -1,4 +1,5 @@
 package ukma.fi.scheduler.service.impl;
+
 import com.sun.media.sound.InvalidDataException;
 import com.sun.org.apache.bcel.internal.generic.FCMPG;
 import javassist.NotFoundException;
@@ -6,6 +7,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import ukma.fi.scheduler.ServiceMarker;
 import ukma.fi.scheduler.entities.*;
+import ukma.fi.scheduler.exceptionHandlers.exceptions.FacultyNotFoundException;
 import ukma.fi.scheduler.repository.FacultyRepository;
 import ukma.fi.scheduler.service.*;
 import org.springframework.stereotype.Service;
@@ -18,6 +20,7 @@ public class FacultyServiceImpl implements FacultyService {
 
     @Autowired
     private FacultyRepository facultyRepository;
+
     @Override
     public Faculty create(String name) {
         checkParams(name);
@@ -27,7 +30,7 @@ public class FacultyServiceImpl implements FacultyService {
 
     @Override
     public boolean delete(Long id) {
-        if(facultyRepository.findById(id).isPresent()) {
+        if (facultyRepository.findById(id).isPresent()) {
             facultyRepository.deleteById(id);
         } else {
             try {
@@ -44,11 +47,8 @@ public class FacultyServiceImpl implements FacultyService {
     @Override
     public Faculty edit(Faculty faculty) {
         if (!facultyRepository.findById(faculty.getId()).isPresent()) {
-            try {
-                throw new NotFoundException("Faculty not found.");
-            } catch (NotFoundException e) {
-                e.printStackTrace();
-            }
+            throw new FacultyNotFoundException(faculty.getId());
+
         }
         checkParams(faculty.getName());
         log.info("edit faculty -> id:" + faculty.getId());
@@ -67,6 +67,7 @@ public class FacultyServiceImpl implements FacultyService {
         log.info("show faculty -> id:" + facultyId);
         return facultyRepository.findById(facultyId).get();
     }
+
     private void checkParams(String name) {
         if (facultyRepository.findByName(name).isPresent()) {
             try {

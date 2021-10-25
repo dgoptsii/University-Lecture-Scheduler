@@ -5,6 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Data
@@ -15,12 +18,17 @@ public class Lesson {
     @Column(nullable = false, unique = true)
     private Long id;
 
+    @Min(1)
+    @Max(7)
     @Column(nullable = false)
     private String dayOfWeek;
 
+    @Min(1)
+    @Max(7)
     @Column(nullable = false)
     private Integer lessonNumber;
 
+    @Min(1)
     @Column(nullable = false)
     private Integer groupNumber;
 
