@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import ukma.fi.scheduler.entities.Faculty;
 import ukma.fi.scheduler.exceptionHandlers.exceptions.FacultyNotFoundException;
 import ukma.fi.scheduler.service.FacultyService;
+
 import javax.validation.Valid;
 
 @RestController
@@ -26,8 +27,11 @@ public class FacultyController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteFaculty(@PathVariable Long id) {
-        if(!facultyService.delete(id)) throw new FacultyNotFoundException(id);
+    public String deleteFaculty(@PathVariable Long id) {
+        if (facultyService.delete(id))
+            return "Delete faculty with id = " + id;
+        else
+            return null;
     }
 
     @PutMapping("/{id}")

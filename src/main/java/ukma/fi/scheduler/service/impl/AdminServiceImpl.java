@@ -1,6 +1,7 @@
 package ukma.fi.scheduler.service.impl;
 import lombok.extern.log4j.Log4j2;
 import ukma.fi.scheduler.ServiceMarker;
+import ukma.fi.scheduler.controller.dto.SubjectDTO;
 import ukma.fi.scheduler.entities.*;
 import ukma.fi.scheduler.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,9 +46,9 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public Subject addSubject(String name, Long facultyId,String normative) {
-        log.info("added subject -> name:" + name);
-        return subjectService.create(name,facultyId,normative);
+    public Subject addSubject(SubjectDTO subjectDTO) {
+        log.info("added subject -> name:" + subjectDTO.getName());
+        return subjectService.create(subjectDTO);
     }
 
     @Override

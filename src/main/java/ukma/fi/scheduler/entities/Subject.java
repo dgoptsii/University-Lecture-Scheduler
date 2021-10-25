@@ -2,6 +2,7 @@ package ukma.fi.scheduler.entities;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import ukma.fi.scheduler.controller.dto.SubjectDTO;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -34,4 +35,5 @@ public class Subject {
         this.faculty = faculty;
         this.normative = normative;
     }
+
 }

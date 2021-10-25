@@ -1,17 +1,21 @@
 package ukma.fi.scheduler.service.impl;
 
 import com.sun.media.sound.InvalidDataException;
-import javassist.NotFoundException;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ukma.fi.scheduler.ServiceMarker;
+import ukma.fi.scheduler.controller.dto.SubjectDTO;
 import ukma.fi.scheduler.entities.*;
+import ukma.fi.scheduler.exceptionHandlers.exceptions.InvalidData;
+
+import ukma.fi.scheduler.exceptionHandlers.exceptions.SubjectNotFoundException;
 import ukma.fi.scheduler.repository.FacultyRepository;
 import ukma.fi.scheduler.repository.SubjectRepository;
 import ukma.fi.scheduler.service.*;
 
-import javax.persistence.OneToOne;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 @ServiceMarker
@@ -25,31 +29,23 @@ public class SubjectServiceImpl implements SubjectService {
     private FacultyRepository facultyRepository;
 
     @Override
-    public Subject create(String name, Long facultyId,String normative) {
-        if(!facultyRepository.findById(facultyId).isPresent()){
-            try {
-                throw new InvalidDataException("Faculty id is incorrect");
-            } catch (InvalidDataException e) {
-                e.printStackTrace();
-            }
+    public Subject create(SubjectDTO subjectDTO) {
+        if(!facultyRepository.findById(subjectDTO.getFacultyId()).isPresent()){
+            throw new InvalidData(Collections.singletonMap("facultyId",subjectDTO.getFacultyId().toString()));
         }
-        checkParams(name,normative);
-        Subject toSave = new Subject(name,facultyRepository.findById(facultyId).get(),normative);
-        log.info("created shift -> name:" + name);
+        checkParams(subjectDTO.getName(),subjectDTO.getNormative(),new HashMap<>());
+        Subject toSave = new Subject(subjectDTO.getName(),facultyRepository.findById(subjectDTO.getFacultyId()).get(),subjectDTO.getNormative());
+        log.info("created subject -> name:" + subjectDTO.getName());
         return subjectRepository.save(toSave);
     }
 
     @Override
     public Subject edit(Subject subject) {
         if (!subjectRepository.findById(subject.getId()).isPresent()) {
-            try {
-                throw new NotFoundException("Subject not found.");
-            } catch (NotFoundException e) {
-                e.printStackTrace();
-            }
+            throw new SubjectNotFoundException(subject.getId());
         }
-        checkParams(subject.getName(),subject.getNormative());
-        log.info("edit shift -> subject id:" + subject.getId());
+        checkParams(subject.getName(),subject.getNormative(), new HashMap<>());
+        log.info("edit subject -> subject id:" + subject.getId());
         return subjectRepository.save(subject);
     }
 
@@ -58,12 +54,7 @@ public class SubjectServiceImpl implements SubjectService {
         if (subjectRepository.findById(id).isPresent()) {
             subjectRepository.deleteById(id);
         } else {
-            try {
-                throw new NotFoundException("Subject not found.");
-            } catch (NotFoundException e) {
-                e.printStackTrace();
-            }
-            return false;
+            throw new SubjectNotFoundException(id);
         }
         log.info("delete shift -> id:" + id);
         return !subjectRepository.findById(id).isPresent();
@@ -72,11 +63,7 @@ public class SubjectServiceImpl implements SubjectService {
     @Override
     public Subject show(Long id) {
         if (!subjectRepository.findById(id).isPresent()) {
-            try {
-                throw new NotFoundException("Subject not found.");
-            } catch (NotFoundException e) {
-                e.printStackTrace();
-            }
+            throw new SubjectNotFoundException(id);
         }
         log.info("show shift -> id:" + id);
         return subjectRepository.findById(id).get();
@@ -85,17 +72,13 @@ public class SubjectServiceImpl implements SubjectService {
     @Override
     public List<Subject> findByFaculty(Long id) {
         if(!facultyRepository.findById(id).isPresent()){
-            try {
-                throw new InvalidDataException("Faculty id is incorrect");
-            } catch (InvalidDataException e) {
-                e.printStackTrace();
-            }
+            throw new InvalidData(Collections.singletonMap("facultyId",id.toString()));
         }
         log.info("found by id -> faculty id:" + id);
         return  subjectRepository.findByFaculty_Id(id);
     }
 
-    private void checkParams(String name,String normative) {
+    private void checkParams(String name, String normative, HashMap<String,String> invalid ) {
         if (subjectRepository.findByName(name).isPresent()) {
             try {
                 throw new InvalidDataException("Subject with this name is already exist.");
@@ -104,11 +87,8 @@ public class SubjectServiceImpl implements SubjectService {
             }
         }
         if (!normative.equals("Y") && !normative.equals("N")) {
-            try {
-                throw new InvalidDataException("Invalid status.");
-            } catch (InvalidDataException e) {
-                e.printStackTrace();
-            }
+            invalid.put("status",normative);
+            throw new InvalidData(invalid);
         }
         log.info("check params -> name:" + name + " "+"normative:"+normative);
     }

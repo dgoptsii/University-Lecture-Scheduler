@@ -2,8 +2,8 @@ package ukma.fi.scheduler.exceptionHandlers.exceptions;
 
 import java.util.Map;
 
-public class UserInvalidData extends RuntimeException {
-    public UserInvalidData(Map<String, String> invalidParams) {
+public class InvalidData extends RuntimeException {
+    public InvalidData(Map<String, String> invalidParams) {
         super(buildResult(invalidParams));
     }
 

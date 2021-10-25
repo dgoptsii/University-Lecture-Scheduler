@@ -28,14 +28,4 @@ public class User {
     @ManyToOne(optional = false)
     private Faculty faculty;
 
-    public static User createFromDTO(UserDTO user){
-        User result = new User();
-        result.setLogin(user.getLogin());
-        result.setPassword(user.getPassword());
-        result.setStatus(user.getStatus());
-        Faculty faculty = new Faculty();
-        faculty.setId(user.getFacultyId());
-        result.setFaculty(faculty);
-        return result;
-    }
 }

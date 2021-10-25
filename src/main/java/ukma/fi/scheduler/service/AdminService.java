@@ -1,4 +1,5 @@
 package ukma.fi.scheduler.service;
+import ukma.fi.scheduler.controller.dto.SubjectDTO;
 import ukma.fi.scheduler.entities.*;
 
 import java.util.List;
@@ -11,7 +12,7 @@ public interface AdminService {
 
     void editLesson(Lesson lesson);
 
-    Subject addSubject(String name, Long facultyId,String normative);
+    Subject addSubject(SubjectDTO subjectDTO);
 
     String deleteSubject(Long id);
 

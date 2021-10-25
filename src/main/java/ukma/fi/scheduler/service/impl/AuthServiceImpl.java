@@ -1,18 +1,17 @@
 package ukma.fi.scheduler.service.impl;
 
-import com.sun.media.sound.InvalidDataException;
-import javassist.NotFoundException;
-import jdk.nashorn.internal.runtime.logging.Logger;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ukma.fi.scheduler.ServiceMarker;
+import ukma.fi.scheduler.controller.dto.UserLoginDTO;
+import ukma.fi.scheduler.exceptionHandlers.exceptions.InvalidData;
 import ukma.fi.scheduler.exceptionHandlers.exceptions.UserNotFoundException;
 import ukma.fi.scheduler.repository.UserRepository;
 import ukma.fi.scheduler.entities.*;
 import ukma.fi.scheduler.service.*;
 
-import java.util.regex.Pattern;
+import java.util.Collections;
 
 @ServiceMarker
 @Service
@@ -22,27 +21,20 @@ public class AuthServiceImpl implements AuthService {
     //for searching users in DB
     @Autowired
     private UserService userService;
+
     @Autowired
     private UserRepository userRepository;
 
     @Override
-    public User login(String login, String password) {
-        User userInDb = userService.findUserByLogin(login);
+    public User login(UserLoginDTO user) {
+        User userInDb = userService.findUserByLogin(user.getLogin());
         if (userInDb == null) {
-            try {
-                throw new NotFoundException("User not found.");
-            } catch (NotFoundException e) {
-                e.printStackTrace();
-            }
+            throw new UserNotFoundException("User not found.");
         }
-        if (!userInDb.getPassword().equals(password)) {
-            try {
-                throw new InvalidDataException("Incorrect password.");
-            } catch (InvalidDataException e) {
-                e.printStackTrace();
-            }
+        if (!userInDb.getPassword().equals(user.getPassword())) {
+            throw new InvalidData(Collections.singletonMap("password",user.getPassword()));
         }
-        log.info("Login successfully -> " + login);
+        log.info("Login successfully -> " + user.getLogin());
         return userInDb;
     }
 
