@@ -14,6 +14,7 @@ import ukma.fi.scheduler.repository.FacultyRepository;
 import ukma.fi.scheduler.repository.SubjectRepository;
 import ukma.fi.scheduler.service.*;
 
+import javax.validation.Valid;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -29,7 +30,7 @@ public class SubjectServiceImpl implements SubjectService {
     private FacultyRepository facultyRepository;
 
     @Override
-    public Subject create(SubjectDTO subjectDTO) {
+    public Subject create(@Valid SubjectDTO subjectDTO) {
         if(!facultyRepository.findById(subjectDTO.getFacultyId()).isPresent()){
             throw new InvalidData(Collections.singletonMap("facultyId",subjectDTO.getFacultyId().toString()));
         }

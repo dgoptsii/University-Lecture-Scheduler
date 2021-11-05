@@ -2,6 +2,7 @@ package ukma.fi.scheduler.controller;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ukma.fi.scheduler.entities.Lesson;
 import ukma.fi.scheduler.exceptionHandlers.exceptions.LessonNotFoundException;
@@ -11,6 +12,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("lesson")
+@Validated
 @Log4j2
 public class LessonController {
 

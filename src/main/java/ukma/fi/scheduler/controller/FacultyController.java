@@ -2,6 +2,7 @@ package ukma.fi.scheduler.controller;
 
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ukma.fi.scheduler.entities.Faculty;
 import ukma.fi.scheduler.exceptionHandlers.exceptions.FacultyNotFoundException;
@@ -11,6 +12,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("faculty")
+@Validated
 public class FacultyController {
 
     @Autowired

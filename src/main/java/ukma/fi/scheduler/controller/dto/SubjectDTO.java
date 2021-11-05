@@ -2,7 +2,6 @@ package ukma.fi.scheduler.controller.dto;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import ukma.fi.scheduler.entities.Faculty;
 import ukma.fi.scheduler.entities.Lesson;
 
@@ -16,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 public class SubjectDTO {
 
-    @NonNull
+    @NotNull
     private String name;
 
     @NotNull
