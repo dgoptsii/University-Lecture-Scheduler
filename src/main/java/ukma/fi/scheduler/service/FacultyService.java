@@ -3,6 +3,8 @@ package ukma.fi.scheduler.service;
 
 import ukma.fi.scheduler.entities.*;
 
+import java.util.List;
+
 public interface FacultyService {
 
     Faculty create(String name);
@@ -12,4 +14,6 @@ public interface FacultyService {
     Faculty edit(Faculty faculty);
 
     Faculty show(Long id);
+
+    List<Faculty> showAll();
 }

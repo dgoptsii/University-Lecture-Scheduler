@@ -1,0 +1,483 @@
+---
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+  - url: http://localhost:8080
+    description: Generated server url
+paths:
+  "/subject/{id}":
+    get:
+      tags:
+        - subject-controller
+      operationId: getSubject
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
+              schema:
+                "$ref": "#/components/schemas/Subject"
+        '404':
+          description: Not Found
+          content:
+            "*/*":
+              schema:
+                type: string
+    put:
+      tags:
+        - subject-controller
+      operationId: updateSubject
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/Subject"
+        required: true
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+          content:
+            "*/*":
+              schema:
+                type: string
+    delete:
+      tags:
+        - subject-controller
+      operationId: deleteSubject
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
+              schema:
+                type: string
+        '404':
+          description: Not Found
+          content:
+            "*/*":
+              schema:
+                type: string
+  "/lesson/{id}":
+    get:
+      tags:
+        - lesson-controller
+      operationId: getLesson
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
+              schema:
+                "$ref": "#/components/schemas/Lesson"
+        '404':
+          description: Not Found
+          content:
+            "*/*":
+              schema:
+                type: string
+    put:
+      tags:
+        - lesson-controller
+      operationId: updateLesson
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/Lesson"
+        required: true
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+          content:
+            "*/*":
+              schema:
+                type: string
+    delete:
+      tags:
+        - lesson-controller
+      operationId: deleteLesson
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+          content:
+            "*/*":
+              schema:
+                type: string
+  "/faculty/{id}":
+    get:
+      tags:
+        - user
+      summary: Gets faculty
+      operationId: getFaculty
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
+              schema:
+                "$ref": "#/components/schemas/Faculty"
+        '404':
+          description: Not Found
+          content:
+            "*/*":
+              schema:
+                type: string
+    put:
+      tags:
+        - faculty-controller
+      operationId: updateFaculty
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/Faculty"
+        required: true
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+          content:
+            "*/*":
+              schema:
+                type: string
+    delete:
+      tags:
+        - faculty-controller
+      operationId: deleteFaculty
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
+              schema:
+                type: string
+        '404':
+          description: Not Found
+          content:
+            "*/*":
+              schema:
+                type: string
+  "/subject/add":
+    post:
+      tags:
+        - subject-controller
+      operationId: addSubject
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/SubjectDTO"
+        required: true
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+          content:
+            "*/*":
+              schema:
+                type: string
+  "/registration":
+    post:
+      tags:
+        - auth-controller
+      operationId: registration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/UserDTO"
+        required: true
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+          content:
+            "*/*":
+              schema:
+                type: string
+  "/login":
+    post:
+      tags:
+        - auth-controller
+      operationId: login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/UserLoginDTO"
+        required: true
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+          content:
+            "*/*":
+              schema:
+                type: string
+  "/lesson/add":
+    post:
+      tags:
+        - lesson-controller
+      operationId: addLesson
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/Lesson"
+        required: true
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+          content:
+            "*/*":
+              schema:
+                type: string
+  "/faculty/add":
+    post:
+      tags:
+        - faculty-controller
+      operationId: addFaculty
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/Faculty"
+        required: true
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
+          content:
+            "*/*":
+              schema:
+                type: string
+  "/user/{id}":
+    get:
+      tags:
+        - user-controller
+      operationId: getUser
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
+              schema:
+                "$ref": "#/components/schemas/User"
+        '404':
+          description: Not Found
+          content:
+            "*/*":
+              schema:
+                type: string
+  "/lol":
+    get:
+      tags:
+        - test-controller
+      operationId: login_1
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
+              schema:
+                "$ref": "#/components/schemas/User"
+        '404':
+          description: Not Found
+          content:
+            "*/*":
+              schema:
+                type: string
+components:
+  schemas:
+    Faculty:
+      required:
+        - name
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+    Lesson:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        dayOfWeek:
+          type: string
+        lessonNumber:
+          maximum: 7
+          minimum: 1
+          type: integer
+          format: int32
+        groupNumber:
+          minimum: 1
+          type: integer
+          format: int32
+        subject:
+          "$ref": "#/components/schemas/Subject"
+    Subject:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        faculty:
+          "$ref": "#/components/schemas/Faculty"
+        normative:
+          type: string
+        lessons:
+          type: array
+          items:
+            "$ref": "#/components/schemas/Lesson"
+    SubjectDTO:
+      required:
+        - facultyId
+        - name
+        - normative
+      type: object
+      properties:
+        name:
+          type: string
+        facultyId:
+          minimum: 1
+          type: integer
+          format: int64
+        normative:
+          type: string
+    UserDTO:
+      required:
+        - facultyId
+        - login
+        - password
+        - status
+      type: object
+      properties:
+        login:
+          pattern: "([a-z]+\\.[a-z]+)@ukma\\.edu\\.ua"
+          type: string
+        password:
+          pattern: "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$"
+          type: string
+        status:
+          pattern: STUDENT|ADMIN|TEACHER
+          type: string
+        facultyId:
+          minimum: 1
+          type: integer
+          format: int64
+    UserLoginDTO:
+      required:
+        - login
+        - password
+      type: object
+      properties:
+        login:
+          pattern: "([a-z]+\\.[a-z]+)@ukma\\.edu\\.ua"
+          type: string
+        password:
+          pattern: "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$"
+          type: string
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        login:
+          type: string
+        password:
+          type: string
+        status:
+          type: string
+        faculty:
+          "$ref": "#/components/schemas/Faculty"

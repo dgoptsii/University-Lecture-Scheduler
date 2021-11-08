@@ -1,5 +1,11 @@
 package ukma.fi.scheduler.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -9,6 +15,7 @@ import ukma.fi.scheduler.exceptionHandlers.exceptions.FacultyNotFoundException;
 import ukma.fi.scheduler.service.FacultyService;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("faculty")
@@ -19,10 +26,16 @@ public class FacultyController {
     private FacultyService facultyService;
 
     @PostMapping("/add")
-    public void addFaculty(@RequestBody Faculty faculty) {
-        facultyService.create(faculty.getName());
+    public Faculty addFaculty(@RequestBody Faculty faculty) {
+        return facultyService.create(faculty.getName());
     }
 
+    @GetMapping("/all")
+    public List<Faculty> getFaculty() {
+        return facultyService.showAll();
+    }
+
+    @Operation(summary = "Gets faculty")
     @GetMapping("/{id}")
     public Faculty getFaculty(@PathVariable Long id) {
         return facultyService.show(id);
@@ -30,15 +43,16 @@ public class FacultyController {
 
     @DeleteMapping("/{id}")
     public String deleteFaculty(@PathVariable Long id) {
-        if (facultyService.delete(id))
-            return "Delete faculty with id = " + id;
-        else
-            return null;
+        return facultyService.delete(id) ? "Delete faculty with id = " + id : null;
     }
 
     @PutMapping("/{id}")
-    public void updateFaculty(@Valid @RequestBody Faculty newFaculty, @PathVariable Long id) {
+    public Faculty updateFaculty(@Valid @RequestBody Faculty newFaculty, @PathVariable Long id) {
         newFaculty.setId(id);
         facultyService.edit(newFaculty);
+        return newFaculty;
     }
+
+
+
 }

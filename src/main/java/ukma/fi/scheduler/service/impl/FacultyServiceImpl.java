@@ -12,6 +12,8 @@ import ukma.fi.scheduler.repository.FacultyRepository;
 import ukma.fi.scheduler.service.*;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @ServiceMarker
 @Service
@@ -20,6 +22,9 @@ public class FacultyServiceImpl implements FacultyService {
 
     @Autowired
     private FacultyRepository facultyRepository;
+
+
+
 
     @Override
     public Faculty create(String name) {
@@ -66,6 +71,11 @@ public class FacultyServiceImpl implements FacultyService {
         }
         log.info("show faculty -> id:" + facultyId);
         return facultyRepository.findById(facultyId).get();
+    }
+
+    @Override
+    public List<Faculty> showAll() {
+        return facultyRepository.findAll();
     }
 
     private void checkParams(String name) {
