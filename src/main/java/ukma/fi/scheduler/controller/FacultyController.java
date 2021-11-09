@@ -25,11 +25,13 @@ public class FacultyController {
     @Autowired
     private FacultyService facultyService;
 
+    @Operation(summary = "Gets faculties")
     @PostMapping("/add")
     public Faculty addFaculty(@RequestBody Faculty faculty) {
         return facultyService.create(faculty.getName());
     }
 
+    @Operation(summary = "Gets faculties")
     @GetMapping("/all")
     public List<Faculty> getFaculty() {
         return facultyService.showAll();
@@ -41,11 +43,13 @@ public class FacultyController {
         return facultyService.show(id);
     }
 
+    @Operation(summary = "Delete faculty")
     @DeleteMapping("/{id}")
     public String deleteFaculty(@PathVariable Long id) {
         return facultyService.delete(id) ? "Delete faculty with id = " + id : null;
     }
 
+    @Operation(summary = "Update faculty")
     @PutMapping("/{id}")
     public Faculty updateFaculty(@Valid @RequestBody Faculty newFaculty, @PathVariable Long id) {
         newFaculty.setId(id);
