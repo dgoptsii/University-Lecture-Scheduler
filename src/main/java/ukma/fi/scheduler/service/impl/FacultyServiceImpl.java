@@ -24,8 +24,6 @@ public class FacultyServiceImpl implements FacultyService {
     private FacultyRepository facultyRepository;
 
 
-
-
     @Override
     public Faculty create(String name) {
         checkParams(name);
@@ -38,12 +36,7 @@ public class FacultyServiceImpl implements FacultyService {
         if (facultyRepository.findById(id).isPresent()) {
             facultyRepository.deleteById(id);
         } else {
-            try {
-                throw new NotFoundException("Faculty not found.");
-            } catch (NotFoundException e) {
-                e.printStackTrace();
-            }
-            return false;
+            throw new FacultyNotFoundException(id);
         }
         log.info("deleted faculty -> id:" + id);
         return !facultyRepository.findById(id).isPresent();
@@ -63,11 +56,7 @@ public class FacultyServiceImpl implements FacultyService {
     @Override
     public Faculty show(Long facultyId) {
         if (!facultyRepository.findById(facultyId).isPresent()) {
-            try {
-                throw new NotFoundException("Faculty not found.");
-            } catch (NotFoundException e) {
-                e.printStackTrace();
-            }
+             throw new FacultyNotFoundException(facultyId);
         }
         log.info("show faculty -> id:" + facultyId);
         return facultyRepository.findById(facultyId).get();

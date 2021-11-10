@@ -1542,3 +1542,209 @@ test 1636473424039 [INFO] Initializing Spring DispatcherServlet 'dispatcherServl
 test 1636473424039 [INFO] Initializing Servlet 'dispatcherServlet'
 test 1636473424041 [INFO] Completed initialization in 1 ms
 test 1636473474346 [INFO] Init duration for springdoc-openapi is: 305 ms
+test 1636473951901 [INFO] Closing JPA EntityManagerFactory for persistence unit 'default'
+test 1636473951906 [INFO] HikariPool-1 - Shutdown initiated...
+test 1636473951934 [INFO] HikariPool-1 - Shutdown completed.
+test 1636473959017 [INFO] Starting SchedulerApplication using Java 1.8.0_302 on DESKTOP-6DLED20 with PID 11296 (C:\Users\atcat\Documents\scheduler\target\classes started by atcat in C:\Users\atcat\Documents\scheduler)
+test 1636473959018 [INFO] The following profiles are active: test
+test 1636473960000 [INFO] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+test 1636473960100 [INFO] Finished Spring Data repository scanning in 86 ms. Found 5 JPA repository interfaces.
+test 1636473960860 [INFO] Tomcat initialized with port(s): 8080 (http)
+test 1636473960870 [INFO] Initializing ProtocolHandler ["http-nio-8080"]
+test 1636473960872 [INFO] Starting service [Tomcat]
+test 1636473960873 [INFO] Starting Servlet engine: [Apache Tomcat/9.0.52]
+test 1636473960990 [INFO] Initializing Spring embedded WebApplicationContext
+test 1636473960991 [INFO] Root WebApplicationContext: initialization completed in 1920 ms
+test 1636473961034 [INFO] HikariPool-1 - Starting...
+test 1636473961158 [INFO] HikariPool-1 - Start completed.
+test 1636473961213 [INFO] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:scheduler'
+test 1636473961389 [INFO] HHH000204: Processing PersistenceUnitInfo [name: default]
+test 1636473961446 [INFO] HHH000412: Hibernate ORM core version 5.4.32.Final
+test 1636473961583 [INFO] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+test 1636473961709 [INFO] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+test 1636473962505 [INFO] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+test 1636473962517 [INFO] Initialized JPA EntityManagerFactory for persistence unit 'default'
+test 1636473963008 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.FacultyService ukma.fi.scheduler.service.impl.ConverterDtoObject.facultyService
+test 1636473963009 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.SubjectService ukma.fi.scheduler.service.impl.ConverterDtoObject.subjectService
+test 1636473963146 [WARN] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+test 1636473963711 [WARN] Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+test 1636473963921 [INFO] Starting ProtocolHandler ["http-nio-8080"]
+test 1636473964096 [INFO] Tomcat started on port(s): 8080 (http) with context path ''
+test 1636473964107 [INFO] Started SchedulerApplication in 5.496 seconds (JVM running for 6.525)
+test 1636474013660 [INFO] Initializing Spring DispatcherServlet 'dispatcherServlet'
+test 1636474013661 [INFO] Initializing Servlet 'dispatcherServlet'
+test 1636474013663 [INFO] Completed initialization in 1 ms
+test 1636474014499 [INFO] Init duration for springdoc-openapi is: 334 ms
+test 1636474147996 [INFO] check params -> name:Faculty 1
+test 1636474147997 [INFO] created faculty -> name:Faculty 1
+test 1636474148161 [INFO] show faculty -> id:1
+test 1636474148329 [INFO] check params -> name:faculty 1 upt
+test 1636474148329 [INFO] edit faculty -> id:1
+test 1636474148405 [INFO] deleted faculty -> id:1
+test 1636561489373 [INFO] Closing JPA EntityManagerFactory for persistence unit 'default'
+test 1636561489392 [INFO] HikariPool-1 - Shutdown initiated...
+test 1636561489397 [INFO] HikariPool-1 - Shutdown completed.
+test 1636561497583 [INFO] Starting SchedulerApplication using Java 1.8.0_302 on DESKTOP-6DLED20 with PID 9192 (C:\Users\atcat\Documents\scheduler\target\classes started by atcat in C:\Users\atcat\Documents\scheduler)
+test 1636561497584 [INFO] The following profiles are active: test
+test 1636561498660 [INFO] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+test 1636561498754 [INFO] Finished Spring Data repository scanning in 83 ms. Found 5 JPA repository interfaces.
+test 1636561499489 [INFO] Tomcat initialized with port(s): 8080 (http)
+test 1636561499501 [INFO] Initializing ProtocolHandler ["http-nio-8080"]
+test 1636561499502 [INFO] Starting service [Tomcat]
+test 1636561499503 [INFO] Starting Servlet engine: [Apache Tomcat/9.0.52]
+test 1636561500125 [INFO] Initializing Spring embedded WebApplicationContext
+test 1636561500126 [INFO] Root WebApplicationContext: initialization completed in 2498 ms
+test 1636561500166 [INFO] HikariPool-1 - Starting...
+test 1636561500305 [INFO] HikariPool-1 - Start completed.
+test 1636561500355 [INFO] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:scheduler'
+test 1636561500527 [INFO] HHH000204: Processing PersistenceUnitInfo [name: default]
+test 1636561500609 [INFO] HHH000412: Hibernate ORM core version 5.4.32.Final
+test 1636561500774 [INFO] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+test 1636561500925 [INFO] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+test 1636561501920 [INFO] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+test 1636561501933 [INFO] Initialized JPA EntityManagerFactory for persistence unit 'default'
+test 1636561502487 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.FacultyService ukma.fi.scheduler.service.impl.ConverterDtoObject.facultyService
+test 1636561502487 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.SubjectService ukma.fi.scheduler.service.impl.ConverterDtoObject.subjectService
+test 1636561502619 [WARN] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+test 1636561503274 [WARN] Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+test 1636561503508 [INFO] Starting ProtocolHandler ["http-nio-8080"]
+test 1636561503678 [INFO] Tomcat started on port(s): 8080 (http) with context path ''
+test 1636561503690 [INFO] Started SchedulerApplication in 6.541 seconds (JVM running for 8.083)
+test 1636561518609 [INFO] Initializing Spring DispatcherServlet 'dispatcherServlet'
+test 1636561518609 [INFO] Initializing Servlet 'dispatcherServlet'
+test 1636561518611 [INFO] Completed initialization in 1 ms
+test 1636561518842 [INFO] check params -> name:Faculty 1
+test 1636561518842 [INFO] created faculty -> name:Faculty 1
+test 1636561519047 [INFO] show faculty -> id:1
+test 1636561519220 [INFO] check params -> name:faculty 1 upt
+test 1636561519221 [INFO] edit faculty -> id:1
+test 1636561519312 [INFO] show faculty -> id:1
+test 1636561519403 [INFO] deleted faculty -> id:1
+test 1636561519473 [INFO] show faculty -> id:1
+test 1636561519484 [ERROR] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.util.NoSuchElementException: No value present] with root cause
+test 1636561539552 [INFO] Closing JPA EntityManagerFactory for persistence unit 'default'
+test 1636561539555 [INFO] HikariPool-1 - Shutdown initiated...
+test 1636561539557 [INFO] HikariPool-1 - Shutdown completed.
+test 1636561542734 [INFO] Starting SchedulerApplication using Java 1.8.0_302 on DESKTOP-6DLED20 with PID 18912 (C:\Users\atcat\Documents\scheduler\target\classes started by atcat in C:\Users\atcat\Documents\scheduler)
+test 1636561542735 [INFO] The following profiles are active: test
+test 1636561543489 [INFO] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+test 1636561543577 [INFO] Finished Spring Data repository scanning in 78 ms. Found 5 JPA repository interfaces.
+test 1636561544183 [INFO] Tomcat initialized with port(s): 8080 (http)
+test 1636561544191 [INFO] Initializing ProtocolHandler ["http-nio-8080"]
+test 1636561544192 [INFO] Starting service [Tomcat]
+test 1636561544193 [INFO] Starting Servlet engine: [Apache Tomcat/9.0.52]
+test 1636561544308 [INFO] Initializing Spring embedded WebApplicationContext
+test 1636561544308 [INFO] Root WebApplicationContext: initialization completed in 1523 ms
+test 1636561544344 [INFO] HikariPool-1 - Starting...
+test 1636561544453 [INFO] HikariPool-1 - Start completed.
+test 1636561544530 [INFO] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:scheduler'
+test 1636561544684 [INFO] HHH000204: Processing PersistenceUnitInfo [name: default]
+test 1636561544733 [INFO] HHH000412: Hibernate ORM core version 5.4.32.Final
+test 1636561544853 [INFO] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+test 1636561544967 [INFO] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+test 1636561545709 [INFO] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+test 1636561545721 [INFO] Initialized JPA EntityManagerFactory for persistence unit 'default'
+test 1636561546232 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.FacultyService ukma.fi.scheduler.service.impl.ConverterDtoObject.facultyService
+test 1636561546232 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.SubjectService ukma.fi.scheduler.service.impl.ConverterDtoObject.subjectService
+test 1636561546357 [WARN] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+test 1636561546885 [WARN] Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+test 1636561547094 [INFO] Starting ProtocolHandler ["http-nio-8080"]
+test 1636561547246 [INFO] Tomcat started on port(s): 8080 (http) with context path ''
+test 1636561547257 [INFO] Started SchedulerApplication in 4.891 seconds (JVM running for 5.895)
+test 1636561555780 [INFO] Initializing Spring DispatcherServlet 'dispatcherServlet'
+test 1636561555781 [INFO] Initializing Servlet 'dispatcherServlet'
+test 1636561555782 [INFO] Completed initialization in 1 ms
+test 1636561556012 [INFO] check params -> name:Faculty 1
+test 1636561556013 [INFO] created faculty -> name:Faculty 1
+test 1636561556200 [INFO] show faculty -> id:1
+test 1636561556377 [INFO] check params -> name:faculty 1 upt
+test 1636561556377 [INFO] edit faculty -> id:1
+test 1636561556470 [INFO] show faculty -> id:1
+test 1636561556560 [INFO] deleted faculty -> id:1
+test 1636561556662 [INFO] show faculty -> id:1
+test 1636561556672 [ERROR] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.util.NoSuchElementException: No value present] with root cause
+test 1636561622849 [INFO] show faculty -> id:1
+test 1636561622851 [ERROR] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.util.NoSuchElementException: No value present] with root cause
+test 1636561708433 [INFO] Closing JPA EntityManagerFactory for persistence unit 'default'
+test 1636561708436 [INFO] HikariPool-1 - Shutdown initiated...
+test 1636561708437 [INFO] HikariPool-1 - Shutdown completed.
+test 1636561714455 [INFO] Starting SchedulerApplication using Java 1.8.0_302 on DESKTOP-6DLED20 with PID 22488 (C:\Users\atcat\Documents\scheduler\target\classes started by atcat in C:\Users\atcat\Documents\scheduler)
+test 1636561714456 [INFO] The following profiles are active: test
+test 1636561715318 [INFO] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+test 1636561715410 [INFO] Finished Spring Data repository scanning in 80 ms. Found 5 JPA repository interfaces.
+test 1636561716050 [INFO] Tomcat initialized with port(s): 8080 (http)
+test 1636561716059 [INFO] Initializing ProtocolHandler ["http-nio-8080"]
+test 1636561716060 [INFO] Starting service [Tomcat]
+test 1636561716061 [INFO] Starting Servlet engine: [Apache Tomcat/9.0.52]
+test 1636561716169 [INFO] Initializing Spring embedded WebApplicationContext
+test 1636561716169 [INFO] Root WebApplicationContext: initialization completed in 1670 ms
+test 1636561716206 [INFO] HikariPool-1 - Starting...
+test 1636561716338 [INFO] HikariPool-1 - Start completed.
+test 1636561716387 [INFO] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:scheduler'
+test 1636561716549 [INFO] HHH000204: Processing PersistenceUnitInfo [name: default]
+test 1636561716606 [INFO] HHH000412: Hibernate ORM core version 5.4.32.Final
+test 1636561716734 [INFO] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+test 1636561716859 [INFO] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+test 1636561717677 [INFO] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+test 1636561717688 [INFO] Initialized JPA EntityManagerFactory for persistence unit 'default'
+test 1636561718263 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.FacultyService ukma.fi.scheduler.service.impl.ConverterDtoObject.facultyService
+test 1636561718264 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.SubjectService ukma.fi.scheduler.service.impl.ConverterDtoObject.subjectService
+test 1636561718394 [WARN] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+test 1636561718944 [WARN] Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+test 1636561719148 [INFO] Starting ProtocolHandler ["http-nio-8080"]
+test 1636561719296 [INFO] Tomcat started on port(s): 8080 (http) with context path ''
+test 1636561719307 [INFO] Started SchedulerApplication in 5.25 seconds (JVM running for 6.284)
+test 1636561730495 [INFO] Initializing Spring DispatcherServlet 'dispatcherServlet'
+test 1636561730495 [INFO] Initializing Servlet 'dispatcherServlet'
+test 1636561730497 [INFO] Completed initialization in 1 ms
+test 1636561730721 [INFO] check params -> name:Faculty 1
+test 1636561730722 [INFO] created faculty -> name:Faculty 1
+test 1636561730925 [INFO] show faculty -> id:1
+test 1636561731132 [INFO] check params -> name:faculty 1 upt
+test 1636561731133 [INFO] edit faculty -> id:1
+test 1636561731239 [INFO] show faculty -> id:1
+test 1636561731345 [INFO] deleted faculty -> id:1
+test 1636561731431 [INFO] show faculty -> id:1
+test 1636561731440 [ERROR] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.util.NoSuchElementException: No value present] with root cause
+test 1636561800468 [INFO] Closing JPA EntityManagerFactory for persistence unit 'default'
+test 1636561800471 [INFO] HikariPool-1 - Shutdown initiated...
+test 1636561800472 [INFO] HikariPool-1 - Shutdown completed.
+test 1636561806000 [INFO] Starting SchedulerApplication using Java 1.8.0_302 on DESKTOP-6DLED20 with PID 24008 (C:\Users\atcat\Documents\scheduler\target\classes started by atcat in C:\Users\atcat\Documents\scheduler)
+test 1636561806001 [INFO] The following profiles are active: test
+test 1636561806747 [INFO] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+test 1636561806832 [INFO] Finished Spring Data repository scanning in 74 ms. Found 5 JPA repository interfaces.
+test 1636561807468 [INFO] Tomcat initialized with port(s): 8080 (http)
+test 1636561807477 [INFO] Initializing ProtocolHandler ["http-nio-8080"]
+test 1636561807478 [INFO] Starting service [Tomcat]
+test 1636561807479 [INFO] Starting Servlet engine: [Apache Tomcat/9.0.52]
+test 1636561807587 [INFO] Initializing Spring embedded WebApplicationContext
+test 1636561807588 [INFO] Root WebApplicationContext: initialization completed in 1539 ms
+test 1636561807626 [INFO] HikariPool-1 - Starting...
+test 1636561807730 [INFO] HikariPool-1 - Start completed.
+test 1636561807777 [INFO] H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:scheduler'
+test 1636561807949 [INFO] HHH000204: Processing PersistenceUnitInfo [name: default]
+test 1636561808001 [INFO] HHH000412: Hibernate ORM core version 5.4.32.Final
+test 1636561808130 [INFO] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+test 1636561808247 [INFO] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+test 1636561809154 [INFO] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+test 1636561809165 [INFO] Initialized JPA EntityManagerFactory for persistence unit 'default'
+test 1636561809649 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.FacultyService ukma.fi.scheduler.service.impl.ConverterDtoObject.facultyService
+test 1636561809650 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.SubjectService ukma.fi.scheduler.service.impl.ConverterDtoObject.subjectService
+test 1636561809773 [WARN] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+test 1636561810306 [WARN] Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+test 1636561810512 [INFO] Starting ProtocolHandler ["http-nio-8080"]
+test 1636561810659 [INFO] Tomcat started on port(s): 8080 (http) with context path ''
+test 1636561810670 [INFO] Started SchedulerApplication in 5.053 seconds (JVM running for 6.073)
+test 1636561885893 [INFO] Initializing Spring DispatcherServlet 'dispatcherServlet'
+test 1636561885894 [INFO] Initializing Servlet 'dispatcherServlet'
+test 1636561885896 [INFO] Completed initialization in 1 ms
+test 1636561977931 [INFO] check params -> name:Faculty 1
+test 1636561977932 [INFO] created faculty -> name:Faculty 1
+test 1636561978093 [INFO] show faculty -> id:1
+test 1636561978296 [INFO] check params -> name:faculty 1 upt
+test 1636561978297 [INFO] edit faculty -> id:1
+test 1636561978389 [INFO] show faculty -> id:1
+test 1636561978496 [INFO] deleted faculty -> id:1
+test 1636562004429 [INFO] Closing JPA EntityManagerFactory for persistence unit 'default'
+test 1636562004432 [INFO] HikariPool-1 - Shutdown initiated...
+test 1636562004434 [INFO] HikariPool-1 - Shutdown completed.
