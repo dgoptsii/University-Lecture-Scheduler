@@ -1,4 +1,4 @@
-package ukma.fi.scheduler;
+package ukma.fi.scheduler.config;
 
 import org.springdoc.core.GroupedOpenApi;
 import org.springframework.beans.factory.annotation.Autowired;
