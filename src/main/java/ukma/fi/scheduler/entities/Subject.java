@@ -27,7 +27,7 @@ public class Subject {
     @Column(nullable = false)
     private String normative;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy="subject")
     private List<Lesson> lessons = new ArrayList<>();
 
     public Subject(String name, Faculty faculty, String normative) {
@@ -35,5 +35,4 @@ public class Subject {
         this.faculty = faculty;
         this.normative = normative;
     }
-
 }

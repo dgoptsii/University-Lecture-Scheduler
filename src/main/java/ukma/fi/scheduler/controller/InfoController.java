@@ -8,9 +8,9 @@ import ukma.fi.scheduler.service.AuthService;
 
 
 @RestController
-@RequestMapping("user")
+@RequestMapping("/info")
 @Validated
-public class UserController {
+public class InfoController {
 
     @Autowired
     private AuthService authService;

@@ -42,4 +42,14 @@ public class Lesson {
         this.dayOfWeek = dayOfWeek;
     }
 
+    @Override
+    public String toString() {
+        return "Lesson{" +
+                "id=" + id +
+                ", dayOfWeek='" + dayOfWeek + '\'' +
+                ", lessonNumber=" + lessonNumber +
+                ", groupNumber=" + groupNumber +
+                ", subject=" + subject.getName() +
+                '}';
+    }
 }

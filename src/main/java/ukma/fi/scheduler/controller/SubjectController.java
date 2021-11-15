@@ -14,7 +14,7 @@ import ukma.fi.scheduler.service.SubjectService;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("subject")
+@RequestMapping("teacher/subject")
 @Validated
 public class SubjectController {
 
@@ -38,7 +38,6 @@ public class SubjectController {
         else
             return null;
     }
-
     @PutMapping("/{id}")
     public void updateSubject(@Valid @RequestBody Subject newSubject, @PathVariable Long id) {
         newSubject.setId(id);

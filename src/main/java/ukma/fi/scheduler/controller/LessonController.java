@@ -25,8 +25,8 @@ public class LessonController {
     }
 
     @GetMapping("/{id}")
-    public Lesson getLesson(@Valid @PathVariable Long id) {
-        throw new LessonNotFoundException(id);
+    public String getLesson(@Valid @PathVariable Long id) {
+        return  lessonService.show(id).toString();
     }
 
     @DeleteMapping("/{id}")
@@ -37,6 +37,5 @@ public class LessonController {
     public void updateLesson(@Valid @RequestBody Lesson newLesson, @PathVariable Long id) {
 
     }
-
 
 }

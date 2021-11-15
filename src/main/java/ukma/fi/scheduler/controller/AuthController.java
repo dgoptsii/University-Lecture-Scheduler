@@ -17,13 +17,22 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
-    @PostMapping("/login")
-    public void login(@Valid @RequestBody UserLoginDTO user) {
-        authService.login(user);
-    }
+//    @PostMapping("/login")
+//    public void login(@Valid @RequestBody UserLoginDTO user) {
+//        authService.login(user);
+//    }
 
     @PostMapping("/registration")
     public void registration(@Valid @RequestBody UserDTO user) {
         authService.registration(ConverterDtoObject.createUserFromDTO(user));
+    }
+
+    @GetMapping("/success")
+    public String successLogin(){
+        return "!!! SUCCESSES LOGIN !!!";
+    }
+    @GetMapping("/fail")
+    public String failLogin(){
+        return "... FAIL LOGIN ...";
     }
 }
