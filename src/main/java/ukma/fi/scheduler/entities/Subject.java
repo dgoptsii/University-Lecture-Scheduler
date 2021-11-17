@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Entity
 @Data
@@ -34,5 +35,16 @@ public class Subject {
         this.name = name;
         this.faculty = faculty;
         this.normative = normative;
+    }
+
+    @Override
+    public String toString() {
+        return "Subject{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", faculty=" + faculty +
+                ", normative='" + normative + '\'' +
+                ", lessons=" + lessons.stream().map(Lesson::toString).collect(Collectors.toList())+
+                '}';
     }
 }

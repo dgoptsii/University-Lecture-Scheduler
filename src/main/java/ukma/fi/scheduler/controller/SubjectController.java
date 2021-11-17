@@ -27,8 +27,8 @@ public class SubjectController {
     }
 
     @GetMapping("/{id}")
-    public Subject getSubject(@Valid @PathVariable Long id) {
-        return subjectService.show(id);
+    public String getSubject(@Valid @PathVariable Long id) {
+        return subjectService.show(id).toString();
     }
 
     @DeleteMapping("/{id}")
