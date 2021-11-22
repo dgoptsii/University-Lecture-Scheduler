@@ -22,6 +22,8 @@
     <div class="starter-template">
         <h1>Spring Boot Web Thymeleaf Example</h1>
         <h2>
+            <span th:if="${currentUser.getAuthorities().contains('TEACHER')}">Female</span>
+<!--            <span th:text="${currentUser.getAuthorities()}"></span>-->
             <!--            <span th:text="'Hello, ' + ${faluties}"></span>-->
         </h2>
     </div>

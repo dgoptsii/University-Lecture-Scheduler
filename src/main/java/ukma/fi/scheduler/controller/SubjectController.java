@@ -1,6 +1,8 @@
 package ukma.fi.scheduler.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -69,5 +71,10 @@ public class SubjectController {
         ModelAndView mav = new ModelAndView("subjects");
         mav.addObject("subjects", subjectService.showAll());
         return mav;
+    }
+
+    @ModelAttribute("currentUser")
+    public UserDetails getCurrentUser(Authentication authentication) {
+        return (authentication == null) ? null : (UserDetails) authentication.getPrincipal();
     }
 }

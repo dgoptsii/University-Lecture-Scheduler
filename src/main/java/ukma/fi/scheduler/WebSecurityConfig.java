@@ -64,7 +64,6 @@ public class WebSecurityConfig
                 .defaultSuccessUrl("/success")
                 .failureUrl("/fail")
                 .permitAll();
-
     }
 
 }
