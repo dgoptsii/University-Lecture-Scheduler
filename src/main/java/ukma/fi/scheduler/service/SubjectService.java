@@ -14,4 +14,6 @@ public interface SubjectService {
     Subject show(Long id);
 
     List<Subject> findByFaculty(Long id);
+
+    List<Subject> showAll();
 }

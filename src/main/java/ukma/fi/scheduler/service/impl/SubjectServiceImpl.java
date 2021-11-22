@@ -93,4 +93,9 @@ public class SubjectServiceImpl implements SubjectService {
         }
         log.info("check params -> name:" + name + " "+"normative:"+normative);
     }
+
+    @Override
+    public List<Subject> showAll(){
+        return subjectRepository.findAll();
+    }
 }

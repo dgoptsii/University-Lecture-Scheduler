@@ -11,4 +11,5 @@ import java.util.Optional;
 public interface SubjectRepository extends CrudRepository<Subject, Long> {
     Optional<Subject> findByName(String name);
     List<Subject> findByFaculty_Id(Long id);
+    List<Subject> findAll();
 }
