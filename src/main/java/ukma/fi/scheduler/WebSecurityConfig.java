@@ -3,6 +3,7 @@ package ukma.fi.scheduler;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.sql.DataSource;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -53,8 +54,8 @@ public class WebSecurityConfig
                 .authorizeRequests()
                 .antMatchers("/student/**").hasAuthority("STUDENT")
                 .antMatchers("/teacher/**").hasAuthority("TEACHER")
-                .antMatchers("/info/**","/lesson/**").hasAnyAuthority("TEACHER","STUDENT")
-                .antMatchers("/**","/h2-console/**").permitAll()
+                .antMatchers("/info/**", "/lesson/**").hasAnyAuthority("TEACHER", "STUDENT")
+                .antMatchers("/**", "/h2-console/**").permitAll()
                 .and().csrf().ignoringAntMatchers("/h2-console/**")
                 .and().headers().frameOptions().sameOrigin()
                 .and()

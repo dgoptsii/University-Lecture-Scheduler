@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -7,7 +7,7 @@
     <title>Spring Boot Thymeleaf Hello World Example</title>
 
     <link rel="stylesheet" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
-<!--    <link rel="stylesheet" th:href="@{/css/main.css}"/>-->
+    <!--    <link rel="stylesheet" th:href="@{/css/main.css}"/>-->
 
 </head>
 
@@ -22,12 +22,13 @@
     <div class="starter-template">
         <h1>Spring Boot Web Thymeleaf Example</h1>
         <h2>
-<!--            <span th:text="'Hello, ' + ${faluties}"></span>-->
+            <!--            <span th:text="'Hello, ' + ${faluties}"></span>-->
         </h2>
     </div>
 
+
     <ol>
-<!--        <li th:each="task : ${faculties}" th:text="${task}"></li>-->
+        <!--        <li th:each="task : ${faculties}" th:text="${task}"></li>-->
         <tr th:each="faculty : ${faculties}">
             <td th:text="${faculty.id}"></td>
             <td th:text="${faculty.getName()}"></td>
@@ -35,10 +36,10 @@
 
         <h1>Form</h1>
         <form action="#" th:action="@{/teacher/subject/add}" th:object="${subject}" method="post">
-            <p>Id: <input type="number" th:field="*{facultyId}" /></p>
-            <p>Name: <input type="text" th:field="*{name}" /></p>
-            <p>normative: <input type="text" th:field="*{normative}" /></p>
-            <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+            <p>Id: <input type="number" th:field="*{facultyId}"/></p>
+            <p>Name: <input type="text" th:field="*{name}"/></p>
+            <p>normative: <input type="text" th:field="*{normative}"/></p>
+            <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
         </form>
 
     </ol>

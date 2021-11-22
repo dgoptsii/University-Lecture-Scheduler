@@ -1,6 +1,7 @@
 package ukma.fi.scheduler.service;
+
 import ukma.fi.scheduler.controller.dto.SubjectDTO;
-import ukma.fi.scheduler.entities.*;
+import ukma.fi.scheduler.entities.Subject;
 
 import java.util.List;
 

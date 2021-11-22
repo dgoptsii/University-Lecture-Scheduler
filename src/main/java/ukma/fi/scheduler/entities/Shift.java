@@ -14,23 +14,24 @@ public class Shift {
 
     private Integer weekNumber = null;
 
-    private String dayOfWeek  = null;
+    private String dayOfWeek = null;
 
-    private Integer number  = null;
+    private Integer number = null;
 
     private String isCancel = "N";
 
     @OneToOne(optional = false)
     private Lesson lesson;
 
-    public Shift createCancel(Lesson lesson,Integer weekNumber){
+    public Shift createCancel(Lesson lesson, Integer weekNumber) {
         Shift cancel = new Shift();
         cancel.setLesson(lesson);
         cancel.setWeekNumber(weekNumber);
         cancel.setIsCancel("Y");
         return cancel;
     }
-    public Shift createShift(Integer weekNumber, String dayOfWeek, Integer number, Lesson lesson){
+
+    public Shift createShift(Integer weekNumber, String dayOfWeek, Integer number, Lesson lesson) {
         Shift cancel = new Shift();
         cancel.setLesson(lesson);
         cancel.setWeekNumber(weekNumber);

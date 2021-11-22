@@ -2,12 +2,10 @@ package ukma.fi.scheduler.entities;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ukma.fi.scheduler.controller.dto.SubjectDTO;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Entity
@@ -22,13 +20,13 @@ public class Subject {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     private Faculty faculty;
 
     @Column(nullable = false)
     private String normative;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy="subject")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "subject")
     private List<Lesson> lessons = new ArrayList<>();
 
     public Subject(String name, Faculty faculty, String normative) {
@@ -44,7 +42,7 @@ public class Subject {
                 ", name='" + name + '\'' +
                 ", faculty=" + faculty +
                 ", normative='" + normative + '\'' +
-                ", lessons=" + lessons.stream().map(Lesson::toString).collect(Collectors.toList())+
+                ", lessons=" + lessons.stream().map(Lesson::toString).collect(Collectors.toList()) +
                 '}';
     }
 }

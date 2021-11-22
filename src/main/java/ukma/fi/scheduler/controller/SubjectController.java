@@ -1,23 +1,18 @@
 package ukma.fi.scheduler.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import ukma.fi.scheduler.controller.dto.SubjectDTO;
-import ukma.fi.scheduler.entities.Lesson;
 import ukma.fi.scheduler.entities.Subject;
-import ukma.fi.scheduler.exceptionHandlers.exceptions.FacultyNotFoundException;
-import ukma.fi.scheduler.exceptionHandlers.exceptions.SubjectNotFoundException;
 import ukma.fi.scheduler.service.FacultyService;
-import ukma.fi.scheduler.service.LessonService;
 import ukma.fi.scheduler.service.SubjectService;
 
 import javax.validation.Valid;
 
-@RestController
+@Controller
 @RequestMapping("teacher/subject")
 @Validated
 public class SubjectController {
@@ -41,10 +36,11 @@ public class SubjectController {
     @DeleteMapping("/{id}")
     public String deleteSubject(@Valid @PathVariable Long id) {
         if (subjectService.delete(id))
-            return "Delete subject with id = "+id;
+            return "Delete subject with id = " + id;
         else
             return null;
     }
+
     @PutMapping("/{id}")
     public void updateSubject(@Valid @RequestBody Subject newSubject, @PathVariable Long id) {
         newSubject.setId(id);
@@ -62,12 +58,11 @@ public class SubjectController {
     }
 
     @PostMapping("/add")
-    public String addSubject( @Valid @ModelAttribute("subject") SubjectDTO newSubject) {
+    public String addSubject(@Valid @ModelAttribute("subject") SubjectDTO newSubject) {
         System.out.println(newSubject);
         subjectService.create(newSubject);
-        return "redirect:/subjects";
+        return "subjects";
     }
-
 
     @GetMapping("/showAll")
     public ModelAndView showAllSubjects() {

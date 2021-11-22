@@ -1,11 +1,13 @@
 package ukma.fi.scheduler.service.impl;
+
 import lombok.extern.log4j.Log4j2;
-import ukma.fi.scheduler.ServiceMarker;
-import ukma.fi.scheduler.controller.dto.SubjectDTO;
-import ukma.fi.scheduler.entities.*;
-import ukma.fi.scheduler.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ukma.fi.scheduler.ServiceMarker;
+import ukma.fi.scheduler.controller.dto.SubjectDTO;
+import ukma.fi.scheduler.entities.Lesson;
+import ukma.fi.scheduler.entities.Subject;
+import ukma.fi.scheduler.service.*;
 
 import java.util.List;
 
@@ -27,14 +29,14 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public Lesson addLesson(Long subject_id, Integer groupNumber, Integer lessonNumber, String dayOfWeek) {
-       return lessonService.create(subject_id,groupNumber,lessonNumber,dayOfWeek);
+        return lessonService.create(subject_id, groupNumber, lessonNumber, dayOfWeek);
     }
 
     @Override
     public String deleteLesson(Long id) {
-        if(lessonService.delete(id)){
+        if (lessonService.delete(id)) {
             log.info("deleted lesson -> id:" + id);
-            return "Deleting lesson id:"+id+" completed.";
+            return "Deleting lesson id:" + id + " completed.";
         }
         return "ERROR";
     }
@@ -53,9 +55,9 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public String deleteSubject(Long id) {
-        if(subjectService.delete(id)){
+        if (subjectService.delete(id)) {
             log.info("deleted subject -> id:" + id);
-            return "Deleting subject id:"+id+" completed.";
+            return "Deleting subject id:" + id + " completed.";
         }
         return "ERROR";
     }

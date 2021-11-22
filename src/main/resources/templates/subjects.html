@@ -7,7 +7,7 @@
     <title>Spring Boot Thymeleaf Hello World Example</title>
 
     <link rel="stylesheet" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
-<!--    <link rel="stylesheet" th:href="@{/css/main.css}"/>-->
+    <!--    <link rel="stylesheet" th:href="@{/css/main.css}"/>-->
 
 </head>
 
@@ -22,12 +22,12 @@
     <div class="starter-template">
         <h1>Spring Boot Web Thymeleaf Example</h1>
         <h2>
-<!--            <span th:text="'Hello, ' + ${faluties}"></span>-->
+            <!--            <span th:text="'Hello, ' + ${faluties}"></span>-->
         </h2>
     </div>
 
     <ol>
-<!--        <li th:each="task : ${faculties}" th:text="${task}"></li>-->
+        <!--        <li th:each="task : ${faculties}" th:text="${task}"></li>-->
         <tr th:each="subject : ${subjects}">
             <td th:text="${subject.getId()}"></td>
             <td th:text="${subject.getName()}"></td>

@@ -1,7 +1,6 @@
 package ukma.fi.scheduler.entities;
 
 import lombok.Data;
-import ukma.fi.scheduler.controller.dto.UserDTO;
 
 import javax.persistence.*;
 

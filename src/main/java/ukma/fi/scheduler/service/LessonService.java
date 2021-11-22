@@ -1,5 +1,6 @@
 package ukma.fi.scheduler.service;
-import ukma.fi.scheduler.entities.*;
+
+import ukma.fi.scheduler.entities.Lesson;
 
 import java.util.List;
 

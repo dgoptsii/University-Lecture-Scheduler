@@ -1,19 +1,13 @@
 package ukma.fi.scheduler.appender;
 
 
-import java.io.*;
-import java.time.Instant;
-import java.util.Scanner;
-import java.util.concurrent.ConcurrentHashMap;
-
 import ch.qos.logback.classic.spi.ILoggingEvent;
-import ch.qos.logback.core.Appender;
 import ch.qos.logback.core.AppenderBase;
 
-
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 
 public class MyFileAppender extends AppenderBase<ILoggingEvent> {

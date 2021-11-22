@@ -1,5 +1,6 @@
 package ukma.fi.scheduler;
 
+import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -8,7 +9,6 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.MDC;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
-import org.apache.commons.lang3.StringUtils;
 
 @Order(1)
 @Service
@@ -27,7 +27,7 @@ public class ServiceMarkingWithMDC {
         return joinPoint.proceed();
     }
 
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @SuppressWarnings({"unchecked", "rawtypes"})
     private void setMdcContextForClass(ProceedingJoinPoint joinPoint) {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Class clazz = signature.getDeclaringType();

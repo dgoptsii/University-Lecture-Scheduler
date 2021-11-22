@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-    <property name="LOGS" value="./logs" />
+    <property name="LOGS" value="./logs"/>
 
     <appender name="Console"
               class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <Pattern>%black(%d{ISO8601}) %highlight(%-5level) [%blue(%t)]  %X{genericID} %X{backendFunctionName} %yellow(%C{1.}) %L : %msg%n</Pattern>
+            <Pattern>%black(%d{ISO8601}) %highlight(%-5level) [%blue(%t)] %X{genericID} %X{backendFunctionName}
+                %yellow(%C{1.}) %L : %msg%n
+            </Pattern>
         </encoder>
 
     </appender>
@@ -21,8 +23,8 @@
         <file>${LOGS}/spring-boot-logger.log</file>
 
         <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
-            <layout class="ukma.fi.scheduler.layout.LayoutSimple" >
-            <prefix>Some new prefix to new Layout</prefix>
+            <layout class="ukma.fi.scheduler.layout.LayoutSimple">
+                <prefix>Some new prefix to new Layout</prefix>
                 <printThreadName>true</printThreadName>
 
             </layout>
@@ -42,8 +44,8 @@
 
     <!-- LOG everything at INFO level -->
     <root level="info">
-        <appender-ref ref="RollingFile" />
-        <appender-ref ref="Console" />
+        <appender-ref ref="RollingFile"/>
+        <appender-ref ref="Console"/>
         <appender-ref ref="map"/>
     </root>
 

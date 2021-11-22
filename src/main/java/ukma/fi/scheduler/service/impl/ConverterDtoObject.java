@@ -17,7 +17,7 @@ public class ConverterDtoObject {
     @Autowired
     private static SubjectService subjectService;
 
-    public static User createUserFromDTO(UserDTO user){
+    public static User createUserFromDTO(UserDTO user) {
         User result = new User();
         result.setLogin(user.getLogin());
         result.setPassword(user.getPassword());
@@ -27,7 +27,7 @@ public class ConverterDtoObject {
         return result;
     }
 
-    public static Subject createSubjectFromDTO(SubjectDTO subject){
+    public static Subject createSubjectFromDTO(SubjectDTO subject) {
         Subject result = new Subject();
         result.setName(subject.getName());
         result.setNormative(subject.getNormative());

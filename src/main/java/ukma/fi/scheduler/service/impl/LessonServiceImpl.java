@@ -1,13 +1,15 @@
 package ukma.fi.scheduler.service.impl;
+
 import com.sun.media.sound.InvalidDataException;
 import javassist.NotFoundException;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ukma.fi.scheduler.ServiceMarker;
-import ukma.fi.scheduler.entities.*;
-import ukma.fi.scheduler.repository.*;
-import ukma.fi.scheduler.service.*;
+import ukma.fi.scheduler.entities.Lesson;
+import ukma.fi.scheduler.repository.LessonRepository;
+import ukma.fi.scheduler.repository.SubjectRepository;
+import ukma.fi.scheduler.service.LessonService;
 
 import java.util.List;
 
@@ -25,21 +27,21 @@ public class LessonServiceImpl implements LessonService {
     @Override
     public Lesson create(Long subject_id, Integer groupNumber, Integer lessonNumber, String dayOfWeek) {
 
-        if(!subjectRepository.findById(subject_id).isPresent()){
+        if (!subjectRepository.findById(subject_id).isPresent()) {
             try {
                 throw new InvalidDataException("Subject id is incorrect");
             } catch (InvalidDataException e) {
                 e.printStackTrace();
             }
         }
-        if(groupNumber<=0 || dayOfWeek == null || lessonNumber<=0){
+        if (groupNumber <= 0 || dayOfWeek == null || lessonNumber <= 0) {
             try {
                 throw new InvalidDataException("Invalid input data.");
             } catch (InvalidDataException e) {
                 e.printStackTrace();
             }
         }
-        Lesson lesson = new Lesson(subjectRepository.findById(subject_id).get(),groupNumber,lessonNumber,dayOfWeek);
+        Lesson lesson = new Lesson(subjectRepository.findById(subject_id).get(), groupNumber, lessonNumber, dayOfWeek);
         log.info("created lesson -> subject id:" + subject_id);
         return lessonRepository.save(lesson);
     }
@@ -69,7 +71,7 @@ public class LessonServiceImpl implements LessonService {
                 e.printStackTrace();
             }
         }
-        if(lesson.getGroupNumber()<=0 || lesson.getDayOfWeek() == null || lesson.getGroupNumber()<=0){
+        if (lesson.getGroupNumber() <= 0 || lesson.getDayOfWeek() == null || lesson.getGroupNumber() <= 0) {
             try {
                 throw new InvalidDataException("Invalid input data.");
             } catch (InvalidDataException e) {
@@ -95,7 +97,7 @@ public class LessonServiceImpl implements LessonService {
 
     @Override
     public List<Lesson> findAllBySubject(Long subject_id) {
-        if(!subjectRepository.findById(subject_id).isPresent()){
+        if (!subjectRepository.findById(subject_id).isPresent()) {
             try {
                 throw new InvalidDataException("Subject id is incorrect");
             } catch (InvalidDataException e) {

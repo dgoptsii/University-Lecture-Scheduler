@@ -1,16 +1,15 @@
 package ukma.fi.scheduler.service.impl;
 
 import com.sun.media.sound.InvalidDataException;
-import com.sun.org.apache.bcel.internal.generic.FCMPG;
 import javassist.NotFoundException;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ukma.fi.scheduler.ServiceMarker;
-import ukma.fi.scheduler.entities.*;
+import ukma.fi.scheduler.entities.Faculty;
 import ukma.fi.scheduler.exceptionHandlers.exceptions.FacultyNotFoundException;
 import ukma.fi.scheduler.repository.FacultyRepository;
-import ukma.fi.scheduler.service.*;
-import org.springframework.stereotype.Service;
+import ukma.fi.scheduler.service.FacultyService;
 
 import java.util.List;
 
@@ -22,8 +21,6 @@ public class FacultyServiceImpl implements FacultyService {
 
     @Autowired
     private FacultyRepository facultyRepository;
-
-
 
 
     @Override
