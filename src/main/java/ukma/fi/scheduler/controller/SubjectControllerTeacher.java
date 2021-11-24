@@ -25,17 +25,14 @@ public class SubjectControllerTeacher {
 
     @Autowired
     private FacultyService facultyService;
-//
-//    @PostMapping("/add")
-//    public void addSubject(@Valid @RequestBody SubjectDTO newSubject) {
-//        subjectService.create(newSubject);
-//    }
 
     @GetMapping("{id}")
     public ModelAndView getSubject(@Valid @PathVariable Long id) {
-        ModelAndView mav = new ModelAndView("subjects");
-        mav.addObject("subject", subjectService.show(id));
+        ModelAndView mav = new ModelAndView("subject_edit");
+        Subject subject = subjectService.show(id);
+        mav.addObject("subject", subject);
         mav.addObject("faculties", facultyService.showAll());
+        mav.addObject("lessons", subject.getLessons());
         return mav;
     }
 
@@ -46,14 +43,15 @@ public class SubjectControllerTeacher {
     }
 
     @PutMapping("{id}")
-    public RedirectView updateSubject(@Valid @RequestBody Subject newSubject, @PathVariable Long id) {
+    public RedirectView updateSubject(@ModelAttribute SubjectDTO newSubject, @PathVariable Long id) {
+        newSubject.setId(id);
         subjectService.edit(newSubject);
         return new RedirectView("/subject/"+id);
     }
     ///////////////////////////////////
 
     @PostMapping("/add")
-    public RedirectView addSubject(@Valid @ModelAttribute("subject") SubjectDTO newSubject, Model model) {
+    public RedirectView addSubject(@ModelAttribute("subject") SubjectDTO newSubject, Model model) {
         System.out.println(newSubject);
         System.out.println(model);
         Subject subject = subjectService.create(newSubject);

@@ -63,7 +63,7 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public void editSubject(Subject subject) {
+    public void editSubject(SubjectDTO subject) {
         log.info("edit subject -> id:" + subject.getId());
         subjectService.edit(subject);
     }

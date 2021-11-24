@@ -9662,3 +9662,541 @@ test 1637786738519 [INFO] show shift -> id:12
 test 1637786743652 [INFO] Closing JPA EntityManagerFactory for persistence unit 'default'
 test 1637786743655 [INFO] HikariPool-1 - Shutdown initiated...
 test 1637786743657 [INFO] HikariPool-1 - Shutdown completed.
+test 1637787842586 [INFO] Starting SchedulerApplication using Java 1.8.0_302 on DESKTOP-6DLED20 with PID 9872 (C:\Users\atcat\Documents\scheduler\target\classes started by atcat in C:\Users\atcat\Documents\scheduler)
+test 1637787842587 [INFO] The following profiles are active: dev
+test 1637787843405 [INFO] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+test 1637787843490 [INFO] Finished Spring Data repository scanning in 75 ms. Found 5 JPA repository interfaces.
+test 1637787844168 [INFO] Tomcat initialized with port(s): 8080 (http)
+test 1637787844177 [INFO] Initializing ProtocolHandler ["http-nio-8080"]
+test 1637787844178 [INFO] Starting service [Tomcat]
+test 1637787844179 [INFO] Starting Servlet engine: [Apache Tomcat/9.0.52]
+test 1637787844301 [INFO] Initializing Spring embedded WebApplicationContext
+test 1637787844301 [INFO] Root WebApplicationContext: initialization completed in 1673 ms
+test 1637787844344 [INFO] HikariPool-1 - Starting...
+test 1637787844548 [INFO] HikariPool-1 - Start completed.
+test 1637787844558 [INFO] H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./scheduler'
+test 1637787844721 [INFO] HHH000204: Processing PersistenceUnitInfo [name: default]
+test 1637787844777 [INFO] HHH000412: Hibernate ORM core version 5.4.32.Final
+test 1637787844912 [INFO] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+test 1637787845055 [INFO] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+test 1637787846611 [INFO] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+test 1637787846635 [INFO] Initialized JPA EntityManagerFactory for persistence unit 'default'
+test 1637787846884 [WARN] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+test 1637787847524 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.FacultyService ukma.fi.scheduler.service.impl.ConverterDtoObject.facultyService
+test 1637787847525 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.SubjectService ukma.fi.scheduler.service.impl.ConverterDtoObject.subjectService
+test 1637787848655 [INFO] Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@92fd091, org.springframework.security.web.context.SecurityContextPersistenceFilter@654b899f, org.springframework.security.web.header.HeaderWriterFilter@3f45dfec, org.springframework.security.web.csrf.CsrfFilter@c190cfc, org.springframework.security.web.authentication.logout.LogoutFilter@559e3f67, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6f4d2294, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@186295cc, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@6b0325d0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4e9e0c6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7884f722, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@70439c3, org.springframework.security.web.session.SessionManagementFilter@aedc426, org.springframework.security.web.access.ExceptionTranslationFilter@283e1759, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@16f34376]
+test 1637787849167 [INFO] Tomcat started on port(s): 8080 (http) with context path ''
+test 1637787849203 [INFO] Started SchedulerApplication in 7.054 seconds (JVM running for 8.19)
+test 1637787849522 [INFO] Closing JPA EntityManagerFactory for persistence unit 'default'
+test 1637787849526 [INFO] HikariPool-1 - Shutdown initiated...
+test 1637787849588 [INFO] HikariPool-1 - Shutdown completed.
+test 1637788542826 [INFO] Starting SchedulerApplication using Java 1.8.0_302 on DESKTOP-6DLED20 with PID 2012 (C:\Users\atcat\Documents\scheduler\target\classes started by atcat in C:\Users\atcat\Documents\scheduler)
+test 1637788542827 [INFO] The following profiles are active: dev
+test 1637788543607 [INFO] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+test 1637788543690 [INFO] Finished Spring Data repository scanning in 73 ms. Found 5 JPA repository interfaces.
+test 1637788544375 [INFO] Tomcat initialized with port(s): 8080 (http)
+test 1637788544384 [INFO] Initializing ProtocolHandler ["http-nio-8080"]
+test 1637788544385 [INFO] Starting service [Tomcat]
+test 1637788544386 [INFO] Starting Servlet engine: [Apache Tomcat/9.0.52]
+test 1637788544502 [INFO] Initializing Spring embedded WebApplicationContext
+test 1637788544502 [INFO] Root WebApplicationContext: initialization completed in 1618 ms
+test 1637788544543 [INFO] HikariPool-1 - Starting...
+test 1637788544725 [INFO] HikariPool-1 - Start completed.
+test 1637788544732 [INFO] H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./scheduler'
+test 1637788544896 [INFO] HHH000204: Processing PersistenceUnitInfo [name: default]
+test 1637788544950 [INFO] HHH000412: Hibernate ORM core version 5.4.32.Final
+test 1637788545073 [INFO] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+test 1637788545192 [INFO] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+test 1637788545976 [INFO] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+test 1637788545988 [INFO] Initialized JPA EntityManagerFactory for persistence unit 'default'
+test 1637788546134 [WARN] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+test 1637788546606 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.FacultyService ukma.fi.scheduler.service.impl.ConverterDtoObject.facultyService
+test 1637788546606 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.SubjectService ukma.fi.scheduler.service.impl.ConverterDtoObject.subjectService
+test 1637788547301 [INFO] Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@20184ade, org.springframework.security.web.context.SecurityContextPersistenceFilter@5788722f, org.springframework.security.web.header.HeaderWriterFilter@351ede23, org.springframework.security.web.csrf.CsrfFilter@1efcba00, org.springframework.security.web.authentication.logout.LogoutFilter@77f03916, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@2fcc5f49, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@3b2db389, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@35fb3209, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7fcc3745, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@adc8683, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5855b0ed, org.springframework.security.web.session.SessionManagementFilter@7c69e1e1, org.springframework.security.web.access.ExceptionTranslationFilter@4a890fdd, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@218f2f51]
+test 1637788547580 [INFO] Starting ProtocolHandler ["http-nio-8080"]
+test 1637788547599 [INFO] Tomcat started on port(s): 8080 (http) with context path ''
+test 1637788547610 [INFO] Started SchedulerApplication in 5.207 seconds (JVM running for 6.272)
+test 1637788557523 [INFO] Initializing Spring DispatcherServlet 'dispatcherServlet'
+test 1637788557524 [INFO] Initializing Servlet 'dispatcherServlet'
+test 1637788557526 [INFO] Completed initialization in 1 ms
+test 1637788570952 [INFO] show shift -> id:12
+test 1637788572130 [INFO] show shift -> id:12
+test 1637788633722 [WARN] No mapping for PUT /teacher/subject/teacher/subject/12
+test 1637788881259 [INFO] Closing JPA EntityManagerFactory for persistence unit 'default'
+test 1637788881262 [INFO] HikariPool-1 - Shutdown initiated...
+test 1637788881264 [INFO] HikariPool-1 - Shutdown completed.
+test 1637788885283 [INFO] Starting SchedulerApplication using Java 1.8.0_302 on DESKTOP-6DLED20 with PID 17696 (C:\Users\atcat\Documents\scheduler\target\classes started by atcat in C:\Users\atcat\Documents\scheduler)
+test 1637788885284 [INFO] The following profiles are active: dev
+test 1637788886044 [INFO] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+test 1637788886131 [INFO] Finished Spring Data repository scanning in 76 ms. Found 5 JPA repository interfaces.
+test 1637788886816 [INFO] Tomcat initialized with port(s): 8080 (http)
+test 1637788886824 [INFO] Initializing ProtocolHandler ["http-nio-8080"]
+test 1637788886825 [INFO] Starting service [Tomcat]
+test 1637788886826 [INFO] Starting Servlet engine: [Apache Tomcat/9.0.52]
+test 1637788886940 [INFO] Initializing Spring embedded WebApplicationContext
+test 1637788886941 [INFO] Root WebApplicationContext: initialization completed in 1609 ms
+test 1637788886982 [INFO] HikariPool-1 - Starting...
+test 1637788887166 [INFO] HikariPool-1 - Start completed.
+test 1637788887172 [INFO] H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./scheduler'
+test 1637788887332 [INFO] HHH000204: Processing PersistenceUnitInfo [name: default]
+test 1637788887385 [INFO] HHH000412: Hibernate ORM core version 5.4.32.Final
+test 1637788887519 [INFO] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+test 1637788887646 [INFO] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+test 1637788888455 [INFO] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+test 1637788888468 [INFO] Initialized JPA EntityManagerFactory for persistence unit 'default'
+test 1637788888606 [WARN] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+test 1637788889085 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.FacultyService ukma.fi.scheduler.service.impl.ConverterDtoObject.facultyService
+test 1637788889086 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.SubjectService ukma.fi.scheduler.service.impl.ConverterDtoObject.subjectService
+test 1637788889786 [INFO] Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@311d28f5, org.springframework.security.web.context.SecurityContextPersistenceFilter@2acb1264, org.springframework.security.web.header.HeaderWriterFilter@537b3be1, org.springframework.security.web.csrf.CsrfFilter@4e96cb04, org.springframework.security.web.authentication.logout.LogoutFilter@1b28cff, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@75d539b9, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@4e9e0c6, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@569a26ab, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5788722f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@510e4d79, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@c190cfc, org.springframework.security.web.session.SessionManagementFilter@734cf881, org.springframework.security.web.access.ExceptionTranslationFilter@77e6761f, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4fafd27e]
+test 1637788890075 [INFO] Starting ProtocolHandler ["http-nio-8080"]
+test 1637788890095 [INFO] Tomcat started on port(s): 8080 (http) with context path ''
+test 1637788890106 [INFO] Started SchedulerApplication in 5.241 seconds (JVM running for 6.664)
+test 1637788899334 [INFO] Initializing Spring DispatcherServlet 'dispatcherServlet'
+test 1637788899335 [INFO] Initializing Servlet 'dispatcherServlet'
+test 1637788899336 [INFO] Completed initialization in 1 ms
+test 1637788903301 [INFO] show shift -> id:12
+test 1637788905385 [INFO] show shift -> id:12
+test 1637788910323 [WARN] No mapping for PUT /teacher/subject/teacher/subject/12
+test 1637788917454 [INFO] show shift -> id:12
+test 1637788920620 [INFO] show shift -> id:12
+test 1637788922933 [INFO] show shift -> id:12
+test 1637788924331 [INFO] show shift -> id:12
+test 1637788930102 [WARN] No mapping for PUT /teacher/subject/teacher/subject/12
+test 1637788992128 [INFO] Closing JPA EntityManagerFactory for persistence unit 'default'
+test 1637788992131 [INFO] HikariPool-1 - Shutdown initiated...
+test 1637788992133 [INFO] HikariPool-1 - Shutdown completed.
+test 1637788995943 [INFO] Starting SchedulerApplication using Java 1.8.0_302 on DESKTOP-6DLED20 with PID 20012 (C:\Users\atcat\Documents\scheduler\target\classes started by atcat in C:\Users\atcat\Documents\scheduler)
+test 1637788995944 [INFO] The following profiles are active: dev
+test 1637788996672 [INFO] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+test 1637788996758 [INFO] Finished Spring Data repository scanning in 76 ms. Found 5 JPA repository interfaces.
+test 1637788997429 [INFO] Tomcat initialized with port(s): 8080 (http)
+test 1637788997437 [INFO] Initializing ProtocolHandler ["http-nio-8080"]
+test 1637788997438 [INFO] Starting service [Tomcat]
+test 1637788997439 [INFO] Starting Servlet engine: [Apache Tomcat/9.0.52]
+test 1637788997551 [INFO] Initializing Spring embedded WebApplicationContext
+test 1637788997551 [INFO] Root WebApplicationContext: initialization completed in 1558 ms
+test 1637788997592 [INFO] HikariPool-1 - Starting...
+test 1637788997768 [INFO] HikariPool-1 - Start completed.
+test 1637788997774 [INFO] H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./scheduler'
+test 1637788997936 [INFO] HHH000204: Processing PersistenceUnitInfo [name: default]
+test 1637788997987 [INFO] HHH000412: Hibernate ORM core version 5.4.32.Final
+test 1637788998113 [INFO] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+test 1637788998231 [INFO] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+test 1637788999032 [INFO] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+test 1637788999044 [INFO] Initialized JPA EntityManagerFactory for persistence unit 'default'
+test 1637788999168 [WARN] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+test 1637788999647 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.FacultyService ukma.fi.scheduler.service.impl.ConverterDtoObject.facultyService
+test 1637788999648 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.SubjectService ukma.fi.scheduler.service.impl.ConverterDtoObject.subjectService
+test 1637789000380 [INFO] Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6f4d2294, org.springframework.security.web.context.SecurityContextPersistenceFilter@3f45dfec, org.springframework.security.web.header.HeaderWriterFilter@3ca278bc, org.springframework.security.web.csrf.CsrfFilter@210c1b9d, org.springframework.security.web.authentication.logout.LogoutFilter@751686aa, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6ed691fd, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@261a66b8, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@22361e23, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6dc9a56e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@588d630d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2e0516a3, org.springframework.security.web.session.SessionManagementFilter@1f68e4e8, org.springframework.security.web.access.ExceptionTranslationFilter@8d810f2, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1ff542a3]
+test 1637789000678 [INFO] Starting ProtocolHandler ["http-nio-8080"]
+test 1637789000696 [INFO] Tomcat started on port(s): 8080 (http) with context path ''
+test 1637789000708 [INFO] Started SchedulerApplication in 5.203 seconds (JVM running for 6.5)
+test 1637789006372 [INFO] Initializing Spring DispatcherServlet 'dispatcherServlet'
+test 1637789006373 [INFO] Initializing Servlet 'dispatcherServlet'
+test 1637789006375 [INFO] Completed initialization in 1 ms
+test 1637789010327 [INFO] show shift -> id:12
+test 1637789011949 [INFO] show shift -> id:12
+test 1637789016879 [WARN] Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'application/x-www-form-urlencoded;charset=UTF-8' not supported]
+test 1637789061088 [INFO] Closing JPA EntityManagerFactory for persistence unit 'default'
+test 1637789061092 [INFO] HikariPool-1 - Shutdown initiated...
+test 1637789061094 [INFO] HikariPool-1 - Shutdown completed.
+test 1637789067192 [INFO] Starting SchedulerApplication using Java 1.8.0_302 on DESKTOP-6DLED20 with PID 5676 (C:\Users\atcat\Documents\scheduler\target\classes started by atcat in C:\Users\atcat\Documents\scheduler)
+test 1637789067193 [INFO] The following profiles are active: dev
+test 1637789067952 [INFO] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+test 1637789068037 [INFO] Finished Spring Data repository scanning in 75 ms. Found 5 JPA repository interfaces.
+test 1637789068721 [INFO] Tomcat initialized with port(s): 8080 (http)
+test 1637789068730 [INFO] Initializing ProtocolHandler ["http-nio-8080"]
+test 1637789068731 [INFO] Starting service [Tomcat]
+test 1637789068732 [INFO] Starting Servlet engine: [Apache Tomcat/9.0.52]
+test 1637789068846 [INFO] Initializing Spring embedded WebApplicationContext
+test 1637789068847 [INFO] Root WebApplicationContext: initialization completed in 1610 ms
+test 1637789068888 [INFO] HikariPool-1 - Starting...
+test 1637789069070 [INFO] HikariPool-1 - Start completed.
+test 1637789069077 [INFO] H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./scheduler'
+test 1637789069234 [INFO] HHH000204: Processing PersistenceUnitInfo [name: default]
+test 1637789069282 [INFO] HHH000412: Hibernate ORM core version 5.4.32.Final
+test 1637789069405 [INFO] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+test 1637789069525 [INFO] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+test 1637789070312 [INFO] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+test 1637789070323 [INFO] Initialized JPA EntityManagerFactory for persistence unit 'default'
+test 1637789070458 [WARN] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+test 1637789070947 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.FacultyService ukma.fi.scheduler.service.impl.ConverterDtoObject.facultyService
+test 1637789070948 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.SubjectService ukma.fi.scheduler.service.impl.ConverterDtoObject.subjectService
+test 1637789071635 [INFO] Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@347b370c, org.springframework.security.web.context.SecurityContextPersistenceFilter@aedc426, org.springframework.security.web.header.HeaderWriterFilter@1f68e4e8, org.springframework.security.web.csrf.CsrfFilter@65e05005, org.springframework.security.web.authentication.logout.LogoutFilter@6d7865d6, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@c190cfc, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@7884f722, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@26aee0a6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@510e4d79, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@60e47aab, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@20184ade, org.springframework.security.web.session.SessionManagementFilter@5df7a065, org.springframework.security.web.access.ExceptionTranslationFilter@79e2606f, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@fd5689d]
+test 1637789071927 [INFO] Starting ProtocolHandler ["http-nio-8080"]
+test 1637789071947 [INFO] Tomcat started on port(s): 8080 (http) with context path ''
+test 1637789071959 [INFO] Started SchedulerApplication in 5.167 seconds (JVM running for 6.196)
+test 1637789079521 [INFO] Initializing Spring DispatcherServlet 'dispatcherServlet'
+test 1637789079523 [INFO] Initializing Servlet 'dispatcherServlet'
+test 1637789079524 [INFO] Completed initialization in 0 ms
+test 1637789084491 [INFO] show shift -> id:12
+test 1637789085360 [INFO] show shift -> id:12
+test 1637789089352 [WARN] Skipping URI variable 'id' because request contains bind value with same name.
+test 1637789089380 [INFO] check params -> name:Vernen691 normative:Y
+test 1637789089381 [INFO] edit subject -> subject id:12
+test 1637789089428 [ERROR] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.DataIntegrityViolationException: not-null property references a null or transient value : ukma.fi.scheduler.entities.Subject.faculty; nested exception is org.hibernate.PropertyValueException: not-null property references a null or transient value : ukma.fi.scheduler.entities.Subject.faculty] with root cause
+test 1637789156539 [INFO] show shift -> id:12
+test 1637789161102 [WARN] Skipping URI variable 'id' because request contains bind value with same name.
+test 1637789161107 [INFO] check params -> name:Vernen691 normative:Y
+test 1637789161108 [INFO] edit subject -> subject id:12
+test 1637789161110 [ERROR] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.DataIntegrityViolationException: not-null property references a null or transient value : ukma.fi.scheduler.entities.Subject.faculty; nested exception is org.hibernate.PropertyValueException: not-null property references a null or transient value : ukma.fi.scheduler.entities.Subject.faculty] with root cause
+test 1637789214808 [INFO] Closing JPA EntityManagerFactory for persistence unit 'default'
+test 1637789214813 [INFO] HikariPool-1 - Shutdown initiated...
+test 1637789214815 [INFO] HikariPool-1 - Shutdown completed.
+test 1637789218694 [INFO] Starting SchedulerApplication using Java 1.8.0_302 on DESKTOP-6DLED20 with PID 22192 (C:\Users\atcat\Documents\scheduler\target\classes started by atcat in C:\Users\atcat\Documents\scheduler)
+test 1637789218695 [INFO] The following profiles are active: dev
+test 1637789219438 [INFO] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+test 1637789219522 [INFO] Finished Spring Data repository scanning in 74 ms. Found 5 JPA repository interfaces.
+test 1637789220188 [INFO] Tomcat initialized with port(s): 8080 (http)
+test 1637789220196 [INFO] Initializing ProtocolHandler ["http-nio-8080"]
+test 1637789220197 [INFO] Starting service [Tomcat]
+test 1637789220198 [INFO] Starting Servlet engine: [Apache Tomcat/9.0.52]
+test 1637789220311 [INFO] Initializing Spring embedded WebApplicationContext
+test 1637789220311 [INFO] Root WebApplicationContext: initialization completed in 1565 ms
+test 1637789220351 [INFO] HikariPool-1 - Starting...
+test 1637789220532 [INFO] HikariPool-1 - Start completed.
+test 1637789220539 [INFO] H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./scheduler'
+test 1637789220694 [INFO] HHH000204: Processing PersistenceUnitInfo [name: default]
+test 1637789220746 [INFO] HHH000412: Hibernate ORM core version 5.4.32.Final
+test 1637789220869 [INFO] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+test 1637789220984 [INFO] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+test 1637789221761 [INFO] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+test 1637789221773 [INFO] Initialized JPA EntityManagerFactory for persistence unit 'default'
+test 1637789221909 [WARN] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+test 1637789222392 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.FacultyService ukma.fi.scheduler.service.impl.ConverterDtoObject.facultyService
+test 1637789222393 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.SubjectService ukma.fi.scheduler.service.impl.ConverterDtoObject.subjectService
+test 1637789223088 [INFO] Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@26aee0a6, org.springframework.security.web.context.SecurityContextPersistenceFilter@39b85a73, org.springframework.security.web.header.HeaderWriterFilter@47b4ac83, org.springframework.security.web.csrf.CsrfFilter@6ed691fd, org.springframework.security.web.authentication.logout.LogoutFilter@45e639ee, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@77ce8bc5, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@16029e2f, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@20184ade, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2f0cab82, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@261a66b8, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@35fb3209, org.springframework.security.web.session.SessionManagementFilter@3f45dfec, org.springframework.security.web.access.ExceptionTranslationFilter@734cf881, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@36e3321e]
+test 1637789223374 [INFO] Starting ProtocolHandler ["http-nio-8080"]
+test 1637789223392 [INFO] Tomcat started on port(s): 8080 (http) with context path ''
+test 1637789223404 [INFO] Started SchedulerApplication in 5.12 seconds (JVM running for 6.535)
+test 1637789229164 [INFO] Initializing Spring DispatcherServlet 'dispatcherServlet'
+test 1637789229165 [INFO] Initializing Servlet 'dispatcherServlet'
+test 1637789229167 [INFO] Completed initialization in 1 ms
+test 1637789234507 [INFO] show shift -> id:12
+test 1637789235390 [INFO] show shift -> id:12
+test 1637789242333 [INFO] created lesson -> subject id:12
+test 1637789242378 [ERROR] [THYMELEAF][http-nio-8080-exec-7] Exception processing template "teacher/lesson/add": Error resolving template [teacher/lesson/add], template might not exist or might not be accessible by any of the configured Template Resolvers
+test 1637789242382 [ERROR] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.thymeleaf.exceptions.TemplateInputException: Error resolving template [teacher/lesson/add], template might not exist or might not be accessible by any of the configured Template Resolvers] with root cause
+test 1637789343574 [INFO] Closing JPA EntityManagerFactory for persistence unit 'default'
+test 1637789343577 [INFO] HikariPool-1 - Shutdown initiated...
+test 1637789343579 [INFO] HikariPool-1 - Shutdown completed.
+test 1637789347908 [INFO] Starting SchedulerApplication using Java 1.8.0_302 on DESKTOP-6DLED20 with PID 21260 (C:\Users\atcat\Documents\scheduler\target\classes started by atcat in C:\Users\atcat\Documents\scheduler)
+test 1637789347910 [INFO] The following profiles are active: dev
+test 1637789348663 [INFO] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+test 1637789348756 [INFO] Finished Spring Data repository scanning in 83 ms. Found 5 JPA repository interfaces.
+test 1637789349450 [INFO] Tomcat initialized with port(s): 8080 (http)
+test 1637789349459 [INFO] Initializing ProtocolHandler ["http-nio-8080"]
+test 1637789349460 [INFO] Starting service [Tomcat]
+test 1637789349460 [INFO] Starting Servlet engine: [Apache Tomcat/9.0.52]
+test 1637789349578 [INFO] Initializing Spring embedded WebApplicationContext
+test 1637789349579 [INFO] Root WebApplicationContext: initialization completed in 1617 ms
+test 1637789349621 [INFO] HikariPool-1 - Starting...
+test 1637789349843 [INFO] HikariPool-1 - Start completed.
+test 1637789349851 [INFO] H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./scheduler'
+test 1637789350017 [INFO] HHH000204: Processing PersistenceUnitInfo [name: default]
+test 1637789350077 [INFO] HHH000412: Hibernate ORM core version 5.4.32.Final
+test 1637789350233 [INFO] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+test 1637789350376 [INFO] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+test 1637789351193 [INFO] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+test 1637789351206 [INFO] Initialized JPA EntityManagerFactory for persistence unit 'default'
+test 1637789351336 [WARN] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+test 1637789351861 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.FacultyService ukma.fi.scheduler.service.impl.ConverterDtoObject.facultyService
+test 1637789351861 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.SubjectService ukma.fi.scheduler.service.impl.ConverterDtoObject.subjectService
+test 1637789352594 [INFO] Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@c190cfc, org.springframework.security.web.context.SecurityContextPersistenceFilter@1f68e4e8, org.springframework.security.web.header.HeaderWriterFilter@31f5b923, org.springframework.security.web.csrf.CsrfFilter@4e5364a3, org.springframework.security.web.authentication.logout.LogoutFilter@bfd97fb, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@210c1b9d, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@588d630d, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@77ce8bc5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1e5b33e5, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7fcc3745, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2fcc5f49, org.springframework.security.web.session.SessionManagementFilter@56299b0e, org.springframework.security.web.access.ExceptionTranslationFilter@45bf93bb, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@d512c1]
+test 1637789352887 [INFO] Starting ProtocolHandler ["http-nio-8080"]
+test 1637789352907 [INFO] Tomcat started on port(s): 8080 (http) with context path ''
+test 1637789352919 [INFO] Started SchedulerApplication in 5.457 seconds (JVM running for 7.076)
+test 1637789354627 [INFO] Initializing Spring DispatcherServlet 'dispatcherServlet'
+test 1637789354628 [INFO] Initializing Servlet 'dispatcherServlet'
+test 1637789354630 [INFO] Completed initialization in 1 ms
+test 1637789358242 [INFO] show shift -> id:12
+test 1637789358981 [INFO] show shift -> id:12
+test 1637789370180 [INFO] check params -> name:Vernen691 normative:Y
+test 1637789370180 [INFO] edit subject -> subject id:12
+test 1637789370224 [ERROR] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.DataIntegrityViolationException: not-null property references a null or transient value : ukma.fi.scheduler.entities.Subject.faculty; nested exception is org.hibernate.PropertyValueException: not-null property references a null or transient value : ukma.fi.scheduler.entities.Subject.faculty] with root cause
+test 1637789371519 [INFO] show shift -> id:12
+test 1637789381857 [INFO] show shift -> id:12
+test 1637789383482 [INFO] show shift -> id:12
+test 1637789384824 [ERROR] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException] with root cause
+test 1637789386511 [INFO] show shift -> id:12
+test 1637789393236 [INFO] created lesson -> subject id:12
+test 1637789393263 [ERROR] [THYMELEAF][http-nio-8080-exec-4] Exception processing template "teacher/lesson/add": Error resolving template [teacher/lesson/add], template might not exist or might not be accessible by any of the configured Template Resolvers
+test 1637789393264 [ERROR] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.thymeleaf.exceptions.TemplateInputException: Error resolving template [teacher/lesson/add], template might not exist or might not be accessible by any of the configured Template Resolvers] with root cause
+test 1637789395604 [INFO] show shift -> id:12
+test 1637789465169 [INFO] Closing JPA EntityManagerFactory for persistence unit 'default'
+test 1637789465175 [INFO] HikariPool-1 - Shutdown initiated...
+test 1637789465179 [INFO] HikariPool-1 - Shutdown completed.
+test 1637789471254 [INFO] Starting SchedulerApplication using Java 1.8.0_302 on DESKTOP-6DLED20 with PID 4936 (C:\Users\atcat\Documents\scheduler\target\classes started by atcat in C:\Users\atcat\Documents\scheduler)
+test 1637789471255 [INFO] The following profiles are active: dev
+test 1637789472048 [INFO] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+test 1637789472146 [INFO] Finished Spring Data repository scanning in 85 ms. Found 5 JPA repository interfaces.
+test 1637789472840 [INFO] Tomcat initialized with port(s): 8080 (http)
+test 1637789472850 [INFO] Initializing ProtocolHandler ["http-nio-8080"]
+test 1637789472851 [INFO] Starting service [Tomcat]
+test 1637789472852 [INFO] Starting Servlet engine: [Apache Tomcat/9.0.52]
+test 1637789472972 [INFO] Initializing Spring embedded WebApplicationContext
+test 1637789472973 [INFO] Root WebApplicationContext: initialization completed in 1670 ms
+test 1637789473016 [INFO] HikariPool-1 - Starting...
+test 1637789473204 [INFO] HikariPool-1 - Start completed.
+test 1637789473211 [INFO] H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./scheduler'
+test 1637789473374 [INFO] HHH000204: Processing PersistenceUnitInfo [name: default]
+test 1637789473425 [INFO] HHH000412: Hibernate ORM core version 5.4.32.Final
+test 1637789473550 [INFO] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+test 1637789473669 [INFO] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+test 1637789474451 [INFO] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+test 1637789474463 [INFO] Initialized JPA EntityManagerFactory for persistence unit 'default'
+test 1637789474597 [WARN] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+test 1637789475077 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.FacultyService ukma.fi.scheduler.service.impl.ConverterDtoObject.facultyService
+test 1637789475078 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.SubjectService ukma.fi.scheduler.service.impl.ConverterDtoObject.subjectService
+test 1637789475781 [INFO] Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5855b0ed, org.springframework.security.web.context.SecurityContextPersistenceFilter@1e5b33e5, org.springframework.security.web.header.HeaderWriterFilter@5df7a065, org.springframework.security.web.csrf.CsrfFilter@569a26ab, org.springframework.security.web.authentication.logout.LogoutFilter@21c34bf8, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6cde0c69, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@1a139347, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@92fd091, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4ef31221, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@dde6f87, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6b0325d0, org.springframework.security.web.session.SessionManagementFilter@1bc6c20d, org.springframework.security.web.access.ExceptionTranslationFilter@3ca278bc, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@39afe59f]
+test 1637789476064 [INFO] Starting ProtocolHandler ["http-nio-8080"]
+test 1637789476086 [INFO] Tomcat started on port(s): 8080 (http) with context path ''
+test 1637789476098 [INFO] Started SchedulerApplication in 5.305 seconds (JVM running for 6.36)
+test 1637789476278 [INFO] Initializing Spring DispatcherServlet 'dispatcherServlet'
+test 1637789476279 [INFO] Initializing Servlet 'dispatcherServlet'
+test 1637789476281 [INFO] Completed initialization in 1 ms
+test 1637789481377 [INFO] show shift -> id:12
+test 1637789482789 [INFO] show shift -> id:12
+test 1637789492009 [INFO] check params -> name:Vernen691 normative:Y
+test 1637789492009 [INFO] edit subject -> subject id:12
+test 1637789492055 [ERROR] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.DataIntegrityViolationException: not-null property references a null or transient value : ukma.fi.scheduler.entities.Subject.faculty; nested exception is org.hibernate.PropertyValueException: not-null property references a null or transient value : ukma.fi.scheduler.entities.Subject.faculty] with root cause
+test 1637789559470 [INFO] show shift -> id:12
+test 1637789560057 [INFO] show shift -> id:12
+test 1637789561989 [WARN] SQL Error: 23503, SQLState: 23503
+test 1637789561990 [ERROR] Нарушение ссылочной целостности: "FK7YDR23S8Y9J6LIP5QRNGOYMX4: PUBLIC.LESSON FOREIGN KEY(SUBJECT_ID) REFERENCES PUBLIC.SUBJECT(ID) (12)"
+Referential integrity constraint violation: "FK7YDR23S8Y9J6LIP5QRNGOYMX4: PUBLIC.LESSON FOREIGN KEY(SUBJECT_ID) REFERENCES PUBLIC.SUBJECT(ID) (12)"; SQL statement:
+delete from subject where id=? [23503-200]
+test 1637789561992 [INFO] HHH000010: On release of batch it still contained JDBC statements
+test 1637789561994 [ERROR] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint ["FK7YDR23S8Y9J6LIP5QRNGOYMX4: PUBLIC.LESSON FOREIGN KEY(SUBJECT_ID) REFERENCES PUBLIC.SUBJECT(ID) (12)"; SQL statement:
+delete from subject where id=? [23503-200]]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement] with root cause
+test 1637789564278 [INFO] delete shift -> id:13
+test 1637789565632 [WARN] SQL Error: 23503, SQLState: 23503
+test 1637789565633 [ERROR] Нарушение ссылочной целостности: "FK7YDR23S8Y9J6LIP5QRNGOYMX4: PUBLIC.LESSON FOREIGN KEY(SUBJECT_ID) REFERENCES PUBLIC.SUBJECT(ID) (12)"
+Referential integrity constraint violation: "FK7YDR23S8Y9J6LIP5QRNGOYMX4: PUBLIC.LESSON FOREIGN KEY(SUBJECT_ID) REFERENCES PUBLIC.SUBJECT(ID) (12)"; SQL statement:
+delete from subject where id=? [23503-200]
+test 1637789565634 [INFO] HHH000010: On release of batch it still contained JDBC statements
+test 1637789565636 [ERROR] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint ["FK7YDR23S8Y9J6LIP5QRNGOYMX4: PUBLIC.LESSON FOREIGN KEY(SUBJECT_ID) REFERENCES PUBLIC.SUBJECT(ID) (12)"; SQL statement:
+delete from subject where id=? [23503-200]]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement] with root cause
+test 1637789567786 [WARN] SQL Error: 23503, SQLState: 23503
+test 1637789567787 [ERROR] Нарушение ссылочной целостности: "FK7YDR23S8Y9J6LIP5QRNGOYMX4: PUBLIC.LESSON FOREIGN KEY(SUBJECT_ID) REFERENCES PUBLIC.SUBJECT(ID) (12)"
+Referential integrity constraint violation: "FK7YDR23S8Y9J6LIP5QRNGOYMX4: PUBLIC.LESSON FOREIGN KEY(SUBJECT_ID) REFERENCES PUBLIC.SUBJECT(ID) (12)"; SQL statement:
+delete from subject where id=? [23503-200]
+test 1637789567788 [INFO] HHH000010: On release of batch it still contained JDBC statements
+test 1637789567789 [ERROR] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint ["FK7YDR23S8Y9J6LIP5QRNGOYMX4: PUBLIC.LESSON FOREIGN KEY(SUBJECT_ID) REFERENCES PUBLIC.SUBJECT(ID) (12)"; SQL statement:
+delete from subject where id=? [23503-200]]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement] with root cause
+test 1637789606286 [INFO] show shift -> id:12
+test 1637789632081 [INFO] delete shift -> id:12
+test 1637789641601 [INFO] check params -> name:Vernen69 normative:N
+test 1637789641602 [INFO] created subject -> name:Vernen69
+test 1637789647826 [INFO] show shift -> id:16
+test 1637789648715 [INFO] show shift -> id:16
+test 1637789651555 [ERROR] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException] with root cause
+test 1637789653364 [INFO] show shift -> id:16
+test 1637789655113 [INFO] check params -> name:Vernen69 normative:Y
+test 1637789655114 [INFO] edit subject -> subject id:16
+test 1637789655116 [ERROR] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.DataIntegrityViolationException: not-null property references a null or transient value : ukma.fi.scheduler.entities.Subject.faculty; nested exception is org.hibernate.PropertyValueException: not-null property references a null or transient value : ukma.fi.scheduler.entities.Subject.faculty] with root cause
+test 1637789665487 [INFO] show shift -> id:16
+test 1637789706050 [INFO] Closing JPA EntityManagerFactory for persistence unit 'default'
+test 1637789706054 [INFO] HikariPool-1 - Shutdown initiated...
+test 1637789706062 [INFO] HikariPool-1 - Shutdown completed.
+test 1637789711934 [INFO] Starting SchedulerApplication using Java 1.8.0_302 on DESKTOP-6DLED20 with PID 1872 (C:\Users\atcat\Documents\scheduler\target\classes started by atcat in C:\Users\atcat\Documents\scheduler)
+test 1637789711936 [INFO] The following profiles are active: dev
+test 1637789712778 [INFO] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+test 1637789712864 [INFO] Finished Spring Data repository scanning in 74 ms. Found 5 JPA repository interfaces.
+test 1637789713552 [INFO] Tomcat initialized with port(s): 8080 (http)
+test 1637789713563 [INFO] Initializing ProtocolHandler ["http-nio-8080"]
+test 1637789713564 [INFO] Starting service [Tomcat]
+test 1637789713565 [INFO] Starting Servlet engine: [Apache Tomcat/9.0.52]
+test 1637789713678 [INFO] Initializing Spring embedded WebApplicationContext
+test 1637789713678 [INFO] Root WebApplicationContext: initialization completed in 1686 ms
+test 1637789713719 [INFO] HikariPool-1 - Starting...
+test 1637789713905 [INFO] HikariPool-1 - Start completed.
+test 1637789713912 [INFO] H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./scheduler'
+test 1637789714067 [INFO] HHH000204: Processing PersistenceUnitInfo [name: default]
+test 1637789714121 [INFO] HHH000412: Hibernate ORM core version 5.4.32.Final
+test 1637789714250 [INFO] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+test 1637789714367 [INFO] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+test 1637789715136 [INFO] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+test 1637789715148 [INFO] Initialized JPA EntityManagerFactory for persistence unit 'default'
+test 1637789715291 [WARN] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+test 1637789715809 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.FacultyService ukma.fi.scheduler.service.impl.ConverterDtoObject.facultyService
+test 1637789715810 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.SubjectService ukma.fi.scheduler.service.impl.ConverterDtoObject.subjectService
+test 1637789716561 [INFO] Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6f4d2294, org.springframework.security.web.context.SecurityContextPersistenceFilter@3f45dfec, org.springframework.security.web.header.HeaderWriterFilter@3ca278bc, org.springframework.security.web.csrf.CsrfFilter@210c1b9d, org.springframework.security.web.authentication.logout.LogoutFilter@751686aa, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6ed691fd, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@261a66b8, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@22361e23, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6dc9a56e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@588d630d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2e0516a3, org.springframework.security.web.session.SessionManagementFilter@1f68e4e8, org.springframework.security.web.access.ExceptionTranslationFilter@8d810f2, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1ff542a3]
+test 1637789716851 [INFO] Starting ProtocolHandler ["http-nio-8080"]
+test 1637789716870 [INFO] Tomcat started on port(s): 8080 (http) with context path ''
+test 1637789716882 [INFO] Started SchedulerApplication in 5.42 seconds (JVM running for 6.455)
+test 1637789718781 [INFO] Initializing Spring DispatcherServlet 'dispatcherServlet'
+test 1637789718783 [INFO] Initializing Servlet 'dispatcherServlet'
+test 1637789718784 [INFO] Completed initialization in 0 ms
+test 1637789728619 [INFO] show shift -> id:16
+test 1637789729553 [INFO] show shift -> id:16
+test 1637789738604 [INFO] check params -> name:Vernen691 normative:Y
+test 1637789738605 [INFO] edit subject -> subject id:16
+test 1637789738649 [ERROR] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.DataIntegrityViolationException: not-null property references a null or transient value : ukma.fi.scheduler.entities.Subject.faculty; nested exception is org.hibernate.PropertyValueException: not-null property references a null or transient value : ukma.fi.scheduler.entities.Subject.faculty] with root cause
+test 1637790184921 [INFO] Closing JPA EntityManagerFactory for persistence unit 'default'
+test 1637790184924 [INFO] HikariPool-1 - Shutdown initiated...
+test 1637790184926 [INFO] HikariPool-1 - Shutdown completed.
+test 1637790237114 [INFO] Starting SchedulerApplication using Java 1.8.0_302 on DESKTOP-6DLED20 with PID 5440 (C:\Users\atcat\Documents\scheduler\target\classes started by atcat in C:\Users\atcat\Documents\scheduler)
+test 1637790237115 [INFO] The following profiles are active: dev
+test 1637790237931 [INFO] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+test 1637790238016 [INFO] Finished Spring Data repository scanning in 75 ms. Found 5 JPA repository interfaces.
+test 1637790238705 [INFO] Tomcat initialized with port(s): 8080 (http)
+test 1637790238713 [INFO] Initializing ProtocolHandler ["http-nio-8080"]
+test 1637790238714 [INFO] Starting service [Tomcat]
+test 1637790238715 [INFO] Starting Servlet engine: [Apache Tomcat/9.0.52]
+test 1637790238830 [INFO] Initializing Spring embedded WebApplicationContext
+test 1637790238831 [INFO] Root WebApplicationContext: initialization completed in 1654 ms
+test 1637790238872 [INFO] HikariPool-1 - Starting...
+test 1637790239064 [INFO] HikariPool-1 - Start completed.
+test 1637790239071 [INFO] H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./scheduler'
+test 1637790239230 [INFO] HHH000204: Processing PersistenceUnitInfo [name: default]
+test 1637790239279 [INFO] HHH000412: Hibernate ORM core version 5.4.32.Final
+test 1637790239407 [INFO] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+test 1637790239527 [INFO] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+test 1637790240349 [INFO] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+test 1637790240361 [INFO] Initialized JPA EntityManagerFactory for persistence unit 'default'
+test 1637790240503 [WARN] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+test 1637790241021 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.FacultyService ukma.fi.scheduler.service.impl.ConverterDtoObject.facultyService
+test 1637790241022 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.SubjectService ukma.fi.scheduler.service.impl.ConverterDtoObject.subjectService
+test 1637790241742 [INFO] Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@26aee0a6, org.springframework.security.web.context.SecurityContextPersistenceFilter@39b85a73, org.springframework.security.web.header.HeaderWriterFilter@47b4ac83, org.springframework.security.web.csrf.CsrfFilter@6ed691fd, org.springframework.security.web.authentication.logout.LogoutFilter@45e639ee, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@77ce8bc5, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@16029e2f, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@20184ade, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2f0cab82, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@261a66b8, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@35fb3209, org.springframework.security.web.session.SessionManagementFilter@3f45dfec, org.springframework.security.web.access.ExceptionTranslationFilter@734cf881, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@36e3321e]
+test 1637790242043 [INFO] Starting ProtocolHandler ["http-nio-8080"]
+test 1637790242063 [INFO] Tomcat started on port(s): 8080 (http) with context path ''
+test 1637790242074 [INFO] Started SchedulerApplication in 5.395 seconds (JVM running for 6.531)
+test 1637790242282 [INFO] Initializing Spring DispatcherServlet 'dispatcherServlet'
+test 1637790242283 [INFO] Initializing Servlet 'dispatcherServlet'
+test 1637790242284 [INFO] Completed initialization in 1 ms
+test 1637790245613 [INFO] show shift -> id:16
+test 1637790246721 [INFO] show shift -> id:16
+test 1637790251080 [INFO] check params -> name:Vernen69 normative:Y
+test 1637790251080 [INFO] edit subject -> subject id:16
+test 1637790251145 [INFO] show shift -> id:16
+test 1637790255372 [INFO] show shift -> id:16
+test 1637790256871 [INFO] show shift -> id:16
+test 1637790276701 [INFO] Closing JPA EntityManagerFactory for persistence unit 'default'
+test 1637790276705 [INFO] HikariPool-1 - Shutdown initiated...
+test 1637790276707 [INFO] HikariPool-1 - Shutdown completed.
+test 1637790415601 [INFO] Starting SchedulerApplication using Java 1.8.0_302 on DESKTOP-6DLED20 with PID 17348 (C:\Users\atcat\Documents\scheduler\target\classes started by atcat in C:\Users\atcat\Documents\scheduler)
+test 1637790415602 [INFO] The following profiles are active: dev
+test 1637790416392 [INFO] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+test 1637790416486 [INFO] Finished Spring Data repository scanning in 82 ms. Found 5 JPA repository interfaces.
+test 1637790417212 [INFO] Tomcat initialized with port(s): 8080 (http)
+test 1637790417221 [INFO] Initializing ProtocolHandler ["http-nio-8080"]
+test 1637790417222 [INFO] Starting service [Tomcat]
+test 1637790417223 [INFO] Starting Servlet engine: [Apache Tomcat/9.0.52]
+test 1637790417351 [INFO] Initializing Spring embedded WebApplicationContext
+test 1637790417351 [INFO] Root WebApplicationContext: initialization completed in 1700 ms
+test 1637790417394 [INFO] HikariPool-1 - Starting...
+test 1637790417592 [INFO] HikariPool-1 - Start completed.
+test 1637790417599 [INFO] H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./scheduler'
+test 1637790417763 [INFO] HHH000204: Processing PersistenceUnitInfo [name: default]
+test 1637790417816 [INFO] HHH000412: Hibernate ORM core version 5.4.32.Final
+test 1637790417945 [INFO] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+test 1637790418075 [INFO] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+test 1637790418930 [INFO] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+test 1637790418942 [INFO] Initialized JPA EntityManagerFactory for persistence unit 'default'
+test 1637790419072 [WARN] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+test 1637790419595 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.FacultyService ukma.fi.scheduler.service.impl.ConverterDtoObject.facultyService
+test 1637790419596 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.SubjectService ukma.fi.scheduler.service.impl.ConverterDtoObject.subjectService
+test 1637790420304 [INFO] Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@26aee0a6, org.springframework.security.web.context.SecurityContextPersistenceFilter@39b85a73, org.springframework.security.web.header.HeaderWriterFilter@47b4ac83, org.springframework.security.web.csrf.CsrfFilter@6ed691fd, org.springframework.security.web.authentication.logout.LogoutFilter@45e639ee, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@77ce8bc5, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@16029e2f, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@20184ade, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2f0cab82, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@261a66b8, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@35fb3209, org.springframework.security.web.session.SessionManagementFilter@3f45dfec, org.springframework.security.web.access.ExceptionTranslationFilter@734cf881, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@36e3321e]
+test 1637790420614 [INFO] Starting ProtocolHandler ["http-nio-8080"]
+test 1637790420634 [INFO] Tomcat started on port(s): 8080 (http) with context path ''
+test 1637790420646 [INFO] Started SchedulerApplication in 5.437 seconds (JVM running for 6.489)
+test 1637790445464 [INFO] Initializing Spring DispatcherServlet 'dispatcherServlet'
+test 1637790445464 [INFO] Initializing Servlet 'dispatcherServlet'
+test 1637790445466 [INFO] Completed initialization in 1 ms
+test 1637790445496 [WARN] No mapping for GET /%D0%B4
+test 1637790458001 [INFO] show shift -> id:16
+test 1637790459950 [INFO] show shift -> id:16
+test 1637790464587 [INFO] check params -> name:Vernen69 normative:N
+test 1637790464587 [INFO] edit subject -> subject id:16
+test 1637790464648 [INFO] show shift -> id:16
+test 1637790466758 [INFO] show shift -> id:16
+test 1637790471542 [INFO] created lesson -> subject id:16
+test 1637790471585 [WARN] Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "null"]
+test 1637790479524 [INFO] show shift -> id:16
+test 1637790483244 [INFO] show shift -> id:16
+test 1637790486140 [INFO] show shift -> id:16
+test 1637790496110 [INFO] show shift -> id:16
+test 1637790500358 [INFO] check params -> name:Vernen69 normative:Y
+test 1637790500359 [INFO] edit subject -> subject id:16
+test 1637790500385 [INFO] show shift -> id:16
+test 1637790502653 [INFO] show shift -> id:16
+test 1637790507336 [INFO] created lesson -> subject id:16
+test 1637790507363 [WARN] Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "null"]
+test 1637790509410 [INFO] show shift -> id:16
+test 1637790510284 [INFO] show shift -> id:16
+test 1637790617584 [INFO] Closing JPA EntityManagerFactory for persistence unit 'default'
+test 1637790617590 [INFO] HikariPool-1 - Shutdown initiated...
+test 1637790617603 [INFO] HikariPool-1 - Shutdown completed.
+test 1637790623689 [INFO] Starting SchedulerApplication using Java 1.8.0_302 on DESKTOP-6DLED20 with PID 6932 (C:\Users\atcat\Documents\scheduler\target\classes started by atcat in C:\Users\atcat\Documents\scheduler)
+test 1637790623690 [INFO] The following profiles are active: dev
+test 1637790624471 [INFO] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+test 1637790624557 [INFO] Finished Spring Data repository scanning in 75 ms. Found 5 JPA repository interfaces.
+test 1637790625239 [INFO] Tomcat initialized with port(s): 8080 (http)
+test 1637790625248 [INFO] Initializing ProtocolHandler ["http-nio-8080"]
+test 1637790625249 [INFO] Starting service [Tomcat]
+test 1637790625250 [INFO] Starting Servlet engine: [Apache Tomcat/9.0.52]
+test 1637790625370 [INFO] Initializing Spring embedded WebApplicationContext
+test 1637790625371 [INFO] Root WebApplicationContext: initialization completed in 1634 ms
+test 1637790625417 [INFO] HikariPool-1 - Starting...
+test 1637790625613 [INFO] HikariPool-1 - Start completed.
+test 1637790625619 [INFO] H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./scheduler'
+test 1637790625786 [INFO] HHH000204: Processing PersistenceUnitInfo [name: default]
+test 1637790625838 [INFO] HHH000412: Hibernate ORM core version 5.4.32.Final
+test 1637790625963 [INFO] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+test 1637790626084 [INFO] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+test 1637790626902 [INFO] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+test 1637790626915 [INFO] Initialized JPA EntityManagerFactory for persistence unit 'default'
+test 1637790627055 [WARN] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+test 1637790627569 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.FacultyService ukma.fi.scheduler.service.impl.ConverterDtoObject.facultyService
+test 1637790627570 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.SubjectService ukma.fi.scheduler.service.impl.ConverterDtoObject.subjectService
+test 1637790628352 [INFO] Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@57fce8b, org.springframework.security.web.context.SecurityContextPersistenceFilter@6dc9a56e, org.springframework.security.web.header.HeaderWriterFilter@aedc426, org.springframework.security.web.csrf.CsrfFilter@6cde0c69, org.springframework.security.web.authentication.logout.LogoutFilter@6d9428f3, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@347b370c, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@bfd97fb, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@77204651, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@459d2ee6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1a139347, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@51cca357, org.springframework.security.web.session.SessionManagementFilter@1e5b33e5, org.springframework.security.web.access.ExceptionTranslationFilter@47b4ac83, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4e96cb04]
+test 1637790628651 [INFO] Starting ProtocolHandler ["http-nio-8080"]
+test 1637790628671 [INFO] Tomcat started on port(s): 8080 (http) with context path ''
+test 1637790628683 [INFO] Started SchedulerApplication in 5.391 seconds (JVM running for 6.465)
+test 1637790632792 [INFO] Initializing Spring DispatcherServlet 'dispatcherServlet'
+test 1637790632792 [INFO] Initializing Servlet 'dispatcherServlet'
+test 1637790632794 [INFO] Completed initialization in 1 ms
+test 1637790637289 [INFO] show shift -> id:16
+test 1637790638646 [INFO] show shift -> id:16
+test 1637790645558 [INFO] created lesson -> subject id:16
+test 1637790645623 [INFO] show shift -> id:16
+test 1637790665649 [INFO] Closing JPA EntityManagerFactory for persistence unit 'default'
+test 1637790665652 [INFO] HikariPool-1 - Shutdown initiated...
+test 1637790665656 [INFO] HikariPool-1 - Shutdown completed.
+test 1637790671876 [INFO] Starting SchedulerApplication using Java 1.8.0_302 on DESKTOP-6DLED20 with PID 22768 (C:\Users\atcat\Documents\scheduler\target\classes started by atcat in C:\Users\atcat\Documents\scheduler)
+test 1637790671877 [INFO] The following profiles are active: dev
+test 1637790672676 [INFO] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+test 1637790672762 [INFO] Finished Spring Data repository scanning in 76 ms. Found 5 JPA repository interfaces.
+test 1637790673453 [INFO] Tomcat initialized with port(s): 8080 (http)
+test 1637790673462 [INFO] Initializing ProtocolHandler ["http-nio-8080"]
+test 1637790673463 [INFO] Starting service [Tomcat]
+test 1637790673464 [INFO] Starting Servlet engine: [Apache Tomcat/9.0.52]
+test 1637790673577 [INFO] Initializing Spring embedded WebApplicationContext
+test 1637790673578 [INFO] Root WebApplicationContext: initialization completed in 1644 ms
+test 1637790673619 [INFO] HikariPool-1 - Starting...
+test 1637790673798 [INFO] HikariPool-1 - Start completed.
+test 1637790673805 [INFO] H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./scheduler'
+test 1637790673964 [INFO] HHH000204: Processing PersistenceUnitInfo [name: default]
+test 1637790674020 [INFO] HHH000412: Hibernate ORM core version 5.4.32.Final
+test 1637790674148 [INFO] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+test 1637790674268 [INFO] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+test 1637790675071 [INFO] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+test 1637790675083 [INFO] Initialized JPA EntityManagerFactory for persistence unit 'default'
+test 1637790675211 [WARN] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+test 1637790675731 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.FacultyService ukma.fi.scheduler.service.impl.ConverterDtoObject.facultyService
+test 1637790675731 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.SubjectService ukma.fi.scheduler.service.impl.ConverterDtoObject.subjectService
+test 1637790676462 [INFO] Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@92fd091, org.springframework.security.web.context.SecurityContextPersistenceFilter@654b899f, org.springframework.security.web.header.HeaderWriterFilter@3f45dfec, org.springframework.security.web.csrf.CsrfFilter@c190cfc, org.springframework.security.web.authentication.logout.LogoutFilter@559e3f67, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6f4d2294, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@186295cc, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@6b0325d0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4e9e0c6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7884f722, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@70439c3, org.springframework.security.web.session.SessionManagementFilter@aedc426, org.springframework.security.web.access.ExceptionTranslationFilter@283e1759, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@16f34376]
+test 1637790676771 [INFO] Starting ProtocolHandler ["http-nio-8080"]
+test 1637790676791 [INFO] Tomcat started on port(s): 8080 (http) with context path ''
+test 1637790676803 [INFO] Started SchedulerApplication in 5.364 seconds (JVM running for 6.477)
+test 1637790676848 [INFO] Initializing Spring DispatcherServlet 'dispatcherServlet'
+test 1637790676849 [INFO] Initializing Servlet 'dispatcherServlet'
+test 1637790676851 [INFO] Completed initialization in 2 ms
+test 1637790698739 [INFO] show shift -> id:16
+test 1637790703841 [INFO] show shift -> id:16
+test 1637790709694 [INFO] created lesson -> subject id:16
+test 1637790709761 [INFO] show shift -> id:16
+test 1637790723271 [INFO] Closing JPA EntityManagerFactory for persistence unit 'default'
+test 1637790723276 [INFO] HikariPool-1 - Shutdown initiated...
+test 1637790723279 [INFO] HikariPool-1 - Shutdown completed.

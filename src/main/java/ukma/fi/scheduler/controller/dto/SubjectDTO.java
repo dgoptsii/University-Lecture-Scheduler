@@ -10,6 +10,8 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class SubjectDTO {
 
+    private Long id;
+
     @NotNull
     private String name;
 

@@ -8,7 +8,7 @@ import java.util.List;
 public interface SubjectService {
     Subject create(SubjectDTO subjectDTO);
 
-    Subject edit(Subject subject);
+    Subject edit(SubjectDTO subject);
 
     boolean delete(Long id);
 

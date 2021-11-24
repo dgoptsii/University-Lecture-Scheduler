@@ -18,7 +18,7 @@ public interface AdminService {
 
     String deleteSubject(Long id);
 
-    void editSubject(Subject subject);
+    void editSubject(SubjectDTO subject);
 
     List<Subject> showFacultySubjects(Long faculty_id);
 

@@ -41,12 +41,16 @@ public class SubjectServiceImpl implements SubjectService {
     }
 
     @Override
-    public Subject edit(Subject subject) {
-        if (!subjectRepository.findById(subject.getId()).isPresent()) {
-            throw new SubjectNotFoundException(subject.getId());
+    public Subject edit(SubjectDTO subjectDTO) {
+        if (!subjectRepository.findById(subjectDTO.getId()).isPresent()) {
+            throw new SubjectNotFoundException(subjectDTO.getId());
         }
-        checkParams(subject.getName(), subject.getNormative(), new HashMap<>());
-        log.info("edit subject -> subject id:" + subject.getId());
+        Subject subject = subjectRepository.findById(subjectDTO.getId()).get();
+        checkParams(subjectDTO.getName(), subjectDTO.getNormative(), new HashMap<>());
+        log.info("edit subject -> subject id:" + subjectDTO.getId());
+        subject.setName(subjectDTO.getName());
+        subject.setNormative(subjectDTO.getNormative());
+        subject.setFaculty(facultyRepository.findById(subjectDTO.getFacultyId()).get());
         return subjectRepository.save(subject);
     }
 

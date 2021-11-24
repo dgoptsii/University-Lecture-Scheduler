@@ -23,4 +23,9 @@ public class Faculty {
         this.name = name;
     }
 
+    public Faculty(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
 }

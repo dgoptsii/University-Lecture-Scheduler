@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 import ukma.fi.scheduler.controller.dto.LessonDTO;
 import ukma.fi.scheduler.entities.Lesson;
 import ukma.fi.scheduler.service.LessonService;
@@ -21,8 +22,9 @@ public class LessonControllerTeacher {
     private LessonService lessonService;
 
     @PostMapping("/add")
-    public void addLesson(@RequestBody LessonDTO newLesson) {
-        lessonService.create(newLesson.getId(), newLesson.getGroupNumber(), newLesson.getLessonNumber(), newLesson.getDayOfWeek());
+    public RedirectView addLesson(@ModelAttribute LessonDTO newLesson) {
+        lessonService.create(newLesson.getSubjectId(), newLesson.getGroupNumber(), newLesson.getLessonNumber(), newLesson.getDayOfWeek());
+        return new RedirectView("/teacher/subject/"+newLesson.getSubjectId());
     }
 
     @GetMapping("/{id}")
