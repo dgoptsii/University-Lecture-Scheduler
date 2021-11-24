@@ -55,8 +55,8 @@ public class SchedulerConfiguration implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry
-                .addResourceHandler("/resources/**")
-                .addResourceLocations("/resources/");
+                .addResourceHandler("/static/**")
+                .addResourceLocations("classpath:/static/");
     }
 
     @Bean
