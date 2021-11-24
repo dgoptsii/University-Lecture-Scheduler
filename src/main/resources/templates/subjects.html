@@ -8,30 +8,69 @@
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 
-<body>
+<body style="padding-top: 100px;">
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">Mkyong.com</a>
+    <a class="navbar-brand" href="#">Scheduler.com</a>
 </nav>
 
 <main role="main" class="container">
 
     <div class="starter-template">
-        <h1>Spring Boot Web Thymeleaf Example</h1>
-        <h2>
-            <span th:if="${currentUser.getAuthorities().toArray()[0].toString().equals('TEACHER')}">Female</span>
-<!--            <span th:text="${currentUser.getAuthorities()}"></span>-->
-            <!--            <span th:text="'Hello, ' + ${faluties}"></span>-->
-        </h2>
+        <h1>Subjects</h1>
+        <div th:if="${currentUser.getAuthorities().toArray()[0].toString().equals('TEACHER')}">
+            <form action="#" th:action="@{/teacher/subject/add}" th:object="${subject}" method="post">
+                <div class="container px-4 card">
+                    <div class="row ">
+                        <div class="col m-2">Id:</div>
+                        <div class="col m-2"><input type="number" th:field="*{facultyId}"/></div>
+                    </div>
+                    <div class="row">
+                        <div class="col m-2">Name:</div>
+                        <div class="col m-2"><input type="text" th:field="*{name}"/></div>
+                    </div>
+                    <div class="row">
+                        <div class="col m-2">Normative:</div>
+                        <div class="col m-2"><input type="text" th:field="*{normative}"/></div>
+                    </div>
+                    <div class="row">
+                        <div class="col m-2"></div>
+                        <div class="col m-2 text-right"><input type="submit" value="Add"/></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--            <span th:text="${currentUser.getAuthorities()}"></span>-->
+        <!--            <span th:text="'Hello, ' + ${faluties}"></span>-->
+
+        <h4 class="pt-3">Subjects</h4>
+        <table id="example" class="table table-bordered mt-4" style="width: 100%">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Normative</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="subject : ${subjects}">
+                <td th:text="${subject.getName()}"></td>
+                <td th:text="${subject.getNormative()}"></td>
+                <td class="text-right" th:if="${currentUser.getAuthorities().toArray()[0].toString().equals('TEACHER')} ">
+                    <form th:action="@{/teacher/subject/}" th:object="${subject}" method="delete">
+                        <input type="submit" value="Delete"/>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 
-    <ol>
-        <!--        <li th:each="task : ${faculties}" th:text="${task}"></li>-->
+    <!-- <ol>
         <tr th:each="subject : ${subjects}">
             <td th:text="${subject.getId()}"></td>
             <td th:text="${subject.getName()}"></td>
         </tr>
-    </ol>
+    </ol> -->
 
 </main>
 <!-- /.container -->
