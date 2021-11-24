@@ -20,7 +20,6 @@ public class User {
     private String password;
 
     // STUDENT, ADMIN, TEACHER
-
     @Column(nullable = false)
     private String status;
 
