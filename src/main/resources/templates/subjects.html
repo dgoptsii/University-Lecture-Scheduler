@@ -22,8 +22,14 @@
                 <div class="container px-4 card">
                     <h4 class="text-center mt-3 mb-3">New subject</h4>
                     <div class="row ">
-                        <div class="col m-2">Faculty id:</div>
-                        <div class="col m-2"><input type="number" name="facultyId"/></div>
+                        <div class="col m-2">Faculty:</div>
+                        <div class="col m-2">
+                            <select name="facultyId">
+                                <option th:each="faculty : ${faculties}" th:value="${faculty.getId()}"
+                                        th:text="${faculty.getName()}">
+                                </option>
+                            </select>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col m-2">Name:</div>
@@ -41,20 +47,22 @@
             </form>
         </div>
 
-        <h4  class="text-center mt-4">Subjects</h4>
+        <h4 class="text-center mt-4">Subjects</h4>
         <table id="example" class="table table-bordered mt-4" style="width: 100%">
             <thead>
             <tr>
                 <th>Name</th>
                 <th>Normative</th>
+                <th>Faculty</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="subject : ${subjects}">
                 <td th:text="${subject.getName()}"></td>
                 <td th:text="${subject.getNormative()}"></td>
+                <td th:text="${subject.getFaculty().getName()}"></td>
                 <td class="text-right">
-                    <form th:action="@{/teacher/subject/{id}(id = ${subject.getId()})}" th:method="get">
+                    <form th:action="@{/subject/{id}(id = ${subject.getId()})}" th:method="get">
                         <input type="submit" value="  See  "/>
                     </form>
                 </td>

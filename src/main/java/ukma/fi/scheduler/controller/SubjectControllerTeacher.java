@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 import ukma.fi.scheduler.controller.dto.SubjectDTO;
 import ukma.fi.scheduler.entities.Subject;
@@ -30,7 +31,15 @@ public class SubjectControllerTeacher {
 //        subjectService.create(newSubject);
 //    }
 
-    @PostMapping("{id}")
+    @GetMapping("{id}")
+    public ModelAndView getSubject(@Valid @PathVariable Long id) {
+        ModelAndView mav = new ModelAndView("subjects");
+        mav.addObject("subject", subjectService.show(id));
+        mav.addObject("faculties", facultyService.showAll());
+        return mav;
+    }
+
+    @DeleteMapping("{id}")
     public RedirectView deleteSubject(@PathVariable Long id) {
         System.out.println("deleting"+id);
         return subjectService.delete(id) ? new RedirectView("/subject/showAll") : null;

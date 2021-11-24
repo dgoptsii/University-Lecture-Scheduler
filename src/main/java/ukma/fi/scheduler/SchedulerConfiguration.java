@@ -4,18 +4,24 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.jdbc.DataSourceBuilder;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistration;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.sql.DataSource;
+import java.util.Arrays;
 
 
 @Configuration
 @EnableWebMvc
-public class SchedulerConfiguration {
+public class SchedulerConfiguration implements WebMvcConfigurer {
 
 
     @ConditionalOnMissingBean(DataSource.class)
@@ -44,6 +50,20 @@ public class SchedulerConfiguration {
         messageSource.setFallbackToSystemLocale(false);
         messageSource.setBasenames("file:" + messagesBasename);
         return messageSource;
+    }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry
+                .addResourceHandler("/resources/**")
+                .addResourceLocations("/resources/");
+    }
+
+    @Bean
+    public FilterRegistrationBean hiddenHttpMethodFilter(){
+        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean(new HiddenHttpMethodFilter());
+        filterRegistrationBean.setUrlPatterns(Arrays.asList("/*"));
+        return filterRegistrationBean;
     }
 
 }

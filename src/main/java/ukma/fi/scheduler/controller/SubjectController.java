@@ -30,10 +30,12 @@ public class SubjectController {
 //        subjectService.create(newSubject);
 //    }
 
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public ModelAndView getSubject(@Valid @PathVariable Long id) {
-        ModelAndView mav = new ModelAndView("subjects");
-        mav.addObject("subject", subjectService.show(id));
+        ModelAndView mav = new ModelAndView("subject");
+        Subject subject = subjectService.show(id);
+        mav.addObject("subject", subject);
+        mav.addObject("lessons", subject.getLessons());
         return mav;
     }
 
@@ -41,6 +43,7 @@ public class SubjectController {
     public ModelAndView showAllSubjects() {
         ModelAndView mav = new ModelAndView("subjects");
         mav.addObject("subjects", subjectService.showAll());
+        mav.addObject("faculties", facultyService.showAll());
         return mav;
     }
 
