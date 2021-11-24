@@ -53,7 +53,7 @@ public class WebSecurityConfig
                 .and()
                 .authorizeRequests()
                 .antMatchers("/student/**").hasAuthority("STUDENT")
-                .antMatchers("/teacher/**").hasAuthority("TEACHER")
+//                .antMatchers("/teacher/**").hasAuthority("TEACHER")
                 .antMatchers("/info/**", "/lesson/**").hasAnyAuthority("TEACHER", "STUDENT")
                 .antMatchers("/**", "/h2-console/**").permitAll()
                 .and().csrf().ignoringAntMatchers("/h2-console/**")
@@ -61,7 +61,7 @@ public class WebSecurityConfig
                 .and()
                 .formLogin()
 //                .loginPage("/login")
-                .defaultSuccessUrl("/success")
+                .defaultSuccessUrl("/subject/showAll")
                 .failureUrl("/fail")
                 .permitAll();
     }

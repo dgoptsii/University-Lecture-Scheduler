@@ -2,6 +2,8 @@ package ukma.fi.scheduler.controller;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +13,7 @@ import ukma.fi.scheduler.service.LessonService;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("lesson")
+@RequestMapping("/lesson")
 @Validated
 @Log4j2
 public class LessonController {
@@ -19,23 +21,14 @@ public class LessonController {
     @Autowired
     private LessonService lessonService;
 
-    @PostMapping("/add")
-    public void addLesson(@Valid @RequestBody Lesson newLesson) {
-
-    }
-
     @GetMapping("/{id}")
     public String getLesson(@Valid @PathVariable Long id) {
         return  lessonService.show(id).toString();
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteLesson(@Valid @PathVariable Long id) {
-    }
-
-    @PutMapping("/{id}")
-    public void updateLesson(@Valid @RequestBody Lesson newLesson, @PathVariable Long id) {
-
+    @ModelAttribute("currentUser")
+    public UserDetails getCurrentUser(Authentication authentication) {
+        return (authentication == null) ? null : (UserDetails) authentication.getPrincipal();
     }
 
 }

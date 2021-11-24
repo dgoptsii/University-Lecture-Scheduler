@@ -18,20 +18,21 @@
 
     <div class="starter-template">
         <h1>Subjects</h1>
-        <div th:if="${currentUser.getAuthorities().toArray()[0].toString().equals('TEACHER')}">
-            <form action="#" th:action="@{/teacher/subject/add}" th:object="${subject}" method="post">
+
+        <div th:if="${currentUser != null && 'TEACHER'.equals(currentUser.getAuthorities().toArray()[0].toString())}">
+            <form action="#" th:action="@{/teacher/subject/add}" th:method="post">
                 <div class="container px-4 card">
                     <div class="row ">
                         <div class="col m-2">Id:</div>
-                        <div class="col m-2"><input type="number" th:field="*{facultyId}"/></div>
+                        <div class="col m-2"><input type="number" name="facultyId"/></div>
                     </div>
                     <div class="row">
                         <div class="col m-2">Name:</div>
-                        <div class="col m-2"><input type="text" th:field="*{name}"/></div>
+                        <div class="col m-2"><input type="text" name="name"/></div>
                     </div>
                     <div class="row">
                         <div class="col m-2">Normative:</div>
-                        <div class="col m-2"><input type="text" th:field="*{normative}"/></div>
+                        <div class="col m-2"><input type="text" name="normative"/></div>
                     </div>
                     <div class="row">
                         <div class="col m-2"></div>
@@ -40,6 +41,7 @@
                 </div>
             </form>
         </div>
+
         <!--            <span th:text="${currentUser.getAuthorities()}"></span>-->
         <!--            <span th:text="'Hello, ' + ${faluties}"></span>-->
 
@@ -55,9 +57,11 @@
             <tr th:each="subject : ${subjects}">
                 <td th:text="${subject.getName()}"></td>
                 <td th:text="${subject.getNormative()}"></td>
-                <td class="text-right" th:if="${currentUser.getAuthorities().toArray()[0].toString().equals('TEACHER')} ">
-                    <form th:action="@{/teacher/subject/}" th:object="${subject}" method="delete">
+                <td class="text-right"
+                    th:if="${currentUser != null && 'TEACHER'.equals(currentUser.getAuthorities().toArray()[0].toString())}">
+                    <form th:action="@{/teacher/subject/{id}(id = ${subject.getId()})}" th:method="delete">
                         <input type="submit" value="Delete"/>
+
                     </form>
                 </td>
             </tr>
