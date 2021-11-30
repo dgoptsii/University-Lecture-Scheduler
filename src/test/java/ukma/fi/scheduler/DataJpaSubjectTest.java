@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import ukma.fi.scheduler.entities.Faculty;
 import ukma.fi.scheduler.entities.Subject;
-import ukma.fi.scheduler.repository.FacultyRepository;
 import ukma.fi.scheduler.repository.SubjectRepository;
 
 import javax.persistence.PersistenceException;
@@ -23,13 +22,13 @@ public class DataJpaSubjectTest {
 
     @Autowired
     private SubjectRepository subjectRepository;
-    static final String NAME1 ="Subject1";
-    static final String NAME2 ="SubjectNew";
+    static final String NAME1 = "Subject1";
+    static final String NAME2 = "SubjectNew";
     static Long faculty_id;
 
 
     @BeforeEach
-    public void createBD(){
+    public void createBD() {
         Faculty fac = new Faculty();
         fac.setName("Fac");
         faculty_id = (Long) entityManager.persistAndGetId(fac);
@@ -52,7 +51,7 @@ public class DataJpaSubjectTest {
     }
 
     @Test
-    public void shouldFindSubject() {
+    public void testAdd() {
         Subject found = subjectRepository.findByName(NAME1).get();
         System.out.println(found);
         assertThat(found.getName()).isEqualTo(NAME1);
@@ -60,22 +59,22 @@ public class DataJpaSubjectTest {
 
 
     @Test
-    public void shouldUpdateSubject() {
+    public void testUpdate() {
         Subject found1 = subjectRepository.findByName(NAME1).get();
-        found1.setName (NAME2);
+        found1.setName(NAME2);
         subjectRepository.save(found1);
         Subject found2 = subjectRepository.findByName(NAME2).get();
         assertThat(found2.getName()).isEqualTo(NAME2);
     }
 
     @Test
-    public void shouldFindAllSubject(){
+    public void testFindAll() {
         List<Subject> list = subjectRepository.findAll();
         assertThat(list.size() == 3);
     }
 
     @Test
-    void shouldFailAddSubject() {
+    void exceptionTesting() {
         Assertions.assertThrows(PersistenceException.class, () -> {
             Subject sub = new Subject();
             sub.setName(NAME1);
@@ -84,14 +83,10 @@ public class DataJpaSubjectTest {
     }
 
     @Test
-    public void shouldFindSubjectById(){
+    public void testFindByFacID() {
         List<Subject> list = subjectRepository.findByFaculty_Id(faculty_id);
         assertThat(list.size() == 3);
     }
-
-
-
-
 
 
 }

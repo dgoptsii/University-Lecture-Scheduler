@@ -21,12 +21,12 @@ public class DataJpaUserTest {
 
     @Autowired
     private UserRepository userRepository;
-    static final String LOGIN1 ="User1";
-    static final String LOGIN2 ="UserNew";
+    static final String LOGIN1 = "User1";
+    static final String LOGIN2 = "UserNew";
     static Long faculty_id;
 
     @BeforeEach
-    public void createBD(){
+    public void createBD() {
         Faculty fac = new Faculty();
         fac.setName("Fac");
         faculty_id = (Long) entityManager.persistAndGetId(fac);
@@ -35,12 +35,12 @@ public class DataJpaUserTest {
         user1.setPassword("123");
         user1.setStatus("TEACHER");
         user1.setFaculty(fac);
-        User user2= new User();
+        User user2 = new User();
         user2.setLogin("User2");
         user2.setPassword("123");
         user2.setStatus("TEACHER");
         user2.setFaculty(fac);
-        User user3= new User();
+        User user3 = new User();
         user3.setLogin("User3");
         user3.setPassword("123");
         user3.setStatus("TEACHER");
@@ -62,12 +62,11 @@ public class DataJpaUserTest {
     @Test
     public void shouldUpdateUser() {
         User found1 = userRepository.findByLogin(LOGIN1).get();
-        found1.setLogin (LOGIN2);
+        found1.setLogin(LOGIN2);
         userRepository.save(found1);
         User found2 = userRepository.findByLogin(LOGIN2).get();
         assertThat(found2.getLogin()).isEqualTo(LOGIN2);
     }
-
 
 
     @Test
@@ -78,7 +77,6 @@ public class DataJpaUserTest {
             entityManager.persistAndFlush(user);
         });
     }
-
 
 
 }

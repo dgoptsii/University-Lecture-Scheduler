@@ -1,10 +1,8 @@
 package ukma.fi.scheduler;
 
-import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.omg.CORBA.portable.ApplicationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import ukma.fi.scheduler.entities.Faculty;
@@ -23,12 +21,12 @@ public class DataJpaFacultyTest {
 
     @Autowired
     private FacultyRepository facultyRepository;
-    static final String NAME1 ="Fac1";
-    static final String NAME2 ="FacNew";
+    static final String NAME1 = "Fac1";
+    static final String NAME2 = "FacNew";
 
 
     @BeforeEach
-    public void createBD(){
+    public void createBD() {
         Faculty faculty = new Faculty();
         faculty.setName("Fac1");
         Faculty faculty1 = new Faculty();
@@ -42,7 +40,7 @@ public class DataJpaFacultyTest {
     }
 
     @Test
-    public void shouldFindFaculty() {
+    public void testAdd() {
         Faculty found = facultyRepository.findByName(NAME1).get();
         System.out.println(found);
         assertThat(found.getName()).isEqualTo(NAME1);
@@ -50,29 +48,28 @@ public class DataJpaFacultyTest {
 
 
     @Test
-    public void shouldUpdateFaculty() {
+    public void testUpdate() {
         Faculty found1 = facultyRepository.findByName(NAME1).get();
-        found1.setName (NAME2);
+        found1.setName(NAME2);
         facultyRepository.save(found1);
         Faculty found2 = facultyRepository.findByName(NAME2).get();
         assertThat(found2.getName()).isEqualTo(NAME2);
     }
 
     @Test
-    public void shouldFindAllFaculty(){
+    public void testFindAll() {
         List<Faculty> list = facultyRepository.findAll();
         assertThat(list.size() == 3);
     }
 
     @Test
-    void shouldFailAddFaculty() {
+    void exceptionTesting() {
         Assertions.assertThrows(PersistenceException.class, () -> {
             Faculty faculty = new Faculty();
             faculty.setName(NAME1);
             entityManager.persistAndFlush(faculty);
         });
     }
-
 
 
 }
