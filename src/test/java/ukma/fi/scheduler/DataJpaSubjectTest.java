@@ -52,7 +52,7 @@ public class DataJpaSubjectTest {
     }
 
     @Test
-    public void testAdd() {
+    public void shouldFindSubject() {
         Subject found = subjectRepository.findByName(NAME1).get();
         System.out.println(found);
         assertThat(found.getName()).isEqualTo(NAME1);
@@ -60,7 +60,7 @@ public class DataJpaSubjectTest {
 
 
     @Test
-    public void testUpdate() {
+    public void shouldUpdateSubject() {
         Subject found1 = subjectRepository.findByName(NAME1).get();
         found1.setName (NAME2);
         subjectRepository.save(found1);
@@ -69,13 +69,13 @@ public class DataJpaSubjectTest {
     }
 
     @Test
-    public void testFindAll(){
+    public void shouldFindAllSubject(){
         List<Subject> list = subjectRepository.findAll();
         assertThat(list.size() == 3);
     }
 
     @Test
-    void exceptionTesting() {
+    void shouldFailAddSubject() {
         Assertions.assertThrows(PersistenceException.class, () -> {
             Subject sub = new Subject();
             sub.setName(NAME1);
@@ -84,7 +84,7 @@ public class DataJpaSubjectTest {
     }
 
     @Test
-    public void testFindByFacID(){
+    public void shouldFindSubjectById(){
         List<Subject> list = subjectRepository.findByFaculty_Id(faculty_id);
         assertThat(list.size() == 3);
     }

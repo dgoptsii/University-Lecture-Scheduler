@@ -42,7 +42,7 @@ public class DataJpaFacultyTest {
     }
 
     @Test
-    public void testAdd() {
+    public void shouldFindFaculty() {
         Faculty found = facultyRepository.findByName(NAME1).get();
         System.out.println(found);
         assertThat(found.getName()).isEqualTo(NAME1);
@@ -50,7 +50,7 @@ public class DataJpaFacultyTest {
 
 
     @Test
-    public void testUpdate() {
+    public void shouldUpdateFaculty() {
         Faculty found1 = facultyRepository.findByName(NAME1).get();
         found1.setName (NAME2);
         facultyRepository.save(found1);
@@ -59,13 +59,13 @@ public class DataJpaFacultyTest {
     }
 
     @Test
-    public void testFindAll(){
+    public void shouldFindAllFaculty(){
         List<Faculty> list = facultyRepository.findAll();
         assertThat(list.size() == 3);
     }
 
     @Test
-    void exceptionTesting() {
+    void shouldFailAddFaculty() {
         Assertions.assertThrows(PersistenceException.class, () -> {
             Faculty faculty = new Faculty();
             faculty.setName(NAME1);

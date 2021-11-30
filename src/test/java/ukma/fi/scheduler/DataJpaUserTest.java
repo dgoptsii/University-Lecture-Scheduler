@@ -52,7 +52,7 @@ public class DataJpaUserTest {
     }
 
     @Test
-    public void testAdd() {
+    public void shouldFindUser() {
         User found = userRepository.findByLogin(LOGIN1).get();
         System.out.println(found);
         assertThat(found.getLogin()).isEqualTo(LOGIN1);
@@ -60,7 +60,7 @@ public class DataJpaUserTest {
 
 
     @Test
-    public void testUpdate() {
+    public void shouldUpdateUser() {
         User found1 = userRepository.findByLogin(LOGIN1).get();
         found1.setLogin (LOGIN2);
         userRepository.save(found1);
@@ -71,7 +71,7 @@ public class DataJpaUserTest {
 
 
     @Test
-    void exceptionTesting() {
+    void shouldFailAddUser() {
         Assertions.assertThrows(PersistenceException.class, () -> {
             User user = new User();
             user.setLogin(LOGIN1);
