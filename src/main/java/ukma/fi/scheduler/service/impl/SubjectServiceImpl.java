@@ -4,7 +4,8 @@ import com.sun.media.sound.InvalidDataException;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ukma.fi.scheduler.ServiceMarker;
+import ukma.fi.scheduler.ArgsAsp;
+import ukma.fi.scheduler.Time;
 import ukma.fi.scheduler.controller.dto.SubjectDTO;
 import ukma.fi.scheduler.entities.*;
 import ukma.fi.scheduler.exceptionHandlers.exceptions.InvalidData;
@@ -19,7 +20,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-@ServiceMarker
+@ArgsAsp
 @Service
 @Log4j2
 public class SubjectServiceImpl implements SubjectService {
@@ -29,6 +30,7 @@ public class SubjectServiceImpl implements SubjectService {
     @Autowired
     private FacultyRepository facultyRepository;
 
+    @Time
     @Override
     public Subject create(@Valid SubjectDTO subjectDTO) {
         if (!facultyRepository.findById(subjectDTO.getFacultyId()).isPresent()) {

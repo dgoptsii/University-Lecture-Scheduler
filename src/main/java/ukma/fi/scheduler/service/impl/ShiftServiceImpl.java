@@ -5,13 +5,13 @@ import javassist.NotFoundException;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ukma.fi.scheduler.ServiceMarker;
+import ukma.fi.scheduler.ArgsAsp;
 import ukma.fi.scheduler.entities.Shift;
 import ukma.fi.scheduler.repository.LessonRepository;
 import ukma.fi.scheduler.repository.ShiftRepository;
 import ukma.fi.scheduler.service.ShiftService;
 
-@ServiceMarker
+@ArgsAsp
 @Service
 @Log4j2
 public class ShiftServiceImpl implements ShiftService {
