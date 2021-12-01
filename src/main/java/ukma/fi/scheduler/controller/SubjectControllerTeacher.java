@@ -48,13 +48,10 @@ public class SubjectControllerTeacher {
         subjectService.edit(newSubject);
         return new RedirectView("/subject/"+id);
     }
-    ///////////////////////////////////
 
-    @PostMapping("/add")
-    public RedirectView addSubject(@ModelAttribute("subject") SubjectDTO newSubject, Model model) {
-        System.out.println(newSubject);
-        System.out.println(model);
-        Subject subject = subjectService.create(newSubject);
+    @PostMapping("add")
+    public RedirectView addSubject(@ModelAttribute("subject") SubjectDTO newSubject) {
+        subjectService.create(newSubject);
         return new RedirectView("/subject/showAll");
     }
 

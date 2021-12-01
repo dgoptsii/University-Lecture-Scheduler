@@ -435,3 +435,11 @@ Caused by: java.nio.channels.OverlappingFileLockException
 	at java.nio.channels.FileChannel.tryLock(FileChannel.java:1155)
 	at org.h2.mvstore.FileStore.open(FileStore.java:163)
 	... 28 more
+2021-12-01 19:09:03 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Ошибка преобразования данных при конвертации "'' (SUBJECT: ""FACULTY_ID"" BIGINT NOT NULL)"
+Data conversion error converting "'' (SUBJECT: ""FACULTY_ID"" BIGINT NOT NULL)"; SQL statement:
+INSERT INTO "PUBLIC"."SUBJECT"("ID","NAME","NORMATIVE","FACULTY_ID")VALUES(?,?,?,?) [22018-200]
+2021-12-01 19:09:03 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Ошибка преобразования данных при конвертации "'' (SUBJECT: ""FACULTY_ID"" BIGINT NOT NULL)"
+Data conversion error converting "'' (SUBJECT: ""FACULTY_ID"" BIGINT NOT NULL)"; SQL statement:
+INSERT INTO "PUBLIC"."SUBJECT"("ID","NAME","NORMATIVE","FACULTY_ID")VALUES(?,?,?,?) [22018-200]
