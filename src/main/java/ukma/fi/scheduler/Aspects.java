@@ -1,11 +1,9 @@
 package ukma.fi.scheduler;
 
 import lombok.extern.log4j.Log4j2;
-import org.apache.commons.lang3.StringUtils;
-import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.*;
-import org.aspectj.lang.reflect.MethodSignature;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +23,7 @@ public class Aspects {
 
         long executionTime = System.currentTimeMillis() - start;
         log.info(joinPoint.getSignature() + " EXECUTED IN " + executionTime + "MS");
-        return  proceed;
+        return proceed;
     }
 
     @Around("@within(ArgsAsp) || @annotation(ArgsAsp)")
@@ -38,11 +36,8 @@ public class Aspects {
 
         Object proceed = joinPoint.proceed();
 
-        StringBuilder args = new StringBuilder();
-        Arrays.stream(joinPoint.getArgs())
-                .forEach(o -> args.append(o.toString()).append(", "));
         log.info("RETURN OF: " + joinPoint.getSignature() + ": {" + proceed.toString() + "}");
 
-        return  proceed;
+        return proceed;
     }
 }

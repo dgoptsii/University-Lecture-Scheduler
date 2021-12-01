@@ -47,6 +47,7 @@ public class MockMvcSubjectControllersTest {
         s.setName("sub1");
         s.setFaculty(new Faculty("Fac1"));
         s.setLessons(new ArrayList<>());
+
         doReturn(s).when(subjectService).show(anyLong());
         doReturn(s).when(subjectRepository).save(any(Subject.class));
         doNothing().when(subjectRepository).deleteById(anyLong());
@@ -63,6 +64,15 @@ public class MockMvcSubjectControllersTest {
                 .andExpect(model().attributeExists("subjects"))
                 .andExpect(model().attributeExists("faculties")
                 );
+    }
+
+    @Test
+    public void shouldReturnViewWithSubject() throws Exception {
+        mockMvc.perform(get("/subject/1"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("subject"))
+                .andExpect(model().attributeExists("subject"));
+
     }
 
 }
