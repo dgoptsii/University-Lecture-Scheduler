@@ -19,21 +19,8 @@ import java.util.List;
 @Controller
 public class AuthController {
 
-
-    @Autowired
-    private UserRepository userRepository;
-
     @Autowired
     private AuthService authService;
-
-    @Autowired
-    private SubjectRepository subjectRepository;
-
-//    @PostMapping("/login")
-//    public void login(@Valid @RequestBody UserLoginDTO user) {
-//        authService.login(user);
-//    }
-
 
 
     @PostMapping("/registration")

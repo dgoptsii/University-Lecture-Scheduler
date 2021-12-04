@@ -18,29 +18,34 @@
 
     <div class="starter-template">
         <div>
-            <form action="#" th:action="@{/registration}" th:method="post">
+            <form action="#" th:action="@{/student/register}" th:method="post" onsubmit="return validate(this);">
                 <div class="card-header bg-light text-info">
                     <h4 class="text-center">Registration</h4>
                 </div>
                 <div class="container px-4 card">
                     <div class="row ">
                         <div class="col m-2 text-right">Surname:</div>
-                        <div class="col m-2"><input type="text" name="name"/></div>
+                        <div class="col m-2"><input style="width: 100%; max-width: 234px" type="text" name="surname"
+                                                    id="form-surname" required/></div>
                     </div>
                     <div class="row">
                         <div class="col m-2 text-right">Name:</div>
-                        <div class="col m-2"><input type="text" name="surname"/></div>
+                        <div class="col m-2"><input style="width: 100%; max-width: 234px" type="text" name="name"
+                                                    id="form-name"
+                                                    required/></div>
                     </div>
                     <div class="row">
                         <div class="col m-2 text-right">Patronim:</div>
-                        <div class="col m-2"><input type="text" name="patronim"/></div>
+                        <div class="col m-2"><input style="width: 100%; max-width: 234px" type="text"
+                                                    id="form-patronim" name="patronim"/>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col m-2 text-right">Specialty:</div>
                         <div class="col m-2">
-                            <select name="speciality" style="width: 234px">
-                                <option th:each="speciality : ${specialties}" th:value="${speciality}"
-                                        th:text="${speciality}"
+                            <select name="speciality" style="width: 100%; max-width: 234px" required>
+                                <option th:each="specialty : ${specialties}" th:value="${specialty}"
+                                        th:text="${specialty}"
                                 >
                                 </option>
                             </select>
@@ -48,24 +53,30 @@
                     </div>
                     <div class="row">
                         <div class="col m-2 text-right">Year:</div>
-                        <div class="col m-2"><input style="width: 234px" type="number" name="year" min="1" max="4"/>
-                        </div>
+                        <div class="col m-2"><input style="width: 100%; max-width: 234px" type="number" name="year"
+                                                    min="1" max="4"/></div>
                     </div>
                     <div class="row">
                         <div class="col m-2 text-right">Login:</div>
-                        <div class="col m-2"><input type="email" name="login"/></div>
+                        <div class="col m-2"><input style="width: 100%; max-width: 234px" type="email" name="login"
+                                                    id="form-login"
+                                                    required/></div>
                     </div>
                     <div class="row">
                         <div class="col m-2 text-right">Password:</div>
-                        <div class="col m-2"><input type="password" name="password"/></div>
+                        <div class="col m-2"><input style="width: 100%; max-width: 234px" type="password"
+                                                    id="form-password"
+                                                    name="password" required/></div>
                     </div>
                     <div class="row">
                         <div class="col m-2 text-right">Confirm password:</div>
-                        <div class="col m-2"><input type="password" name="password"/></div>
+                        <div class="col m-2"><input style="width: 100%; max-width: 234px" type="password"
+                                                    name="password_confirmation" id="form-password-repeat"
+                                                    required/></div>
                     </div>
                     <div class="row">
-                        <div class="col m-2 text-right"><input class="btn btn-info" type="submit" value="Register"/>
-                        </div>
+                        <div class="col m-2 text-right"><input class="btn btn-info" type="submit"
+                                                               value="Register"/></div>
                     </div>
                 </div>
             </form>
@@ -85,6 +96,43 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
+
+<script>
+    function validate(form) {
+        const login = document.getElementById('form-login').value;
+        const password = document.getElementById('form-password').value;
+        const name = document.getElementById('form-name').value;
+        const surname = document.getElementById('form-surname').value;
+        const patronim = document.getElementById('form-patronim').value;
+        const check_password = document.getElementById('form-password-repeat').value;
+
+        const rePassword = new RegExp("^(?=.*[0-9])(?=.*[a-z]).{8,32}$");
+        const reEmail = new RegExp("(\\w+\.\\w+)@ukma\.edu\.ua");
+        const reName = new RegExp("[a-zA-Z\\s]+");
+        console.log(!reEmail.test(login));
+
+
+        if (!reName.test(name) || name == null || name === "") {
+            alert("Invalid name");
+            return false;
+        } else if (!reName.test(surname) || surname == null || surname === "") {
+            alert("Invalid surname");
+            return false;
+        } else if (!reName.test(patronim) || patronim == null || patronim === "") {
+            alert("Invalid patronim");
+            return false;
+        } else if (!reEmail.test(login) || login == null || login === "") {
+            alert("Invalid login");
+            return false;
+        } else if (!rePassword.test(password) || password === "" || password == null) {
+            alert("Password is non valid! Should contain at least 8 symbols, letters of upper and lower key, numbers.");
+            return false;
+        } else if (check_password !== password) {
+            alert("Passwords are not the same.");
+            return false;
+        }
+    }
+</script>
 
 </body>
 </html>
