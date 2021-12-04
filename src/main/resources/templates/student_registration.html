@@ -54,6 +54,7 @@
                     <div class="row">
                         <div class="col m-2 text-right">Year:</div>
                         <div class="col m-2"><input style="width: 100%; max-width: 234px" type="number" name="year"
+                                                    required value="1"
                                                     min="1" max="4"/></div>
                     </div>
                     <div class="row">
@@ -122,7 +123,7 @@
             alert("Invalid patronim");
             return false;
         } else if (!reEmail.test(login) || login == null || login === "") {
-            alert("Invalid login");
+            alert("Invalid login. Login should consist of [name].[surname]@ukma.edu.ua");
             return false;
         } else if (!rePassword.test(password) || password === "" || password == null) {
             alert("Password is non valid! Should contain at least 8 symbols, letters of upper and lower key, numbers.");
