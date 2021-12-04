@@ -2,31 +2,53 @@ package ukma.fi.scheduler.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-import ukma.fi.scheduler.controller.dto.UserDTO;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
+import ukma.fi.scheduler.entities.User;
+import ukma.fi.scheduler.repository.SubjectRepository;
+import ukma.fi.scheduler.repository.UserRepository;
 import ukma.fi.scheduler.service.AuthService;
 
-import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
-@Validated
 public class AuthController {
+
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     private AuthService authService;
+
+    @Autowired
+    private SubjectRepository subjectRepository;
 
 //    @PostMapping("/login")
 //    public void login(@Valid @RequestBody UserLoginDTO user) {
 //        authService.login(user);
 //    }
 
+
+
     @PostMapping("/registration")
-    public void registration(@Valid @RequestBody UserDTO user) {
-//        authService.registration(ConverterDtoObject.createUserFromDTO(user));
+    public void registration(@ModelAttribute User user) {
+        authService.registration(user);
+    }
+
+    @GetMapping("/registration")
+    public ModelAndView registerPage(){
+        ModelAndView mav = new ModelAndView("student_registration");
+        List<String> specialities = new ArrayList<>();
+        specialities.add("Spec1");
+        specialities.add("Spec2");
+        mav.addObject("specialties", specialities);
+        return mav;
     }
 
     @GetMapping("/success")

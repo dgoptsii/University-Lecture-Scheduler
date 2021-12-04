@@ -10,7 +10,9 @@ import ukma.fi.scheduler.repository.UserRepository;
 import ukma.fi.scheduler.entities.*;
 import ukma.fi.scheduler.service.*;
 
-import java.util.Collections;
+import java.util.Collections;import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+
 
 @Service
 @Log4j2
@@ -19,6 +21,11 @@ public class AuthServiceImpl implements AuthService {
     //for searching users in DB
     @Autowired
     private UserService userService;
+
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
 
     @Autowired
     private UserRepository userRepository;
@@ -39,7 +46,8 @@ public class AuthServiceImpl implements AuthService {
     //use naukma e-mail
     @Override
     public User registration(User user) {
-        log.info("registration -> user:" + user.getLogin());
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setStatus("STUDENT");
         return userRepository.save(user);
     }
 
