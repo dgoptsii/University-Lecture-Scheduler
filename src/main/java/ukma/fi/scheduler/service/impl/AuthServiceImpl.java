@@ -12,6 +12,7 @@ import ukma.fi.scheduler.service.*;
 
 import java.util.Collections;import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import javax.validation.Valid;
 
 
 @Service
@@ -45,9 +46,9 @@ public class AuthServiceImpl implements AuthService {
 
     //use naukma e-mail
     @Override
-    public User registration(User user) {
+    public User registration(@Valid User user, String role) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setStatus("STUDENT");
+        user.setStatus(role);
         return userRepository.save(user);
     }
 
@@ -60,5 +61,4 @@ public class AuthServiceImpl implements AuthService {
         log.info("get user info -> user id:" + id);
         return userInDb;
     }
-
 }

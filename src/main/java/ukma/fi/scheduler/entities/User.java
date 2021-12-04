@@ -3,6 +3,10 @@ package ukma.fi.scheduler.entities;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import java.util.Map;
 
 @Entity
@@ -14,18 +18,24 @@ public class User {
     private Long id;
 
     @Column(nullable = false, unique = true)
+    @NotBlank
+    @Pattern(regexp = "([a-z]+\\.[a-z]+)@ukma\\.edu\\.ua")
     private String login;
 
     @Column(nullable = false)
+    @NotBlank
+//    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$")
     private String password;
 
     @Column(nullable = false)
     private String status;
 
     @Column(nullable = false)
+    @NotBlank
     private String name;
 
     @Column(nullable = false)
+    @NotBlank
     private String surname;
 
     private String patronim;

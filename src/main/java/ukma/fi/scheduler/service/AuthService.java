@@ -8,7 +8,7 @@ public interface AuthService {
 
     User login(UserLoginDTO user);
 
-    User registration(User user);
+    User registration(User user, String role);
 
     User getUserInfo(Long id);
 }

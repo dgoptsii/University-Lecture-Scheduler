@@ -3,6 +3,7 @@ package ukma.fi.scheduler.entities;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 
 @Entity
 @Data
@@ -25,6 +26,7 @@ public class Lesson {
     private Integer lessonNumber;
 
     @Column(nullable = false)
+    @Min(0)
     private Integer groupNumber;
 
 }
