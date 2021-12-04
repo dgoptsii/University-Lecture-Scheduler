@@ -3,30 +3,15 @@ package ukma.fi.scheduler.service.impl;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ukma.fi.scheduler.ArgsAsp;
-import ukma.fi.scheduler.entities.Faculty;
-import ukma.fi.scheduler.entities.Lesson;
-import ukma.fi.scheduler.entities.Subject;
 import ukma.fi.scheduler.entities.User;
 import ukma.fi.scheduler.repository.UserRepository;
-import ukma.fi.scheduler.service.LessonService;
-import ukma.fi.scheduler.service.ShiftService;
 import ukma.fi.scheduler.service.UserService;
 
 import java.util.List;
 
-@ArgsAsp
 @Service
 @Log4j2
 public class UserServiceImpl implements UserService {
-
-    //for operations with lessons
-    @Autowired
-    private LessonService scheduleService;
-
-    //for getting info about canceled and shifted lessons
-    @Autowired
-    private ShiftService shiftService;
 
     @Autowired
     private UserRepository userRepository;
@@ -49,32 +34,5 @@ public class UserServiceImpl implements UserService {
         } else {
             return null;
         }
-    }
-
-    @Override
-    public List<Lesson> getUserLessons(User user) {
-        List<Lesson> lessons = null;
-
-        return lessons;
-    }
-
-    @Override
-    public List<Lesson> getUserLessonsForWeek(User user, Integer week) {
-        return null;
-    }
-
-    @Override
-    public void addLessonToUser(User user, Lesson lesson) {
-        //TODO add lesson to user's list
-    }
-
-    @Override
-    public void showFacultySubjects(Faculty faculty) {
-
-    }
-
-    @Override
-    public void showFacultyLessons(Subject subject) {
-
     }
 }

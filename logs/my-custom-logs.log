@@ -11526,6 +11526,194 @@ test 1638300161276 [INFO] Started DataJpaUserTest in 3.638 seconds (JVM running 
 test 1638300161307 [INFO] Began transaction (1) for test context [DefaultTestContext@2fac80a8 testClass = DataJpaUserTest, testInstance = ukma.fi.scheduler.DataJpaUserTest@6987a133, testMethod = exceptionTesting@DataJpaUserTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@50778bde testClass = DataJpaUserTest, locations = '{}', classes = '{class ukma.fi.scheduler.SchedulerApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTestContextBootstrapper=true}', contextCustomizers = set[[ImportsContextCustomizer@1934339 key = [org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration, org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration, org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration, org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration, org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration, org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration, org.springframework.boot.autoconfigure.liquibase.LiquibaseAutoConfiguration, org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration, org.springframework.boot.autoconfigure.sql.init.SqlInitializationAutoConfiguration, org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration, org.springframework.boot.test.autoconfigure.jdbc.TestDatabaseAutoConfiguration, org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManagerAutoConfiguration]], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@6fd83fc1, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@209da20d, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.autoconfigure.OverrideAutoConfigurationContextCustomizerFactory$DisableAutoConfigurationContextCustomizer@4803b726, org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@3e11f9e9, org.springframework.boot.test.autoconfigure.filter.TypeExcludeFiltersContextCustomizer@351584c0, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@bd938ff0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@428640fa, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@0], contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]; transaction manager [org.springframework.orm.jpa.JpaTransactionManager@7da1e005]; rollback [true]
 test 1638300161445 [INFO] Rolled back transaction for test: [DefaultTestContext@2fac80a8 testClass = DataJpaUserTest, testInstance = ukma.fi.scheduler.DataJpaUserTest@6987a133, testMethod = exceptionTesting@DataJpaUserTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@50778bde testClass = DataJpaUserTest, locations = '{}', classes = '{class ukma.fi.scheduler.SchedulerApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTestContextBootstrapper=true}', contextCustomizers = set[[ImportsContextCustomizer@1934339 key = [org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration, org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration, org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration, org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration, org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration, org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration, org.springframework.boot.autoconfigure.liquibase.LiquibaseAutoConfiguration, org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration, org.springframework.boot.autoconfigure.sql.init.SqlInitializationAutoConfiguration, org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration, org.springframework.boot.test.autoconfigure.jdbc.TestDatabaseAutoConfiguration, org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManagerAutoConfiguration]], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@6fd83fc1, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@209da20d, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.autoconfigure.OverrideAutoConfigurationContextCustomizerFactory$DisableAutoConfigurationContextCustomizer@4803b726, org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@3e11f9e9, org.springframework.boot.test.autoconfigure.filter.TypeExcludeFiltersContextCustomizer@351584c0, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@bd938ff0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@428640fa, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@0], contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]
 test 1638300161460 [INFO] Closing JPA EntityManagerFactory for persistence unit 'default'
+test 1638302975317 [INFO] Starting SchedulerApplication using Java 1.8.0_241 on kate-kolokhina.local with PID 12424 (/Users/Kata1/Documents/scheduler/target/classes started by Kata1 in /Users/Kata1/Documents/scheduler)
+test 1638302975319 [INFO] The following profiles are active: dev
+test 1638302976124 [INFO] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+test 1638302976185 [INFO] Finished Spring Data repository scanning in 51 ms. Found 5 JPA repository interfaces.
+test 1638302976862 [INFO] Tomcat initialized with port(s): 8080 (http)
+test 1638302976871 [INFO] Initializing ProtocolHandler ["http-nio-8080"]
+test 1638302976871 [INFO] Starting service [Tomcat]
+test 1638302976872 [INFO] Starting Servlet engine: [Apache Tomcat/9.0.52]
+test 1638302976964 [INFO] Initializing Spring embedded WebApplicationContext
+test 1638302976964 [INFO] Root WebApplicationContext: initialization completed in 1596 ms
+test 1638302977027 [WARN] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Unsatisfied dependency expressed through method 'dataSourceScriptDatabaseInitializer' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is java.lang.IllegalStateException: Cannot load driver class: org.h2.Driver
+test 1638302977029 [INFO] Stopping service [Tomcat]
+test 1638302977041 [INFO] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+test 1638302977059 [ERROR] Application run failed
+test 1638303006115 [INFO] Starting SchedulerApplication using Java 1.8.0_241 on kate-kolokhina.local with PID 12436 (/Users/Kata1/Documents/scheduler/target/classes started by Kata1 in /Users/Kata1/Documents/scheduler)
+test 1638303006116 [INFO] The following profiles are active: dev
+test 1638303006908 [INFO] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+test 1638303006978 [INFO] Finished Spring Data repository scanning in 60 ms. Found 5 JPA repository interfaces.
+test 1638303007553 [INFO] Tomcat initialized with port(s): 8080 (http)
+test 1638303007559 [INFO] Initializing ProtocolHandler ["http-nio-8080"]
+test 1638303007560 [INFO] Starting service [Tomcat]
+test 1638303007560 [INFO] Starting Servlet engine: [Apache Tomcat/9.0.52]
+test 1638303007650 [INFO] Initializing Spring embedded WebApplicationContext
+test 1638303007651 [INFO] Root WebApplicationContext: initialization completed in 1486 ms
+test 1638303007712 [WARN] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Unsatisfied dependency expressed through method 'dataSourceScriptDatabaseInitializer' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is java.lang.IllegalStateException: Cannot load driver class: org.h2.Driver
+test 1638303007714 [INFO] Stopping service [Tomcat]
+test 1638303007725 [INFO] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+test 1638303007746 [ERROR] Application run failed
+test 1638303034294 [INFO] Starting SchedulerApplication using Java 1.8.0_241 on kate-kolokhina.local with PID 12458 (/Users/Kata1/Documents/scheduler/target/classes started by Kata1 in /Users/Kata1/Documents/scheduler)
+test 1638303034296 [INFO] The following profiles are active: dev
+test 1638303035163 [INFO] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+test 1638303035240 [INFO] Finished Spring Data repository scanning in 66 ms. Found 5 JPA repository interfaces.
+test 1638303035855 [INFO] Tomcat initialized with port(s): 8080 (http)
+test 1638303035862 [INFO] Initializing ProtocolHandler ["http-nio-8080"]
+test 1638303035862 [INFO] Starting service [Tomcat]
+test 1638303035863 [INFO] Starting Servlet engine: [Apache Tomcat/9.0.52]
+test 1638303035938 [INFO] Initializing Spring embedded WebApplicationContext
+test 1638303035938 [INFO] Root WebApplicationContext: initialization completed in 1588 ms
+test 1638303035973 [INFO] HikariPool-1 - Starting...
+test 1638303036165 [INFO] HikariPool-1 - Start completed.
+test 1638303036171 [INFO] H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./scheduler'
+test 1638303036316 [INFO] HHH000204: Processing PersistenceUnitInfo [name: default]
+test 1638303036356 [INFO] HHH000412: Hibernate ORM core version 5.4.32.Final
+test 1638303036506 [INFO] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+test 1638303036600 [INFO] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+test 1638303037266 [INFO] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+test 1638303037279 [INFO] Initialized JPA EntityManagerFactory for persistence unit 'default'
+test 1638303037434 [WARN] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+test 1638303037886 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.FacultyService ukma.fi.scheduler.service.impl.ConverterDtoObject.facultyService
+test 1638303037886 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.SubjectService ukma.fi.scheduler.service.impl.ConverterDtoObject.subjectService
+test 1638303038501 [INFO] Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@77f4038c, org.springframework.security.web.context.SecurityContextPersistenceFilter@ce19c86, org.springframework.security.web.header.HeaderWriterFilter@fd14789, org.springframework.security.web.csrf.CsrfFilter@615ef20, org.springframework.security.web.authentication.logout.LogoutFilter@6ad112de, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@295f2d1b, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@4e1a3d5a, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@49a06087, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7a3a49e5, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@210d3a42, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2c15034f, org.springframework.security.web.session.SessionManagementFilter@1b485c8b, org.springframework.security.web.access.ExceptionTranslationFilter@26d8908e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@18463720]
+test 1638303038917 [INFO] Starting ProtocolHandler ["http-nio-8080"]
+test 1638303038936 [INFO] Tomcat started on port(s): 8080 (http) with context path ''
+test 1638303038945 [INFO] Started SchedulerApplication in 5.038 seconds (JVM running for 5.768)
+test 1638303044747 [INFO] Initializing Spring DispatcherServlet 'dispatcherServlet'
+test 1638303044748 [INFO] Initializing Servlet 'dispatcherServlet'
+test 1638303044757 [INFO] Completed initialization in 8 ms
+test 1638303044818 [INFO] INPUT OF: List ukma.fi.scheduler.service.impl.SubjectServiceImpl.showAll(): {}
+test 1638303044984 [INFO] RETURN OF: List ukma.fi.scheduler.service.impl.SubjectServiceImpl.showAll(): {[Subject{id=2, name='added', faculty=Faculty(id=1, name=one), normative='Y', lessons=[]}, Subject{id=3, name='1', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=4, name='2', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=5, name='23', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=6, name='5', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=7, name='3', faculty=Faculty(id=1, name=one), normative='Y', lessons=[]}, Subject{id=8, name='tyt', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=9, name='4', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=12, name='244', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}]}
+test 1638303044985 [INFO] INPUT OF: List ukma.fi.scheduler.service.impl.FacultyServiceImpl.showAll(): {}
+test 1638303044992 [INFO] RETURN OF: List ukma.fi.scheduler.service.impl.FacultyServiceImpl.showAll(): {[Faculty(id=1, name=one), Faculty(id=2, name=two)]}
+test 1638303052703 [INFO] INPUT OF: List ukma.fi.scheduler.service.impl.SubjectServiceImpl.showAll(): {}
+test 1638303052708 [INFO] RETURN OF: List ukma.fi.scheduler.service.impl.SubjectServiceImpl.showAll(): {[Subject{id=2, name='added', faculty=Faculty(id=1, name=one), normative='Y', lessons=[]}, Subject{id=3, name='1', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=4, name='2', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=5, name='23', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=6, name='5', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=7, name='3', faculty=Faculty(id=1, name=one), normative='Y', lessons=[]}, Subject{id=8, name='tyt', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=9, name='4', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=12, name='244', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}]}
+test 1638303052709 [INFO] INPUT OF: List ukma.fi.scheduler.service.impl.FacultyServiceImpl.showAll(): {}
+test 1638303052710 [INFO] RETURN OF: List ukma.fi.scheduler.service.impl.FacultyServiceImpl.showAll(): {[Faculty(id=1, name=one), Faculty(id=2, name=two)]}
+test 1638303313405 [INFO] INPUT OF: Subject ukma.fi.scheduler.service.impl.SubjectServiceImpl.show(Long): {2, }
+test 1638303313420 [INFO] show shift -> id:2
+test 1638303313423 [INFO] RETURN OF: Subject ukma.fi.scheduler.service.impl.SubjectServiceImpl.show(Long): {Subject{id=2, name='added', faculty=Faculty(id=1, name=one), normative='Y', lessons=[]}}
+test 1638303325138 [INFO] INPUT OF: Subject ukma.fi.scheduler.service.impl.SubjectServiceImpl.show(Long): {2, }
+test 1638303325141 [INFO] show shift -> id:2
+test 1638303325145 [INFO] RETURN OF: Subject ukma.fi.scheduler.service.impl.SubjectServiceImpl.show(Long): {Subject{id=2, name='added', faculty=Faculty(id=1, name=one), normative='Y', lessons=[]}}
+test 1638311999659 [WARN] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=30m22s146ms).
+test 1638313020515 [WARN] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=16m30s823ms).
+test 1638314134588 [WARN] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=18m4s71ms).
+test 1638317667471 [WARN] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=58m22s859ms).
+test 1638324130518 [WARN] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h47m43s53ms).
+test 1638330626390 [WARN] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h47m45s833ms).
+test 1638337122402 [WARN] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h47m45s973ms).
+test 1638340288499 [WARN] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=52m16s85ms).
+test 1638347520988 [WARN] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h1m1s624ms).
+test 1638350949528 [WARN] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=56m38s517ms).
+test 1638372068018 [WARN] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=30m24s351ms).
+test 1638373092753 [WARN] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=16m34s735ms).
+test 1638374624428 [WARN] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=25m1s662ms).
+test 1638375389239 [INFO] Closing JPA EntityManagerFactory for persistence unit 'default'
+test 1638375389304 [INFO] HikariPool-1 - Shutdown initiated...
+test 1638375389328 [INFO] HikariPool-1 - Shutdown completed.
+test 1638375395611 [INFO] Starting SchedulerApplication using Java 1.8.0_241 on kate-kolokhina.local with PID 20909 (/Users/Kata1/Documents/scheduler/target/classes started by Kata1 in /Users/Kata1/Documents/scheduler)
+test 1638375395611 [INFO] The following profiles are active: dev
+test 1638375396489 [INFO] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+test 1638375396569 [INFO] Finished Spring Data repository scanning in 67 ms. Found 5 JPA repository interfaces.
+test 1638375397374 [INFO] Tomcat initialized with port(s): 8080 (http)
+test 1638375397383 [INFO] Initializing ProtocolHandler ["http-nio-8080"]
+test 1638375397384 [INFO] Starting service [Tomcat]
+test 1638375397384 [INFO] Starting Servlet engine: [Apache Tomcat/9.0.52]
+test 1638375397495 [INFO] Initializing Spring embedded WebApplicationContext
+test 1638375397495 [INFO] Root WebApplicationContext: initialization completed in 1842 ms
+test 1638375397539 [INFO] HikariPool-1 - Starting...
+test 1638375397758 [INFO] HikariPool-1 - Start completed.
+test 1638375397764 [INFO] H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./scheduler'
+test 1638375397915 [INFO] HHH000204: Processing PersistenceUnitInfo [name: default]
+test 1638375397965 [INFO] HHH000412: Hibernate ORM core version 5.4.32.Final
+test 1638375398100 [INFO] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+test 1638375398203 [INFO] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+test 1638375398904 [INFO] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+test 1638375398913 [INFO] Initialized JPA EntityManagerFactory for persistence unit 'default'
+test 1638375399039 [WARN] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+test 1638375399516 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.FacultyService ukma.fi.scheduler.service.impl.ConverterDtoObject.facultyService
+test 1638375399516 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.SubjectService ukma.fi.scheduler.service.impl.ConverterDtoObject.subjectService
+test 1638375400067 [INFO] Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@319b1c77, org.springframework.security.web.context.SecurityContextPersistenceFilter@4882b9a, org.springframework.security.web.header.HeaderWriterFilter@5f1f0ee6, org.springframework.security.web.csrf.CsrfFilter@1f4d38f9, org.springframework.security.web.authentication.logout.LogoutFilter@21c99abf, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@af9dd34, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@158e6fc2, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@584136c1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@68454ed5, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1b317e7d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@51d88c38, org.springframework.security.web.session.SessionManagementFilter@50fd739d, org.springframework.security.web.access.ExceptionTranslationFilter@2382b2f, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@39e7e040]
+test 1638375400506 [INFO] Starting ProtocolHandler ["http-nio-8080"]
+test 1638375400527 [INFO] Tomcat started on port(s): 8080 (http) with context path ''
+test 1638375400537 [INFO] Started SchedulerApplication in 5.278 seconds (JVM running for 6.222)
+test 1638375406342 [INFO] Initializing Spring DispatcherServlet 'dispatcherServlet'
+test 1638375406343 [INFO] Initializing Servlet 'dispatcherServlet'
+test 1638375406348 [INFO] Completed initialization in 3 ms
+test 1638375406411 [INFO] INPUT OF: List ukma.fi.scheduler.service.impl.SubjectServiceImpl.showAll(): {}
+test 1638375406590 [INFO] RETURN OF: List ukma.fi.scheduler.service.impl.SubjectServiceImpl.showAll(): {[Subject{id=2, name='added', faculty=Faculty(id=1, name=one), normative='Y', lessons=[]}, Subject{id=3, name='1', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=4, name='2', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=5, name='23', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=6, name='5', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=7, name='3', faculty=Faculty(id=1, name=one), normative='Y', lessons=[]}, Subject{id=8, name='tyt', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=9, name='4', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=12, name='244', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}]}
+test 1638375406591 [INFO] INPUT OF: List ukma.fi.scheduler.service.impl.FacultyServiceImpl.showAll(): {}
+test 1638375406597 [INFO] RETURN OF: List ukma.fi.scheduler.service.impl.FacultyServiceImpl.showAll(): {[Faculty(id=1, name=one), Faculty(id=2, name=two)]}
+test 1638379013933 [INFO] INPUT OF: List ukma.fi.scheduler.service.impl.SubjectServiceImpl.showAll(): {}
+test 1638379014072 [INFO] RETURN OF: List ukma.fi.scheduler.service.impl.SubjectServiceImpl.showAll(): {[Subject{id=2, name='added', faculty=Faculty(id=1, name=one), normative='Y', lessons=[]}, Subject{id=3, name='1', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=4, name='2', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=5, name='23', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=6, name='5', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=7, name='3', faculty=Faculty(id=1, name=one), normative='Y', lessons=[]}, Subject{id=8, name='tyt', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=9, name='4', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=12, name='244', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}]}
+test 1638379014075 [INFO] INPUT OF: List ukma.fi.scheduler.service.impl.FacultyServiceImpl.showAll(): {}
+test 1638379014081 [INFO] RETURN OF: List ukma.fi.scheduler.service.impl.FacultyServiceImpl.showAll(): {[Faculty(id=1, name=one), Faculty(id=2, name=two)]}
+test 1638379039770 [INFO] INPUT OF: Subject ukma.fi.scheduler.service.impl.SubjectServiceImpl.show(Long): {2, }
+test 1638379039801 [INFO] show shift -> id:2
+test 1638379039817 [INFO] RETURN OF: Subject ukma.fi.scheduler.service.impl.SubjectServiceImpl.show(Long): {Subject{id=2, name='added', faculty=Faculty(id=1, name=one), normative='Y', lessons=[]}}
+test 1638388662706 [INFO] Closing JPA EntityManagerFactory for persistence unit 'default'
+test 1638388662765 [INFO] HikariPool-1 - Shutdown initiated...
+test 1638388662776 [INFO] HikariPool-1 - Shutdown completed.
+test 1638427841718 [INFO] Starting SchedulerApplication using Java 1.8.0_241 on kate-kolokhina.local with PID 25674 (/Users/Kata1/Documents/scheduler/target/classes started by Kata1 in /Users/Kata1/Documents/scheduler)
+test 1638427841719 [INFO] The following profiles are active: dev
+test 1638427843007 [INFO] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+test 1638427843098 [INFO] Finished Spring Data repository scanning in 73 ms. Found 5 JPA repository interfaces.
+test 1638427844129 [INFO] Tomcat initialized with port(s): 8080 (http)
+test 1638427844142 [INFO] Initializing ProtocolHandler ["http-nio-8080"]
+test 1638427844144 [INFO] Starting service [Tomcat]
+test 1638427844144 [INFO] Starting Servlet engine: [Apache Tomcat/9.0.52]
+test 1638427844283 [INFO] Initializing Spring embedded WebApplicationContext
+test 1638427844284 [INFO] Root WebApplicationContext: initialization completed in 2474 ms
+test 1638427844346 [INFO] HikariPool-1 - Starting...
+test 1638427844687 [INFO] HikariPool-1 - Start completed.
+test 1638427844695 [INFO] H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./scheduler'
+test 1638427844924 [INFO] HHH000204: Processing PersistenceUnitInfo [name: default]
+test 1638427845008 [INFO] HHH000412: Hibernate ORM core version 5.4.32.Final
+test 1638427845235 [INFO] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+test 1638427845399 [INFO] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+test 1638427846377 [INFO] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+test 1638427846393 [INFO] Initialized JPA EntityManagerFactory for persistence unit 'default'
+test 1638427846521 [WARN] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+test 1638427847238 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.FacultyService ukma.fi.scheduler.service.impl.ConverterDtoObject.facultyService
+test 1638427847239 [INFO] Autowired annotation is not supported on static fields: private static ukma.fi.scheduler.service.SubjectService ukma.fi.scheduler.service.impl.ConverterDtoObject.subjectService
+test 1638427848023 [INFO] Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@795faad, org.springframework.security.web.context.SecurityContextPersistenceFilter@1b485c8b, org.springframework.security.web.header.HeaderWriterFilter@23a78c77, org.springframework.security.web.csrf.CsrfFilter@7c9ea1d0, org.springframework.security.web.authentication.logout.LogoutFilter@97beeaf, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@615ef20, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@210d3a42, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@17ae13d5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4a7db5a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@45c408a4, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@69f3e556, org.springframework.security.web.session.SessionManagementFilter@7f70e244, org.springframework.security.web.access.ExceptionTranslationFilter@d0a2c82, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6fe5da76]
+test 1638427848482 [INFO] Starting ProtocolHandler ["http-nio-8080"]
+test 1638427848504 [INFO] Tomcat started on port(s): 8080 (http) with context path ''
+test 1638427848515 [INFO] Started SchedulerApplication in 7.567 seconds (JVM running for 8.824)
+test 1638427857340 [INFO] Initializing Spring DispatcherServlet 'dispatcherServlet'
+test 1638427857341 [INFO] Initializing Servlet 'dispatcherServlet'
+test 1638427857350 [INFO] Completed initialization in 8 ms
+test 1638427857417 [INFO] INPUT OF: List ukma.fi.scheduler.service.impl.SubjectServiceImpl.showAll(): {}
+test 1638427857621 [INFO] RETURN OF: List ukma.fi.scheduler.service.impl.SubjectServiceImpl.showAll(): {[Subject{id=2, name='added', faculty=Faculty(id=1, name=one), normative='Y', lessons=[]}, Subject{id=3, name='1', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=4, name='2', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=5, name='23', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=6, name='5', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=7, name='3', faculty=Faculty(id=1, name=one), normative='Y', lessons=[]}, Subject{id=8, name='tyt', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=9, name='4', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=12, name='244', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}]}
+test 1638427857622 [INFO] INPUT OF: List ukma.fi.scheduler.service.impl.FacultyServiceImpl.showAll(): {}
+test 1638427857630 [INFO] RETURN OF: List ukma.fi.scheduler.service.impl.FacultyServiceImpl.showAll(): {[Faculty(id=1, name=one), Faculty(id=2, name=two)]}
+test 1638427858452 [INFO] INPUT OF: List ukma.fi.scheduler.service.impl.SubjectServiceImpl.showAll(): {}
+test 1638427858461 [INFO] RETURN OF: List ukma.fi.scheduler.service.impl.SubjectServiceImpl.showAll(): {[Subject{id=2, name='added', faculty=Faculty(id=1, name=one), normative='Y', lessons=[]}, Subject{id=3, name='1', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=4, name='2', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=5, name='23', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=6, name='5', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=7, name='3', faculty=Faculty(id=1, name=one), normative='Y', lessons=[]}, Subject{id=8, name='tyt', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=9, name='4', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=12, name='244', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}]}
+test 1638427858462 [INFO] INPUT OF: List ukma.fi.scheduler.service.impl.FacultyServiceImpl.showAll(): {}
+test 1638427858464 [INFO] RETURN OF: List ukma.fi.scheduler.service.impl.FacultyServiceImpl.showAll(): {[Faculty(id=1, name=one), Faculty(id=2, name=two)]}
+test 1638427861276 [WARN] No mapping for GET /listAccounts
+test 1638427874126 [INFO] INPUT OF: List ukma.fi.scheduler.service.impl.SubjectServiceImpl.showAll(): {}
+test 1638427874131 [INFO] RETURN OF: List ukma.fi.scheduler.service.impl.SubjectServiceImpl.showAll(): {[Subject{id=2, name='added', faculty=Faculty(id=1, name=one), normative='Y', lessons=[]}, Subject{id=3, name='1', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=4, name='2', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=5, name='23', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=6, name='5', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=7, name='3', faculty=Faculty(id=1, name=one), normative='Y', lessons=[]}, Subject{id=8, name='tyt', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=9, name='4', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=12, name='244', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}]}
+test 1638427874132 [INFO] INPUT OF: List ukma.fi.scheduler.service.impl.FacultyServiceImpl.showAll(): {}
+test 1638427874133 [INFO] RETURN OF: List ukma.fi.scheduler.service.impl.FacultyServiceImpl.showAll(): {[Faculty(id=1, name=one), Faculty(id=2, name=two)]}
+test 1638427901939 [INFO] INPUT OF: Subject ukma.fi.scheduler.service.impl.SubjectServiceImpl.create(SubjectDTO): {SubjectDTO(id=null, name=rttrtr, facultyId=1, normative=Y), }
+test 1638427902056 [INFO] check params -> name:rttrtr normative:Y
+test 1638427902059 [INFO] created subject -> name:rttrtr
+test 1638427902167 [INFO] Subject ukma.fi.scheduler.service.impl.SubjectServiceImpl.create(SubjectDTO) EXECUTED IN 227MS
+test 1638427902168 [INFO] RETURN OF: Subject ukma.fi.scheduler.service.impl.SubjectServiceImpl.create(SubjectDTO): {Subject{id=13, name='rttrtr', faculty=Faculty(id=1, name=one), normative='Y', lessons=[]}}
+test 1638427902192 [INFO] INPUT OF: List ukma.fi.scheduler.service.impl.SubjectServiceImpl.showAll(): {}
+test 1638427902198 [INFO] RETURN OF: List ukma.fi.scheduler.service.impl.SubjectServiceImpl.showAll(): {[Subject{id=2, name='added', faculty=Faculty(id=1, name=one), normative='Y', lessons=[]}, Subject{id=3, name='1', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=4, name='2', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=5, name='23', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=6, name='5', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=7, name='3', faculty=Faculty(id=1, name=one), normative='Y', lessons=[]}, Subject{id=8, name='tyt', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=9, name='4', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=12, name='244', faculty=Faculty(id=1, name=one), normative='N', lessons=[]}, Subject{id=13, name='rttrtr', faculty=Faculty(id=1, name=one), normative='Y', lessons=[]}]}
+test 1638427902199 [INFO] INPUT OF: List ukma.fi.scheduler.service.impl.FacultyServiceImpl.showAll(): {}
+test 1638427902200 [INFO] RETURN OF: List ukma.fi.scheduler.service.impl.FacultyServiceImpl.showAll(): {[Faculty(id=1, name=one), Faculty(id=2, name=two)]}
+test 1638427984281 [INFO] Closing JPA EntityManagerFactory for persistence unit 'default'
+test 1638427984321 [INFO] HikariPool-1 - Shutdown initiated...
+test 1638427984330 [INFO] HikariPool-1 - Shutdown completed.
 test 1638300283454 [INFO] Neither @ContextConfiguration nor @ContextHierarchy found for test class [ukma.fi.scheduler.MockMvcTest], using SpringBootContextLoader
 test 1638300283461 [INFO] Could not detect default resource locations for test class [ukma.fi.scheduler.MockMvcTest]: no resource found for suffixes {-context.xml, Context.groovy}.
 test 1638300283463 [INFO] Could not detect default configuration classes for test class [ukma.fi.scheduler.MockMvcTest]: MockMvcTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.

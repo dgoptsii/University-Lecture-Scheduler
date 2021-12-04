@@ -29,7 +29,6 @@ public class SchedulerConfiguration implements WebMvcConfigurer {
             matchIfMissing = true)
     @Bean
     public DataSource getDataSource() {
-
         System.out.println("DataSauce");
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
         dataSourceBuilder.driverClassName("org.h2.Driver");
@@ -40,29 +39,29 @@ public class SchedulerConfiguration implements WebMvcConfigurer {
     }
 
 
-    @Value("${messages.basename.path}")
-    private String messagesBasename;
+//    @Value("${messages.basename.path}")
+//    private String messagesBasename;
+//
+//    @Bean
+//    public MessageSource messageSource() {
+//        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+//        messageSource.setFallbackToSystemLocale(false);
+//        messageSource.setBasenames("file:" + messagesBasename);
+//        return messageSource;
+//    }
 
-    @Bean
-    public MessageSource messageSource() {
-        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-        messageSource.setFallbackToSystemLocale(false);
-        messageSource.setBasenames("file:" + messagesBasename);
-        return messageSource;
-    }
-
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry
-                .addResourceHandler("/static/**")
-                .addResourceLocations("classpath:/static/");
-    }
-
-    @Bean
-    public FilterRegistrationBean hiddenHttpMethodFilter() {
-        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean(new HiddenHttpMethodFilter());
-        filterRegistrationBean.setUrlPatterns(Arrays.asList("/*"));
-        return filterRegistrationBean;
-    }
+//    @Override
+//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//        registry
+//                .addResourceHandler("/static/**")
+//                .addResourceLocations("classpath:/static/");
+//    }
+//
+//    @Bean
+//    public FilterRegistrationBean hiddenHttpMethodFilter() {
+//        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean(new HiddenHttpMethodFilter());
+//        filterRegistrationBean.setUrlPatterns(Arrays.asList("/*"));
+//        return filterRegistrationBean;
+//    }
 
 }

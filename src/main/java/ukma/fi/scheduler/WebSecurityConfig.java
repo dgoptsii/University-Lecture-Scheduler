@@ -17,7 +17,6 @@ public class WebSecurityConfig
     @Autowired
     private DataSource dataSource;
 
-
     /**
      * Encoder of password
      */
@@ -51,9 +50,9 @@ public class WebSecurityConfig
                 .logout()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/student/**").hasAuthority("STUDENT")
-                .antMatchers("/teacher/**").hasAuthority("TEACHER")
-                .antMatchers("/info/**", "/lesson/**").hasAnyAuthority("TEACHER", "STUDENT")
+//                .antMatchers("/student/**").hasAuthority("STUDENT")
+//                .antMatchers("/teacher/**").hasAuthority("TEACHER")
+//                .antMatchers("/info/**", "/lesson/**").hasAnyAuthority("TEACHER", "STUDENT")
                 .antMatchers("/**", "/h2-console/**").permitAll()
                 .and().csrf().ignoringAntMatchers("/h2-console/**")
                 .and().headers().frameOptions().sameOrigin()

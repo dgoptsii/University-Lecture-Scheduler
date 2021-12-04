@@ -3,7 +3,6 @@ package ukma.fi.scheduler.service.impl;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ukma.fi.scheduler.ArgsAsp;
 import ukma.fi.scheduler.controller.dto.UserLoginDTO;
 import ukma.fi.scheduler.exceptionHandlers.exceptions.InvalidData;
 import ukma.fi.scheduler.exceptionHandlers.exceptions.UserNotFoundException;
@@ -13,7 +12,6 @@ import ukma.fi.scheduler.service.*;
 
 import java.util.Collections;
 
-@ArgsAsp
 @Service
 @Log4j2
 public class AuthServiceImpl implements AuthService {
