@@ -5,12 +5,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import ukma.fi.scheduler.controller.dto.SubjectGroupDTO;
 import ukma.fi.scheduler.entities.Subject;
+import ukma.fi.scheduler.entities.User;
 import ukma.fi.scheduler.service.ScheduleService;
 import ukma.fi.scheduler.service.UserService;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("student")
@@ -22,25 +26,37 @@ public class StudentController {
     @Autowired
     private ScheduleService scheduleService;
 
-    @GetMapping("/subject/add")
-    public ModelAndView addStudentSubject(Principal principal){
-        ModelAndView mav = new ModelAndView("student-add-subject");
-        List<Subject> addSubjects = userService.findNonNormativeFreeSubjects(principal.getName());
-        List<Subject> userNonNormative = userService.findNonNormativeSubjects(principal.getName());
-        mav.addObject("addSubjects", addSubjects);
-        mav.addObject("userSubjects", userNonNormative);
+    @GetMapping("/subject/groups")
+    public ModelAndView addStudentGroup(Principal principal) {
+        ModelAndView mav = new ModelAndView("student-add-group");
+        List<Subject> normativeSubjects = userService.findNormativeSubjects(principal.getName());
+        List<Subject> notNormativeSubjects = userService.findNonNormativeSubjects(principal.getName());
+        User user = userService.findUserByLogin(principal.getName());
+        Map<Subject, Integer> subGroupNum = user.getGroups();
+
+        List<SubjectGroupDTO> normativeDto = new ArrayList<>();
+        normativeSubjects.forEach(el -> {
+            normativeDto.add(new SubjectGroupDTO(el.getName(), el.getId(), subGroupNum.get(el), el.getMaxGroups()));
+        });
+
+        List<SubjectGroupDTO> nonNormativeDto = new ArrayList<>();
+        notNormativeSubjects.forEach(el -> {
+            nonNormativeDto.add(new SubjectGroupDTO(el.getName(), el.getId(), subGroupNum.get(el), el.getMaxGroups()));
+        });
+        mav.addObject("normative", normativeDto);
+        mav.addObject("notNormative", nonNormativeDto);
         return mav;
     }
 
 
     @GetMapping("/subject/groups")
-    public ModelAndView addStudentGroup(){
+    public ModelAndView addStudentGroup() {
         return new ModelAndView("student-add-group");
     }
 
 
     @GetMapping("/scheduler")
-    public ModelAndView schedule(Principal principal){
+    public ModelAndView schedule(Principal principal) {
         ModelAndView mav = new ModelAndView("schedule");
         mav.addAllObjects(scheduleService.findLessonsForStudent(principal.getName()));
         return mav;
