@@ -36,30 +36,27 @@
 <!--              th:action="@{/student/subject/add_groups}"-->
 <!--              th:method="post"-->
 
-              <ul class="list-group my-2">
+              <ul class="list-group my-2"  th:each="subject : ${normative}">
                 <li class="list-group-item d-flex justify-content-between">
-                  <span>Name</span>
-                  <select class="form-select" style="width: 5rem">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                  </select>
-                </li>
-                <li class="list-group-item d-flex justify-content-between">
-                  <span>Name</span>
-                  <select class="form-select" style="width: 5rem">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                  </select>
-                </li>
-                <li class="list-group-item d-flex justify-content-between">
-                  <span>Name</span>
-                  <select class="form-select" style="width: 5rem">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                  </select>
+                  <span th:text="${subject.getSubName()}">Name</span>
+<!--                    MORE THAN 0 GROUPS-->
+                    <div th:if="${subject.getGroupMax()>0}">
+                        <select >
+                            <th:block th:each="i : ${#numbers.sequence(1, subject.getGroupMax())}" >
+                            <option th:each="i : ${#numbers.sequence(1, subject.getGroupMax())}" th:value="${i}" th:text="${i}">
+                            </option>
+<!--                            <div th:if="${i == }">-->
+<!--                            </div>-->
+<!--                            <div th:unless="${subject.getMaxGroups()>0}">-->
+<!--                            </div>-->
+<!--                            </th:block>-->
+                        </select>
+                    </div>
+                    <!-- ELSE -->
+                    <div th:unless="${subject.getGroupMax()>0}">
+                        <span>no groups available</span>
+                    </div>
+
                 </li>
               </ul>
               <div class="text-right">

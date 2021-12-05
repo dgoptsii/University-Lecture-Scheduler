@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
+import ukma.fi.scheduler.controller.dto.SubjectGroupDTO;
 import ukma.fi.scheduler.entities.Subject;
 import ukma.fi.scheduler.entities.User;
 import ukma.fi.scheduler.service.AuthService;
@@ -15,9 +16,7 @@ import ukma.fi.scheduler.service.UserService;
 
 import javax.validation.Valid;
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Controller
 @RequestMapping("student")
@@ -38,8 +37,19 @@ public class StudentController {
 
 
     @GetMapping("/subject/groups")
-    public ModelAndView addStudentGroup(){
-        return new ModelAndView("student-add-group");
+    public ModelAndView addStudentGroup(Principal principal){
+        ModelAndView mav = new ModelAndView("student-add-group");
+        List<Subject> normativeSubjects = userService.findNormativeSubjects(principal.getName());
+        List<Subject> notNormativeSubjects = userService.findNonNormativeSubjects(principal.getName());
+        User user = userService.findUserByLogin(principal.getName());
+        Map<Subject, Integer> subGroupNum = user.getGroups();
+        List<SubjectGroupDTO> normativeDto = new ArrayList<>();
+        normativeSubjects.forEach( el ->  {
+            normativeDto.add(new SubjectGroupDTO(el.getName(), el.getId(), subGroupNum.get(el), el.getMaxGroups()));
+        });
+        mav.addObject("normative", normativeDto);
+        mav.addObject("notNormative", notNormativeSubjects);
+        return mav;
     }
 
 }

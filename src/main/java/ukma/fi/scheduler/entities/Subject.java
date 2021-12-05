@@ -1,6 +1,7 @@
 package ukma.fi.scheduler.entities;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
@@ -9,6 +10,7 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 @Data
+@EqualsAndHashCode
 public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
