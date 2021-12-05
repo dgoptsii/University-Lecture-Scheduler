@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import ukma.fi.scheduler.controller.dto.SubjectGroupDTO;
+import ukma.fi.scheduler.controller.dto.SubjectGroupListDTO;
 import ukma.fi.scheduler.entities.Subject;
 import ukma.fi.scheduler.entities.User;
 import ukma.fi.scheduler.service.ScheduleService;
@@ -35,19 +36,17 @@ public class StudentController {
         Map<Subject, Integer> subGroupNum = user.getGroups();
 
         List<SubjectGroupDTO> normativeDto = new ArrayList<>();
-        normativeSubjects.forEach(el -> {
-            normativeDto.add(new SubjectGroupDTO(el.getName(), el.getId(), subGroupNum.get(el), el.getMaxGroups()));
-        });
+        normativeSubjects.forEach(el -> normativeDto.add(new SubjectGroupDTO(el.getName(), el.getId(), subGroupNum.get(el), el.getMaxGroups(),true)));
 
         List<SubjectGroupDTO> nonNormativeDto = new ArrayList<>();
-        notNormativeSubjects.forEach(el -> {
-            nonNormativeDto.add(new SubjectGroupDTO(el.getName(), el.getId(), subGroupNum.get(el), el.getMaxGroups()));
-        });
-        mav.addObject("normative", normativeDto);
-        mav.addObject("notNormative", nonNormativeDto);
+        notNormativeSubjects.forEach(el -> nonNormativeDto.add(new SubjectGroupDTO(el.getName(), el.getId(), subGroupNum.get(el), el.getMaxGroups(),false)));
+
+        SubjectGroupListDTO fromData  = new SubjectGroupListDTO();
+        fromData.addAllDto(normativeDto);
+        fromData.addAllDto(nonNormativeDto);
+        mav.addObject("form", normativeDto);
         return mav;
     }
-
 
     @GetMapping("/subject/groups")
     public ModelAndView addStudentGroup() {

@@ -25,4 +25,6 @@ public class SubjectGroupDTO {
     @Min(0)
     Integer groupMax;
 
+    @NotNull
+    boolean normative;
 }
