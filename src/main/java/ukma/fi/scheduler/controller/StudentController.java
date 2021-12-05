@@ -3,8 +3,11 @@ package ukma.fi.scheduler.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 import ukma.fi.scheduler.controller.dto.SubjectGroupDTO;
 import ukma.fi.scheduler.controller.dto.SubjectGroupListDTO;
 import ukma.fi.scheduler.entities.Subject;
@@ -30,28 +33,52 @@ public class StudentController {
     @GetMapping("/subject/groups")
     public ModelAndView addStudentGroup(Principal principal) {
         ModelAndView mav = new ModelAndView("student-add-group");
-        List<Subject> normativeSubjects = userService.findNormativeSubjects(principal.getName());
-        List<Subject> notNormativeSubjects = userService.findNonNormativeSubjects(principal.getName());
+        mav.addObject("form", getSubjectGroupDTOS(principal.getName()));
+        return mav;
+    }
+    @PostMapping("/subject/groups")
+    public RedirectView addStudentGroup(@ModelAttribute SubjectGroupListDTO form, Principal principal) {
+        SubjectGroupListDTO oldForm = getSubjectGroupDTOS(principal.getName());
+        if(form.equals(oldForm)){
+            return new RedirectView("/profile");
+        }
+        System.out.println("wow");
         User user = userService.findUserByLogin(principal.getName());
         Map<Subject, Integer> subGroupNum = user.getGroups();
 
-        List<SubjectGroupDTO> normativeDto = new ArrayList<>();
-        normativeSubjects.forEach(el -> normativeDto.add(new SubjectGroupDTO(el.getName(), el.getId(), subGroupNum.get(el), el.getMaxGroups(),true)));
-
-        List<SubjectGroupDTO> nonNormativeDto = new ArrayList<>();
-        notNormativeSubjects.forEach(el -> nonNormativeDto.add(new SubjectGroupDTO(el.getName(), el.getId(), subGroupNum.get(el), el.getMaxGroups(),false)));
-
-        SubjectGroupListDTO fromData  = new SubjectGroupListDTO();
-        fromData.addAllDto(normativeDto);
-        fromData.addAllDto(nonNormativeDto);
-        mav.addObject("form", normativeDto);
-        return mav;
+        return new RedirectView("/profile");
     }
 
     @GetMapping("/subject/groups")
     public ModelAndView addStudentGroup() {
         return new ModelAndView("student-add-group");
     }
+
+    private SubjectGroupListDTO getSubjectGroupDTOS(String login) {
+        List<Subject> normativeSubjects = userService.findNormativeSubjects(login);
+        List<Subject> notNormativeSubjects = userService.findNonNormativeSubjects(login);
+        User user = userService.findUserByLogin(login);
+        Map<Subject, Integer> subGroupNum = user.getGroups();
+
+        List<SubjectGroupDTO> normativeDto = new ArrayList<>();
+        normativeSubjects.forEach(el -> {
+            Integer groupNum = (subGroupNum.get(el)==null)? 0:subGroupNum.get(el);
+            normativeDto.add(new SubjectGroupDTO(el.getName(), el.getId(), groupNum, el.getMaxGroups(),true));
+        });
+
+        List<SubjectGroupDTO> nonNormativeDto = new ArrayList<>();
+        notNormativeSubjects.forEach(el -> {
+            Integer groupNum = (subGroupNum.get(el)==null)? 0:subGroupNum.get(el);
+            nonNormativeDto.add(new SubjectGroupDTO(el.getName(), el.getId(), groupNum, el.getMaxGroups(),false));
+        });
+
+        SubjectGroupListDTO fromData  = new SubjectGroupListDTO();
+        fromData.addAllDto(normativeDto);
+        fromData.addAllDto(nonNormativeDto);
+        return fromData;
+    }
+
+
 
 
     @GetMapping("/scheduler")
