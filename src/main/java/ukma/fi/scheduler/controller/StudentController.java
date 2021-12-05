@@ -84,8 +84,6 @@ public class StudentController {
     }
 
 
-
-
     @GetMapping("/scheduler")
     public ModelAndView schedule(Principal principal) {
         ModelAndView mav = new ModelAndView("schedule");
