@@ -55,10 +55,13 @@ public class ScheduleServiceImpl implements ScheduleService {
         return res;
     }
 
+    @Override
     public Map<String, Lesson> findLessonsForTeacher(String login) {
-        User user = userService.findUserByLogin(login);
         Map<String, Lesson> res = new HashMap<>();
-
+        List<Lesson> lessons = lessonRepository.findByTeacherLogin(login);
+        lessons.forEach(lesson -> {
+            res.put(lesson.getDayOfWeek()+"-"+lesson.getLessonNumber(), lesson);
+        });
         return res;
     }
 

@@ -8,5 +8,7 @@ public interface ScheduleService {
 
     Map<String, Lesson> findLessonsForStudent(String login);
 
+    Map<String, Lesson> findLessonsForTeacher(String login);
+
 
 }
