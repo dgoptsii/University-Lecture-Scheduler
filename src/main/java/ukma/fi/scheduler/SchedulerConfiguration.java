@@ -6,13 +6,10 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.MessageSource;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.*;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 
 import javax.sql.DataSource;
 import java.util.Arrays;
@@ -49,14 +46,14 @@ public class SchedulerConfiguration implements WebMvcConfigurer {
 //        messageSource.setBasenames("file:" + messagesBasename);
 //        return messageSource;
 //    }
-
+//
 //    @Override
 //    public void addResourceHandlers(ResourceHandlerRegistry registry) {
 //        registry
 //                .addResourceHandler("/static/**")
 //                .addResourceLocations("classpath:/static/");
 //    }
-//
+
     @Bean
     public FilterRegistrationBean hiddenHttpMethodFilter() {
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean(new HiddenHttpMethodFilter());
