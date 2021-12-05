@@ -59,7 +59,6 @@ public class StudentController {
         return mav;
     }
 
-
     private SubjectGroupListDTO getSubjectGroupDTOS(String login) {
         List<Subject> normativeSubjects = userService.findNormativeSubjects(login);
         List<Subject> notNormativeSubjects = userService.findNonNormativeSubjects(login);
@@ -68,13 +67,13 @@ public class StudentController {
 
         List<SubjectGroupDTO> normativeDto = new ArrayList<>();
         normativeSubjects.forEach(el -> {
-            Integer groupNum = (subGroupNum.get(el)==null)? 0:subGroupNum.get(el);
+            Integer groupNum = subGroupNum.get(el);
             normativeDto.add(new SubjectGroupDTO(el.getName(), el.getId(), groupNum, el.getMaxGroups(),true));
         });
 
         List<SubjectGroupDTO> nonNormativeDto = new ArrayList<>();
         notNormativeSubjects.forEach(el -> {
-            Integer groupNum = (subGroupNum.get(el)==null)? 0:subGroupNum.get(el);
+            Integer groupNum = subGroupNum.get(el);
             nonNormativeDto.add(new SubjectGroupDTO(el.getName(), el.getId(), groupNum, el.getMaxGroups(),false));
         });
 
