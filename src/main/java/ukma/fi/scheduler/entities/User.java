@@ -51,11 +51,14 @@ public class User {
     private Map<Subject, Integer> groups;
 
 
-    public User changeUser(UserDTO user){
+    public User changeUser(UserDTO user) {
         this.name = user.getName();
         this.surname = user.getSurname();
         this.patronim = user.getPatronim();
         this.login = user.getLogin();
+        if (!user.getPassword().isEmpty()) {
+            this.password = user.getPassword();
+        }
         return this;
     }
 }

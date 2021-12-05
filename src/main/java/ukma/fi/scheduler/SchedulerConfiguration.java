@@ -57,11 +57,11 @@ public class SchedulerConfiguration implements WebMvcConfigurer {
 //                .addResourceLocations("classpath:/static/");
 //    }
 //
-//    @Bean
-//    public FilterRegistrationBean hiddenHttpMethodFilter() {
-//        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean(new HiddenHttpMethodFilter());
-//        filterRegistrationBean.setUrlPatterns(Arrays.asList("/*"));
-//        return filterRegistrationBean;
-//    }
+    @Bean
+    public FilterRegistrationBean hiddenHttpMethodFilter() {
+        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean(new HiddenHttpMethodFilter());
+        filterRegistrationBean.setUrlPatterns(Arrays.asList("/*"));
+        return filterRegistrationBean;
+    }
 
 }

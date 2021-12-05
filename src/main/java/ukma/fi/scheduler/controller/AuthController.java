@@ -41,9 +41,9 @@ public class AuthController {
         ModelAndView mav = new ModelAndView();
 
         User user = userService.findUserByLogin(principal.getName());
-        if(user.getStatus().equals("STUDENT"))
+        if (user.getStatus().equals("STUDENT"))
             mav.setViewName("student-profile");
-        else if(user.getStatus().equals("TEACHER"))
+        else if (user.getStatus().equals("TEACHER"))
             mav.setViewName("teacher-profile");
         mav.addObject("user", userService.findUserByLogin(principal.getName()));
         return mav;
@@ -53,10 +53,7 @@ public class AuthController {
     public ModelAndView profileEditPage(Principal principal) {
         ModelAndView mav = new ModelAndView();
         User user = userService.findUserByLogin(principal.getName());
-        if(user.getStatus().equals("STUDENT"))
-            mav.setViewName("student-profile-edit");
-        else if(user.getStatus().equals("TEACHER"))
-            mav.setViewName("teacher-profile-edit");
+        mav.setViewName("profile-edit");
         mav.addObject("user", userService.findUserByLogin(principal.getName()));
         return mav;
     }
@@ -68,9 +65,9 @@ public class AuthController {
     }
 
     @PostMapping("/registration")
-    public void registration(@Valid @ModelAttribute User user) {
+    public RedirectView registration(@Valid @ModelAttribute User user) {
         authService.registration(user, "STUDENT");
-        new RedirectView("/profile");
+        return new RedirectView("/login");
     }
 
     @GetMapping("/registration")

@@ -18,7 +18,7 @@
 
     <div class="starter-template">
         <div>
-            <form action="#" th:action="@{/registration}" th:method="post" onsubmit="return validate(this);">
+            <form action="#" th:action="@{/add_teacher}" th:method="post" onsubmit="return validate(this);">
                 <div class="card-header bg-light text-info">
                     <h4 class="text-center">Registration</h4>
                 </div>
@@ -26,7 +26,8 @@
                     <div class="row ">
                         <div class="col m-2 text-right">Surname:</div>
                         <div class="col m-2"><input style="width: 100%; max-width: 234px" type="text" name="surname"
-                                                    id="form-surname" required/></div>
+                                                    id="form-surname"
+                                                    required/></div>
                     </div>
                     <div class="row">
                         <div class="col m-2 text-right">Name:</div>
@@ -39,23 +40,6 @@
                         <div class="col m-2"><input style="width: 100%; max-width: 234px" type="text"
                                                     id="form-patronim" name="patronim"/>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col m-2 text-right">Specialty:</div>
-                        <div class="col m-2">
-                            <select name="speciality" style="width: 100%; max-width: 234px" required>
-                                <option th:each="specialty : ${specialties}" th:value="${specialty}"
-                                        th:text="${specialty}"
-                                >
-                                </option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col m-2 text-right">Year:</div>
-                        <div class="col m-2"><input style="width: 100%; max-width: 234px" type="number" name="year"
-                                                    required value="1"
-                                                    min="1" max="4"/></div>
                     </div>
                     <div class="row">
                         <div class="col m-2 text-right">Login:</div>
@@ -72,12 +56,13 @@
                     <div class="row">
                         <div class="col m-2 text-right">Confirm password:</div>
                         <div class="col m-2"><input style="width: 100%; max-width: 234px" type="password"
-                                                    name="password_confirmation" id="form-password-repeat"
+                                                    id="form-password-repeat"
+                                                    name="password_confirmation"
                                                     required/></div>
                     </div>
                     <div class="row">
-                        <div class="col m-2 text-right"><input class="btn btn-info" type="submit"
-                                                               value="Register"/></div>
+                        <div class="col m-2 text-right"><input class="btn btn-info" type="submit" value="Register"/>
+                        </div>
                     </div>
                 </div>
             </form>
@@ -110,7 +95,6 @@
         const rePassword = new RegExp("^(?=.*[0-9])(?=.*[a-z]).{8,32}$");
         const reEmail = new RegExp("(\\w+\.\\w+)@ukma\.edu\.ua");
         const reName = new RegExp("[a-zA-Z\\s]+");
-        console.log(!reEmail.test(login));
 
 
         if (!reName.test(name) || name == null || name === "") {
