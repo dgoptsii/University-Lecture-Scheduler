@@ -6,6 +6,8 @@ import ukma.fi.scheduler.entities.Lesson;
 import ukma.fi.scheduler.repository.LessonRepository;
 import ukma.fi.scheduler.service.LessonService;
 
+import javax.validation.Valid;
+
 @Service
 public class LessonServiceImpl implements LessonService {
 
@@ -13,7 +15,7 @@ public class LessonServiceImpl implements LessonService {
     LessonRepository lessonRepository;
 
     @Override
-    public Lesson create(Lesson lesson) {
+    public Lesson create(@Valid Lesson lesson) {
         return lessonRepository.save(lesson);
     }
 }
