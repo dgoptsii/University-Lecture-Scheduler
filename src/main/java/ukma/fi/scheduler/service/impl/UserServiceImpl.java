@@ -43,6 +43,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    // Find all subjects that is normative for student (login)
     @Override
     public List<Subject> findNormativeSubjects(String login) {
         User student = findUserByLogin(login);
@@ -51,14 +52,16 @@ public class UserServiceImpl implements UserService {
         return normative;
     }
 
+    //Find all subjects that is not normative for student (login) - with the subjects that he\her already has
     @Override
-    public List<Subject> findNonNormativeSubjectsForUser(String login) {
+    public List<Subject> findNonNormativeSubjectsForUser(String login){
         List<Long> normative = findNormativeSubjects(login).stream().map(Subject::getId).collect(Collectors.toList());
         return subjectRepository.findSubjectsByIdNotIn(normative);
     }
 
+    //Find all not normative subjects that student already has
     @Override
-    public List<Subject> findNonNormativeSubjects(String login) {
+    public List<Subject> findNonNormativeSubjects(String login){
         User student = findUserByLogin(login);
         List<Subject> normative = findNormativeSubjects(login);
         List<Subject> studentSubjects = student.getStudentSubjects();
@@ -66,6 +69,7 @@ public class UserServiceImpl implements UserService {
         return studentSubjects;
     }
 
+    //Find all not normative subjects that student can add to his list
     @Override
     public List<Subject> findNonNormativeFreeSubjects(String login) {
         User student = findUserByLogin(login);
