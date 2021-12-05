@@ -23,9 +23,7 @@ public class Subject {
 
     @Column(nullable = false)
     @Min(0)
-    @Max(10)
     private Integer maxGroups;
-
 
     @Column(nullable = false)
     @NotBlank

@@ -26,8 +26,7 @@ public class LessonDTO {
     private Integer lessonNumber;
 
     @NotBlank
-    @Min(0)
-    @Min(10)
+    @Min(1)
     private Integer groupNumber;
 
 }

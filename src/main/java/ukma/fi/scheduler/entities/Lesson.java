@@ -3,6 +3,7 @@ package ukma.fi.scheduler.entities;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
 @Entity
@@ -20,13 +21,17 @@ public class Lesson {
     private User teacher;
 
     @Column(nullable = false)
+    @Min(1)
+    @Max(6)
     private Integer dayOfWeek;
 
     @Column(nullable = false)
+    @Min(1)
+    @Max(7)
     private Integer lessonNumber;
 
     @Column(nullable = false)
-    @Min(0)
+    @Min(1)
     private Integer groupNumber;
 
 

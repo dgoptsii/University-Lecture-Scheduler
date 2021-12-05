@@ -2,6 +2,7 @@ package ukma.fi.scheduler.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.MissingRequestValueException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +14,7 @@ import ukma.fi.scheduler.controller.dto.SubjectGroupListDTO;
 import ukma.fi.scheduler.entities.Subject;
 import ukma.fi.scheduler.entities.User;
 import ukma.fi.scheduler.service.ScheduleService;
+import ukma.fi.scheduler.service.SubjectService;
 import ukma.fi.scheduler.service.UserService;
 
 import java.security.Principal;
@@ -33,20 +35,24 @@ public class StudentController {
     @GetMapping("/subject/groups")
     public ModelAndView addStudentGroup(Principal principal) {
         ModelAndView mav = new ModelAndView("student-add-group");
-        mav.addObject("form", getSubjectGroupDTOS(principal.getName()));
+        mav.addObject("form", userService.getSubjectGroupDTOS(principal.getName()));
         return mav;
     }
     @PostMapping("/subject/groups")
     public RedirectView addStudentGroup(@ModelAttribute SubjectGroupListDTO form, Principal principal) {
-        SubjectGroupListDTO oldForm = getSubjectGroupDTOS(principal.getName());
+        SubjectGroupListDTO oldForm = userService.getSubjectGroupDTOS(principal.getName());
         if(form.equals(oldForm)){
             return new RedirectView("/profile");
+        }else if (form.size() != oldForm.size()){
+            try {
+                throw new MissingRequestValueException("Input value isn't correct");
+            } catch (MissingRequestValueException e) {
+                e.printStackTrace();
+            }
         }
-        System.out.println("wow");
-        User user = userService.findUserByLogin(principal.getName());
-        Map<Subject, Integer> subGroupNum = user.getGroups();
+        userService.editSubjectGroup(principal.getName(),form);
 
-        return new RedirectView("/profile");
+        return new RedirectView("student/subject/groups");
     }
 
     @GetMapping("/subject/add")
@@ -58,31 +64,6 @@ public class StudentController {
         mav.addObject("userSubjects", userNonNormative);
         return mav;
     }
-
-    private SubjectGroupListDTO getSubjectGroupDTOS(String login) {
-        List<Subject> normativeSubjects = userService.findNormativeSubjects(login);
-        List<Subject> notNormativeSubjects = userService.findNonNormativeSubjects(login);
-        User user = userService.findUserByLogin(login);
-        Map<Subject, Integer> subGroupNum = user.getGroups();
-
-        List<SubjectGroupDTO> normativeDto = new ArrayList<>();
-        normativeSubjects.forEach(el -> {
-            Integer groupNum = subGroupNum.get(el);
-            normativeDto.add(new SubjectGroupDTO(el.getName(), el.getId(), groupNum, el.getMaxGroups(),true));
-        });
-
-        List<SubjectGroupDTO> nonNormativeDto = new ArrayList<>();
-        notNormativeSubjects.forEach(el -> {
-            Integer groupNum = subGroupNum.get(el);
-            nonNormativeDto.add(new SubjectGroupDTO(el.getName(), el.getId(), groupNum, el.getMaxGroups(),false));
-        });
-
-        SubjectGroupListDTO fromData  = new SubjectGroupListDTO();
-        fromData.addAllDto(normativeDto);
-        fromData.addAllDto(nonNormativeDto);
-        return fromData;
-    }
-
 
     @GetMapping("/scheduler")
     public ModelAndView schedule(Principal principal) {

@@ -1,9 +1,11 @@
 package ukma.fi.scheduler.service.impl;
 
 import lombok.extern.log4j.Log4j2;
-import org.hibernate.annotations.Entity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ukma.fi.scheduler.service.SubGroupConverter;
+import ukma.fi.scheduler.controller.dto.SubjectGroupDTO;
+import ukma.fi.scheduler.controller.dto.SubjectGroupListDTO;
 import ukma.fi.scheduler.entities.Subject;
 import ukma.fi.scheduler.entities.User;
 import ukma.fi.scheduler.repository.SubjectRepository;
@@ -12,6 +14,7 @@ import ukma.fi.scheduler.service.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -21,6 +24,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private SubGroupConverter converter;
     @Autowired
     private SubjectRepository subjectRepository;
 
@@ -47,6 +52,23 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> findByRole(String role) {
        return userRepository.findUsersByStatus(role);
+    }
+
+    @Override
+    public void editSubjectGroup(String login, SubjectGroupListDTO form) {
+        User user = findUserByLogin(login);
+        Map<Subject, Integer> newSubGroupNum = converter.convertSubGroupDto(form);
+        System.out.println(newSubGroupNum);
+        newSubGroupNum.forEach( (k,v) -> {
+            if (v==0 && user.getGroups().get(k)!=null) {
+                user.getGroups().put(k,0);
+            }
+        });
+        Map<Subject, Integer> update = newSubGroupNum.entrySet().stream()
+                .filter(x -> x.getValue() != 0)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+        user.getGroups().putAll(update);
+        userRepository.save(user);
     }
 
     // Find all subjects that is normative for student (login)
@@ -84,4 +106,30 @@ public class UserServiceImpl implements UserService {
         normative.addAll(studentSubjects);
         return subjectRepository.findSubjectsByIdNotIn(normative);
     }
+
+    @Override
+    public SubjectGroupListDTO getSubjectGroupDTOS(String login) {
+        List<Subject> normativeSubjects = findNormativeSubjects(login);
+        List<Subject> notNormativeSubjects = findNonNormativeSubjects(login);
+        User user = findUserByLogin(login);
+        Map<Subject, Integer> subGroupNum = user.getGroups();
+
+        List<SubjectGroupDTO> normativeDto = new ArrayList<>();
+        normativeSubjects.forEach(el -> {
+            Integer groupNum = subGroupNum.get(el);
+            normativeDto.add(new SubjectGroupDTO(el.getName(), el.getId(), groupNum, el.getMaxGroups(),true));
+        });
+
+        List<SubjectGroupDTO> nonNormativeDto = new ArrayList<>();
+        notNormativeSubjects.forEach(el -> {
+            Integer groupNum = subGroupNum.get(el);
+            nonNormativeDto.add(new SubjectGroupDTO(el.getName(), el.getId(), groupNum, el.getMaxGroups(),false));
+        });
+
+        SubjectGroupListDTO fromData  = new SubjectGroupListDTO();
+        fromData.addAllDto(normativeDto);
+        fromData.addAllDto(nonNormativeDto);
+        return fromData;
+    }
+
 }

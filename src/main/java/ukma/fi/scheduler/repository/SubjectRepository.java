@@ -11,6 +11,7 @@ import java.util.Optional;
 public interface SubjectRepository extends CrudRepository<Subject, Long> {
     List<Subject> findSubjectsBySpecialityAndYear(String speciality, Integer year);
     List<Subject> findSubjectsByIdNotIn(List<Long> id);
+    List<Subject> findSubjectsByIdIn(List<Long> id);
     Optional<Subject> findSubjectByName(String name);
     List<Subject> findAll();
 }
