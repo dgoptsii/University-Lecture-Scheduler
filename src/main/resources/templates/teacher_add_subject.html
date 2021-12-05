@@ -17,18 +17,19 @@
 <main role="main" class="container">
 
     <div class="starter-template">
-        <div th:if="${currentUser != null && 'TEACHER'.equals(currentUser.getAuthorities().toArray()[0].toString())}">
+        <div th:if="${currentUser != null && 'TEACHER'.equals(currentUser.getAuthorities().toArray()[0].toString())}"
+             modelAttribute="subject">
             <div class="card-header bg-light text-info">
                 <h4 class="text-center">New subject</h4>
             </div>
-            <form action="#" th:action="@{/teacher/subject/add_subject}" th:method="post">
+            <form action="#" th:action="@{/teacher/subject/add}" th:method="post">
                 <div class="container px-4 card">
                     <div class="row">
                         <div class="col m-2 text-right">Specialty:</div>
                         <div class="col m-2">
-                            <select name="specialtyId" style="width: 100%; max-width: 234px" required>
-                                <option th:each="specialty : ${SPECIALITIES}" th:value="${specialty.getId()}"
-                                        th:text="${specialty.getName()}"
+                            <select name="specialty" style="width: 100%; max-width: 234px" required>
+                                <option th:each="speciality : ${specialties}"
+                                        th:text="${speciality}"
                                         >
                                 </option>
                             </select>
@@ -36,7 +37,7 @@
                     </div>
                     <div class="row">
                         <div class="col m-2 text-right">Year:</div>
-                        <div class="col m-2"><input style="width: 100%; max-width: 234px" type="number" name="year" min="1" max="4" required/></div>
+                        <div class="col m-2"><input style="width: 100%; max-width: 234px" type="number" name="year" min="1" max="4" value="1" required/></div>
                     </div>
                     <div class="row">
                         <div class="col m-2 text-right">Name:</div>
@@ -44,7 +45,7 @@
                     </div>
                     <div class="row">
                         <div class="col m-2 text-right">Number of groups:</div>
-                        <div class="col m-2"><input style="width: 100%; max-width: 234px" type="number" name="numberOfGroups" min="0" max="10" required/></div>
+                        <div class="col m-2"><input style="width: 100%; max-width: 234px" type="number" name="maxGroups" min="0" max="10" required/></div>
                     </div>
                     <div class="row">
                         <div class="col text-center">
@@ -62,9 +63,9 @@
                     <div class="row ">
                         <div class="col m-2 text-right">Teacher:</div>
                         <div class="col m-2">
-                            <select name="teacherId" style="width: 100%; max-width: 234px">
+                            <select name="teacher" style="width: 100%; max-width: 234px">
                                 <option th:each="teacher : ${teachers}" th:value="${teacher.getId()}"
-                                        th:text="${teacher.getSurname()} ${teacher.getName()} ${teacher.getPatronim()}"
+                                        th:text="${teacher.getSurname()}"
                                         >
                                 </option>
                             </select>

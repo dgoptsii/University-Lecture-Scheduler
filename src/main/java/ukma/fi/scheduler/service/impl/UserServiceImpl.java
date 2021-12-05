@@ -10,6 +10,7 @@ import ukma.fi.scheduler.repository.SubjectRepository;
 import ukma.fi.scheduler.repository.UserRepository;
 import ukma.fi.scheduler.service.UserService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,6 +42,11 @@ public class UserServiceImpl implements UserService {
         } else {
             return null;
         }
+    }
+
+    @Override
+    public List<User> findByRole(String role) {
+       return userRepository.findUsersByStatus(role);
     }
 
     // Find all subjects that is normative for student (login)
