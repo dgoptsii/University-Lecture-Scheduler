@@ -10,7 +10,6 @@ import ukma.fi.scheduler.service.ScheduleService;
 import ukma.fi.scheduler.service.UserService;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 public class ScheduleServiceImpl implements ScheduleService {
@@ -21,14 +20,21 @@ public class ScheduleServiceImpl implements ScheduleService {
     @Autowired
     private LessonRepository lessonRepository;
 
-    private void addLecturesToResult(Map<String, Lesson> result, List<Subject> subjects) {
+    private void addLecturesToResult(Map<String, Set<Lesson>> result, List<Subject> subjects) {
         List<Lesson> normativeLectures = lessonRepository.findLessonsBySubjectInAndGroupNumber(subjects, 0);
         normativeLectures.forEach(lecture -> {
-            result.put("l" + lecture.getDayOfWeek() + "_" + lecture.getLessonNumber(), lecture);
+            String key = "l" + lecture.getDayOfWeek() + "_" + lecture.getLessonNumber();
+            if (result.containsKey(key)) {
+                result.get(key).add(lecture);
+            } else {
+                Set<Lesson> newList = new HashSet<>();
+                newList.add(lecture);
+                result.put(key, newList);
+            }
         });
     }
 
-    private void addLessonsToResult(Map<String, Lesson> result, Map<Subject, Integer> studentLessons) {
+    private void addLessonsToResult(Map<String, Set<Lesson>> result, Map<Subject, Integer> studentLessons) {
         List<Lesson> lessons = lessonRepository.findLessonsBySubjectIn(studentLessons.keySet());
         studentLessons.forEach(((subject, group) -> {
             Optional<Lesson> optionalLesson = lessons.stream()
@@ -37,16 +43,23 @@ public class ScheduleServiceImpl implements ScheduleService {
                                     && lesson.getGroupNumber().equals(group)).findAny();
             if (optionalLesson.isPresent()) {
                 Lesson lesson = optionalLesson.get();
-                result.put("l" + lesson.getDayOfWeek() + "_" + lesson.getLessonNumber(), lesson);
+                String key = "l" + lesson.getDayOfWeek() + "_" + lesson.getLessonNumber();
+                if (result.containsKey(key)) {
+                    result.get(key).add(lesson);
+                } else {
+                    Set<Lesson> newList = new HashSet<>();
+                    newList.add(lesson);
+                    result.put(key, newList);
+                }
             }
         }));
 
     }
 
     @Override
-    public Map<String, Lesson> findLessonsForStudent(String login) {
+    public Map<String, Set<Lesson>> findLessonsForStudent(String login) {
         User user = userService.findUserByLogin(login);
-        Map<String, Lesson> res = new HashMap<>();
+        Map<String, Set<Lesson>> res = new HashMap<>();
 
         Set<Subject> subjectsLectures = new HashSet<>(user.getGroups().keySet());
         subjectsLectures.addAll(userService.findNormativeSubjects(login));
@@ -58,13 +71,20 @@ public class ScheduleServiceImpl implements ScheduleService {
     }
 
     @Override
-    public Map<String, Lesson> findLessonsForTeacher(String login) {
-        Map<String, Lesson> res = new HashMap<>();
+    public Map<String, Set<Lesson>> findLessonsForTeacher(String login) {
+        Map<String, Set<Lesson>> result = new HashMap<>();
         List<Lesson> lessons = lessonRepository.findByTeacherLogin(login);
         lessons.forEach(lesson -> {
-            res.put(lesson.getDayOfWeek() + "-" + lesson.getLessonNumber(), lesson);
+            String key = "l" + lesson.getDayOfWeek() + "_" + lesson.getLessonNumber();
+            if (result.containsKey(key)) {
+                result.get(key).add(lesson);
+            } else {
+                Set<Lesson> newList = new HashSet<>();
+                newList.add(lesson);
+                result.put(key, newList);
+            }
         });
-        return res;
+        return result;
     }
 
 }
