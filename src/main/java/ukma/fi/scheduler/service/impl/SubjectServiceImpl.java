@@ -4,10 +4,10 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ukma.fi.scheduler.entities.Subject;
-import ukma.fi.scheduler.entities.User;
 import ukma.fi.scheduler.exceptionHandlers.exceptions.InvalidData;
 import ukma.fi.scheduler.repository.SubjectRepository;
 import ukma.fi.scheduler.service.SubjectService;
+import ukma.fi.scheduler.service.UserService;
 
 import javax.validation.Valid;
 import java.util.Collections;
@@ -20,6 +20,9 @@ public class SubjectServiceImpl implements SubjectService {
     @Autowired
     private SubjectRepository subjectRepository;
 
+    @Autowired
+    private UserService userService;
+
     @Override
     public Subject findSubjectById(Long id) {
         if (subjectRepository.findById(id).isPresent()) {
@@ -28,6 +31,11 @@ public class SubjectServiceImpl implements SubjectService {
         } else {
             return null;
         }
+    }
+
+    @Override
+    public List<Subject> findSubjectByIdIn(List<Long> id) {
+        return subjectRepository.findSubjectsByIdIn(id);
     }
 
     @Override

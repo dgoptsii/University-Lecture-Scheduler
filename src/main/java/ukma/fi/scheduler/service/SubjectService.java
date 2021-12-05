@@ -8,6 +8,8 @@ public interface SubjectService {
 
     Subject findSubjectById(Long id);
 
+    List<Subject> findSubjectByIdIn(List<Long> id);
+
     Subject create(Subject subject);
 
     List<Subject> findAll();

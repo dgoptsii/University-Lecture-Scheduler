@@ -1,5 +1,6 @@
 package ukma.fi.scheduler.service;
 
+import ukma.fi.scheduler.controller.dto.SubjectGroupListDTO;
 import ukma.fi.scheduler.entities.Subject;
 import ukma.fi.scheduler.entities.User;
 
@@ -12,6 +13,10 @@ public interface UserService {
     User findUserByLogin(String login);
 
     List<User> findByRole(String role);
+
+    void editSubjectGroup(String login,SubjectGroupListDTO form);
+
+    SubjectGroupListDTO getSubjectGroupDTOS(String login);
 
     List<Subject> findNormativeSubjects(String login);
 

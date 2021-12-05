@@ -22,7 +22,6 @@ public class SubjectGroupDTO {
     Long subId;
 
     @NotNull
-    @Min(1)
     Integer groupNum;
 
     @NotNull
