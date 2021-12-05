@@ -8,7 +8,10 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Entity
 @Data
@@ -60,5 +63,12 @@ public class User {
             this.password = user.getPassword();
         }
         return this;
+    }
+
+    public List<Long> getStudentSubjectsId(){
+        return this.getGroups().keySet().stream().map(Subject::getId).collect(Collectors.toList());
+    }
+    public List<Subject> getStudentSubjects(){
+        return new ArrayList<>(this.getGroups().keySet());
     }
 }

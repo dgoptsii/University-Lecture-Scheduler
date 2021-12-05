@@ -26,19 +26,14 @@ public class StudentController {
     @Autowired
     private UserService userService;
 
-//    @Autowired
-//    private UserService userService;
-
     @GetMapping("/subject/add")
-
     public ModelAndView addStudentSubject(Principal principal){
         ModelAndView mav = new ModelAndView("student-add-subject");
-        User user = userService.findUserByLogin(principal.getName());
-        Set<Subject> allSubjects = user.getGroups().keySet();
-
-//        mav.addObject("addSubjects", SPECIALITIES);
+        List<Subject> addSubjects = userService.findNonNormativeFreeSubjects(principal.getName());
+        List<Subject> userNonNormative = userService.findNonNormativeSubjects(principal.getName());
+        mav.addObject("addSubjects", addSubjects);
+        mav.addObject("userSubjects", userNonNormative);
         return mav;
-//        return new ModelAndView("student-add-subject");
     }
 
 
