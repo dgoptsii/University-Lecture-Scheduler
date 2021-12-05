@@ -43,12 +43,24 @@ public class StudentController {
             return new RedirectView("/profile");
         }
         System.out.println("wow");
+
+        System.out.println("OLD:"+oldForm);
+        System.out.println("NEW:"+form);
         User user = userService.findUserByLogin(principal.getName());
         Map<Subject, Integer> subGroupNum = user.getGroups();
 
         return new RedirectView("/profile");
     }
 
+    @GetMapping("/subject/add")
+    public ModelAndView addStudentSubject(Principal principal){
+        ModelAndView mav = new ModelAndView("student-add-subject");
+        List<Subject> addSubjects = userService.findNonNormativeFreeSubjects(principal.getName());
+        List<Subject> userNonNormative = userService.findNonNormativeSubjects(principal.getName());
+        mav.addObject("addSubjects", addSubjects);
+        mav.addObject("userSubjects", userNonNormative);
+        return mav;
+    }
 
     private SubjectGroupListDTO getSubjectGroupDTOS(String login) {
         List<Subject> normativeSubjects = userService.findNormativeSubjects(login);
@@ -58,13 +70,13 @@ public class StudentController {
 
         List<SubjectGroupDTO> normativeDto = new ArrayList<>();
         normativeSubjects.forEach(el -> {
-            Integer groupNum = (subGroupNum.get(el)==null)? 0:subGroupNum.get(el);
+            Integer groupNum = subGroupNum.get(el);
             normativeDto.add(new SubjectGroupDTO(el.getName(), el.getId(), groupNum, el.getMaxGroups(),true));
         });
 
         List<SubjectGroupDTO> nonNormativeDto = new ArrayList<>();
         notNormativeSubjects.forEach(el -> {
-            Integer groupNum = (subGroupNum.get(el)==null)? 0:subGroupNum.get(el);
+            Integer groupNum = subGroupNum.get(el);
             nonNormativeDto.add(new SubjectGroupDTO(el.getName(), el.getId(), groupNum, el.getMaxGroups(),false));
         });
 
