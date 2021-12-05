@@ -49,6 +49,16 @@ public class StudentController {
         return new RedirectView("/profile");
     }
 
+    @GetMapping("/subject/add")
+    public ModelAndView addStudentSubject(Principal principal){
+        ModelAndView mav = new ModelAndView("student-add-subject");
+        List<Subject> addSubjects = userService.findNonNormativeFreeSubjects(principal.getName());
+        List<Subject> userNonNormative = userService.findNonNormativeSubjects(principal.getName());
+        mav.addObject("addSubjects", addSubjects);
+        mav.addObject("userSubjects", userNonNormative);
+        return mav;
+    }
+
 
     private SubjectGroupListDTO getSubjectGroupDTOS(String login) {
         List<Subject> normativeSubjects = userService.findNormativeSubjects(login);

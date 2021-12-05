@@ -1,5 +1,6 @@
 package ukma.fi.scheduler.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -22,6 +23,7 @@ public class Subject {
 
     @Column(nullable = false)
     @Min(0)
+    @Max(10)
     private Integer maxGroups;
 
 
@@ -33,4 +35,15 @@ public class Subject {
     @Min(1)
     @Max(4)
     private Integer year;
+
+    public Subject(String name, Integer maxGroups, String specialty, Integer year) {
+        this.name = name;
+        this.maxGroups = maxGroups;
+        this.speciality = specialty;
+        this.year = year;
+    }
+
+    public Subject() {
+
+    }
 }
