@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
+import ukma.fi.scheduler.controller.dto.LessonDTO;
 import ukma.fi.scheduler.controller.dto.SubjectLectureDTO;
 import ukma.fi.scheduler.entities.Lesson;
 import ukma.fi.scheduler.entities.Subject;
@@ -54,6 +55,22 @@ public class TeacherController {
         subjectService.create(newSubject);
         lessonService.create(newLesson);
         return new RedirectView("/teacher/subject/add");
+    }
+
+    @GetMapping("/lesson/add")
+    public ModelAndView addLesson() {
+        ModelAndView mav = new ModelAndView("teacher_add_lesson");
+        mav.addObject("specialties", SPECIALITIES);
+        mav.addObject("subjects", subjectService.findAll());
+        mav.addObject("teachers", userService.findByRole("TEACHER"));
+        return mav;
+    }
+
+    @PostMapping("/lesson/add")
+    public RedirectView addLesson(@ModelAttribute("lesson") LessonDTO dto) {
+        Lesson newLesson = new Lesson(dto.getSubject(), dto.getDayOfWeek(), dto.getLessonNumber(), dto.getTeacher(),dto.getGroupNumber());
+        lessonService.create(newLesson);
+        return new RedirectView("/teacher/lesson/add");
     }
 
     @ModelAttribute("currentUser")
