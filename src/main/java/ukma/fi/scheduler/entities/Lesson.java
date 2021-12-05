@@ -29,4 +29,16 @@ public class Lesson {
     @Min(0)
     private Integer groupNumber;
 
+
+    public Lesson(Subject subject, Integer dayOfWeek, Integer lessonNumber, User teacher, Integer groupNumber) {
+        this.subject = subject;
+        this.dayOfWeek = dayOfWeek;
+        this.lessonNumber = lessonNumber;
+        this.teacher = teacher;
+        this.groupNumber = groupNumber;
+    }
+
+    public Lesson() {
+
+    }
 }

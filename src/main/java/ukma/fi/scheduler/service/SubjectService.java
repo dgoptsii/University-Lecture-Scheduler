@@ -6,6 +6,6 @@ public interface SubjectService {
 
     Subject findSubjectById(Long id);
 
-
+    Subject create(Subject subject);
 
 }
