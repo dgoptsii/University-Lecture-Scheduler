@@ -43,9 +43,6 @@ public class StudentController {
             return new RedirectView("/profile");
         }
         System.out.println("wow");
-
-        System.out.println("OLD:"+oldForm);
-        System.out.println("NEW:"+form);
         User user = userService.findUserByLogin(principal.getName());
         Map<Subject, Integer> subGroupNum = user.getGroups();
 

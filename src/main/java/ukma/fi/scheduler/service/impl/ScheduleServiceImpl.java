@@ -9,10 +9,8 @@ import ukma.fi.scheduler.repository.LessonRepository;
 import ukma.fi.scheduler.service.ScheduleService;
 import ukma.fi.scheduler.service.UserService;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class ScheduleServiceImpl implements ScheduleService {
@@ -23,12 +21,10 @@ public class ScheduleServiceImpl implements ScheduleService {
     @Autowired
     private LessonRepository lessonRepository;
 
-    private void addLecturesToResult(Map<String, Lesson> result, Set<Subject> subjects){
-        subjects.forEach(subject -> {
-            List<Lesson> normativeLectures = lessonRepository.findBySubjectAndGroupNumber(subject, 0);
-            normativeLectures.forEach(lecture -> {
-                result.put(lecture.getDayOfWeek() + "-" + lecture.getLessonNumber(), lecture);
-            });
+    private void addLecturesToResult(Map<String, Lesson> result, List<Subject> subjects){
+        List<Lesson> normativeLectures = lessonRepository.findLessonsBySubjectInAndGroupNumber(subjects, 0);
+        normativeLectures.forEach(lecture -> {
+            result.put(lecture.getDayOfWeek() + "-" + lecture.getLessonNumber(), lecture);
         });
     }
 
@@ -49,7 +45,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         Set<Subject> subjectsLectures = user.getGroups().keySet();
         subjectsLectures.addAll(userService.findNormativeSubjects(login));
 
-        addLecturesToResult(res, subjectsLectures);
+        addLecturesToResult(res, new ArrayList<>(subjectsLectures));
         addLessonsToResult(res, user.getGroups());
 
         return res;

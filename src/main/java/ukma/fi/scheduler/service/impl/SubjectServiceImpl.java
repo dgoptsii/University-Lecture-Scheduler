@@ -11,6 +11,7 @@ import ukma.fi.scheduler.service.SubjectService;
 
 import javax.validation.Valid;
 import java.util.Collections;
+import java.util.List;
 
 @Service
 @Log4j2
@@ -36,6 +37,11 @@ public class SubjectServiceImpl implements SubjectService {
         }
         log.info("created subject -> name:" + subject.getName());
         return subjectRepository.save(subject);
+    }
+
+    @Override
+    public List<Subject> findAll() {
+        return subjectRepository.findAll();
     }
 
 }
