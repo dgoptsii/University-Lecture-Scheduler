@@ -38,7 +38,7 @@
 
               <ul class="list-group my-2"  th:each="subject, itemStat : *{chooseSubGroup}">
                 <li class="list-group-item d-flex justify-content-between">
-<!--                    hidden form -->
+
                     <input th:field="*{chooseSubGroup[__${itemStat.index}__].subName}" hidden/>
                     <input th:field="*{chooseSubGroup[__${itemStat.index}__].subId}" hidden/>
                     <input th:field="*{chooseSubGroup[__${itemStat.index}__].groupMax}" hidden/>
@@ -47,8 +47,10 @@
                   <h4 th:text="${subject.getSubName()}" class="badge badge-info">Name</h4>
                     </div>
                     <div th:unless="${subject.isNormative()}">
-                        <h4 th:text="${subject.getSubName()}" class="badge badge-success">Name</h4>
+                        <span th:text="${'Name: '+subject.getName()}"></span>
+                        <h4 th:text="${subject.getSubName()}" class="badge badge-success"></h4>
                     </div>
+
 <!--                    MORE THAN 0 GROUPS-->
                     <div th:if="${subject.getGroupMax()>0}">
                         <select th:field="*{chooseSubGroup[__${itemStat.index}__].groupNum}" >

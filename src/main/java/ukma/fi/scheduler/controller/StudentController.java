@@ -60,8 +60,10 @@ public class StudentController {
         ModelAndView mav = new ModelAndView("student-add-subject");
         List<Subject> addSubjects = userService.findNonNormativeFreeSubjects(principal.getName());
         List<Subject> userNonNormative = userService.findNonNormativeSubjects(principal.getName());
+        List<Subject> userNormative = userService.findNormativeSubjects(principal.getName());
         mav.addObject("addSubjects", addSubjects);
         mav.addObject("userSubjects", userNonNormative);
+        mav.addObject("userNormative", userNormative);
         return mav;
     }
 

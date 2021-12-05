@@ -45,30 +45,81 @@
                 <td class="align-middle">1</td>
                 <td class="align-middle">08:30</td>
                 <td>
-                  <span class="badge badge-info" th:text="${l1_1.getSubject().getName()}"></span>
-                  <div class="font-size14">lecture\group</div>
-                  <div class="font-size14 text-light-gray">Teacher</div>
+
+                  <div th:if="${l1_1 != null}">
+                    <th:block th:each="lesson : ${l1_1}">
+                    <span class="badge badge-info" th:text="${lesson.getSubject().getName()}"></span>
+                    <div th:if="${lesson.getGroupNumber() == 0}">
+                      <div class="font-size14" >lecture</div>
+                    </div>
+                    <div th:unless="${lesson.getGroupNumber() == 0}">
+                      <div class="font-size14" th:text="${'group '+lesson.getGroupNumber()}"></div>
+                    </div>
+                    <div class="font-size14 text-light-gray" th:text="${lesson.getTeacher().getName()}"></div>
+                    </th:block>
+                  </div>
+
                 </td>
                 <td>
-                  <span class="badge badge-info">Name lesson</span>
-                  <div class="font-size14">lecture\group</div>
-                  <div class="font-size14 text-light-gray">Teacher</div>
+
+                  <div th:if="${l2_1 != null}">
+                    <th:block th:each="lesson : ${l2_1}">
+                      <span class="badge badge-info" th:text="${lesson.getSubject().getName()}"></span>
+                      <div th:if="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" >lecture</div>
+                      </div>
+                      <div th:unless="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" th:text="${'group '+lesson.getGroupNumber()}"></div>
+                      </div>
+                      <div class="font-size14 text-light-gray" th:text="${lesson.getTeacher().getName()}"></div>
+                    </th:block>
+                  </div>
                 </td>
 
                 <td>
-                  <span class="badge badge-info">Name lesson</span>
-                  <div class="font-size14">lecture\group</div>
-                  <div class="font-size14 text-light-gray">Teacher</div>
+
+                  <div th:if="${l3_1 != null}">
+                    <th:block th:each="lesson : ${l3_1}">
+                      <span class="badge badge-info" th:text="${lesson.getSubject().getName()}"></span>
+                      <div th:if="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" >lecture</div>
+                      </div>
+                      <div th:unless="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" th:text="${'group '+lesson.getGroupNumber()}"></div>
+                      </div>
+                      <div class="font-size14 text-light-gray" th:text="${lesson.getTeacher().getName()}"></div>
+                    </th:block>
+                  </div>
                 </td>
                 <td>
-                  <span class="badge badge-info">Name lesson</span>
-                  <div class="font-size14">lecture\group</div>
-                  <div class="font-size14 text-light-gray">Teacher</div>
+
+                  <div th:if="${l4_1 != null}">
+                    <th:block th:each="lesson : ${l4_1}">
+                      <span class="badge badge-info" th:text="${lesson.getSubject().getName()}"></span>
+                      <div th:if="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" >lecture</div>
+                      </div>
+                      <div th:unless="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" th:text="${'group '+lesson.getGroupNumber()}"></div>
+                      </div>
+                      <div class="font-size14 text-light-gray" th:text="${lesson.getTeacher().getName()}"></div>
+                    </th:block>
+                  </div>
                 </td>
                 <td>
-                  <span class="badge badge-info">Name lesson</span>
-                  <div class="font-size14">lecture\group</div>
-                  <div class="font-size14 text-light-gray">Teacher</div>
+
+                  <div th:if="${l5_1 != null}">
+                    <th:block th:each="lesson : ${l5_1}">
+                      <span class="badge badge-info" th:text="${lesson.getSubject().getName()}"></span>
+                      <div th:if="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" >lecture</div>
+                      </div>
+                      <div th:unless="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" th:text="${'group '+lesson.getGroupNumber()}"></div>
+                      </div>
+                      <div class="font-size14 text-light-gray" th:text="${lesson.getTeacher().getName()}"></div>
+                    </th:block>
+                  </div>
                 </td>
               </tr>
 
@@ -76,30 +127,81 @@
                 <td class="align-middle">2</td>
                 <td class="align-middle">10:00</td>
                 <td>
-                  <span class="badge badge-info">Name lesson</span>
-                  <div class="font-size14">lecture\group</div>
-                  <div class="font-size14 text-light-gray">Teacher</div>
-                </td>
-                <td class="bg-light-gray">
-                  <span class="badge badge-info">Name lesson</span>
-                  <div class="font-size14">lecture\group</div>
-                  <div class="font-size14 text-light-gray">Teacher</div>
+
+                  <div th:if="${l1_2 != null}">
+                    <th:block th:each="lesson : ${l1_2}">
+                      <span class="badge badge-info" th:text="${lesson.getSubject().getName()}"></span>
+                      <div th:if="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" >lecture</div>
+                      </div>
+                      <div th:unless="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" th:text="${'group '+lesson.getGroupNumber()}"></div>
+                      </div>
+                      <div class="font-size14 text-light-gray" th:text="${lesson.getTeacher().getName()}"></div>
+                    </th:block>
+                  </div>
+
                 </td>
                 <td>
-                  <span class="badge badge-info">Name lesson</span>
-                  <div class="font-size14">lecture\group</div>
-                  <div class="font-size14 text-light-gray">Teacher</div>
-                </td>
-                <td>
-                  <span class="badge badge-info">Name lesson</span>
-                  <div class="font-size14">lecture\group</div>
-                  <div class="font-size14 text-light-gray">Teacher</div>
+
+                  <div th:if="${l2_2 != null}">
+                    <th:block th:each="lesson : ${l2_2}">
+                      <span class="badge badge-info" th:text="${lesson.getSubject().getName()}"></span>
+                      <div th:if="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" >lecture</div>
+                      </div>
+                      <div th:unless="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" th:text="${'group '+lesson.getGroupNumber()}"></div>
+                      </div>
+                      <div class="font-size14 text-light-gray" th:text="${lesson.getTeacher().getName()}"></div>
+                    </th:block>
+                  </div>
                 </td>
 
-                <td class="bg-light-gray">
-                  <span class="badge badge-info">Name lesson</span>
-                  <div class="font-size14">lecture\group</div>
-                  <div class="font-size14 text-light-gray">Teacher</div>
+                <td>
+
+                  <div th:if="${l3_2 != null}">
+                    <th:block th:each="lesson : ${l3_2}">
+                      <span class="badge badge-info" th:text="${lesson.getSubject().getName()}"></span>
+                      <div th:if="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" >lecture</div>
+                      </div>
+                      <div th:unless="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" th:text="${'group '+lesson.getGroupNumber()}"></div>
+                      </div>
+                      <div class="font-size14 text-light-gray" th:text="${lesson.getTeacher().getName()}"></div>
+                    </th:block>
+                  </div>
+                </td>
+                <td>
+
+                  <div th:if="${l4_2 != null}">
+                    <th:block th:each="lesson : ${l4_2}">
+                      <span class="badge badge-info" th:text="${lesson.getSubject().getName()}"></span>
+                      <div th:if="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" >lecture</div>
+                      </div>
+                      <div th:unless="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" th:text="${'group '+lesson.getGroupNumber()}"></div>
+                      </div>
+                      <div class="font-size14 text-light-gray" th:text="${lesson.getTeacher().getName()}"></div>
+                    </th:block>
+                  </div>
+                </td>
+                <td>
+
+                  <div th:if="${l5_2 != null}">
+                    <th:block th:each="lesson : ${l5_2}">
+                      <span class="badge badge-info" th:text="${lesson.getSubject().getName()}"></span>
+                      <div th:if="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" >lecture</div>
+                      </div>
+                      <div th:unless="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" th:text="${'group '+lesson.getGroupNumber()}"></div>
+                      </div>
+                      <div class="font-size14 text-light-gray" th:text="${lesson.getTeacher().getName()}"></div>
+                    </th:block>
+                  </div>
                 </td>
               </tr>
 
@@ -107,29 +209,81 @@
                 <td class="align-middle">3</td>
                 <td class="align-middle">11:40</td>
                 <td>
-                  <span class="badge badge-info">Name lesson</span>
-                  <div class="font-size14">lecture\group</div>
-                  <div class="font-size14 text-light-gray">Teacher</div>
+
+                  <div th:if="${l1_3 != null}">
+                    <th:block th:each="lesson : ${l1_3}">
+                      <span class="badge badge-info" th:text="${lesson.getSubject().getName()}"></span>
+                      <div th:if="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" >lecture</div>
+                      </div>
+                      <div th:unless="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" th:text="${'group '+lesson.getGroupNumber()}"></div>
+                      </div>
+                      <div class="font-size14 text-light-gray" th:text="${lesson.getTeacher().getName()}"></div>
+                    </th:block>
+                  </div>
+
                 </td>
                 <td>
-                  <span class="badge badge-info">Name lesson</span>
-                  <div class="font-size14">lecture\group</div>
-                  <div class="font-size14 text-light-gray">Teacher</div>
+
+                  <div th:if="${l2_3 != null}">
+                    <th:block th:each="lesson : ${l2_3}">
+                      <span class="badge badge-info" th:text="${lesson.getSubject().getName()}"></span>
+                      <div th:if="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" >lecture</div>
+                      </div>
+                      <div th:unless="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" th:text="${'group '+lesson.getGroupNumber()}"></div>
+                      </div>
+                      <div class="font-size14 text-light-gray" th:text="${lesson.getTeacher().getName()}"></div>
+                    </th:block>
+                  </div>
+                </td>
+
+                <td>
+
+                  <div th:if="${l3_3 != null}">
+                    <th:block th:each="lesson : ${l3_3}">
+                      <span class="badge badge-info" th:text="${lesson.getSubject().getName()}"></span>
+                      <div th:if="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" >lecture</div>
+                      </div>
+                      <div th:unless="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" th:text="${'group '+lesson.getGroupNumber()}"></div>
+                      </div>
+                      <div class="font-size14 text-light-gray" th:text="${lesson.getTeacher().getName()}"></div>
+                    </th:block>
+                  </div>
                 </td>
                 <td>
-                  <span class="badge badge-info">Name lesson</span>
-                  <div class="font-size14">lecture\group</div>
-                  <div class="font-size14 text-light-gray">Teacher</div>
+
+                  <div th:if="${l4_3!= null}">
+                    <th:block th:each="lesson : ${l4_3}">
+                      <span class="badge badge-info" th:text="${lesson.getSubject().getName()}"></span>
+                      <div th:if="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" >lecture</div>
+                      </div>
+                      <div th:unless="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" th:text="${'group '+lesson.getGroupNumber()}"></div>
+                      </div>
+                      <div class="font-size14 text-light-gray" th:text="${lesson.getTeacher().getName()}"></div>
+                    </th:block>
+                  </div>
                 </td>
                 <td>
-                  <span class="badge badge-info">Name lesson</span>
-                  <div class="font-size14">lecture\group</div>
-                  <div class="font-size14 text-light-gray">Teacher</div>
-                </td>
-                <td>
-                  <span class="badge badge-info">Name lesson</span>
-                  <div class="font-size14">lecture\group</div>
-                  <div class="font-size14 text-light-gray">Teacher</div>
+
+                  <div th:if="${l5_3 != null}">
+                    <th:block th:each="lesson : ${l5_3}">
+                      <span class="badge badge-info" th:text="${lesson.getSubject().getName()}"></span>
+                      <div th:if="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" >lecture</div>
+                      </div>
+                      <div th:unless="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" th:text="${'group '+lesson.getGroupNumber()}"></div>
+                      </div>
+                      <div class="font-size14 text-light-gray" th:text="${lesson.getTeacher().getName()}"></div>
+                    </th:block>
+                  </div>
                 </td>
               </tr>
 
@@ -138,30 +292,82 @@
                 <td class="align-middle">4</td>
                
                 <td class="align-middle">13:30</td>
-                <td class="bg-light-gray">
-                  <span class="badge badge-info">Name lesson</span>
-                  <div class="font-size14">lecture\group</div>
-                  <div class="font-size14 text-light-gray">Teacher</div>
+                <td>
+
+                  <div th:if="${l1_4 != null}">
+                    <th:block th:each="lesson : ${l1_4}">
+                      <span class="badge badge-info" th:text="${lesson.getSubject().getName()}"></span>
+                      <div th:if="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" >lecture</div>
+                      </div>
+                      <div th:unless="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" th:text="${'group '+lesson.getGroupNumber()}"></div>
+                      </div>
+                      <div class="font-size14 text-light-gray" th:text="${lesson.getTeacher().getName()}"></div>
+                    </th:block>
+                  </div>
+
                 </td>
                 <td>
-                  <span class="badge badge-info">Name lesson</span>
-                  <div class="font-size14">lecture\group</div>
-                  <div class="font-size14 text-light-gray">Teacher</div>
+
+                  <div th:if="${l2_4 != null}">
+                    <th:block th:each="lesson : ${l2_4}">
+                      <span class="badge badge-info" th:text="${lesson.getSubject().getName()}"></span>
+                      <div th:if="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" >lecture</div>
+                      </div>
+                      <div th:unless="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" th:text="${'group '+lesson.getGroupNumber()}"></div>
+                      </div>
+                      <div class="font-size14 text-light-gray" th:text="${lesson.getTeacher().getName()}"></div>
+                    </th:block>
+                  </div>
+                </td>
+
+                <td>
+
+                  <div th:if="${l3_4 != null}">
+                    <th:block th:each="lesson : ${l3_4}">
+                      <span class="badge badge-info" th:text="${lesson.getSubject().getName()}"></span>
+                      <div th:if="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" >lecture</div>
+                      </div>
+                      <div th:unless="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" th:text="${'group '+lesson.getGroupNumber()}"></div>
+                      </div>
+                      <div class="font-size14 text-light-gray" th:text="${lesson.getTeacher().getName()}"></div>
+                    </th:block>
+                  </div>
                 </td>
                 <td>
-                  <span class="badge badge-info">Name lesson</span>
-                  <div class="font-size14">lecture\group</div>
-                  <div class="font-size14 text-light-gray">Teacher</div>
+
+                  <div th:if="${l4_4 != null}">
+                    <th:block th:each="lesson : ${l4_4}">
+                      <span class="badge badge-info" th:text="${lesson.getSubject().getName()}"></span>
+                      <div th:if="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" >lecture</div>
+                      </div>
+                      <div th:unless="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" th:text="${'group '+lesson.getGroupNumber()}"></div>
+                      </div>
+                      <div class="font-size14 text-light-gray" th:text="${lesson.getTeacher().getName()}"></div>
+                    </th:block>
+                  </div>
                 </td>
                 <td>
-                  <span class="badge badge-info">Name lesson</span>
-                  <div class="font-size14">lecture\group</div>
-                  <div class="font-size14 text-light-gray">Teacher</div>
-                </td>
-                <td>
-                  <span class="badge badge-info">Name lesson</span>
-                  <div class="font-size14">lecture\group</div>
-                  <div class="font-size14 text-light-gray">Teacher</div>
+
+                  <div th:if="${l5_4 != null}">
+                    <th:block th:each="lesson : ${l5_4}">
+                      <span class="badge badge-info" th:text="${lesson.getSubject().getName()}"></span>
+                      <div th:if="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" >lecture</div>
+                      </div>
+                      <div th:unless="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" th:text="${'group '+lesson.getGroupNumber()}"></div>
+                      </div>
+                      <div class="font-size14 text-light-gray" th:text="${lesson.getTeacher().getName()}"></div>
+                    </th:block>
+                  </div>
                 </td>
               </tr>
 
@@ -169,60 +375,164 @@
                 <td class="align-middle">5</td>
               
                 <td class="align-middle">15:00</td>
-                <td class="bg-light-gray">
-                  <span class="badge badge-info">Name lesson</span>
-                  <div class="font-size14">lecture\group</div>
-                  <div class="font-size14 text-light-gray">Teacher</div>
+                <td>
+
+                  <div th:if="${l1_5 != null}">
+                    <th:block th:each="lesson : ${l1_5}">
+                      <span class="badge badge-info" th:text="${lesson.getSubject().getName()}"></span>
+                      <div th:if="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" >lecture</div>
+                      </div>
+                      <div th:unless="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" th:text="${'group '+lesson.getGroupNumber()}"></div>
+                      </div>
+                      <div class="font-size14 text-light-gray" th:text="${lesson.getTeacher().getName()}"></div>
+                    </th:block>
+                  </div>
+
                 </td>
                 <td>
-                  <span class="badge badge-info">Name lesson</span>
-                  <div class="font-size14">lecture\group</div>
-                  <div class="font-size14 text-light-gray">Teacher</div>
+
+                  <div th:if="${l2_5 != null}">
+                    <th:block th:each="lesson : ${l2_5}">
+                      <span class="badge badge-info" th:text="${lesson.getSubject().getName()}"></span>
+                      <div th:if="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" >lecture</div>
+                      </div>
+                      <div th:unless="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" th:text="${'group '+lesson.getGroupNumber()}"></div>
+                      </div>
+                      <div class="font-size14 text-light-gray" th:text="${lesson.getTeacher().getName()}"></div>
+                    </th:block>
+                  </div>
+                </td>
+
+                <td>
+
+                  <div th:if="${l3_5 != null}">
+                    <th:block th:each="lesson : ${l3_5}">
+                      <span class="badge badge-info" th:text="${lesson.getSubject().getName()}"></span>
+                      <div th:if="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" >lecture</div>
+                      </div>
+                      <div th:unless="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" th:text="${'group '+lesson.getGroupNumber()}"></div>
+                      </div>
+                      <div class="font-size14 text-light-gray" th:text="${lesson.getTeacher().getName()}"></div>
+                    </th:block>
+                  </div>
                 </td>
                 <td>
-                  <span class="badge badge-info">Name lesson</span>
-                  <div class="font-size14">lecture\group</div>
-                  <div class="font-size14 text-light-gray">Teacher</div>
+
+                  <div th:if="${l4_5 != null}">
+                    <th:block th:each="lesson : ${l4_5}">
+                      <span class="badge badge-info" th:text="${lesson.getSubject().getName()}"></span>
+                      <div th:if="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" >lecture</div>
+                      </div>
+                      <div th:unless="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" th:text="${'group '+lesson.getGroupNumber()}"></div>
+                      </div>
+                      <div class="font-size14 text-light-gray" th:text="${lesson.getTeacher().getName()}"></div>
+                    </th:block>
+                  </div>
                 </td>
                 <td>
-                  <span class="badge badge-info">Name lesson</span>
-                  <div class="font-size14">lecture\group</div>
-                  <div class="font-size14 text-light-gray">Teacher</div>
-                </td>
-                <td>
-                  <span class="badge badge-info">Name lesson</span>
-                  <div class="font-size14">lecture\group</div>
-                  <div class="font-size14 text-light-gray">Teacher</div>
+
+                  <div th:if="${l5_5 != null}">
+                    <th:block th:each="lesson : ${l5_5}">
+                      <span class="badge badge-info" th:text="${lesson.getSubject().getName()}"></span>
+                      <div th:if="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" >lecture</div>
+                      </div>
+                      <div th:unless="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" th:text="${'group '+lesson.getGroupNumber()}"></div>
+                      </div>
+                      <div class="font-size14 text-light-gray" th:text="${lesson.getTeacher().getName()}"></div>
+                    </th:block>
+                  </div>
                 </td>
               </tr>
 
               <tr>
                 <td class="align-middle">6</td>
                 <td class="align-middle">16:30</td>
-                <td class="bg-light-gray">
-                  <span class="badge badge-info">Name lesson</span>
-                  <div class="font-size14">lecture\group</div>
-                  <div class="font-size14 text-light-gray">Teacher</div>
+                <td>
+
+                  <div th:if="${l1_6 != null}">
+                    <th:block th:each="lesson : ${l1_6}">
+                      <span class="badge badge-info" th:text="${lesson.getSubject().getName()}"></span>
+                      <div th:if="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" >lecture</div>
+                      </div>
+                      <div th:unless="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" th:text="${'group '+lesson.getGroupNumber()}"></div>
+                      </div>
+                      <div class="font-size14 text-light-gray" th:text="${lesson.getTeacher().getName()}"></div>
+                    </th:block>
+                  </div>
+
                 </td>
                 <td>
-                  <span class="badge badge-info">Name lesson</span>
-                  <div class="font-size14">lecture\group</div>
-                  <div class="font-size14 text-light-gray">Teacher</div>
+
+                  <div th:if="${l2_6 != null}">
+                    <th:block th:each="lesson : ${l2_6}">
+                      <span class="badge badge-info" th:text="${lesson.getSubject().getName()}"></span>
+                      <div th:if="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" >lecture</div>
+                      </div>
+                      <div th:unless="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" th:text="${'group '+lesson.getGroupNumber()}"></div>
+                      </div>
+                      <div class="font-size14 text-light-gray" th:text="${lesson.getTeacher().getName()}"></div>
+                    </th:block>
+                  </div>
+                </td>
+
+                <td>
+
+                  <div th:if="${l3_6 != null}">
+                    <th:block th:each="lesson : ${l3_6}">
+                      <span class="badge badge-info" th:text="${lesson.getSubject().getName()}"></span>
+                      <div th:if="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" >lecture</div>
+                      </div>
+                      <div th:unless="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" th:text="${'group '+lesson.getGroupNumber()}"></div>
+                      </div>
+                      <div class="font-size14 text-light-gray" th:text="${lesson.getTeacher().getName()}"></div>
+                    </th:block>
+                  </div>
                 </td>
                 <td>
-                  <span class="badge badge-info">Name lesson</span>
-                  <div class="font-size14">lecture\group</div>
-                  <div class="font-size14 text-light-gray">Teacher</div>
+
+                  <div th:if="${l4_6 != null}">
+                    <th:block th:each="lesson : ${l4_6}">
+                      <span class="badge badge-info" th:text="${lesson.getSubject().getName()}"></span>
+                      <div th:if="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" >lecture</div>
+                      </div>
+                      <div th:unless="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" th:text="${'group '+lesson.getGroupNumber()}"></div>
+                      </div>
+                      <div class="font-size14 text-light-gray" th:text="${lesson.getTeacher().getName()}"></div>
+                    </th:block>
+                  </div>
                 </td>
                 <td>
-                  <span class="badge badge-info">Name lesson</span>
-                  <div class="font-size14">lecture\group</div>
-                  <div class="font-size14 text-light-gray">Teacher</div>
-                </td>
-                <td>
-                  <span class="badge badge-info">Name lesson</span>
-                  <div class="font-size14">lecture\group</div>
-                  <div class="font-size14 text-light-gray">Teacher</div>
+
+                  <div th:if="${l5_6 != null}">
+                    <th:block th:each="lesson : ${l5_6}">
+                      <span class="badge badge-info" th:text="${lesson.getSubject().getName()}"></span>
+                      <div th:if="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" >lecture</div>
+                      </div>
+                      <div th:unless="${lesson.getGroupNumber() == 0}">
+                        <div class="font-size14" th:text="${'group '+lesson.getGroupNumber()}"></div>
+                      </div>
+                      <div class="font-size14 text-light-gray" th:text="${lesson.getTeacher().getName()}"></div>
+                    </th:block>
+                  </div>
                 </td>
               </tr>
             </tbody>
