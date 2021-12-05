@@ -29,27 +29,45 @@
           <div class="card-header bg-light text-info">
             <h4 class="text-center">Subjects</h4>
           </div>
-          <!-- <img src="..." class="card-img-top" alt="..."> -->
           <div class="card-body">
-            <form>
-<!--              action="#"-->
-<!--              th:action="@{/student/subject/add_groups}"-->
-<!--              th:method="post"-->
+            <form
+              action="#"
+              th:action="@{/student/subject/groups}"
+                th:object="${form}"
+              th:method="post">
 
-              <ul class="list-group my-2"  th:each="subject : ${normative}">
+              <ul class="list-group my-2"  th:each="subject, itemStat : *{chooseSubGroup}">
                 <li class="list-group-item d-flex justify-content-between">
-                  <span th:text="${subject.getSubName()}">Name</span>
+                    <div th:if="${subject.isNormative()}">
+                  <h4 th:text="${subject.getSubName()}" class="badge badge-info">Name</h4>
+                    </div>
+                    <div th:unless="${subject.isNormative()}">
+                        <h4 th:text="${subject.getSubName()}" class="badge badge-success">Name</h4>
+                    </div>
 <!--                    MORE THAN 0 GROUPS-->
                     <div th:if="${subject.getGroupMax()>0}">
-                        <select >
+                        <select th:field="*{chooseSubGroup[__${itemStat.index}__].groupNum}" >
+                            <div th:if="${0 == subject.getGroupNum() }">
+                                <option selected th:value="${0}" >
+                                    not chosen
+                                </option>
+                            </div>
+                            <div th:unless="${0 == subject.getGroupNum()}">
+                                <option  th:value="${0}">
+                                    not chosen
+                                </option>
+                            </div>
                             <th:block th:each="i : ${#numbers.sequence(1, subject.getGroupMax())}" >
-                            <option th:each="i : ${#numbers.sequence(1, subject.getGroupMax())}" th:value="${i}" th:text="${i}">
-                            </option>
-<!--                            <div th:if="${i == }">-->
-<!--                            </div>-->
-<!--                            <div th:unless="${subject.getMaxGroups()>0}">-->
-<!--                            </div>-->
-<!--                            </th:block>-->
+
+                            <div th:if="${i == subject.getGroupNum()}">
+                                <option selected th:value="${i}" th:text="${i}">
+                                </option>
+                            </div>
+                            <div th:unless="${i == subject.getGroupNum()}">
+                                <option  th:value="${i}" th:text="${i}">
+                                </option>
+                            </div>
+                            </th:block>
                         </select>
                     </div>
                     <!-- ELSE -->

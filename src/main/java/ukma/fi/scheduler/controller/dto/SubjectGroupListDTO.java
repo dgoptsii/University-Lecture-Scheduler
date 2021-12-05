@@ -8,13 +8,14 @@ import lombok.EqualsAndHashCode;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @EqualsAndHashCode
 public class SubjectGroupListDTO {
 
-    private List<SubjectGroupDTO> chooseSubGroup;
+    private List<SubjectGroupDTO> chooseSubGroup = new ArrayList<>();
 
     // default and parameterized constructor
 

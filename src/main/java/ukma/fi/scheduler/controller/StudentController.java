@@ -49,10 +49,6 @@ public class StudentController {
         return new RedirectView("/profile");
     }
 
-    @GetMapping("/subject/groups")
-    public ModelAndView addStudentGroup() {
-        return new ModelAndView("student-add-group");
-    }
 
     private SubjectGroupListDTO getSubjectGroupDTOS(String login) {
         List<Subject> normativeSubjects = userService.findNormativeSubjects(login);

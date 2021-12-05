@@ -29,10 +29,9 @@
           <div class="card-header bg-light text-info">
             <h4 class="text-center">Add subject</h4>
           </div>
-          <!-- <img src="..." class="card-img-top" alt="..."> -->
           <div class="card-body">
             <div class="d-flex justify-content-between my-2">
-              <!-- <span>Name</span> -->
+
               <select class="form-select w-100">
                 <option th:each="subject : ${addSubjects}" th:value="${subject.getId()}" th:text="${subject.getName()}">
                 </option>
