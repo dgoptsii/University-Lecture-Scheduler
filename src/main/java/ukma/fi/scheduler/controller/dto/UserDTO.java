@@ -2,23 +2,24 @@ package ukma.fi.scheduler.controller.dto;
 
 import lombok.Data;
 
+import javax.persistence.Column;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 @Data
 public class UserDTO {
 
-    @NotNull
-//    @Pattern(regexp = "([a-z]+\\.[a-z]+)@ukma\\.edu\\.ua")
+    @Pattern(regexp = "([a-z]+\\.[a-z]+)@ukma\\.edu\\.ua")
     private String login;
 
-    @NotNull
 //    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$")
     private String password;
 
-    @NotNull
-    @Pattern(regexp = "STUDENT|ADMIN|TEACHER")
-    private String status;
+    private String name;
 
+    private String surname;
+
+    private String patronim;
 }

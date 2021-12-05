@@ -1,6 +1,7 @@
 package ukma.fi.scheduler.entities;
 
 import lombok.Data;
+import ukma.fi.scheduler.controller.dto.UserDTO;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
@@ -50,4 +51,11 @@ public class User {
     private Map<Subject, Integer> groups;
 
 
+    public User changeUser(UserDTO user){
+        this.name = user.getName();
+        this.surname = user.getSurname();
+        this.patronim = user.getPatronim();
+        this.login = user.getLogin();
+        return this;
+    }
 }

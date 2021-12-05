@@ -3,6 +3,7 @@ package ukma.fi.scheduler.service.impl;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ukma.fi.scheduler.controller.dto.UserDTO;
 import ukma.fi.scheduler.controller.dto.UserLoginDTO;
 import ukma.fi.scheduler.exceptionHandlers.exceptions.InvalidData;
 import ukma.fi.scheduler.exceptionHandlers.exceptions.UserNotFoundException;
@@ -51,6 +52,19 @@ public class AuthServiceImpl implements AuthService {
         user.setStatus(role);
         return userRepository.save(user);
     }
+
+    @Override
+    public User editUser(@Valid UserDTO userNew,String login) {
+        User user = userService.findUserByLogin(login);
+        if(userNew.getPassword().isEmpty()){
+            user.changeUser(userNew);
+        }else if (!passwordEncoder.encode(userNew.getPassword()).equals(user.getPassword())){
+            userNew.setPassword(passwordEncoder.encode(userNew.getPassword()));
+            user.changeUser(userNew);
+        }
+        return userRepository.save(user);
+    }
+
 
     @Override
     public User getUserInfo(Long id) {

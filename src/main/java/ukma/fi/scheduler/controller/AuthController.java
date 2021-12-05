@@ -5,8 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
+import ukma.fi.scheduler.controller.dto.UserDTO;
 import ukma.fi.scheduler.entities.User;
 import ukma.fi.scheduler.repository.UserRepository;
 import ukma.fi.scheduler.service.AuthService;
@@ -45,6 +47,24 @@ public class AuthController {
             mav.setViewName("teacher-profile");
         mav.addObject("user", userService.findUserByLogin(principal.getName()));
         return mav;
+    }
+
+    @GetMapping("/profile_edit")
+    public ModelAndView profileEditPage(Principal principal) {
+        ModelAndView mav = new ModelAndView();
+        User user = userService.findUserByLogin(principal.getName());
+        if(user.getStatus().equals("STUDENT"))
+            mav.setViewName("student-profile-edit");
+        else if(user.getStatus().equals("TEACHER"))
+            mav.setViewName("teacher-profile-edit");
+        mav.addObject("user", userService.findUserByLogin(principal.getName()));
+        return mav;
+    }
+
+    @PutMapping("/profile_edit")
+    public RedirectView profilePage(@Valid @ModelAttribute UserDTO user, Principal principal) {
+        authService.editUser(user, principal.getName());
+        return new RedirectView("/profile");
     }
 
     @PostMapping("/registration")
