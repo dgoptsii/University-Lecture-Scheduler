@@ -54,7 +54,6 @@ public class AuthController {
     @GetMapping("/profile_edit")
     public ModelAndView profileEditPage(Principal principal) {
         ModelAndView mav = new ModelAndView();
-        User user = userService.findUserByLogin(principal.getName());
         mav.setViewName("profile-edit");
         mav.addObject("user", userService.findUserByLogin(principal.getName()));
         return mav;
