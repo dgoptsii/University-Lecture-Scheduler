@@ -21,7 +21,9 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <a class="navbar-brand" href="#">Scheduler.com</a>
 </nav>
-
+<div th:if="${currentUser != null && 'STUDENT'.equals(currentUser.getAuthorities().toArray()[0].toString())}">
+    WTF
+</div>
 <main role="main">
     <div class="d-flex flex-column justify-content-center align-items-center">
         <div class="card w-50 my-2">
