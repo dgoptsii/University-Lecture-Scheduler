@@ -10,6 +10,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import ukma.fi.scheduler.controller.dto.SubjectLectureDTO;
 import ukma.fi.scheduler.entities.Lesson;
 import ukma.fi.scheduler.entities.Subject;
+import ukma.fi.scheduler.service.LessonService;
 import ukma.fi.scheduler.service.SubjectService;
 import ukma.fi.scheduler.service.UserService;
 
@@ -35,6 +36,9 @@ public class TeacherController {
     @Autowired
     private SubjectService subjectService;
 
+    @Autowired
+    private LessonService lessonService;
+
     @GetMapping("/subject/add")
     public ModelAndView addSubject() {
         ModelAndView mav = new ModelAndView("teacher_add_subject");
@@ -47,9 +51,9 @@ public class TeacherController {
     public RedirectView addSubject(@ModelAttribute("subject") SubjectLectureDTO dto) {
         Subject newSubject = new Subject(dto.getName(), dto.getMaxGroups(), dto.getSpecialty(), dto.getYear());
         Lesson newLesson = new Lesson(newSubject, dto.getDayOfWeek(), dto.getLessonNumber(), dto.getTeacher(),0);
-
         subjectService.create(newSubject);
-        return new RedirectView("teacher/subject/add");
+        lessonService.create(newLesson);
+        return new RedirectView("/teacher/subject/add");
     }
 
     @ModelAttribute("currentUser")
