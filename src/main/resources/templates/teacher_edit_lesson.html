@@ -68,12 +68,12 @@
                         <div class="col m-2">
                             <select name="teacher" style="width: 100%; max-width: 280px" required >
                                 <th:block th:each=" teacher : ${teachers}" >
-                                    <div th:if="${teacher == lesson.getTeacher()}">
+                                    <div th:if="${teacher.getId() == lesson.getTeacher().getId()}">
                                         <option selected th:value="${teacher.getId()}" th:text="${teacher.getName()}">
                                         </option>
                                     </div>
-                                    <div th:unless="${teacher == lesson.getTeacher()}">
-                                        <option selected th:value="${teacher.getId()}" th:text="${teacher.getName()}">
+                                    <div th:unless="${teacher.getId() == lesson.getTeacher().getId()}">
+                                        <option  th:value="${teacher.getId()}" th:text="${teacher.getName()}">
                                         </option>
                                     </div>
                                 </th:block>
