@@ -21,7 +21,10 @@
     <div class="d-flex flex-column justify-content-center align-items-center">
         <div class="card w-50 my-2">
             <div class="card-header bg-light text-info">
-                <h4 class="text-center">Edit teacher profile</h4>
+                <h4 th:if="${currentUser != null && 'STUDENT'.equals(currentUser.getAuthorities().toArray()[0].toString())}"
+                    class="text-center">Edit student profile</h4>
+                <h4 th:if="${currentUser != null && 'TEACHER'.equals(currentUser.getAuthorities().toArray()[0].toString())}"
+                    class="text-center">Edit teacher profile</h4>
             </div>
             <div class="card-body">
                 <form
