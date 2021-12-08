@@ -7,6 +7,7 @@ import ukma.fi.scheduler.controller.dto.LessonDTO;
 import ukma.fi.scheduler.entities.Lesson;
 import ukma.fi.scheduler.entities.Subject;
 import ukma.fi.scheduler.exceptionHandlers.exceptions.InvalidData;
+import ukma.fi.scheduler.exceptionHandlers.exceptions.LessonDeleteException;
 import ukma.fi.scheduler.exceptionHandlers.exceptions.LessonNotFoundException;
 import ukma.fi.scheduler.exceptionHandlers.exceptions.SubjectNotFoundException;
 import ukma.fi.scheduler.repository.LessonRepository;
@@ -15,6 +16,7 @@ import ukma.fi.scheduler.service.LessonService;
 import javax.validation.Valid;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class LessonServiceImpl implements LessonService {
@@ -69,9 +71,14 @@ public class LessonServiceImpl implements LessonService {
 
     @Override
     public void delete(Long id) {
-        if (!lessonRepository.findById(id).isPresent()) {
+        Optional<Lesson> lessonOptional = lessonRepository.findById(id);
+        if (!lessonOptional.isPresent()) {
             throw new LessonNotFoundException(id);
         }
-        lessonRepository.delete(lessonRepository.findById(id).get());
+        Lesson lesson = lessonOptional.get();
+        if (lesson.getGroupNumber() == 0) {
+            throw new LessonDeleteException();
+        }
+        lessonRepository.delete(lesson);
     }
 }
