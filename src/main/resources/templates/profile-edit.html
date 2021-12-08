@@ -9,12 +9,6 @@
             integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
             crossorigin="anonymous"
     />
-    <link
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-            crossorigin="anonymous"
-    />
 </head>
 
 <body style="padding-top: 100px">
@@ -22,7 +16,6 @@
 </div>
 
 <div th:if="${currentUser != null && 'STUDENT'.equals(currentUser.getAuthorities().toArray()[0].toString())}">
-    WTF
 </div>
 <main role="main">
     <div class="d-flex flex-column justify-content-center align-items-center">
@@ -35,6 +28,7 @@
                         action="#"
                         th:action="@{/profile_edit}"
                         th:method="put"
+
                         onsubmit="return validate(this);"
                 >
 

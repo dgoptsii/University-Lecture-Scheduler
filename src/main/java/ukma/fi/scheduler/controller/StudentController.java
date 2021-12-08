@@ -8,18 +8,12 @@ import org.springframework.web.bind.MissingRequestValueException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
-import ukma.fi.scheduler.controller.dto.SubjectGroupDTO;
-import ukma.fi.scheduler.controller.dto.SubjectGroupListDTO;
-import ukma.fi.scheduler.entities.Subject;
-import ukma.fi.scheduler.entities.User;
-import ukma.fi.scheduler.service.ScheduleService;
-import ukma.fi.scheduler.service.SubjectService;
-import ukma.fi.scheduler.service.UserService;
+import ukma.fi.scheduler.controller.dto.*;
+import ukma.fi.scheduler.entities.*;
+import ukma.fi.scheduler.service.*;
 
 import java.security.Principal;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("student")
