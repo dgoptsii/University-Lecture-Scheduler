@@ -28,7 +28,7 @@
                         <div class="col m-2">
                             <select name="subject" style="width: 100%; max-width: 280px" required>
                                 <option th:each="subject : ${subjects}" th:value="${subject.getId()}"
-                                        th:text="${subject.getName()} +'  num groups:'+${subject.getMaxGroups()} "
+                                        th:text="${subject.getName()} +'  (num groups:'+${subject.getMaxGroups()}+')' "
                                         >
                                 </option>
                             </select>

@@ -1,7 +1,6 @@
 package ukma.fi.scheduler.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.expression.AccessException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -12,10 +11,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 import ukma.fi.scheduler.controller.dto.UserDTO;
-import ukma.fi.scheduler.entities.Subject;
 import ukma.fi.scheduler.entities.User;
 import ukma.fi.scheduler.repository.SubjectRepository;
-import ukma.fi.scheduler.repository.UserRepository;
 import ukma.fi.scheduler.service.AuthService;
 import ukma.fi.scheduler.service.UserService;
 

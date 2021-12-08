@@ -43,13 +43,12 @@
                 <span  th:text="${'Groups: '+subject.getMaxGroups()}"></span>
               </div>
               <div class= "text-right d-flex justify-content-between">
-                <form class = "mx-2" action="#" th:action="@{'/teacher/subject/'+${subject.getId()}}" th:method="delete" >
+                <form  class = "mx-2" action="#" th:action="@{'/teacher/subject/'+${subject.getId()}}" th:method="get" >
+                  <input class="btn btn-info"type="submit" value="Edit"/>
+                </form>
+                <form action="#" th:action="@{'/teacher/subject/'+${subject.getId()}}" th:method="delete" >
                   <input type="hidden" name="_method" value="delete" />
                   <button class="btn btn-danger" type="submit" id="submitButton1">Delete </button>
-                </form>
-
-                <form action="#" th:action="@{'/teacher/subject/'+${subject.getId()}}" th:method="get" >
-                  <input class="btn btn-info"type="submit" value="Edit"/>
                 </form>
               </div>
             </li>
