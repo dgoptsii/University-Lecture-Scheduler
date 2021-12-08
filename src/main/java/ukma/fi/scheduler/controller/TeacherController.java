@@ -85,14 +85,8 @@ public class TeacherController {
     }
 
     @PutMapping("/subject/{id}")
-    public RedirectView updateSubject(@PathVariable Long id,Subject subject){
-        System.out.println(subject);
-//        Subject subject = subjectService.findSubjectById(id);
-//        List<Lesson> lessons = lessonService.findAllBySubject_Id(id);
-//        mav.addObject("specialties", SPECIALITIES);
-//        mav.addObject("teachers", userService.findByRole("TEACHER"));
-//        mav.addObject("lessons", lessons);
-//        mav.addObject("subject",subject);
+    public RedirectView updateSubject(@PathVariable Long id,@Valid Subject subject){
+        subjectService.edit(id,subject);
         return new RedirectView("/teacher/subject/"+id);
     }
 
