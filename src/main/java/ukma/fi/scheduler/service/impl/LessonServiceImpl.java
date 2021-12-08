@@ -24,12 +24,15 @@ public class LessonServiceImpl implements LessonService {
 
     @Override
     public Lesson create(LessonDTO dto) {
-        if(lessonRepository.findBySubjectAndGroupNumber(dto.getSubject(),dto.getGroupNumber()).isPresent()){
+        if (lessonRepository.findBySubjectAndGroupNumber(dto.getSubject(), dto.getGroupNumber()).isPresent()) {
             try {
                 throw new InvalidDataException("This lesson already exist");
             } catch (InvalidDataException e) {
                 e.printStackTrace();
             }
+        }
+        if (dto.getGroupNumber() > dto.getSubject().getMaxGroups()) {
+            throw new InvalidData(Collections.singletonMap("lesson_group_number", dto.getGroupNumber().toString()));
         }
         return lessonRepository.save(Lesson.createFromDto(dto));
     }
@@ -46,7 +49,7 @@ public class LessonServiceImpl implements LessonService {
 
     @Override
     public Lesson findById(Long id) {
-        if(!lessonRepository.findById(id).isPresent()){
+        if (!lessonRepository.findById(id).isPresent()) {
             throw new LessonNotFoundException(id);
         }
         return lessonRepository.findById(id).get();
@@ -55,18 +58,18 @@ public class LessonServiceImpl implements LessonService {
     @Override
     public void edit(Long id, Lesson lesson) {
         Lesson old = findById(id);
-        if(!old.getId().equals(lesson.getId())){
-            throw new InvalidData(Collections.singletonMap("lesson_id",id.toString()));
+        if (!old.getId().equals(lesson.getId())) {
+            throw new InvalidData(Collections.singletonMap("lesson_id", id.toString()));
         }
-        if(!old.equals(lesson)){
-            System.out.println("toDelete: "+lesson);
+        if (!old.equals(lesson)) {
+            System.out.println("toDelete: " + lesson);
             lessonRepository.save(lesson);
         }
     }
 
     @Override
     public void delete(Long id) {
-        if(!lessonRepository.findById(id).isPresent()){
+        if (!lessonRepository.findById(id).isPresent()) {
             throw new LessonNotFoundException(id);
         }
         lessonRepository.delete(lessonRepository.findById(id).get());
