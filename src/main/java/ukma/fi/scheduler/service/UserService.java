@@ -25,4 +25,8 @@ public interface UserService {
     List<Subject> findNonNormativeFreeSubjects(String login);
 
     List<Subject> findNonNormativeSubjects(String login);
+
+    List<User> findAllStudents();
+
+    List<User> findAllTeachers();
 }

@@ -2,6 +2,8 @@ package ukma.fi.scheduler.service.impl;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import ukma.fi.scheduler.service.SubGroupConverter;
 import ukma.fi.scheduler.controller.dto.SubjectGroupDTO;
@@ -95,6 +97,18 @@ public class UserServiceImpl implements UserService {
         List<Subject> studentSubjects = student.getStudentSubjects();
         studentSubjects.removeAll(normative);
         return studentSubjects;
+    }
+
+    @Cacheable("AllStudents")
+    @Override
+    public List<User> findAllStudents() {
+        return userRepository.findUsersByStatus("STUDENT");
+    }
+
+    @CacheEvict("AllTeachers")
+    @Override
+    public List<User> findAllTeachers() {
+        return userRepository.findUsersByStatus("TEACHER");
     }
 
     //Find all not normative subjects that student can add to his list
