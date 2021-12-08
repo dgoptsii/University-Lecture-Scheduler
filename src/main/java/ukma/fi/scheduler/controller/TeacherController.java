@@ -12,10 +12,12 @@ import ukma.fi.scheduler.controller.dto.SubjectLectureDTO;
 import ukma.fi.scheduler.entities.Lesson;
 import ukma.fi.scheduler.entities.Subject;
 import ukma.fi.scheduler.service.LessonService;
+import ukma.fi.scheduler.service.ScheduleService;
 import ukma.fi.scheduler.service.SubjectService;
 import ukma.fi.scheduler.service.UserService;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +41,9 @@ public class TeacherController {
 
     @Autowired
     private LessonService lessonService;
+
+    @Autowired
+    private ScheduleService scheduleService;
 
     @GetMapping("/subject/add")
     public ModelAndView addSubject() {
@@ -130,6 +135,13 @@ public class TeacherController {
     @ModelAttribute("currentUser")
     public UserDetails getCurrentUser(Authentication authentication) {
         return (authentication == null) ? null : (UserDetails) authentication.getPrincipal();
+    }
+
+    @GetMapping("/scheduler")
+    public ModelAndView schedule(Principal principal) {
+        ModelAndView mav = new ModelAndView("schedule");
+        mav.addAllObjects(scheduleService.findLessonsForTeacher(principal.getName()));
+        return mav;
     }
 
 }
