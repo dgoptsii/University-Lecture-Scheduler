@@ -11,7 +11,7 @@ public class SubjectLectureDTO {
     @NotBlank
     private String name;
 
-    @NotBlank
+    @NotNull
     @Min(0)
     @Max(10)
     private Integer maxGroups;
@@ -19,23 +19,22 @@ public class SubjectLectureDTO {
     @NotBlank
     private String specialty;
 
-    @NotBlank
+    @NotNull
     @Min(1)
     @Max(4)
     private Integer year;
 
     //Lecture
-    @NotBlank
+    @NotNull
     private User teacher;
 
-    @NotBlank
+    @NotNull
     @Min(1)
     @Max(6)
     private Integer dayOfWeek;
 
-    @NotBlank
+    @NotNull
     @Min(1)
     @Max(7)
     private Integer lessonNumber;
-
 }

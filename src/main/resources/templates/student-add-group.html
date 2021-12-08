@@ -38,7 +38,6 @@
 
               <ul class="list-group my-2"  th:each="subject, itemStat : *{chooseSubGroup}">
                 <li class="list-group-item d-flex justify-content-between">
-
                     <input th:field="*{chooseSubGroup[__${itemStat.index}__].subName}" hidden/>
                     <input th:field="*{chooseSubGroup[__${itemStat.index}__].subId}" hidden/>
                     <input th:field="*{chooseSubGroup[__${itemStat.index}__].groupMax}" hidden/>

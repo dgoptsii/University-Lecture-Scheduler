@@ -5,10 +5,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.MissingRequestValueException;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 import ukma.fi.scheduler.controller.dto.SubjectGroupDTO;
@@ -40,6 +37,7 @@ public class StudentController {
         mav.addObject("form", userService.getSubjectGroupDTOS(principal.getName()));
         return mav;
     }
+
     @PostMapping("/subject/groups")
     public RedirectView addStudentGroup(@ModelAttribute SubjectGroupListDTO form, Principal principal) {
         SubjectGroupListDTO oldForm = userService.getSubjectGroupDTOS(principal.getName());
@@ -54,11 +52,11 @@ public class StudentController {
         }
         userService.editSubjectGroup(principal.getName(),form);
 
-        return new RedirectView("student/subject/groups");
+        return new RedirectView("/student/subject/groups");
     }
 
     @GetMapping("/subject/add")
-    public ModelAndView addStudentSubject(Principal principal){
+    public ModelAndView addStudentSubject(Principal principal) {
         ModelAndView mav = new ModelAndView("student-add-subject");
         List<Subject> addSubjects = userService.findNonNormativeFreeSubjects(principal.getName());
         List<Subject> userNonNormative = userService.findNonNormativeSubjects(principal.getName());
@@ -67,6 +65,19 @@ public class StudentController {
         mav.addObject("userSubjects", userNonNormative);
         mav.addObject("userNormative", userNormative);
         return mav;
+    }
+
+
+    @PostMapping("/subject/{id}")
+    public RedirectView addNonNormativeGroup(@PathVariable Long id,Principal principal){
+        userService.addNonNormativeGroup(principal.getName(),id);
+        return new RedirectView("/student/subject/add");
+    }
+
+    @DeleteMapping("/subject/{id}")
+    public RedirectView deleteNonNormativeGroup(@PathVariable Long id,Principal principal){
+        userService.deleteNonNormativeGroup(principal.getName(),id);
+        return new RedirectView("/student/subject/add");
     }
 
     @GetMapping("/scheduler")

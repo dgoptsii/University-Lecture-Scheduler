@@ -1,6 +1,8 @@
 package ukma.fi.scheduler.entities;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import ukma.fi.scheduler.controller.dto.LessonDTO;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
@@ -8,6 +10,7 @@ import javax.validation.constraints.Min;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class Lesson {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,7 +34,7 @@ public class Lesson {
     private Integer lessonNumber;
 
     @Column(nullable = false)
-    @Min(1)
+    @Min(0)
     private Integer groupNumber;
 
 
@@ -43,7 +46,13 @@ public class Lesson {
         this.groupNumber = groupNumber;
     }
 
-    public Lesson() {
-
+    public static Lesson createFromDto(LessonDTO dto) {
+        Lesson res = new Lesson();
+        res.subject = dto.getSubject();
+        res.dayOfWeek = dto.getDayOfWeek();
+        res.lessonNumber = dto.getLessonNumber();
+        res.teacher = dto.getTeacher();
+        res.groupNumber = dto.getGroupNumber();
+        return res;
     }
 }

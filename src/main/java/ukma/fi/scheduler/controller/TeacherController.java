@@ -15,6 +15,7 @@ import ukma.fi.scheduler.service.LessonService;
 import ukma.fi.scheduler.service.SubjectService;
 import ukma.fi.scheduler.service.UserService;
 
+import javax.validation.Valid;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
@@ -49,11 +50,8 @@ public class TeacherController {
     }
 
     @PostMapping("/subject/add")
-    public RedirectView addSubject(@ModelAttribute("subject") SubjectLectureDTO dto) {
-        Subject newSubject = new Subject(dto.getName(), dto.getMaxGroups(), dto.getSpecialty(), dto.getYear());
-        Lesson newLesson = new Lesson(newSubject, dto.getDayOfWeek(), dto.getLessonNumber(), dto.getTeacher(),0);
-        subjectService.create(newSubject);
-        lessonService.create(newLesson);
+    public RedirectView addSubject(@ModelAttribute("subject") @Valid SubjectLectureDTO dto) {
+        subjectService.create(dto);
         return new RedirectView("/teacher/subject/add");
     }
 
@@ -112,9 +110,8 @@ public class TeacherController {
 
 
     @PostMapping("/lesson/add")
-    public RedirectView addLesson(@ModelAttribute("lesson") LessonDTO dto) {
-        Lesson newLesson = new Lesson(dto.getSubject(), dto.getDayOfWeek(), dto.getLessonNumber(), dto.getTeacher(),dto.getGroupNumber());
-        lessonService.create(newLesson);
+    public RedirectView addLesson(@ModelAttribute("lesson") @Valid LessonDTO dto) {
+        lessonService.create(dto);
         return new RedirectView("/teacher/lesson/add");
     }
 

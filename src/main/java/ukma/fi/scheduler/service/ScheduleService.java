@@ -11,5 +11,4 @@ public interface ScheduleService {
 
     Map<String, Set<Lesson>> findLessonsForTeacher(String login);
 
-
 }

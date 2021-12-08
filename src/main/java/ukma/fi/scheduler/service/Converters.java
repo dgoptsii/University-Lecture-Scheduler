@@ -12,9 +12,12 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Service
-public class SubGroupConverter {
+public class Converters {
     @Autowired
     private SubjectService subjectService;
+
+//    @Autowired
+//    private SubjectService subjectService;
 
     public Map<Subject, Integer> convertSubGroupDto(SubjectGroupListDTO input){
         List<SubjectGroupDTO> list = input.getChooseSubGroup().stream()

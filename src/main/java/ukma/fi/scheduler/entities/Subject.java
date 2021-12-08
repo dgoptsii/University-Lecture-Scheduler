@@ -3,6 +3,7 @@ package ukma.fi.scheduler.entities;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
@@ -12,6 +13,7 @@ import javax.validation.constraints.NotBlank;
 @Entity
 @Data
 @EqualsAndHashCode
+@NoArgsConstructor
 public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -41,7 +43,4 @@ public class Subject {
         this.year = year;
     }
 
-    public Subject() {
-
-    }
 }

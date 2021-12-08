@@ -27,7 +27,6 @@ public class AdminController {
 
     @PostMapping("add_teacher")
     public RedirectView addTeacher(@Valid @ModelAttribute User user){
-        System.out.println("");
         authService.registration(user, "TEACHER");
         return new RedirectView("/add_teacher");
     }

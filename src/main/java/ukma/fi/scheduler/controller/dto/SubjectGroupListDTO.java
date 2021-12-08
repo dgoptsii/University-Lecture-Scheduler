@@ -20,7 +20,6 @@ public class SubjectGroupListDTO {
     private List<SubjectGroupDTO> chooseSubGroup = new ArrayList<>();
 
     // default and parameterized constructor
-
     public void addAllDto(List<SubjectGroupDTO> dto) {
         this.chooseSubGroup.addAll(dto);
     }

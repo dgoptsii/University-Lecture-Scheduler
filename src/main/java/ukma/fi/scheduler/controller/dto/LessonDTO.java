@@ -1,5 +1,6 @@
 package ukma.fi.scheduler.controller.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import ukma.fi.scheduler.entities.Subject;
 import ukma.fi.scheduler.entities.User;
@@ -7,25 +8,26 @@ import ukma.fi.scheduler.entities.User;
 import javax.validation.constraints.*;
 
 @Data
+@AllArgsConstructor
 public class LessonDTO {
 
-    @NotBlank
+    @NotNull
     private Subject subject;
 
-    @NotBlank
+    @NotNull
     private User teacher;
 
-    @NotBlank
+    @NotNull
     @Min(1)
     @Max(6)
     private Integer dayOfWeek;
 
-    @NotBlank
+    @NotNull
     @Min(1)
     @Max(7)
     private Integer lessonNumber;
 
-    @NotBlank
+    @NotNull
     @Min(1)
     private Integer groupNumber;
 

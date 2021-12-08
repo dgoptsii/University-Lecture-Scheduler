@@ -16,6 +16,10 @@ public interface UserService {
 
     void editSubjectGroup(String login,SubjectGroupListDTO form);
 
+    void addNonNormativeGroup(String login,Long id);
+
+    void deleteNonNormativeGroup(String login,Long id);
+
     SubjectGroupListDTO getSubjectGroupDTOS(String login);
 
     List<Subject> findNormativeSubjects(String login);
