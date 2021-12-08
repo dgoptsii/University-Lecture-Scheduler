@@ -127,7 +127,7 @@ public class TeacherController {
 
 
     @PostMapping("/lesson/add")
-    public RedirectView addLesson(@ModelAttribute("lesson") @Valid LessonDTO dto) {
+    public RedirectView addLesson(@ModelAttribute("lesson") @Valid LessonDTO dto) throws Exception{
         lessonService.create(dto);
         return new RedirectView("/teacher/lesson/add");
     }

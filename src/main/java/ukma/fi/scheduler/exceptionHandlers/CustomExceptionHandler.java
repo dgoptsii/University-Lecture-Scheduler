@@ -58,9 +58,10 @@ public class CustomExceptionHandler {
     @ResponseBody
     @ExceptionHandler(InvalidData.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public String invalidDataHandler(InvalidData ex) {
-        return ex.getMessage();
+    public ModelAndView invalidDataHandler(HttpServletRequest req, InvalidData exception) throws Exception {
+        return getErrorMav(req,exception,403);
     }
+
 
     @ResponseBody
     @ExceptionHandler(LessonNotFoundException.class)
