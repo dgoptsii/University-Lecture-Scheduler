@@ -46,7 +46,9 @@
                   <span  th:text="${'Groups: '+subject.getMaxGroups()}"></span>
                 </div>
                 <div class= "text-right">
+                  <form th:action="@{'/student/subject/'+${subject.getId()}}"  method="post">
                   <input class="btn btn-info" type="submit" value="Add" method="post"/>
+                  </form>
                 </div>
               </li>
               </th:block>
@@ -74,7 +76,9 @@
                     <span  th:text="${'Groups: '+subject.getMaxGroups()}"></span>
                   </div>
                   <div class= "text-right">
+                    <form th:action="@{'/student/subject/'+${subject.getId()}}"  method="delete">
                     <input class="btn btn-danger" type="submit" value="Delete" method="post"/>
+                    </form>
                   </div>
                 </li>
               </th:block>
