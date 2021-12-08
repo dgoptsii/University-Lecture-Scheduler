@@ -17,4 +17,5 @@ public interface SubjectService {
 
     List<Subject> findAll();
 
+    void deleteSubject(Long id);
 }

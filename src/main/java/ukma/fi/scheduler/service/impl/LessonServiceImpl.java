@@ -35,4 +35,25 @@ public class LessonServiceImpl implements LessonService {
     public List<Lesson> findAll() {
         return lessonRepository.findAll();
     }
+
+    @Override
+    public List<Lesson> findAllBySubject_Id(Long id) {
+        return lessonRepository.findLessonsBySubject_Id(id);
+    }
+
+    @Override
+    public Lesson findById(Long id) {
+        if(!lessonRepository.findById(id).isPresent()){
+            throw new LessonNotFoundException(id);
+        }
+        return lessonRepository.findById(id).get();
+    }
+
+    @Override
+    public void delete(Long id) {
+        if(!lessonRepository.findById(id).isPresent()){
+            throw new LessonNotFoundException(id);
+        }
+        lessonRepository.delete(lessonRepository.findById(id).get());
+    }
 }

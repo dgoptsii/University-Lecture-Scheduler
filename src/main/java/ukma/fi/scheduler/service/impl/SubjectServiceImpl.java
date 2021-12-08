@@ -8,6 +8,7 @@ import ukma.fi.scheduler.controller.dto.SubjectLectureDTO;
 import ukma.fi.scheduler.entities.Lesson;
 import ukma.fi.scheduler.entities.Subject;
 import ukma.fi.scheduler.exceptionHandlers.exceptions.InvalidData;
+import ukma.fi.scheduler.exceptionHandlers.exceptions.SubjectNotFoundException;
 import ukma.fi.scheduler.repository.SubjectRepository;
 import ukma.fi.scheduler.service.LessonService;
 import ukma.fi.scheduler.service.SubjectService;
@@ -68,6 +69,15 @@ public class SubjectServiceImpl implements SubjectService {
     @Override
     public List<Subject> findAll() {
         return subjectRepository.findAll();
+    }
+
+    @Override
+    public void deleteSubject(Long id) {
+        if (!subjectRepository.findById(id).isPresent()) {
+            throw new SubjectNotFoundException("Subject with id: "+id+" not found.");
+        } else {
+            subjectRepository.delete(subjectRepository.findById(id).get());
+        }
     }
 
 }

@@ -9,4 +9,7 @@ public interface LessonService {
 
     Lesson create(LessonDTO dto);
     List<Lesson> findAll();
+    List<Lesson> findAllBySubject_Id(Long id);
+    Lesson findById(Long id);
+    void delete(Long id);
 }

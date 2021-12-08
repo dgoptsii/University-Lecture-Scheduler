@@ -76,26 +76,37 @@ public class TeacherController {
     public ModelAndView getSubject(@PathVariable Long id){
         ModelAndView mav = new ModelAndView("teacher_edit_subject");
         Subject subject = subjectService.findSubjectById(id);
-        List<Lesson> lessons = lessonService.findAll();
+        List<Lesson> lessons = lessonService.findAllBySubject_Id(id);
         mav.addObject("specialties", SPECIALITIES);
         mav.addObject("teachers", userService.findByRole("TEACHER"));
         mav.addObject("lessons", lessons);
-        //TODO find lessons by subject id
         mav.addObject("subject",subject);
         return mav;
     }
 
+    @PutMapping("/subject/{id}")
+    public RedirectView updateSubject(@PathVariable Long id,Subject subject){
+        System.out.println(subject);
+//        Subject subject = subjectService.findSubjectById(id);
+//        List<Lesson> lessons = lessonService.findAllBySubject_Id(id);
+//        mav.addObject("specialties", SPECIALITIES);
+//        mav.addObject("teachers", userService.findByRole("TEACHER"));
+//        mav.addObject("lessons", lessons);
+//        mav.addObject("subject",subject);
+        return new RedirectView("/teacher/subject/"+id);
+    }
+
     @DeleteMapping("/subject/{id}")
     public RedirectView deleteSubject(@PathVariable Long id){
-        //TODO delete subject
+        subjectService.deleteSubject(id);
         return new RedirectView("/teacher/subject/all");
     }
 
     @GetMapping("/lesson/{id}")
     public ModelAndView getLesson(@PathVariable Long id) {
         ModelAndView mav = new ModelAndView("teacher_edit_lesson");
-//        Lesson lesson = lessonService.findById();
-        //TODO find lesson by id
+        Lesson lesson = lessonService.findById(id);
+        mav.addObject("lesson", lesson);
         mav.addObject("specialties", SPECIALITIES);
         mav.addObject("subjects", subjectService.findAll());
         mav.addObject("teachers", userService.findByRole("TEACHER"));
@@ -104,8 +115,9 @@ public class TeacherController {
 
     @DeleteMapping("/lesson/{id}")
     public RedirectView deleteLesson(@PathVariable Long id){
-        //TODO delete subject, redirect back to lesson page EBU KAK
-        return new RedirectView("/teacher/subject/all");
+        Lesson lesson = lessonService.findById(id);
+        lessonService.delete(id);
+        return new RedirectView("/teacher/subject/"+lesson.getSubject().getId());
     }
 
 
