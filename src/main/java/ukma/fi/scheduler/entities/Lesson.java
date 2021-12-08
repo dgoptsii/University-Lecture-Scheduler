@@ -25,12 +25,12 @@ public class Lesson {
 
     @Column(nullable = false)
     @Min(1)
-    @Max(6)
+    @Max(5)
     private Integer dayOfWeek;
 
     @Column(nullable = false)
     @Min(1)
-    @Max(7)
+    @Max(6)
     private Integer lessonNumber;
 
     @Column(nullable = false)

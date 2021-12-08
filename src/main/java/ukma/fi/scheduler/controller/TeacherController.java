@@ -122,7 +122,7 @@ public class TeacherController {
     public RedirectView editLesson(@PathVariable Long id, @Valid Lesson lesson){
         System.out.println(lesson);
         lessonService.edit(id, lesson);
-        return new RedirectView("/teacher/lesson/"+id);
+        return new RedirectView("/teacher/subject/"+lesson.getSubject().getId());
     }
 
 
