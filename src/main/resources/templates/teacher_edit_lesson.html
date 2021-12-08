@@ -45,11 +45,12 @@
                     <div th:unless="${0 == lesson.getGroupNumber()}">
                     <div class="row">
                         <div class="col m-2 text-right">Group number:</div>
-                        <div class="col m-2"><input style="width: 100%; max-width: 280px" type="number" th:value="${lesson.getGroupNumber()}" name="groupNumber" min="0" required/></div>
+                        <div class="col m-2"><input style="width: 100%; max-width: 280px" type="number" th:value="${lesson.getGroupNumber()}" name="groupNumber" min="1" required/></div>
                     </div>
                     </div>
                     <div th:if="${0 == lesson.getGroupNumber()}">
                         <div class="row">
+                            <input hidden type="number" th:value="${lesson.getGroupNumber()}" name="groupNumber" min="1" required/>
                         <div class="col m-2 text-right">Lecture:</div>
                             <div class="col m-2">cannot change group</div>
                         </div>
