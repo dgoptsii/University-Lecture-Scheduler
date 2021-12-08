@@ -114,6 +114,14 @@ public class TeacherController {
         return new RedirectView("/teacher/subject/"+lesson.getSubject().getId());
     }
 
+    @PutMapping("/lesson/{id}")
+    public RedirectView deleteLesson(@PathVariable Long id, Lesson lesson){
+        System.out.println(lesson);
+//        Lesson lesson = lessonService.findById(id);
+//        lessonService.delete(id);
+        return new RedirectView("/teacher/lesson/"+id);
+    }
+
 
     @PostMapping("/lesson/add")
     public RedirectView addLesson(@ModelAttribute("lesson") @Valid LessonDTO dto) {
