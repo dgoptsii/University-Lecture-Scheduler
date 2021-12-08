@@ -20,6 +20,8 @@ public interface UserService {
 
     void deleteNonNormativeGroup(String login,Long id);
 
+    void moveIfGroupsCountChange(Integer moveFrom,Subject subject);
+
     SubjectGroupListDTO getSubjectGroupDTOS(String login);
 
     List<Subject> findNormativeSubjects(String login);

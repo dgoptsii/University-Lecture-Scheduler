@@ -35,6 +35,9 @@ public class SubjectServiceImpl implements SubjectService {
     private LessonRepository lessonRepository;
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     private UserRepository userRepository;
 
     @Autowired
@@ -72,7 +75,7 @@ public class SubjectServiceImpl implements SubjectService {
             throw new InvalidData(Collections.singletonMap("name", subject.getName()));
         }
         subjectRepository.save(subject);
-        LessonDTO lecture = new LessonDTO(subject,dto.getTeacher(),dto.getDayOfWeek(),dto.getLessonNumber(),0);
+        LessonDTO lecture = new LessonDTO(subject, dto.getTeacher(), dto.getDayOfWeek(), dto.getLessonNumber(), 0);
         lessonService.create(lecture);
         log.info("created subject -> name:" + subject.getName());
         return findSubjectByName(subject.getName());
@@ -88,7 +91,7 @@ public class SubjectServiceImpl implements SubjectService {
     public void deleteSubject(Long id) {
         Optional<Subject> subjectOptional = subjectRepository.findById(id);
         if (!subjectOptional.isPresent()) {
-            throw new SubjectNotFoundException("Subject with id: "+id+" not found.");
+            throw new SubjectNotFoundException("Subject with id: " + id + " not found.");
         } else {
             Subject subject = subjectOptional.get();
             lessonRepository.deleteAllBySubject(subject);
@@ -102,10 +105,15 @@ public class SubjectServiceImpl implements SubjectService {
     @Override
     public void edit(Long id, Subject newSub) {
         Subject old = findSubjectById(id);
-        if(!old.getId().equals(newSub.getId())){
-            throw new InvalidData(Collections.singletonMap("subject_id",id.toString()));
+        if (!old.getId().equals(newSub.getId())) {
+            throw new InvalidData(Collections.singletonMap("subject_id", id.toString()));
         }
-        if(!old.equals(newSub)){
+        if (!old.equals(newSub)) {
+            if (old.getMaxGroups() > newSub.getMaxGroups() && old.getMaxGroups() != 0) {
+                for (int i = newSub.getMaxGroups() + 1; i <= old.getMaxGroups(); i++) {
+                    userService.moveIfGroupsCountChange(i, old);
+                }
+            }
             subjectRepository.save(newSub);
         }
     }

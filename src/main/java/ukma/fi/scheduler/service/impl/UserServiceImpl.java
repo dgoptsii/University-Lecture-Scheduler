@@ -117,6 +117,14 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
+    @Override
+    public void moveIfGroupsCountChange(Integer moveFrom,Subject sub) {
+        List<User> students = findAllStudents();
+        students.stream().filter(s -> s.getGroups().containsKey(sub) && s.getGroups().get(sub).equals(moveFrom)).collect(Collectors.toList());
+        students.forEach(s -> s.getGroups().replace(sub,0));
+        userRepository.saveAll(students);
+    }
+
     // Find all subjects that is normative for student (login)
     @Override
     public List<Subject> findNormativeSubjects(String login) {
@@ -189,5 +197,6 @@ public class UserServiceImpl implements UserService {
         fromData.addAllDto(nonNormativeDto);
         return fromData;
     }
+
 
 }
