@@ -66,6 +66,51 @@ public class TeacherController {
         return mav;
     }
 
+    @GetMapping("/subject/all")
+    public ModelAndView allSubjects() {
+        ModelAndView mav = new ModelAndView("teacher-all-subjects");
+        mav.addObject("subjects", subjectService.findAll());
+        mav.addObject("teachers", userService.findByRole("TEACHER"));
+        return mav;
+    }
+
+    @GetMapping("/subject/{id}")
+    public ModelAndView getSubject(@PathVariable Long id){
+        ModelAndView mav = new ModelAndView("teacher_edit_subject");
+        Subject subject = subjectService.findSubjectById(id);
+        List<Lesson> lessons = lessonService.findAll();
+        mav.addObject("specialties", SPECIALITIES);
+        mav.addObject("teachers", userService.findByRole("TEACHER"));
+        mav.addObject("lessons", lessons);
+        //TODO find lessons by subject id
+        mav.addObject("subject",subject);
+        return mav;
+    }
+
+    @DeleteMapping("/subject/{id}")
+    public RedirectView deleteSubject(@PathVariable Long id){
+        //TODO delete subject
+        return new RedirectView("/teacher/subject/all");
+    }
+
+    @GetMapping("/lesson/{id}")
+    public ModelAndView getLesson(@PathVariable Long id) {
+        ModelAndView mav = new ModelAndView("teacher_edit_lesson");
+//        Lesson lesson = lessonService.findById();
+        //TODO find lesson by id
+        mav.addObject("specialties", SPECIALITIES);
+        mav.addObject("subjects", subjectService.findAll());
+        mav.addObject("teachers", userService.findByRole("TEACHER"));
+        return mav;
+    }
+
+    @DeleteMapping("/lesson/{id}")
+    public RedirectView deleteLesson(@PathVariable Long id){
+        //TODO delete subject, redirect back to lesson page EBU KAK
+        return new RedirectView("/teacher/subject/all");
+    }
+
+
     @PostMapping("/lesson/add")
     public RedirectView addLesson(@ModelAttribute("lesson") LessonDTO dto) {
         Lesson newLesson = new Lesson(dto.getSubject(), dto.getDayOfWeek(), dto.getLessonNumber(), dto.getTeacher(),dto.getGroupNumber());
