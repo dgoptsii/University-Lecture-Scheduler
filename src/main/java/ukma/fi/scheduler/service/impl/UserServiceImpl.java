@@ -149,7 +149,7 @@ public class UserServiceImpl implements UserService {
         return userRepository.findUsersByStatus("STUDENT");
     }
 
-    @CacheEvict("AllTeachers")
+    @Cacheable("AllTeachers")
     @Override
     public List<User> findAllTeachers() {
         return userRepository.findUsersByStatus("TEACHER");

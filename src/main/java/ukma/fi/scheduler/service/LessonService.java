@@ -11,5 +11,6 @@ public interface LessonService {
     List<Lesson> findAll();
     List<Lesson> findAllBySubject_Id(Long id);
     Lesson findById(Long id);
+    void edit(Long id, Lesson lesson);
     void delete(Long id);
 }
