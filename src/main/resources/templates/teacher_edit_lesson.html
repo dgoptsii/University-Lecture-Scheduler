@@ -22,39 +22,51 @@
             <div class="card-header bg-light text-info">
                 <h4 class="text-center">Edit lesson</h4>
             </div>
-            <form action="#" th:action="@{/teacher/lesson/add}" th:method="post">
+            <form action="#" th:action="@{'/teacher/lesson/'+${lesson.getId()}}" th:object="${lesson}" th:method="put" >
                 <div class="container px-4 card">
                     <div class="row ">
                         <div class="col m-2 text-right">Subject:</div>
                         <div class="col m-2">
-                            <select name="subject" style="width: 100%; max-width: 280px" required>
-                                <option th:each="subject : ${subjects}" th:value="${subject.getId()}"
-                                        th:text="${subject.getName()}"
-                                        >
-                                </option>
+                            <select name="subject" style="width: 100%; max-width: 280px" required >
+                                <th:block th:each=" subject : ${subjects}" >
+                                    <div th:if="${subject == lesson.getSubject()}">
+                                        <option selected th:value="${subject}" th:text="${subject.getName()}">
+                                        </option>
+                                    </div>
+                                    <div th:unless="${subject == lesson.getSubject()}">
+                                        <option  th:value="${subject}" th:text="${subject.getName()}">
+                                        </option>
+                                    </div>
+                                </th:block>
                             </select>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col m-2 text-right">Group number:</div>
-                        <div class="col m-2"><input style="width: 100%; max-width: 280px" type="number" name="groupNumber" min="1" required/></div>
+                        <div class="col m-2"><input style="width: 100%; max-width: 280px" type="number" th:value="${lesson.getGroupNumber()}" name="groupNumber" min="1" required/></div>
                     </div>
                     <div class="row">
                         <div class="col m-2 text-right">Day of week:</div>
-                        <div class="col m-2"><input style="width: 100%; max-width: 280px" type="number" name="dayOfWeek" min="1" max="6" required/></div>
+                        <div class="col m-2"><input style="width: 100%; max-width: 280px" type="number" th:value="${lesson.getDayOfWeek()}" name="dayOfWeek" min="1" max="6" required/></div>
                     </div>
                     <div class="row">
                         <div class="col m-2 text-right">Lesson number:</div>
-                        <div class="col m-2"><input style="width: 100%; max-width: 280px" type="number" name="lessonNumber" min="1" max="7" required/></div>
+                        <div class="col m-2"><input style="width: 100%; max-width: 280px" type="number" th:value="${lesson.getLessonNumber()}" name="lessonNumber" min="1" max="7" required/></div>
                     </div>
                     <div class="row ">
                         <div class="col m-2 text-right">Teacher:</div>
                         <div class="col m-2">
-                            <select name="teacher" style="width: 100%; max-width: 280px" required>
-                                <option th:each="teacher : ${teachers}" th:value="${teacher.getId()}"
-                                        th:text="${teacher.getSurname()+' '+teacher.getName()+' '+teacher.getPatronim()}"
-                                        >
-                                </option>
+                            <select name="teacher" style="width: 100%; max-width: 280px" required >
+                                <th:block th:each=" teacher : ${teachers}" >
+                                    <div th:if="${teacher == lesson.getTeacher()}">
+                                        <option selected th:value="${teacher}" th:text="${teacher.getName()}">
+                                        </option>
+                                    </div>
+                                    <div th:unless="${teacher == lesson.getTeacher()}">
+                                        <option selected th:value="${teacher}" th:text="${teacher.getName()}">
+                                        </option>
+                                    </div>
+                                </th:block>
                             </select>
                         </div>
                     </div>
