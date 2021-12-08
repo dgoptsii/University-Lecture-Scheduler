@@ -28,7 +28,7 @@
                         <div class="col m-2">
                             <select name="subject" style="width: 100%; max-width: 280px" required>
                                 <option th:each="subject : ${subjects}" th:value="${subject.getId()}"
-                                        th:text="${subject.getName()}"
+                                        th:text="${subject.getName()} +'  num groups:'+${subject.getMaxGroups()} "
                                         >
                                 </option>
                             </select>
@@ -36,7 +36,7 @@
                     </div>
                     <div class="row">
                         <div class="col m-2 text-right">Group number:</div>
-                        <div class="col m-2"><input style="width: 100%; max-width: 280px" type="number" name="groupNumber" min="1" required/></div>
+                        <div class="col m-2"><input style="width: 100%; max-width: 280px" type="number" name="groupNumber" min="1"  max="10" required/></div>
                     </div>
                     <div class="row">
                         <div class="col m-2 text-right">Day of week:</div>
