@@ -47,7 +47,6 @@
                   <h4 th:text="${subject.getSubName()}" class="badge badge-info">Name</h4>
                     </div>
                     <div th:unless="${subject.isNormative()}">
-                        <span th:text="${'Name: '+subject.getName()}"></span>
                         <h4 th:text="${subject.getSubName()}" class="badge badge-success"></h4>
                     </div>
 
