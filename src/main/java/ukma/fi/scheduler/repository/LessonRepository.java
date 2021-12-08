@@ -16,5 +16,6 @@ public interface LessonRepository extends CrudRepository<Lesson, Long> {
     List<Lesson> findLessonsByGroupNumberNot(Integer groupNumber);
     List<Lesson> findLessonsBySubject_Id(Long subject_id);
     List<Lesson> findByTeacherLogin(String login);
+    void deleteAllBySubject(Subject subject);
     List<Lesson> findAll();
 }

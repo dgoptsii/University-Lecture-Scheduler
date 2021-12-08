@@ -16,7 +16,6 @@ import ukma.fi.scheduler.service.SubjectService;
 import ukma.fi.scheduler.service.UserService;
 
 import javax.validation.Valid;
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -115,10 +114,9 @@ public class TeacherController {
     }
 
     @PutMapping("/lesson/{id}")
-    public RedirectView deleteLesson(@PathVariable Long id, Lesson lesson){
+    public RedirectView editLesson(@PathVariable Long id, @Valid Lesson lesson){
         System.out.println(lesson);
-//        Lesson lesson = lessonService.findById(id);
-//        lessonService.delete(id);
+        lessonService.edit(id, lesson);
         return new RedirectView("/teacher/lesson/"+id);
     }
 

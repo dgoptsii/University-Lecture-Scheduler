@@ -7,16 +7,22 @@ import ukma.fi.scheduler.controller.dto.LessonDTO;
 import ukma.fi.scheduler.controller.dto.SubjectLectureDTO;
 import ukma.fi.scheduler.entities.Lesson;
 import ukma.fi.scheduler.entities.Subject;
+import ukma.fi.scheduler.entities.User;
 import ukma.fi.scheduler.exceptionHandlers.exceptions.InvalidData;
 import ukma.fi.scheduler.exceptionHandlers.exceptions.SubjectNotFoundException;
+import ukma.fi.scheduler.repository.LessonRepository;
 import ukma.fi.scheduler.repository.SubjectRepository;
+import ukma.fi.scheduler.repository.UserRepository;
 import ukma.fi.scheduler.service.LessonService;
 import ukma.fi.scheduler.service.SubjectService;
 import ukma.fi.scheduler.service.UserService;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Log4j2
@@ -24,6 +30,15 @@ public class SubjectServiceImpl implements SubjectService {
 
     @Autowired
     private SubjectRepository subjectRepository;
+
+    @Autowired
+    private LessonRepository lessonRepository;
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     private LessonService lessonService;
@@ -60,7 +75,7 @@ public class SubjectServiceImpl implements SubjectService {
             throw new InvalidData(Collections.singletonMap("name", subject.getName()));
         }
         subjectRepository.save(subject);
-        LessonDTO lecture = new LessonDTO(subject,dto.getTeacher(),dto.getDayOfWeek(),dto.getLessonNumber(),0);
+        LessonDTO lecture = new LessonDTO(subject, dto.getTeacher(), dto.getDayOfWeek(), dto.getLessonNumber(), 0);
         lessonService.create(lecture);
         log.info("created subject -> name:" + subject.getName());
         return findSubjectByName(subject.getName());
@@ -72,21 +87,33 @@ public class SubjectServiceImpl implements SubjectService {
     }
 
     @Override
+    @Transactional
     public void deleteSubject(Long id) {
-        if (!subjectRepository.findById(id).isPresent()) {
-            throw new SubjectNotFoundException("Subject with id: "+id+" not found.");
+        Optional<Subject> subjectOptional = subjectRepository.findById(id);
+        if (!subjectOptional.isPresent()) {
+            throw new SubjectNotFoundException("Subject with id: " + id + " not found.");
         } else {
-            subjectRepository.delete(subjectRepository.findById(id).get());
+            Subject subject = subjectOptional.get();
+            lessonRepository.deleteAllBySubject(subject);
+            Iterable<User> studentsWithSubject = userRepository.findAll();
+            studentsWithSubject.forEach(user -> user.getGroups().remove(subject));
+            userRepository.saveAll(studentsWithSubject);
+            subjectRepository.delete(subject);
         }
     }
 
     @Override
     public void edit(Long id, Subject newSub) {
         Subject old = findSubjectById(id);
-        if(!old.getId().equals(newSub.getId())){
-            throw new InvalidData(Collections.singletonMap("subject_id",id.toString()));
+        if (!old.getId().equals(newSub.getId())) {
+            throw new InvalidData(Collections.singletonMap("subject_id", id.toString()));
         }
-        if(!old.equals(newSub)){
+        if (!old.equals(newSub)) {
+            if (old.getMaxGroups() > newSub.getMaxGroups() && old.getMaxGroups() != 0) {
+                for (int i = newSub.getMaxGroups() + 1; i <= old.getMaxGroups(); i++) {
+                    userService.moveIfGroupsCountChange(i, old);
+                }
+            }
             subjectRepository.save(newSub);
         }
     }
