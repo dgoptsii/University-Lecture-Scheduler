@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">Scheduler.com</a>
+    <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+    >
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active" th:if="${currentUser != null}">
+                <a class="nav-link" href="/profile">Profile</a>
+            </li>
+            <li class="nav-item" th:if="${currentUser != null && 'STUDENT'.equals(currentUser.getAuthorities().toArray()[0].toString())}">
+                <a class="nav-link" href="/student/scheduler">Schedule</a>
+            </li>
+            <li class="nav-item" th:if="${currentUser != null && 'TEACHER'.equals(currentUser.getAuthorities().toArray()[0].toString())}">
+                <a class="nav-link" href="/teacher/scheduler">Schedule</a>
+            </li>
+            <li class="nav-item" th:if="${currentUser != null && 'STUDENT'.equals(currentUser.getAuthorities().toArray()[0].toString())}">
+                <a class="nav-link" href="/student/subject/add">Add subjects (student)</a>
+            </li>
+            <li class="nav-item" th:if="${currentUser != null && 'STUDENT'.equals(currentUser.getAuthorities().toArray()[0].toString())}">
+                <a class="nav-link" href="/student/subject/groups">Add groups</a>
+            </li>
+            <li class="nav-item" th:if="${currentUser != null && 'TEACHER'.equals(currentUser.getAuthorities().toArray()[0].toString())}">
+                <a class="nav-link" href="/teacher/subject/add">Add subject (teacher)</a>
+            </li>
+            <li class="nav-item" th:if="${currentUser != null && 'TEACHER'.equals(currentUser.getAuthorities().toArray()[0].toString())}">
+                <a class="nav-link" href="/teacher/lesson/add">Add lesson (teacher)</a>
+            </li>
+        </ul>
+    </div>
+</nav>
