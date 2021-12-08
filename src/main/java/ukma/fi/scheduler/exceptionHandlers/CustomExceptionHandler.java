@@ -68,4 +68,10 @@ public class CustomExceptionHandler {
     public String lessonNotFoundHandler(LessonNotFoundException ex) {
         return ex.getMessage();
     }
+
+    @ExceptionHandler(Exception.class)
+    public ModelAndView handleError(HttpServletRequest req, Exception exception)
+            throws Exception {
+        return getErrorMav(req,exception,500);
+    }
 }
