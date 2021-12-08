@@ -17,7 +17,7 @@ public class Lesson {
     @Column(nullable = false, unique = true)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Subject subject;
 
     @ManyToOne
