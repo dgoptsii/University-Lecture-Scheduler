@@ -22,9 +22,11 @@ public class ScheduleServiceImpl implements ScheduleService {
     @Autowired
     private LessonRepository lessonRepository;
 
-    private void addLecturesToResult(Map<String, Set<Lesson>> result, List<Subject> subjects) {
+    private void addLecturesToResult(Map<String, Set<Lesson>> result, Set<Subject> subjects) {
         List<Lesson> normativeLectures = lessonRepository.findLessonsByGroupNumber(0);
-        normativeLectures.stream().filter(x -> subjects.contains(x.getSubject())).collect(Collectors.toList());
+        normativeLectures.stream()
+                .filter(x -> subjects.contains(x.getSubject()))
+                .collect(Collectors.toList());
         convertToSchedulerDto(result, normativeLectures);
     }
 
@@ -32,8 +34,9 @@ public class ScheduleServiceImpl implements ScheduleService {
         List<Lesson> lessons = lessonRepository.findLessonsByGroupNumberNot(0);
 
         lessons.stream()
-                .filter(x -> studentLessons.containsKey(x.getSubject()) &&
-                        studentLessons.get(x.getSubject()).equals(x.getLessonNumber()))
+                .filter(x ->
+                        studentLessons.containsKey(x.getSubject()) &&
+                        studentLessons.get(x.getSubject()).equals(x.getGroupNumber()))
                 .collect(Collectors.toList());
 
         convertToSchedulerDto(result, lessons);
@@ -60,7 +63,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         Set<Subject> subjectsLectures = new HashSet<>(user.getGroups().keySet());
         subjectsLectures.addAll(userService.findNormativeSubjects(login));
 
-        addLecturesToResult(res, new ArrayList<>(subjectsLectures));
+        addLecturesToResult(res, subjectsLectures);
         addLessonsToResult(res, user.getGroups());
 
         return res;
