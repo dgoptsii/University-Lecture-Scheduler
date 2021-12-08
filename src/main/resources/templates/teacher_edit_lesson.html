@@ -30,20 +30,29 @@
                             <select name="subject" style="width: 100%; max-width: 280px" required >
                                 <th:block th:each=" subject : ${subjects}" >
                                     <div th:if="${subject == lesson.getSubject()}">
-                                        <option selected th:value="${subject}" th:text="${subject.getName()}">
+                                        <option selected th:value="${subject.getId()}" th:text="${subject.getName()}">
                                         </option>
                                     </div>
                                     <div th:unless="${subject == lesson.getSubject()}">
-                                        <option  th:value="${subject}" th:text="${subject.getName()}">
+                                        <option  th:value="${subject.getId()}" th:text="${subject.getName()}">
                                         </option>
                                     </div>
                                 </th:block>
                             </select>
+
                         </div>
                     </div>
+                    <div th:unless="${0 == lesson.getGroupNumber()}">
                     <div class="row">
                         <div class="col m-2 text-right">Group number:</div>
-                        <div class="col m-2"><input style="width: 100%; max-width: 280px" type="number" th:value="${lesson.getGroupNumber()}" name="groupNumber" min="1" required/></div>
+                        <div class="col m-2"><input style="width: 100%; max-width: 280px" type="number" th:value="${lesson.getGroupNumber()}" name="groupNumber" min="0" required/></div>
+                    </div>
+                    </div>
+                    <div th:if="${0 == lesson.getGroupNumber()}">
+                        <div class="row">
+                        <div class="col m-2 text-right">Lecture:</div>
+                            <div class="col m-2">cannot change group</div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col m-2 text-right">Day of week:</div>
@@ -59,11 +68,11 @@
                             <select name="teacher" style="width: 100%; max-width: 280px" required >
                                 <th:block th:each=" teacher : ${teachers}" >
                                     <div th:if="${teacher == lesson.getTeacher()}">
-                                        <option selected th:value="${teacher}" th:text="${teacher.getName()}">
+                                        <option selected th:value="${teacher.getId()}" th:text="${teacher.getName()}">
                                         </option>
                                     </div>
                                     <div th:unless="${teacher == lesson.getTeacher()}">
-                                        <option selected th:value="${teacher}" th:text="${teacher.getName()}">
+                                        <option selected th:value="${teacher.getId()}" th:text="${teacher.getName()}">
                                         </option>
                                     </div>
                                 </th:block>
