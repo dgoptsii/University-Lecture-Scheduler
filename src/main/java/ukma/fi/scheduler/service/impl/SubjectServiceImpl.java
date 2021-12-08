@@ -99,4 +99,15 @@ public class SubjectServiceImpl implements SubjectService {
         }
     }
 
+    @Override
+    public void edit(Long id, Subject newSub) {
+        Subject old = findSubjectById(id);
+        if(!old.getId().equals(newSub.getId())){
+            throw new InvalidData(Collections.singletonMap("subject_id",id.toString()));
+        }
+        if(!old.equals(newSub)){
+            subjectRepository.save(newSub);
+        }
+    }
+
 }

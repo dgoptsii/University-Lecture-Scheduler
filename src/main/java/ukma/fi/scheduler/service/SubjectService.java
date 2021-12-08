@@ -18,4 +18,6 @@ public interface SubjectService {
     List<Subject> findAll();
 
     void deleteSubject(Long id);
+
+    void edit(Long id,Subject newSub);
 }

@@ -85,14 +85,8 @@ public class TeacherController {
     }
 
     @PutMapping("/subject/{id}")
-    public RedirectView updateSubject(@PathVariable Long id,Subject subject){
-        System.out.println(subject);
-//        Subject subject = subjectService.findSubjectById(id);
-//        List<Lesson> lessons = lessonService.findAllBySubject_Id(id);
-//        mav.addObject("specialties", SPECIALITIES);
-//        mav.addObject("teachers", userService.findByRole("TEACHER"));
-//        mav.addObject("lessons", lessons);
-//        mav.addObject("subject",subject);
+    public RedirectView updateSubject(@PathVariable Long id,@Valid Subject subject){
+        subjectService.edit(id,subject);
         return new RedirectView("/teacher/subject/"+id);
     }
 
@@ -118,6 +112,14 @@ public class TeacherController {
         Lesson lesson = lessonService.findById(id);
         lessonService.delete(id);
         return new RedirectView("/teacher/subject/"+lesson.getSubject().getId());
+    }
+
+    @PutMapping("/lesson/{id}")
+    public RedirectView deleteLesson(@PathVariable Long id, Lesson lesson){
+        System.out.println(lesson);
+//        Lesson lesson = lessonService.findById(id);
+//        lessonService.delete(id);
+        return new RedirectView("/teacher/lesson/"+id);
     }
 
 
