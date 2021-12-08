@@ -46,14 +46,14 @@
                     </div>
                     <div class="row">
                         <div class="col m-2 ">Name:</div>
-                        <div class="col m-2"><input style="width: 100%" required="form-surname" type="text"
+                        <div class="col m-2"><input style="width: 100%" required id="form-surname" type="text"
                                                     th:value="${user.getName()}"
                                                     name="surname"/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col m-2 ">Patronim:</div>
-                        <div class="col m-2"><input style="width: 100%" required id="form-patronim" type="text"
+                        <div class="col m-2"><input style="width: 100%" id="form-patronim" required type="text"
                                                     th:value="${user.getPatronim()}"
                                                     name="patronim"/>
                         </div>
@@ -111,35 +111,35 @@
 
 <script>
     function validate(form) {
-        const login = document.getElementById('form-login').value;
-        const password = document.getElementById('form-password').value;
-        const name = document.getElementById('form-name').value;
-        const surname = document.getElementById('form-surname').value;
-        const patronim = document.getElementById('form-patronim').value;
-        const check_password = document.getElementById('form-password-repeat').value;
+        console.log('method start')
+        const login = document.getElementById('form-login')?.value || "";
+        const password = document.getElementById('form-password')?.value || "";
+        const name = document.getElementById('form-name')?.value || "";
+        const surname = document.getElementById('form-surname')?.value || "";
+        const patronim = document.getElementById('form-patronim')?.value || "";
+        const check_password = document.getElementById('form-password-repeat')?.value || "";
 
         const rePassword = new RegExp("^(?=.*[0-9])(?=.*[a-z]).{8,32}$");
         const reEmail = new RegExp("(\\w+\.\\w+)@ukma\.edu\.ua");
-        const reName = new RegExp("[a-zA-Z\\s]+");
+        const reName = new RegExp("^[a-zA-Z]+$");
 
-
-        if (!reName.test(name) || name == null || name === "") {
+        if (!reName.test(name)) {
             alert("Invalid name");
             return false;
-        } else if (!reName.test(surname) || surname == null || surname === "") {
+        } else if (!reName.test(surname)) {
             alert("Invalid surname");
             return false;
-        } else if (!reName.test(patronim) || patronim == null || patronim === "") {
+        } else if (!reName.test(patronim)) {
             alert("Invalid patronim");
             return false;
-        } else if (!reEmail.test(login) || login == null || login === "") {
+        } else if (!reEmail.test(login)) {
             alert("Invalid login. Login should consist of [name].[surname]@ukma.edu.ua");
             return false;
-        } else if (password !== "" && (!rePassword.test(password) || password === "" || password == null)) {
+        } else if (password !== "" && !rePassword.test(password)){
             alert("Password is non valid! Should contain at least 8 symbols, letters of upper and lower key, numbers.");
             return false;
-        } else if (check_password !== password) {
-            alert("Passwords are not the same.");
+        } else if (password !== "" && password !== check_password){
+            alert("Password are not the same!");
             return false;
         }
     }
