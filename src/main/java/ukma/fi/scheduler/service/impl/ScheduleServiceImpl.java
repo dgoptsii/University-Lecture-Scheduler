@@ -24,7 +24,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     private void addLecturesToResult(Map<String, Set<Lesson>> result, Set<Subject> subjects) {
         List<Lesson> normativeLectures = lessonRepository.findLessonsByGroupNumber(0);
-        normativeLectures.stream()
+        normativeLectures = normativeLectures.stream()
                 .filter(x -> subjects.contains(x.getSubject()))
                 .collect(Collectors.toList());
         convertToSchedulerDto(result, normativeLectures);
@@ -33,7 +33,7 @@ public class ScheduleServiceImpl implements ScheduleService {
     private void addLessonsToResult(Map<String, Set<Lesson>> result, Map<Subject, Integer> studentLessons) {
         List<Lesson> lessons = lessonRepository.findLessonsByGroupNumberNot(0);
 
-        lessons.stream()
+        lessons = lessons.stream()
                 .filter(x ->
                         studentLessons.containsKey(x.getSubject()) &&
                         studentLessons.get(x.getSubject()).equals(x.getGroupNumber()))
