@@ -112,8 +112,10 @@ public class SubjectServiceImpl implements SubjectService {
             if (old.getMaxGroups() > newSub.getMaxGroups() && old.getMaxGroups() != 0) {
                 for (int i = newSub.getMaxGroups() + 1; i <= old.getMaxGroups(); i++) {
                     userService.moveIfGroupsCountChange(i, old);
-                    if (lessonRepository.findBySubjectAndGroupNumber(old, i).isPresent())
-                        lessonService.delete(lessonRepository.findBySubjectAndGroupNumber(old, i).get().getId());
+                    for (Lesson lesson : lessonRepository.findBySubjectsAndGroupNumber(old, i)) {
+                        lessonService.delete(lesson.getId());
+                    }
+
                 }
             }
             subjectRepository.save(newSub);
