@@ -11,11 +11,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 import ukma.fi.scheduler.controller.dto.UserDTO;
+import ukma.fi.scheduler.entities.Subject;
 import ukma.fi.scheduler.entities.User;
+import ukma.fi.scheduler.repository.SubjectRepository;
 import ukma.fi.scheduler.repository.UserRepository;
 import ukma.fi.scheduler.service.AuthService;
 import ukma.fi.scheduler.service.UserService;
 
+import javax.persistence.EntityManager;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.util.ArrayList;
@@ -37,6 +40,12 @@ public class AuthController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private EntityManager entityManager;
+
+    @Autowired
+    private SubjectRepository repository;
 
     @GetMapping("/profile")
     public ModelAndView profilePage(Principal principal) {
