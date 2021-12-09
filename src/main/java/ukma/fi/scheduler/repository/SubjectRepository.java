@@ -1,6 +1,5 @@
 package ukma.fi.scheduler.repository;
 
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import ukma.fi.scheduler.entities.Subject;
@@ -14,6 +13,5 @@ public interface SubjectRepository extends CrudRepository<Subject, Long> {
     List<Subject> findSubjectsByIdNotIn(List<Long> id);
     List<Subject> findSubjectsByIdIn(List<Long> id);
     Optional<Subject> findSubjectByName(String name);
-
     List<Subject> findAll();
 }

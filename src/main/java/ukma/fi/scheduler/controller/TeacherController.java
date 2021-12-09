@@ -138,7 +138,7 @@ public class TeacherController {
     }
 
     @GetMapping("/scheduler")
-    public ModelAndView schedule(Principal principal) {
+    public ModelAndView schedule(Principal principal) throws Exception {
         ModelAndView mav = new ModelAndView("schedule");
         mav.addAllObjects(scheduleService.findLessonsForTeacher(principal.getName()));
         return mav;

@@ -1,6 +1,7 @@
 package ukma.fi.scheduler.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.expression.AccessException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -79,6 +80,11 @@ public class StudentController {
         ModelAndView mav = new ModelAndView("schedule");
         mav.addAllObjects(scheduleService.findLessonsForStudent(principal.getName()));
         return mav;
+    }
+
+    @GetMapping("/test")
+    public void test(Principal principal) throws Exception {
+        throw new AccessException("Afdfsf");
     }
 
     @ModelAttribute("currentUser")

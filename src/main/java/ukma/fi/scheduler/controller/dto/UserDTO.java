@@ -2,10 +2,6 @@ package ukma.fi.scheduler.controller.dto;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 @Data
