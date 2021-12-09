@@ -12,7 +12,9 @@ import ukma.fi.scheduler.repository.UserRepository;
 import ukma.fi.scheduler.entities.*;
 import ukma.fi.scheduler.service.*;
 
-import java.util.Collections;import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import java.util.Collections;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.validation.Valid;
 
@@ -39,29 +41,28 @@ public class AuthServiceImpl implements AuthService {
         User res;
         try {
             res = userRepository.save(user);
-        }catch (Exception ex){
+        } catch (Exception ex) {
             throw new InvalidDataException("User with this login already exist");
         }
         return res;
     }
 
     @Override
-    public User editUser(@Valid UserDTO userNew,String login) throws InvalidDataException {
+    public User editUser(@Valid UserDTO userNew, String login) throws InvalidDataException {
         log.info("new data after user - edit form:" + userNew);
         User user = userService.findUserByLogin(login);
-        if(userNew.getPassword().isEmpty()){
+        if(user==null){
+            throw new UnknownError("Something went wrong");
+        }else if (user.getLogin().equals(userNew.getLogin())) {
+            throw new InvalidDataException("User with this login already exist");
+        }
+        if (userNew.getPassword().isEmpty()) {
             user.changeUser(userNew);
-        }else if (!passwordEncoder.encode(userNew.getPassword()).equals(user.getPassword())){
+        } else if (!passwordEncoder.encode(userNew.getPassword()).equals(user.getPassword())) {
             userNew.setPassword(passwordEncoder.encode(userNew.getPassword()));
             user.changeUser(userNew);
         }
-        User res;
-        try {
-            res = userRepository.save(user);
-        }catch (Exception ex){
-            throw new InvalidDataException("User with this login already exist");
-        }
-        return res;
+        return userRepository.save(user);
     }
 
 }
