@@ -8,6 +8,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.servlet.view.RedirectView;
 import ukma.fi.scheduler.controller.dto.LessonDTO;
 import ukma.fi.scheduler.controller.dto.SubjectLectureDTO;
 import ukma.fi.scheduler.entities.*;
@@ -47,6 +50,13 @@ public class MockMvcTeacherControllersTest {
 
     @BeforeEach
     public void mockService() throws Exception {
+
+        Subject subject = new Subject("name", 3, "Math", 4);
+        subject.setId(1l);
+        User teacher = new User("a.a@ukma.edu.ua", "name", "surname","TEACHER","Secret10");
+        Lesson lesson = new Lesson(subject, 1, 1, teacher, 1);
+        lesson.setId(1l);
+
         doReturn(new Subject()).when(subjectService).create(new SubjectLectureDTO());
         doReturn(new ArrayList<User>()).when(userService).findByRole("TEACHER");
         doReturn(new ArrayList<User>()).when(userService).findAllTeachers();
@@ -56,7 +66,7 @@ public class MockMvcTeacherControllersTest {
         doReturn(new ArrayList<Lesson>()).when(lessonService).findAllBySubject_Id(1L);
         doNothing().when(subjectService).edit(any(Long.class),any(Subject.class));
         doNothing().when(subjectService).deleteSubject(any(Long.class));
-        doReturn(new Lesson()).when(lessonService).findById(any(Long.class));
+        doReturn(lesson).when(lessonService).findById(any(Long.class));
         doNothing().when(lessonService).delete(any(Long.class));
         doNothing().when(lessonService).edit(any(Long.class),any(Lesson.class));
         doReturn(new HashMap<String, Set<Lesson>>()).when(scheduleService).findLessonsForTeacher(any(String.class));
@@ -184,6 +194,33 @@ public class MockMvcTeacherControllersTest {
     @WithMockUser(authorities = "STUDENT")
     public void shouldNotReturnViewWithStudentScheduler() throws Exception {
         mockMvc.perform(get("/teacher/subject/scheduler"))
+                .andExpect(status().is4xxClientError());
+    }
+
+    @Test
+    @WithMockUser( authorities = "TEACHER")
+    public void shouldDeleteAndRedirectForTeacherLesson() throws Exception {
+        Subject subject = new Subject("name", 3, "Math", 4);
+        subject.setId(1l);
+        User teacher = new User("a.a@ukma.edu.ua", "name", "surname","TEACHER","Secret10");
+        Lesson lesson = new Lesson(subject, 1, 1, teacher, 1);
+        lesson.setId(1l);
+        mockMvc.perform(delete("/teacher/lesson/"+lesson.getId()).with(csrf()))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/teacher/subject/"+lesson.getSubject().getId())
+                );
+    }
+
+
+    @Test
+    @WithMockUser(authorities = "STUDENT")
+    public void shouldNotDeleteAndRedirectForTeacherLesson() throws Exception {
+        Subject subject = new Subject("name", 3, "Math", 4);
+        subject.setId(1l);
+        User teacher = new User("a.a@ukma.edu.ua", "name", "surname","TEACHER","Secret10");
+        Lesson lesson = new Lesson(subject, 1, 1, teacher, 1);
+        lesson.setId(1l);
+        mockMvc.perform(delete("/teacher/lesson/"+lesson.getId()).with(csrf()))
                 .andExpect(status().is4xxClientError());
     }
 
