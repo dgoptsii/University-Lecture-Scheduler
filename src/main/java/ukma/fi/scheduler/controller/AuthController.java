@@ -64,7 +64,7 @@ public class AuthController {
     public RedirectView profilePage(@Valid @ModelAttribute UserDTO user) throws Exception {
         System.out.println("new data after edit form:" + user);
         authService.editUser(user, user.getOldLogin());
-        return new RedirectView("/profile");
+        return new RedirectView("/login");
     }
 
     @PostMapping("/registration")
