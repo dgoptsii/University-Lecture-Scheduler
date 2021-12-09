@@ -7,6 +7,7 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.view.RedirectView;
 import ukma.fi.scheduler.exceptionHandlers.exceptions.SubjectNotFoundException;
 import ukma.fi.scheduler.service.Converters;
 import ukma.fi.scheduler.controller.dto.SubjectGroupDTO;
@@ -64,7 +65,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void editSubjectGroup(String login, SubjectGroupListDTO form) {
+    public void editSubjectGroup(String login, SubjectGroupListDTO form) throws InvalidDataException {
+        SubjectGroupListDTO oldForm = getSubjectGroupDTOS(login);
+        if(form.equals(oldForm)){
+            return;
+        }else if (form.size() != oldForm.size()){
+            throw new InvalidDataException("Input value isn't correct");
+        }
         User user = findUserByLogin(login);
         Map<Subject, Integer> newSubGroupNum = converter.convertSubGroupDto(form);
         System.out.println(newSubGroupNum);

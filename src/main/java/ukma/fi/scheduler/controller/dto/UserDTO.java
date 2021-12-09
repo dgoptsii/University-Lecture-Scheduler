@@ -10,6 +10,7 @@ public class UserDTO {
     @Pattern(regexp = "([a-z]+\\.[a-z]+)@ukma\\.edu\\.ua")
     private String login;
 
+    private String oldLogin;
 //    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$")
     private String password;
 

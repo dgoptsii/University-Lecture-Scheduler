@@ -61,9 +61,9 @@ public class AuthController {
     }
 
     @PutMapping("/profile_edit")
-    public RedirectView profilePage(@Valid @ModelAttribute UserDTO user, Principal principal) throws Exception {
+    public RedirectView profilePage(@Valid @ModelAttribute UserDTO user) throws Exception {
         System.out.println("new data after edit form:" + user);
-        authService.editUser(user, principal.getName());
+        authService.editUser(user, user.getOldLogin());
         return new RedirectView("/profile");
     }
 

@@ -1,5 +1,6 @@
 package ukma.fi.scheduler.service;
 
+import com.sun.media.sound.InvalidDataException;
 import ukma.fi.scheduler.controller.dto.SubjectGroupListDTO;
 import ukma.fi.scheduler.entities.Subject;
 import ukma.fi.scheduler.entities.User;
@@ -14,7 +15,7 @@ public interface UserService {
 
     List<User> findByRole(String role);
 
-    void editSubjectGroup(String login,SubjectGroupListDTO form);
+    void editSubjectGroup(String login,SubjectGroupListDTO form) throws InvalidDataException;
 
     void addNonNormativeGroup(String login,Long id);
 
