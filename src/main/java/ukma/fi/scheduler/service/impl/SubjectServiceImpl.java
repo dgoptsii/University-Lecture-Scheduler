@@ -114,7 +114,8 @@ public class SubjectServiceImpl implements SubjectService {
         if (!old.equals(newSub)) {
             if (subjectRepository.findSubjectByName(newSub.getName()).isPresent()) {
                 Subject finded = subjectRepository.findSubjectByName(newSub.getName()).get();
-                if (finded.getYear().equals(newSub.getYear()) && finded.getSpeciality().equals(newSub.getSpeciality()))
+                if (finded.getYear().equals(newSub.getYear()) && finded.getSpeciality().equals(newSub.getSpeciality())
+                     && finded.getMaxGroups().equals(newSub.getMaxGroups()))
                     throw new InvalidDataException("Subject :+"+newSub+" already exist.");
             }
             if (old.getMaxGroups() > newSub.getMaxGroups() && old.getMaxGroups() != 0) {

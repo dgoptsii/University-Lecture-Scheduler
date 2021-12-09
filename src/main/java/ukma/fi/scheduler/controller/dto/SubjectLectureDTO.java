@@ -1,5 +1,6 @@
 package ukma.fi.scheduler.controller.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import ukma.fi.scheduler.entities.User;
 

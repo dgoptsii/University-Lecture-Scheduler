@@ -70,6 +70,12 @@ public class TeacherController {
         return mav;
     }
 
+    @PostMapping("/lesson/add")
+    public RedirectView addLesson(@ModelAttribute("lesson") @Valid LessonDTO dto) throws Exception {
+        lessonService.create(dto);
+        return new RedirectView("/teacher/lesson/add");
+    }
+
     @GetMapping("/subject/all")
     public ModelAndView allSubjects() {
         ModelAndView mav = new ModelAndView("teacher-all-subjects");
@@ -131,13 +137,6 @@ public class TeacherController {
         System.out.println(lesson);
         lessonService.edit(id, lesson);
         return new RedirectView("/teacher/subject/" + lesson.getSubject().getId());
-    }
-
-
-    @PostMapping("/lesson/add")
-    public RedirectView addLesson(@ModelAttribute("lesson") @Valid LessonDTO dto) throws Exception {
-        lessonService.create(dto);
-        return new RedirectView("/teacher/lesson/add");
     }
 
     @ModelAttribute("currentUser")

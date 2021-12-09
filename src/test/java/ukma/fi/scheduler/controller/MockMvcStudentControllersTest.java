@@ -1,4 +1,4 @@
-package ukma.fi.scheduler;
+package ukma.fi.scheduler.controller;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
@@ -31,7 +32,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 @SpringBootTest
 @AutoConfigureMockMvc
-public class MockMvcSubjectControllersTest {
+public class MockMvcStudentControllersTest {
 
     @MockBean
     SubjectService subjectService;
@@ -49,7 +50,6 @@ public class MockMvcSubjectControllersTest {
 
     @BeforeEach
     public void mockService() throws Exception {
-
         doReturn(new SubjectGroupListDTO()).when(userService).getSubjectGroupDTOS(any(String.class));
         doNothing().when(userService).editSubjectGroup(any(String.class),any(SubjectGroupListDTO.class));
         doReturn(new ArrayList<Subject>()).when(userService).findNonNormativeFreeSubjects(any(String.class));
@@ -58,6 +58,13 @@ public class MockMvcSubjectControllersTest {
         doNothing().when(userService).addNonNormativeGroup(any(String.class),any(Long.class));
         doNothing().when(userService).deleteNonNormativeGroup(any(String.class),any(Long.class));
         doReturn(new HashMap<String, Set< Lesson >>()).when(scheduleService).findLessonsForStudent(any(String.class));
+    }
+
+    @Test
+    public void contextLoads() {
+        assertThat(subjectService).isNotNull();
+        assertThat(userService).isNotNull();
+        assertThat(scheduleService).isNotNull();
     }
 
 

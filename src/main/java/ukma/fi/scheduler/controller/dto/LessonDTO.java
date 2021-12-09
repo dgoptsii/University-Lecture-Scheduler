@@ -2,6 +2,7 @@ package ukma.fi.scheduler.controller.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import ukma.fi.scheduler.entities.Subject;
 import ukma.fi.scheduler.entities.User;
 
@@ -9,6 +10,7 @@ import javax.validation.constraints.*;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class LessonDTO {
 
     @NotNull
