@@ -22,15 +22,15 @@ public class DataJpaSubjectTest {
 
     @Autowired
     private SubjectRepository subjectRepository;
-    static final String NAME1 = "BD";
-    static final String NAME2 = "OKA";
-    static final String NAME3 = "SP";
+     final String NAME1 = "BD";
+     final String NAME2 = "OKA";
+     final String NAME3 = "SP";
 
-    static final String SPECIALTY1 = "IPZ";
-    static final String SPECIALTY2 = "MATH";
-    static final String SPECIALTY3 = "SPECIALTY";
+     final String SPECIALTY1 = "IPZ";
+     final String SPECIALTY2 = "MATH";
+     final String SPECIALTY3 = "SPECIALTY";
 
-    static List<Long>  subjectIDs = new ArrayList<>();
+     List<Long>  subjectIDs = new ArrayList<>();
 
     @BeforeEach
     public void createBD() {
@@ -46,31 +46,30 @@ public class DataJpaSubjectTest {
     @Test
     public void shouldFindStudentByName() {
         Subject found = subjectRepository.findSubjectByName(NAME1).get();
-        System.out.println(found);
-        assertThat(found.getName()).isEqualTo(NAME1);
+        Assertions.assertEquals(found.getName(),NAME1);
     }
 
     @Test
     public void shouldFindSubjectsById(){
         List<Subject> subjects = (List<Subject>) subjectRepository.findAllById(subjectIDs);
         for (Subject s :subjects){
-            assertThat(subjectIDs.contains(s.getId()));
+            Assertions.assertTrue(subjectIDs.contains(s.getId()));
         }
-        assertThat(subjectIDs.size() == subjects.size());
+        Assertions.assertEquals(subjectIDs.size(), subjects.size());
     }
 
     @Test
     public void shouldFindSubjectsALl(){
         List<Subject> list = subjectRepository.findAll();
-        assertThat(list.size() == subjectIDs.size());
+        Assertions.assertEquals(list.size(), subjectIDs.size());
     }
 
     @Test
     public void shouldFindSubjectsBySpecialtyAndYear(){
         List<Subject> subjects = subjectRepository.findSubjectsBySpecialityAndYear(SPECIALTY1,1);
         for (Subject s :subjects){
-            assertThat(s.getSpeciality()).isEqualTo(SPECIALTY1);
-            assertThat(s.getYear()== 1L);
+            Assertions.assertEquals(s.getSpeciality(),SPECIALTY1);
+            Assertions.assertEquals(s.getYear(), 1);
         }
     }
     @Test
@@ -80,7 +79,7 @@ public class DataJpaSubjectTest {
         ids.add(subjectIDs.get(2));
         List<Subject> subjects = subjectRepository.findSubjectsByIdNotIn(ids);
         for (Subject s :subjects){
-            assertThat(!ids.contains(s.getId()));
+            Assertions.assertFalse(ids.contains(s.getId()));
         }
     }
 
