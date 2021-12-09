@@ -12,12 +12,11 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 import ukma.fi.scheduler.controller.dto.UserDTO;
 import ukma.fi.scheduler.entities.User;
-import ukma.fi.scheduler.repository.SubjectRepository;
 import ukma.fi.scheduler.service.AuthService;
 import ukma.fi.scheduler.service.UserService;
 
-import javax.persistence.EntityManager;
 import javax.validation.Valid;
+import java.rmi.AccessException;
 import java.security.Principal;
 import java.util.ArrayList;
 
@@ -42,7 +41,6 @@ public class AuthController {
     @GetMapping("/profile")
     public ModelAndView profilePage(Principal principal) {
         ModelAndView mav = new ModelAndView();
-
         User user = userService.findUserByLogin(principal.getName());
         if (user.getStatus().equals("STUDENT"))
             mav.setViewName("student-profile");
@@ -62,24 +60,25 @@ public class AuthController {
 
     @PutMapping("/profile_edit")
     public RedirectView profilePage(@Valid @ModelAttribute UserDTO user) throws Exception {
-        System.out.println("new data after edit form:" + user);
         authService.editUser(user, user.getOldLogin());
         return new RedirectView("/login");
     }
 
     @PostMapping("/registration")
-    public RedirectView registration(@Valid @ModelAttribute User user) throws Exception{
+    public RedirectView registration(@Valid @ModelAttribute User user) throws Exception {
         authService.registration(user, "STUDENT");
         return new RedirectView("/login");
     }
 
     @GetMapping("/registration")
-    public ModelAndView registerPage() {
+    public ModelAndView registerPage(Principal principal) throws Exception {
+        if (principal != null) {
+            throw new AccessException("You need to logout before going to registration page.");
+        }
         ModelAndView mav = new ModelAndView("student_registration");
         mav.addObject("specialties", SPECIALITIES);
         return mav;
     }
-
 
     @ModelAttribute("currentUser")
     public UserDetails getCurrentUser(Authentication authentication) {
