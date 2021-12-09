@@ -40,6 +40,7 @@ public class AuthServiceTest {
     private AuthService authService;
 
     private static final String login1 = "login1";
+    private static final String login2 = "login2";
 
     @BeforeEach
     public void mockService() {
@@ -47,7 +48,13 @@ public class AuthServiceTest {
         u.setLogin(login1);
         u.setPassword("pass");
         u.setStatus("STUDENT");
+
+        User u2 = new User();
+        u2.setLogin(login2);
+        u2.setPassword("pass");
+        u2.setStatus("STUDENT");
         doReturn(Optional.of(u)).when(userRepository).findByLogin(login1);
+        doReturn(Optional.of(u2)).when(userRepository).findByLogin(login2);
         doReturn(u).when(userService).findUserByLogin(login1);
     }
 
@@ -80,12 +87,12 @@ public class AuthServiceTest {
     @Test
     public void shouldUpdateLoginToExistUser() {
         UserDTO k = new UserDTO();
-        k.setLogin("login2");
+        k.setLogin("login3");
         k.setPassword("");
         User res = new User();
         res.setLogin(k.getLogin());
         doReturn(res).when(userRepository).save(any(User.class));
-        Assertions.assertEquals("login2", authService.editUser(k, login1).getLogin());
+        Assertions.assertEquals("login3", authService.editUser(k, login1).getLogin());
     }
 
     @SneakyThrows
@@ -121,7 +128,7 @@ public class AuthServiceTest {
     @Test
     public void shouldNotUpdateUserToExistUser() {
         UserDTO k = new UserDTO();
-        k.setLogin(login1);
+        k.setLogin(login2);
         k.setPassword("passw");
         Assertions.assertThrows(UserExistsException.class, () -> {
             authService.editUser(k, login1);
