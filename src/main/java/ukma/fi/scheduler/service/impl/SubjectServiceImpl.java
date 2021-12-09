@@ -44,7 +44,7 @@ public class SubjectServiceImpl implements SubjectService {
     private LessonService lessonService;
 
     @Override
-    public Subject findSubjectById(Long id){
+    public Subject findSubjectById(Long id) {
         if (subjectRepository.findById(id).isPresent()) {
             log.info("found by id  -> id:" + id);
             return subjectRepository.findById(id).get();
@@ -54,7 +54,7 @@ public class SubjectServiceImpl implements SubjectService {
     }
 
     @Override
-    public Subject findSubjectByName(String name){
+    public Subject findSubjectByName(String name) {
         if (subjectRepository.findSubjectByName(name).isPresent()) {
             log.info("found subject by name -> name:" + name);
             return subjectRepository.findSubjectByName(name).get();
@@ -69,7 +69,7 @@ public class SubjectServiceImpl implements SubjectService {
     }
 
     @Override
-    public Subject create(@Valid SubjectLectureDTO dto) throws Exception{
+    public Subject create(@Valid SubjectLectureDTO dto) throws Exception {
         Subject subject = new Subject(dto.getName(), dto.getMaxGroups(), dto.getSpecialty(), dto.getYear());
         if (subjectRepository.findSubjectByName(subject.getName()).isPresent()) {
             Subject finded = subjectRepository.findSubjectByName(subject.getName()).get();
@@ -90,7 +90,7 @@ public class SubjectServiceImpl implements SubjectService {
 
     @Override
     @Transactional
-    public void deleteSubject(Long id) throws Exception{
+    public void deleteSubject(Long id) throws Exception {
         Optional<Subject> subjectOptional = subjectRepository.findById(id);
         if (!subjectOptional.isPresent()) {
             throw new SubjectNotFoundException("Subject with id: " + id + " not found.");
@@ -105,12 +105,12 @@ public class SubjectServiceImpl implements SubjectService {
     }
 
     @Override
-    public boolean edit(Long id, Subject newSub) throws Exception{
+    public boolean edit(Long id, Subject newSub) throws Exception {
         Subject old;
-        if(subjectRepository.findById(id).isPresent()){
+        if (subjectRepository.findById(id).isPresent()) {
             old = subjectRepository.findById(id).get();
-        }else{
-            throw new InvalidDataException("Subject with id="+id+" doesn't exist.");
+        } else {
+            throw new InvalidDataException("Subject with id=" + id + " doesn't exist.");
         }
         if (!old.getId().equals(newSub.getId())) {
             throw new InvalidData(Collections.singletonMap("subject_id", id.toString()));
@@ -119,8 +119,8 @@ public class SubjectServiceImpl implements SubjectService {
             if (subjectRepository.findSubjectByName(newSub.getName()).isPresent()) {
                 Subject finded = subjectRepository.findSubjectByName(newSub.getName()).get();
                 if (finded.getYear().equals(newSub.getYear()) && finded.getSpeciality().equals(newSub.getSpeciality())
-                     && finded.getMaxGroups().equals(newSub.getMaxGroups()))
-                    throw new InvalidDataException("Subject :+"+newSub+" already exist.");
+                        && finded.getMaxGroups().equals(newSub.getMaxGroups()))
+                    throw new InvalidDataException("Subject :+" + newSub + " already exist.");
             }
             if (old.getMaxGroups() > newSub.getMaxGroups() && old.getMaxGroups() != 0) {
                 for (int i = newSub.getMaxGroups() + 1; i <= old.getMaxGroups(); i++) {

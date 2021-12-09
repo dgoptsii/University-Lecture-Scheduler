@@ -44,7 +44,7 @@ public class LessonServiceTest {
     }
 
     @Test
-    public void shouldReturnNullTryingToFindNotExistingUser(){
+    public void shouldReturnNullTryingToFindNotExistingUser() {
         Assertions.assertNull(userService.findUserByLogin("notExistingLogin"));
     }
 

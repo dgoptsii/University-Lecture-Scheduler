@@ -16,7 +16,8 @@ import ukma.fi.scheduler.service.UserService;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.doThrow;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -36,11 +37,11 @@ public class MockMvcAuthControllerTest {
 
     @BeforeEach
     public void mockService() throws Exception {
-        User teacher = new User("a.a@ukma.edu.ua", "nameA", "surname","TEACHER","Secret10");
-        User student = new User("b.b@ukma.edu.ua", "nameB", "surname","STUDENT","Secret10");
+        User teacher = new User("a.a@ukma.edu.ua", "nameA", "surname", "TEACHER", "Secret10");
+        User student = new User("b.b@ukma.edu.ua", "nameB", "surname", "STUDENT", "Secret10");
         doReturn(teacher).when(userService).findUserByLogin("a.a@ukma.edu.ua");
         doReturn(student).when(userService).findUserByLogin("b.b@ukma.edu.ua");
-        doThrow(new InvalidDataException()).when(authService).editUser(any(UserDTO.class),any(String.class));
+        doThrow(new InvalidDataException()).when(authService).editUser(any(UserDTO.class), any(String.class));
     }
 
     @Test
@@ -50,7 +51,7 @@ public class MockMvcAuthControllerTest {
     }
 
     @Test
-    @WithMockUser(username="b.b@ukma.edu.ua", password = "Secret10", authorities = "STUDENT")
+    @WithMockUser(username = "b.b@ukma.edu.ua", password = "Secret10", authorities = "STUDENT")
     public void shouldReturnViewWithStudentProfile() throws Exception {
         mockMvc.perform(get("/profile").with(csrf()))
                 .andExpect(status().isOk())
@@ -59,7 +60,7 @@ public class MockMvcAuthControllerTest {
     }
 
     @Test
-    @WithMockUser(username="a.a@ukma.edu.ua", password = "Secret10", authorities = "TEACHER")
+    @WithMockUser(username = "a.a@ukma.edu.ua", password = "Secret10", authorities = "TEACHER")
     public void shouldReturnViewWithTeacherProfile() throws Exception {
         mockMvc.perform(get("/profile").with(csrf()))
                 .andExpect(status().isOk())
@@ -68,7 +69,7 @@ public class MockMvcAuthControllerTest {
     }
 
     @Test
-    @WithMockUser(username="a.a@ukma.edu.ua", password = "Secret10",authorities = "TEACHER")
+    @WithMockUser(username = "a.a@ukma.edu.ua", password = "Secret10", authorities = "TEACHER")
     public void shouldReturnViewWithProfileEdit() throws Exception {
         mockMvc.perform(get("/profile_edit").with(csrf()))
                 .andExpect(status().isOk())
@@ -92,8 +93,8 @@ public class MockMvcAuthControllerTest {
 
     @Test
     public void shouldRedirectAfterRegistration() throws Exception {
-        User student = new User("b.b@ukma.edu.ua", "nameB", "surname","STUDENT","Secret10");
-        mockMvc.perform(post("/registration").flashAttr("user",student).with(csrf()))
+        User student = new User("b.b@ukma.edu.ua", "nameB", "surname", "STUDENT", "Secret10");
+        mockMvc.perform(post("/registration").flashAttr("user", student).with(csrf()))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/login"));
     }

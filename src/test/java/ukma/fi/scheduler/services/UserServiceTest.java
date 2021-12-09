@@ -31,7 +31,6 @@ public class UserServiceTest {
     @MockBean
     private SubjectRepository subjectRepository;
 
-
     @Autowired
     private UserService userService;
 
@@ -117,13 +116,13 @@ public class UserServiceTest {
     }
 
     @Test
-    public void shouldFindNormativeSubjects(){
+    public void shouldFindNormativeSubjects() {
         assertEquals(1, userService.findNormativeSubjects("login1").size());
         assertEquals(1L, userService.findNormativeSubjects("login1").get(0).getId());
     }
 
     @Test
-    public void shouldFinNonNormativeSubjects(){
+    public void shouldFinNonNormativeSubjects() {
         assertEquals(1, userService.findNonNormativeSubjects("login1").size());
         assertEquals(2L, userService.findNonNormativeSubjects("login1").get(0).getId());
     }

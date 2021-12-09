@@ -1,6 +1,5 @@
 package ukma.fi.scheduler.services;
 
-import com.sun.media.sound.InvalidDataException;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

@@ -8,13 +8,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.servlet.view.RedirectView;
 import ukma.fi.scheduler.controller.dto.LessonDTO;
 import ukma.fi.scheduler.controller.dto.SubjectLectureDTO;
-import ukma.fi.scheduler.entities.*;
-import ukma.fi.scheduler.service.*;
+import ukma.fi.scheduler.entities.Lesson;
+import ukma.fi.scheduler.entities.Subject;
+import ukma.fi.scheduler.entities.User;
+import ukma.fi.scheduler.service.LessonService;
+import ukma.fi.scheduler.service.ScheduleService;
+import ukma.fi.scheduler.service.SubjectService;
+import ukma.fi.scheduler.service.UserService;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
@@ -53,7 +56,7 @@ public class MockMvcTeacherControllersTest {
 
         Subject subject = new Subject("name", 3, "Math", 4);
         subject.setId(1l);
-        User teacher = new User("a.a@ukma.edu.ua", "name", "surname","TEACHER","Secret10");
+        User teacher = new User("a.a@ukma.edu.ua", "name", "surname", "TEACHER", "Secret10");
         Lesson lesson = new Lesson(subject, 1, 1, teacher, 1);
         lesson.setId(1l);
 
@@ -64,11 +67,11 @@ public class MockMvcTeacherControllersTest {
         doReturn(new Lesson()).when(lessonService).create(new LessonDTO());
         doReturn(new Subject()).when(subjectService).findSubjectById(any(Long.class));
         doReturn(new ArrayList<Lesson>()).when(lessonService).findAllBySubject_Id(1L);
-        doReturn(true).when(subjectService).edit(any(Long.class),any(Subject.class));
+        doReturn(true).when(subjectService).edit(any(Long.class), any(Subject.class));
         doNothing().when(subjectService).deleteSubject(any(Long.class));
         doReturn(lesson).when(lessonService).findById(any(Long.class));
         doNothing().when(lessonService).delete(any(Long.class));
-        doNothing().when(lessonService).edit(any(Long.class),any(Lesson.class));
+        doNothing().when(lessonService).edit(any(Long.class), any(Lesson.class));
         doReturn(new HashMap<String, Set<Lesson>>()).when(scheduleService).findLessonsForTeacher(any(String.class));
     }
 
@@ -117,7 +120,7 @@ public class MockMvcTeacherControllersTest {
     @WithMockUser(authorities = "TEACHER")
     public void shouldRedirectAfterTeacherSubjectEdited() throws Exception {
         Subject subject = new Subject("name", 3, "Math", 4);
-        mockMvc.perform(put("/teacher/subject/1").flashAttr("subject",subject).with(csrf()))
+        mockMvc.perform(put("/teacher/subject/1").flashAttr("subject", subject).with(csrf()))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/teacher/subject/1"));
     }
@@ -130,7 +133,7 @@ public class MockMvcTeacherControllersTest {
     }
 
     @Test
-    @WithMockUser( authorities = "TEACHER")
+    @WithMockUser(authorities = "TEACHER")
     public void shouldDeleteAndRedirectForTeacherSubject() throws Exception {
         mockMvc.perform(delete("/teacher/subject/1").with(csrf()))
                 .andExpect(status().is3xxRedirection())
@@ -139,7 +142,7 @@ public class MockMvcTeacherControllersTest {
     }
 
     @Test
-    @WithMockUser( authorities = "STUDENT")
+    @WithMockUser(authorities = "STUDENT")
     public void shouldNotDeleteAndRedirectForTeacherSubject() throws Exception {
         mockMvc.perform(delete("/teacher/subject/1").with(csrf()))
                 .andExpect(status().is4xxClientError());
@@ -167,11 +170,11 @@ public class MockMvcTeacherControllersTest {
     @WithMockUser(authorities = "TEACHER")
     public void shouldRedirectAfterTeacherLessonEdited() throws Exception {
         Subject subject = new Subject("name", 3, "Math", 4);
-        User teacher = new User("a.a@ukma.edu.ua", "name", "surname","TEACHER","Secret10");
+        User teacher = new User("a.a@ukma.edu.ua", "name", "surname", "TEACHER", "Secret10");
         Lesson lesson = new Lesson(subject, 1, 1, teacher, 1);
-        mockMvc.perform(put("/teacher/lesson/1").flashAttr("lesson",lesson).with(csrf()))
+        mockMvc.perform(put("/teacher/lesson/1").flashAttr("lesson", lesson).with(csrf()))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/teacher/subject/"+subject.getId()));
+                .andExpect(redirectedUrl("/teacher/subject/" + subject.getId()));
     }
 
     @Test
@@ -187,7 +190,7 @@ public class MockMvcTeacherControllersTest {
         mockMvc.perform(get("/teacher/scheduler"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("schedule"))
-                .andExpect(model().hasNoErrors()) ;
+                .andExpect(model().hasNoErrors());
     }
 
     @Test
@@ -198,16 +201,16 @@ public class MockMvcTeacherControllersTest {
     }
 
     @Test
-    @WithMockUser( authorities = "TEACHER")
+    @WithMockUser(authorities = "TEACHER")
     public void shouldDeleteAndRedirectForTeacherLesson() throws Exception {
         Subject subject = new Subject("name", 3, "Math", 4);
         subject.setId(1l);
-        User teacher = new User("a.a@ukma.edu.ua", "name", "surname","TEACHER","Secret10");
+        User teacher = new User("a.a@ukma.edu.ua", "name", "surname", "TEACHER", "Secret10");
         Lesson lesson = new Lesson(subject, 1, 1, teacher, 1);
         lesson.setId(1l);
-        mockMvc.perform(delete("/teacher/lesson/"+lesson.getId()).with(csrf()))
+        mockMvc.perform(delete("/teacher/lesson/" + lesson.getId()).with(csrf()))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/teacher/subject/"+lesson.getSubject().getId())
+                .andExpect(redirectedUrl("/teacher/subject/" + lesson.getSubject().getId())
                 );
     }
 
@@ -217,10 +220,10 @@ public class MockMvcTeacherControllersTest {
     public void shouldNotDeleteAndRedirectForTeacherLesson() throws Exception {
         Subject subject = new Subject("name", 3, "Math", 4);
         subject.setId(1l);
-        User teacher = new User("a.a@ukma.edu.ua", "name", "surname","TEACHER","Secret10");
+        User teacher = new User("a.a@ukma.edu.ua", "name", "surname", "TEACHER", "Secret10");
         Lesson lesson = new Lesson(subject, 1, 1, teacher, 1);
         lesson.setId(1l);
-        mockMvc.perform(delete("/teacher/lesson/"+lesson.getId()).with(csrf()))
+        mockMvc.perform(delete("/teacher/lesson/" + lesson.getId()).with(csrf()))
                 .andExpect(status().is4xxClientError());
     }
 

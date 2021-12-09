@@ -10,7 +10,6 @@ import ukma.fi.scheduler.service.ScheduleService;
 import ukma.fi.scheduler.service.UserService;
 
 import java.util.*;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Service
@@ -36,7 +35,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         lessons = lessons.stream()
                 .filter(x ->
                         studentLessons.containsKey(x.getSubject()) &&
-                        studentLessons.get(x.getSubject()).equals(x.getGroupNumber()))
+                                studentLessons.get(x.getSubject()).equals(x.getGroupNumber()))
                 .collect(Collectors.toList());
 
         convertToSchedulerDto(result, lessons);

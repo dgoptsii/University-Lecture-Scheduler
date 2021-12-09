@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import ukma.fi.scheduler.controller.dto.SubjectGroupDTO;
 import ukma.fi.scheduler.controller.dto.SubjectGroupListDTO;
 import ukma.fi.scheduler.entities.Subject;
+
 import javax.naming.InvalidNameException;
 import java.util.List;
 import java.util.Map;
@@ -16,12 +17,10 @@ public class Converters {
     @Autowired
     private SubjectService subjectService;
 
-//    @Autowired
-//    private SubjectService subjectService;
 
-    public Map<Subject, Integer> convertSubGroupDto(SubjectGroupListDTO input){
+    public Map<Subject, Integer> convertSubGroupDto(SubjectGroupListDTO input) {
         List<SubjectGroupDTO> list = input.getChooseSubGroup().stream()
-                .filter(x -> x.getGroupNum()!=null).collect(Collectors.toList());
+                .filter(x -> x.getGroupNum() != null).collect(Collectors.toList());
 
         Map<Long, Integer> map = list.stream()
                 .collect(Collectors.toMap(SubjectGroupDTO::getSubId, SubjectGroupDTO::getGroupNum));
@@ -29,19 +28,19 @@ public class Converters {
         List<Long> subIds = list.stream().map(SubjectGroupDTO::getSubId).collect(Collectors.toList());
         List<Subject> subjects = subjectService.findSubjectByIdIn(subIds);
 
-        Map<Subject,Integer> res = subjects.stream()
-                .collect(Collectors.toMap(Function.identity(),item -> 0));
+        Map<Subject, Integer> res = subjects.stream()
+                .collect(Collectors.toMap(Function.identity(), item -> 0));
 
         res.forEach((k, v) -> {
             Integer group = map.get(k.getId());
-            if(group >k.getMaxGroups()){
+            if (group > k.getMaxGroups()) {
                 try {
                     throw new InvalidNameException("GroupNum is bigger then Subject maxGroupNum");
                 } catch (InvalidNameException e) {
                     e.printStackTrace();
                 }
-            }else{
-                res.replace(k,group);
+            } else {
+                res.replace(k, group);
             }
         });
 

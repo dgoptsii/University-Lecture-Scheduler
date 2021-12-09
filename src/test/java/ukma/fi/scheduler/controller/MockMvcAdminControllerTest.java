@@ -8,17 +8,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.view.RedirectView;
 import ukma.fi.scheduler.entities.User;
 import ukma.fi.scheduler.service.AuthService;
-import ukma.fi.scheduler.service.UserService;
-
-import javax.validation.Valid;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -38,9 +31,8 @@ public class MockMvcAdminControllerTest {
 
     @BeforeEach
     public void mockService() throws Exception {
-        doReturn(new User()).when(authService).registration(any(User.class),any(String.class));
+        doReturn(new User()).when(authService).registration(any(User.class), any(String.class));
     }
-
 
     @Test
     @WithMockUser(authorities = "ADMIN")
@@ -59,10 +51,10 @@ public class MockMvcAdminControllerTest {
     }
 
     @Test
-    @WithMockUser( authorities = "ADMIN")
+    @WithMockUser(authorities = "ADMIN")
     public void shouldRedirectAfterAdminAddTeacher() throws Exception {
-        User teacher = new User("a.a@ukma.edu.ua", "name", "surname","TEACHER","Secret10");
-        mockMvc.perform(post("/admin/add_teacher").flashAttr("user",teacher).with(csrf()))
+        User teacher = new User("a.a@ukma.edu.ua", "name", "surname", "TEACHER", "Secret10");
+        mockMvc.perform(post("/admin/add_teacher").flashAttr("user", teacher).with(csrf()))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/admin/add_teacher"));
     }
@@ -71,13 +63,10 @@ public class MockMvcAdminControllerTest {
     @Test
     @WithMockUser(authorities = "TEACHER")
     public void shouldNotRedirectAfterAdminAddTeacher() throws Exception {
-        User teacher = new User("a.a@ukma.edu.ua", "name", "surname","TEACHER","Secret10");
-        mockMvc.perform(post("/admin/add_teacher").flashAttr("user",teacher).with(csrf()))
+        User teacher = new User("a.a@ukma.edu.ua", "name", "surname", "TEACHER", "Secret10");
+        mockMvc.perform(post("/admin/add_teacher").flashAttr("user", teacher).with(csrf()))
                 .andExpect(status().is4xxClientError());
     }
-
-
-  
 
 
 }

@@ -1,6 +1,5 @@
 package ukma.fi.scheduler.entities;
 
-import jdk.nashorn.internal.objects.annotations.Constructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import ukma.fi.scheduler.controller.dto.UserDTO;
