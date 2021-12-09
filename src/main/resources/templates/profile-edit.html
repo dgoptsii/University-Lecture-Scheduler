@@ -34,18 +34,19 @@
 
                         onsubmit="return validate(this);"
                 >
+                    <input type="hidden" name ="oldLogin" th:value="${user.getLogin()}">
 
                     <div class="row">
                         <div class="col m-2">Surname:</div>
-                        <div class="col m-2"><input style="width: 100%" required id="form-name" type="text"
+                        <div class="col m-2"><input style="width: 100%" required id="form-surname" type="text"
                                                     th:value="${user.getSurname()}"
-                                                    name="name"/></div>
+                                                    name="surname"/></div>
                     </div>
                     <div class="row">
                         <div class="col m-2 ">Name:</div>
-                        <div class="col m-2"><input style="width: 100%" required id="form-surname" type="text"
+                        <div class="col m-2"><input style="width: 100%" required id="form-name" type="text"
                                                     th:value="${user.getName()}"
-                                                    name="surname"/>
+                                                    name="name"/>
                         </div>
                     </div>
                     <div class="row">

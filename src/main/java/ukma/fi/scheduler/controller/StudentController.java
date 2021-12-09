@@ -1,5 +1,6 @@
 package ukma.fi.scheduler.controller;
 
+import com.sun.media.sound.InvalidDataException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.expression.AccessException;
 import org.springframework.security.core.Authentication;
@@ -11,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 import ukma.fi.scheduler.controller.dto.*;
 import ukma.fi.scheduler.entities.*;
+import ukma.fi.scheduler.exceptionHandlers.exceptions.InvalidData;
 import ukma.fi.scheduler.service.*;
 
 import java.security.Principal;
@@ -34,19 +36,8 @@ public class StudentController {
     }
 
     @PostMapping("/subject/groups")
-    public RedirectView addStudentGroup(@ModelAttribute SubjectGroupListDTO form, Principal principal) {
-        SubjectGroupListDTO oldForm = userService.getSubjectGroupDTOS(principal.getName());
-        if(form.equals(oldForm)){
-            return new RedirectView("/profile");
-        }else if (form.size() != oldForm.size()){
-            try {
-                throw new MissingRequestValueException("Input value isn't correct");
-            } catch (MissingRequestValueException e) {
-                e.printStackTrace();
-            }
-        }
+    public RedirectView addStudentGroup(@ModelAttribute SubjectGroupListDTO form, Principal principal) throws Exception{
         userService.editSubjectGroup(principal.getName(),form);
-
         return new RedirectView("/student/subject/groups");
     }
 
