@@ -50,6 +50,14 @@ public class AuthController {
         return mav;
     }
 
+    @GetMapping("/success_login")
+    public RedirectView successLogin(Principal principal) throws Exception {
+        User user = userService.findUserByLogin(principal.getName());
+        if (user.getStatus().equals("ADMIN"))
+            return new RedirectView("/admin/add_teacher");
+    return new RedirectView("/profile");
+    }
+
     @GetMapping("/profile_edit")
     public ModelAndView profileEditPage(Principal principal) {
         ModelAndView mav = new ModelAndView();

@@ -59,7 +59,7 @@ public class WebSecurityConfig
                 .and().headers().frameOptions().sameOrigin()
                 .and()
                 .formLogin()
-                .defaultSuccessUrl("/profile")
+                .defaultSuccessUrl("/success_login")
                 .failureUrl("/fail_login")
                 .permitAll();
     }
