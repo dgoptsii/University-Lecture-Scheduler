@@ -72,7 +72,9 @@ public class SubjectServiceImpl implements SubjectService {
     public Subject create(@Valid SubjectLectureDTO dto) {
         Subject subject = new Subject(dto.getName(), dto.getMaxGroups(), dto.getSpecialty(), dto.getYear());
         if (subjectRepository.findSubjectByName(subject.getName()).isPresent()) {
-            throw new InvalidData(Collections.singletonMap("name", subject.getName()));
+            Subject finded = subjectRepository.findSubjectByName(subject.getName()).get();
+            if (finded.getYear().equals(subject.getYear()) && finded.getSpeciality().equals(subject.getSpeciality()))
+                throw new InvalidData(Collections.singletonMap("name", subject.getName()));
         }
         subjectRepository.save(subject);
         LessonDTO lecture = new LessonDTO(subject, dto.getTeacher(), dto.getDayOfWeek(), dto.getLessonNumber(), 0);
