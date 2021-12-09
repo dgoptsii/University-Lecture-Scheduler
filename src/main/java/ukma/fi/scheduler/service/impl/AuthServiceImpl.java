@@ -47,7 +47,7 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public User editUser(@Valid UserDTO userNew,String login) throws InvalidDataException {
-        System.out.println(login);
+        log.info("new data after user - edit form:" + userNew);
         User user = userService.findUserByLogin(login);
         if(userNew.getPassword().isEmpty()){
             user.changeUser(userNew);
