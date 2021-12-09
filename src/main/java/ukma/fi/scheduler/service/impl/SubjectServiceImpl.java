@@ -23,7 +23,6 @@ import javax.validation.Valid;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @Log4j2
@@ -106,8 +105,13 @@ public class SubjectServiceImpl implements SubjectService {
     }
 
     @Override
-    public void edit(Long id, Subject newSub) throws Exception{
-        Subject old = findSubjectById(id);
+    public boolean edit(Long id, Subject newSub) throws Exception{
+        Subject old;
+        if(subjectRepository.findById(id).isPresent()){
+            old = subjectRepository.findById(id).get();
+        }else{
+            throw new InvalidDataException("Subject with id="+id+" doesn't exist.");
+        }
         if (!old.getId().equals(newSub.getId())) {
             throw new InvalidData(Collections.singletonMap("subject_id", id.toString()));
         }
@@ -127,7 +131,9 @@ public class SubjectServiceImpl implements SubjectService {
                 }
             }
             subjectRepository.save(newSub);
+            return true;
         }
+        return false;
     }
 
 }

@@ -9,7 +9,7 @@ public interface SubjectService {
 
     Subject findSubjectById(Long id);
 
-    Subject findSubjectByName(String name) throws Exception;
+    Subject findSubjectByName(String name);
 
     List<Subject> findSubjectByIdIn(List<Long> id);
 
@@ -19,5 +19,5 @@ public interface SubjectService {
 
     void deleteSubject(Long id) throws Exception;
 
-    void edit(Long id,Subject newSub) throws Exception;
+    boolean edit(Long id, Subject newSub) throws Exception;
 }

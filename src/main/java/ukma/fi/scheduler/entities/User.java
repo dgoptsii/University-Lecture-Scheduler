@@ -1,5 +1,6 @@
 package ukma.fi.scheduler.entities;
 
+import jdk.nashorn.internal.objects.annotations.Constructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import ukma.fi.scheduler.controller.dto.UserDTO;
@@ -8,6 +9,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -51,7 +53,7 @@ public class User {
     @ElementCollection
     @MapKeyColumn(name = "subjectId")
     @Column(name = "groupNumber")
-    private Map<Subject, Integer> groups;
+    private Map<Subject, Integer> groups = new HashMap<>();
 
     public User(String login, String name, String surname,String status,String password){
         this.login=login;
@@ -59,6 +61,15 @@ public class User {
         this.surname = surname;
         this.status = status;
         this.password = password;
+    }
+    public User(User user){
+        this.id = user.getId();
+        this.login=user.getLogin();
+        this.name = user.getName();
+        this.surname = user.getSurname();
+        this.status = user.getStatus();
+        this.password = user.getPassword();
+        this.groups = user.getGroups();
     }
     public User changeUser(UserDTO user) {
         this.name = user.getName();

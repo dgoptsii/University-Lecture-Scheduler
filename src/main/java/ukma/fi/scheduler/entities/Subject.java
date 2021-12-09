@@ -1,5 +1,6 @@
 package ukma.fi.scheduler.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -14,6 +15,7 @@ import java.util.List;
 @Data
 @EqualsAndHashCode
 @NoArgsConstructor
+@AllArgsConstructor
 public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
