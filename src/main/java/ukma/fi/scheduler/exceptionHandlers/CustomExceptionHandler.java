@@ -34,45 +34,35 @@ public class CustomExceptionHandler {
         return getErrorMav(req,exception,403);
     }
 
-    @ResponseBody
     @ExceptionHandler(UserNotFoundException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public String userNotFoundHandler(UserNotFoundException ex) {
-        return ex.getMessage();
+    public ModelAndView HandleUserNotFoundException(HttpServletRequest req, UserNotFoundException exception) throws Exception {
+        return getErrorMav(req,exception,404);
     }
 
-    @ResponseBody
-    @ExceptionHandler(FacultyNotFoundException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public String facultyNotFoundHandler(FacultyNotFoundException ex) {
-        return ex.getMessage();
+    @ExceptionHandler(LessonNotFoundException.class)
+    public ModelAndView HandleLessonNotFoundException(HttpServletRequest req, LessonNotFoundException exception) throws Exception {
+        return getErrorMav(req,exception,404);
     }
 
-    @ResponseBody
     @ExceptionHandler(SubjectNotFoundException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public String subjectNotFoundHandler(SubjectNotFoundException ex) {
-        return ex.getMessage();
+    public ModelAndView HandleUserNotFoundException(HttpServletRequest req, SubjectNotFoundException exception) throws Exception {
+        return getErrorMav(req,exception,404);
     }
 
-    @ResponseBody
     @ExceptionHandler(InvalidData.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ModelAndView invalidDataHandler(HttpServletRequest req, InvalidData exception) throws Exception {
+    public ModelAndView HandleInvalidData(HttpServletRequest req, SubjectNotFoundException exception) throws Exception {
         return getErrorMav(req,exception,403);
     }
 
-
-    @ResponseBody
-    @ExceptionHandler(LessonNotFoundException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public String lessonNotFoundHandler(LessonNotFoundException ex) {
-        return ex.getMessage();
-    }
-
     @ExceptionHandler(Exception.class)
-    public ModelAndView handleError(HttpServletRequest req, Exception exception)
+    public ModelAndView handleException(HttpServletRequest req, Exception exception)
             throws Exception {
         return getErrorMav(req,exception,500);
+    }
+
+    @ExceptionHandler(UserExistsException.class)
+    public ModelAndView handleUserExistsException(HttpServletRequest req, UserExistsException exception)
+            throws Exception {
+        return getErrorMav(req,exception,409); //Conflict error
     }
 }

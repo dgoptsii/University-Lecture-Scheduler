@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import ukma.fi.scheduler.controller.dto.UserDTO;
 import ukma.fi.scheduler.controller.dto.UserLoginDTO;
 import ukma.fi.scheduler.exceptionHandlers.exceptions.InvalidData;
+import ukma.fi.scheduler.exceptionHandlers.exceptions.UserExistsException;
 import ukma.fi.scheduler.exceptionHandlers.exceptions.UserNotFoundException;
 import ukma.fi.scheduler.repository.UserRepository;
 import ukma.fi.scheduler.entities.*;
@@ -42,7 +43,7 @@ public class AuthServiceImpl implements AuthService {
         try {
             res = userRepository.save(user);
         } catch (Exception ex) {
-            throw new InvalidDataException("User with this login already exist");
+            throw new UserExistsException();
         }
         return res;
     }
@@ -54,7 +55,7 @@ public class AuthServiceImpl implements AuthService {
         if(user==null){
             throw new UnknownError("Something went wrong");
         }else if (user.getLogin().equals(userNew.getLogin())) {
-            throw new InvalidDataException("User with this login already exist");
+            throw new UserExistsException();
         }
         if (userNew.getPassword().isEmpty()) {
             user.changeUser(userNew);

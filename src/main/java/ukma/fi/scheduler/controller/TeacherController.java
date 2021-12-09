@@ -12,6 +12,7 @@ import ukma.fi.scheduler.controller.dto.SubjectLectureDTO;
 import ukma.fi.scheduler.entities.Lesson;
 import ukma.fi.scheduler.entities.Subject;
 import ukma.fi.scheduler.exceptionHandlers.exceptions.SubjectNotFoundException;
+import ukma.fi.scheduler.exceptionHandlers.exceptions.LessonNotFoundException;
 import ukma.fi.scheduler.service.LessonService;
 import ukma.fi.scheduler.service.ScheduleService;
 import ukma.fi.scheduler.service.SubjectService;
@@ -81,8 +82,9 @@ public class TeacherController {
     public ModelAndView getSubject(@PathVariable Long id) throws Exception {
         ModelAndView mav = new ModelAndView("teacher_edit_subject");
         Subject subject = subjectService.findSubjectById(id);
-        if (subject == null)
-            throw new SubjectNotFoundException("Subject with id: " + id + " not found.");
+        if (subject == null) {
+            throw new SubjectNotFoundException(id.toString());
+        }
         List<Lesson> lessons = lessonService.findAllBySubject_Id(id);
         mav.addObject("specialties", SPECIALITIES);
         mav.addObject("teachers", userService.findByRole("TEACHER"));
@@ -107,6 +109,9 @@ public class TeacherController {
     public ModelAndView getLesson(@PathVariable Long id) throws Exception {
         ModelAndView mav = new ModelAndView("teacher_edit_lesson");
         Lesson lesson = lessonService.findById(id);
+        if (lesson == null) {
+            throw new LessonNotFoundException(id);
+        }
         mav.addObject("lesson", lesson);
         mav.addObject("specialties", SPECIALITIES);
         mav.addObject("subjects", subjectService.findAll());
