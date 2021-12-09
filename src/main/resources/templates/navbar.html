@@ -40,7 +40,12 @@
                 <a class="nav-link" href="/teacher/subject/all">All subjects</a>
             </li>
         </ul>
-            <a href="/logout"><button  class="btn btn-outline-info my-2 my-sm-0" type="submit">Logout</button></a>
+            <div th:if="${currentUser == null}" style="margin-right:20px">
+                <a href="/login" ><button  class="btn btn-outline-info my-2 my-sm-0" type="submit">Login</button></a>
+            </div>
+            <div th:if="${currentUser != null}">
+                <a href="/logout"><button  class="btn btn-outline-info my-2 my-sm-0" type="submit">Logout</button></a>
+            </div>
     </div>
 </nav>
 </div>

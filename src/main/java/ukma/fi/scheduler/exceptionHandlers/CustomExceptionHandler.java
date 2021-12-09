@@ -3,7 +3,6 @@ package ukma.fi.scheduler.exceptionHandlers;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.expression.AccessException;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import ukma.fi.scheduler.exceptionHandlers.exceptions.*;
@@ -65,4 +64,5 @@ public class CustomExceptionHandler {
             throws Exception {
         return getErrorMav(req,exception,409); //Conflict error
     }
+
 }

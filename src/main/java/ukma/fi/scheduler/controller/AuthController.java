@@ -66,6 +66,13 @@ public class AuthController {
         return mav;
     }
 
+    @GetMapping("/accessDenied")
+    public ModelAndView accessDeniedException() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("access_denied");
+        return mav;
+    }
+
     @PutMapping("/profile_edit")
     public RedirectView profilePage(@Valid @ModelAttribute UserDTO user) throws Exception {
         authService.editUser(user, user.getOldLogin());

@@ -57,6 +57,7 @@ public class WebSecurityConfig
                 .antMatchers("/**", "/h2-console/**").permitAll()
                 .and().csrf().ignoringAntMatchers("/h2-console/**")
                 .and().headers().frameOptions().sameOrigin()
+                .and().exceptionHandling().accessDeniedPage("/accessDenied")
                 .and()
                 .formLogin()
                 .defaultSuccessUrl("/success_login")
