@@ -8,6 +8,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import ukma.fi.scheduler.entities.Subject;
 import ukma.fi.scheduler.repository.SubjectRepository;
 
+import javax.validation.ConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -83,19 +84,12 @@ public class DataJpaSubjectTest {
         }
     }
 
-
-    //TODO should not be able to insert two similar name-specialty-year
     @Test
     public void shouldFailAddSubject(){
-        Subject sub1  = new  Subject(NAME1, 1, SPECIALTY1, 1);
-        entityManager.persistAndFlush(sub1);
-         //TODO add assertThrows
-
-//        Assertions.assertThrows(PersistenceException.class, () -> {
-//            Subject sub = new Subject();
-//            sub.setName(NAME1);
-//            entityManager.persistAndFlush(sub);
-//        });
+        Subject sub1  = new  Subject();
+        Assertions.assertThrows(ConstraintViolationException.class, () -> {
+            entityManager.persistAndFlush(sub1);
+        });
 
     }
 
