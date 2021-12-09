@@ -28,7 +28,7 @@ public class AdminController {
     @PostMapping("add_teacher")
     public RedirectView addTeacher(@Valid @ModelAttribute User user) throws Exception{
         authService.registration(user, "TEACHER");
-        return new RedirectView("/add_teacher");
+        return new RedirectView("/admin/add_teacher");
     }
 
     @ModelAttribute("currentUser")

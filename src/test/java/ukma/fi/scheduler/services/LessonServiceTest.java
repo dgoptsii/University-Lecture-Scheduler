@@ -1,4 +1,4 @@
-package ukma.fi.scheduler.controller;
+package ukma.fi.scheduler.services;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

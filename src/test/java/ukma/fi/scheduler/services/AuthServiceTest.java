@@ -1,4 +1,4 @@
-package ukma.fi.scheduler.controller;
+package ukma.fi.scheduler.services;
 
 import com.sun.media.sound.InvalidDataException;
 import lombok.SneakyThrows;
@@ -11,6 +11,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import ukma.fi.scheduler.controller.dto.UserDTO;
 import ukma.fi.scheduler.entities.User;
+import ukma.fi.scheduler.exceptionHandlers.exceptions.UserExistsException;
 import ukma.fi.scheduler.repository.UserRepository;
 import ukma.fi.scheduler.service.AuthService;
 import ukma.fi.scheduler.service.UserService;
@@ -64,7 +65,7 @@ public class AuthServiceTest {
 
     @Test
     public void shouldNotAddExistStudent() {
-        Assertions.assertThrows(InvalidDataException.class, () -> {
+        Assertions.assertThrows(UserExistsException.class, () -> {
             User k = new User();
             k.setLogin(login1);
             k.setPassword("passw");
@@ -122,7 +123,7 @@ public class AuthServiceTest {
         UserDTO k = new UserDTO();
         k.setLogin(login1);
         k.setPassword("passw");
-        Assertions.assertThrows(InvalidDataException.class, () -> {
+        Assertions.assertThrows(UserExistsException.class, () -> {
             authService.editUser(k, login1);
         });
     }
