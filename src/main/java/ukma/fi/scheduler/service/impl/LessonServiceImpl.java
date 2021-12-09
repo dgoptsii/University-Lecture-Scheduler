@@ -25,13 +25,11 @@ public class LessonServiceImpl implements LessonService {
     LessonRepository lessonRepository;
 
     @Override
-    public Lesson create(LessonDTO dto) {
-        if (lessonRepository.findBySubjectAndGroupNumber(dto.getSubject(), dto.getGroupNumber()).isPresent()) {
-            try {
+    public Lesson create(LessonDTO dto) throws Exception {
+        if (lessonRepository
+                .findBySubjectAndGroupNumberAndDayOfWeekAndLessonNumber(
+                        dto.getSubject(), dto.getGroupNumber(),dto.getDayOfWeek(),dto.getLessonNumber()).isPresent()) {
                 throw new InvalidDataException("This lesson already exist");
-            } catch (InvalidDataException e) {
-                e.printStackTrace();
-            }
         }
         if (dto.getGroupNumber() > dto.getSubject().getMaxGroups()) {
             throw new InvalidData(Collections.singletonMap("lesson_group_number", dto.getGroupNumber().toString()));
@@ -50,7 +48,7 @@ public class LessonServiceImpl implements LessonService {
     }
 
     @Override
-    public Lesson findById(Long id) {
+    public Lesson findById(Long id){
         if (!lessonRepository.findById(id).isPresent()) {
             throw new LessonNotFoundException(id);
         }
@@ -58,19 +56,29 @@ public class LessonServiceImpl implements LessonService {
     }
 
     @Override
-    public void edit(Long id, Lesson lesson) {
-        Lesson old = findById(id);
-        if (!old.getId().equals(lesson.getId())) {
+    public void edit(Long id, Lesson lesson) throws Exception {
+        Optional<Lesson> old = lessonRepository.findById(id);
+        if (!old.isPresent()) {
+            throw new LessonNotFoundException(id);
+        }
+        if (!old.get().getId().equals(lesson.getId())) {
             throw new InvalidData(Collections.singletonMap("lesson_id", id.toString()));
         }
-        if (!old.equals(lesson)) {
-            System.out.println("toDelete: " + lesson);
+        if (!old.get().equals(lesson)) {
+            if (lessonRepository
+                    .findBySubjectAndGroupNumberAndDayOfWeekAndLessonNumber(
+                            lesson.getSubject(), lesson.getGroupNumber(),lesson.getDayOfWeek(),lesson.getLessonNumber()).isPresent()) {
+                throw new InvalidDataException("This lesson already exist");
+            }
+            if (lesson.getGroupNumber() > old.get().getSubject().getMaxGroups()) {
+                throw new InvalidData(Collections.singletonMap("lesson_group_number", lesson.getGroupNumber().toString()));
+            }
             lessonRepository.save(lesson);
         }
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Long id) throws Exception{
         Optional<Lesson> lessonOptional = lessonRepository.findById(id);
         if (!lessonOptional.isPresent()) {
             throw new LessonNotFoundException(id);

@@ -1,5 +1,6 @@
 package ukma.fi.scheduler.service.impl;
 
+import com.sun.media.sound.InvalidDataException;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,7 +45,7 @@ public class SubjectServiceImpl implements SubjectService {
     private LessonService lessonService;
 
     @Override
-    public Subject findSubjectById(Long id) {
+    public Subject findSubjectById(Long id){
         if (subjectRepository.findById(id).isPresent()) {
             log.info("found by id  -> id:" + id);
             return subjectRepository.findById(id).get();
@@ -54,7 +55,7 @@ public class SubjectServiceImpl implements SubjectService {
     }
 
     @Override
-    public Subject findSubjectByName(String name) {
+    public Subject findSubjectByName(String name){
         if (subjectRepository.findSubjectByName(name).isPresent()) {
             log.info("found subject by name -> name:" + name);
             return subjectRepository.findSubjectByName(name).get();
@@ -69,7 +70,7 @@ public class SubjectServiceImpl implements SubjectService {
     }
 
     @Override
-    public Subject create(@Valid SubjectLectureDTO dto) {
+    public Subject create(@Valid SubjectLectureDTO dto) throws Exception{
         Subject subject = new Subject(dto.getName(), dto.getMaxGroups(), dto.getSpecialty(), dto.getYear());
         if (subjectRepository.findSubjectByName(subject.getName()).isPresent()) {
             Subject finded = subjectRepository.findSubjectByName(subject.getName()).get();
@@ -90,7 +91,7 @@ public class SubjectServiceImpl implements SubjectService {
 
     @Override
     @Transactional
-    public void deleteSubject(Long id) {
+    public void deleteSubject(Long id) throws Exception{
         Optional<Subject> subjectOptional = subjectRepository.findById(id);
         if (!subjectOptional.isPresent()) {
             throw new SubjectNotFoundException("Subject with id: " + id + " not found.");
@@ -105,19 +106,23 @@ public class SubjectServiceImpl implements SubjectService {
     }
 
     @Override
-    public void edit(Long id, Subject newSub) {
+    public void edit(Long id, Subject newSub) throws Exception{
         Subject old = findSubjectById(id);
         if (!old.getId().equals(newSub.getId())) {
             throw new InvalidData(Collections.singletonMap("subject_id", id.toString()));
         }
         if (!old.equals(newSub)) {
+            if (subjectRepository.findSubjectByName(newSub.getName()).isPresent()) {
+                Subject finded = subjectRepository.findSubjectByName(newSub.getName()).get();
+                if (finded.getYear().equals(newSub.getYear()) && finded.getSpeciality().equals(newSub.getSpeciality()))
+                    throw new InvalidDataException("Subject :+"+newSub+" already exist.");
+            }
             if (old.getMaxGroups() > newSub.getMaxGroups() && old.getMaxGroups() != 0) {
                 for (int i = newSub.getMaxGroups() + 1; i <= old.getMaxGroups(); i++) {
                     userService.moveIfGroupsCountChange(i, old);
                     for (Lesson lesson : lessonRepository.findAllBySubjectAndGroupNumber(old, i)) {
                         lessonService.delete(lesson.getId());
                     }
-
                 }
             }
             subjectRepository.save(newSub);

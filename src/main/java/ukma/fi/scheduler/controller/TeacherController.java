@@ -11,6 +11,7 @@ import ukma.fi.scheduler.controller.dto.LessonDTO;
 import ukma.fi.scheduler.controller.dto.SubjectLectureDTO;
 import ukma.fi.scheduler.entities.Lesson;
 import ukma.fi.scheduler.entities.Subject;
+import ukma.fi.scheduler.exceptionHandlers.exceptions.SubjectNotFoundException;
 import ukma.fi.scheduler.service.LessonService;
 import ukma.fi.scheduler.service.ScheduleService;
 import ukma.fi.scheduler.service.SubjectService;
@@ -54,7 +55,7 @@ public class TeacherController {
     }
 
     @PostMapping("/subject/add")
-    public RedirectView addSubject(@ModelAttribute("subject") @Valid SubjectLectureDTO dto) {
+    public RedirectView addSubject(@ModelAttribute("subject") @Valid SubjectLectureDTO dto) throws Exception {
         subjectService.create(dto);
         return new RedirectView("/teacher/subject/add");
     }
@@ -77,31 +78,33 @@ public class TeacherController {
     }
 
     @GetMapping("/subject/{id}")
-    public ModelAndView getSubject(@PathVariable Long id){
+    public ModelAndView getSubject(@PathVariable Long id) throws Exception {
         ModelAndView mav = new ModelAndView("teacher_edit_subject");
         Subject subject = subjectService.findSubjectById(id);
+        if (subject == null)
+            throw new SubjectNotFoundException("Subject with id: " + id + " not found.");
         List<Lesson> lessons = lessonService.findAllBySubject_Id(id);
         mav.addObject("specialties", SPECIALITIES);
         mav.addObject("teachers", userService.findByRole("TEACHER"));
         mav.addObject("lessons", lessons);
-        mav.addObject("subject",subject);
+        mav.addObject("subject", subject);
         return mav;
     }
 
     @PutMapping("/subject/{id}")
-    public RedirectView updateSubject(@PathVariable Long id,@Valid Subject subject){
-        subjectService.edit(id,subject);
-        return new RedirectView("/teacher/subject/"+id);
+    public RedirectView updateSubject(@PathVariable Long id, @Valid Subject subject) throws Exception {
+        subjectService.edit(id, subject);
+        return new RedirectView("/teacher/subject/" + id);
     }
 
     @DeleteMapping("/subject/{id}")
-    public RedirectView deleteSubject(@PathVariable Long id){
+    public RedirectView deleteSubject(@PathVariable Long id) throws Exception {
         subjectService.deleteSubject(id);
         return new RedirectView("/teacher/subject/all");
     }
 
     @GetMapping("/lesson/{id}")
-    public ModelAndView getLesson(@PathVariable Long id) {
+    public ModelAndView getLesson(@PathVariable Long id) throws Exception {
         ModelAndView mav = new ModelAndView("teacher_edit_lesson");
         Lesson lesson = lessonService.findById(id);
         mav.addObject("lesson", lesson);
@@ -112,22 +115,22 @@ public class TeacherController {
     }
 
     @DeleteMapping("/lesson/{id}")
-    public RedirectView deleteLesson(@PathVariable Long id){
+    public RedirectView deleteLesson(@PathVariable Long id) throws Exception {
         Lesson lesson = lessonService.findById(id);
         lessonService.delete(id);
-        return new RedirectView("/teacher/subject/"+lesson.getSubject().getId());
+        return new RedirectView("/teacher/subject/" + lesson.getSubject().getId());
     }
 
     @PutMapping("/lesson/{id}")
-    public RedirectView editLesson(@PathVariable Long id, @Valid Lesson lesson){
+    public RedirectView editLesson(@PathVariable Long id, @Valid Lesson lesson) throws Exception {
         System.out.println(lesson);
         lessonService.edit(id, lesson);
-        return new RedirectView("/teacher/subject/"+lesson.getSubject().getId());
+        return new RedirectView("/teacher/subject/" + lesson.getSubject().getId());
     }
 
 
     @PostMapping("/lesson/add")
-    public RedirectView addLesson(@ModelAttribute("lesson") @Valid LessonDTO dto) throws Exception{
+    public RedirectView addLesson(@ModelAttribute("lesson") @Valid LessonDTO dto) throws Exception {
         lessonService.create(dto);
         return new RedirectView("/teacher/lesson/add");
     }

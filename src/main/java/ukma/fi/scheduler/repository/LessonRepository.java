@@ -12,9 +12,8 @@ import java.util.Set;
 public interface LessonRepository extends CrudRepository<Lesson, Long> {
 
     Optional<Lesson> findBySubjectAndGroupNumber(Subject subject, Integer groupNumber);
+    Optional<Lesson> findBySubjectAndGroupNumberAndDayOfWeekAndLessonNumber(Subject subject, Integer groupNumber,Integer day,Integer lesson);
     Optional<Lesson> findBySubjectIdAndGroupNumber(Long id, Integer groupNumber);
-
-
     List<Lesson> findAllBySubjectAndGroupNumber(Subject subject, Integer groupNumber);
     List<Lesson> findAllBySubjectIdAndGroupNumber(Long id, Integer groupNumber);
     List<Lesson> findLessonsByGroupNumber(Integer groupNumber);

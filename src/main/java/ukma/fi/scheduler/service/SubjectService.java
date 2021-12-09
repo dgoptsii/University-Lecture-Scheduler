@@ -9,15 +9,15 @@ public interface SubjectService {
 
     Subject findSubjectById(Long id);
 
-    Subject findSubjectByName(String name);
+    Subject findSubjectByName(String name) throws Exception;
 
     List<Subject> findSubjectByIdIn(List<Long> id);
 
-    Subject create(SubjectLectureDTO dto);
+    Subject create(SubjectLectureDTO dto) throws Exception;
 
     List<Subject> findAll();
 
-    void deleteSubject(Long id);
+    void deleteSubject(Long id) throws Exception;
 
-    void edit(Long id,Subject newSub);
+    void edit(Long id,Subject newSub) throws Exception;
 }
