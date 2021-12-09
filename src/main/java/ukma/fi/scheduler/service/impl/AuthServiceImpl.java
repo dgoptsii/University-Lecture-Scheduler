@@ -1,5 +1,6 @@
 package ukma.fi.scheduler.service.impl;
 
+import com.sun.media.sound.InvalidDataException;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,37 +25,28 @@ public class AuthServiceImpl implements AuthService {
     @Autowired
     private UserService userService;
 
-
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
-
 
     @Autowired
     private UserRepository userRepository;
 
-    @Override
-    public User login(UserLoginDTO user) {
-        User userInDb = userService.findUserByLogin(user.getLogin());
-        if (userInDb == null) {
-            throw new UserNotFoundException("User not found.");
-        }
-        if (!userInDb.getPassword().equals(user.getPassword())) {
-            throw new InvalidData(Collections.singletonMap("password",user.getPassword()));
-        }
-        log.info("Login successfully -> " + user.getLogin());
-        return userInDb;
-    }
-
     //use naukma e-mail
     @Override
-    public User registration(@Valid User user, String role) {
+    public User registration(@Valid User user, String role) throws InvalidDataException {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setStatus(role);
-        return userRepository.save(user);
+        User res;
+        try {
+            res = userRepository.save(user);
+        }catch (Exception ex){
+            throw new InvalidDataException("User with this login already exist");
+        }
+        return res;
     }
 
     @Override
-    public User editUser(@Valid UserDTO userNew,String login) {
+    public User editUser(@Valid UserDTO userNew,String login) throws InvalidDataException {
         User user = userService.findUserByLogin(login);
         if(userNew.getPassword().isEmpty()){
             user.changeUser(userNew);
@@ -62,17 +54,13 @@ public class AuthServiceImpl implements AuthService {
             userNew.setPassword(passwordEncoder.encode(userNew.getPassword()));
             user.changeUser(userNew);
         }
-        return userRepository.save(user);
-    }
-
-
-    @Override
-    public User getUserInfo(Long id) {
-        User userInDb = userService.findUserById(id);
-        if (userInDb == null) {
-            throw new UserNotFoundException(id);
+        User res;
+        try {
+            res = userRepository.save(user);
+        }catch (Exception ex){
+            throw new InvalidDataException("User with this login already exist");
         }
-        log.info("get user info -> user id:" + id);
-        return userInDb;
+        return res;
     }
+
 }

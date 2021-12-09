@@ -47,12 +47,6 @@ public class SchedulerConfiguration implements WebMvcConfigurer {
         return dataSourceBuilder.build();
     }
 
-    @Bean
-    public CacheManager cacheManager() {
-        return new CustomCache(asList("AllStudents","AllTeachers"));
-    }
-
-//
 //    @Value("${messages.basename.path}")
 //    private String messagesBasename;
 //

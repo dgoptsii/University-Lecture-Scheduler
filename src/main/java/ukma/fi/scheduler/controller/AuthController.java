@@ -39,12 +39,6 @@ public class AuthController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private EntityManager entityManager;
-
-    @Autowired
-    private SubjectRepository repository;
-
     @GetMapping("/profile")
     public ModelAndView profilePage(Principal principal) {
         ModelAndView mav = new ModelAndView();
@@ -67,14 +61,14 @@ public class AuthController {
     }
 
     @PutMapping("/profile_edit")
-    public RedirectView profilePage(@Valid @ModelAttribute UserDTO user, Principal principal) {
+    public RedirectView profilePage(@Valid @ModelAttribute UserDTO user, Principal principal) throws Exception {
         System.out.println("new data after edit form:" + user);
         authService.editUser(user, principal.getName());
         return new RedirectView("/profile");
     }
 
     @PostMapping("/registration")
-    public RedirectView registration(@Valid @ModelAttribute User user) {
+    public RedirectView registration(@Valid @ModelAttribute User user) throws Exception{
         authService.registration(user, "STUDENT");
         return new RedirectView("/login");
     }
