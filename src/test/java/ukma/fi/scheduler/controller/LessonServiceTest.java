@@ -17,7 +17,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doReturn;
 
 @SpringBootTest
-public class UserServiceTest {
+public class LessonServiceTest {
 
     @MockBean
     private UserRepository userRepository;

@@ -2,16 +2,19 @@ package ukma.fi.scheduler.controller;
 
 import org.junit.Before;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.dao.EmptyResultDataAccessException;
 import ukma.fi.scheduler.entities.Lesson;
 import ukma.fi.scheduler.entities.Subject;
 import ukma.fi.scheduler.entities.User;
 import ukma.fi.scheduler.repository.LessonRepository;
 import ukma.fi.scheduler.repository.SubjectRepository;
 
+import javax.validation.ConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -49,6 +52,10 @@ public class DataJpaLessonTest {
     final String STATUS_TEACHER = "STUDENT";
 
     final String PASSWORD = "Password123";
+    User tech1 = new User(LOG1, "N1","S1", STATUS_STUDENT,PASSWORD );
+    User tech2 = new User(LOG2, "N2","S2", STATUS_STUDENT,PASSWORD );
+    User tech3 = new User(LOG3, "N3","S3", STATUS_TEACHER,PASSWORD );
+    User tech4 = new User(LOG4, "N4","S4", STATUS_TEACHER,PASSWORD );
 
 
     List<Long> userIDs = new ArrayList<>();
@@ -64,33 +71,6 @@ public class DataJpaLessonTest {
         subjectIDs.add((Long) entityManager.persistAndGetId(sub2));
         subjectIDs.add((Long) entityManager.persistAndGetId(sub3));
         entityManager.flush();
-        User tech1 = new User();
-        tech1.setName("N1");
-        tech1.setSurname("S1");
-        tech1.setStatus(STATUS_STUDENT);
-        tech1.setPassword(PASSWORD);
-        tech1.setLogin(LOG1);
-
-        User tech2 = new User();
-        tech2.setName("N2");
-        tech2.setSurname("S2");
-        tech2.setStatus(STATUS_STUDENT);
-        tech2.setPassword(PASSWORD);
-        tech2.setLogin(LOG2);
-
-        User tech3 = new User();
-        tech3.setName("N3");
-        tech3.setSurname("S3");
-        tech3.setStatus(STATUS_TEACHER);
-        tech3.setPassword(PASSWORD);
-        tech3.setLogin(LOG3);
-
-        User tech4 = new User();
-        tech4.setName("N4");
-        tech4.setSurname("S4");
-        tech4.setStatus(STATUS_TEACHER);
-        tech4.setPassword(PASSWORD);
-        tech4.setLogin(LOG4);
 
         userIDs.add((Long) entityManager.persistAndGetId(tech1));
         userIDs.add((Long) entityManager.persistAndGetId(tech2));
@@ -115,6 +95,7 @@ public class DataJpaLessonTest {
         lessonIDs.add((Long) entityManager.persistAndGetId(les4));
         lessonIDs.add((Long) entityManager.persistAndGetId(les5));
         lessonIDs.add((Long) entityManager.persistAndGetId(les6));
+
         entityManager.flush();
     }
 
@@ -124,28 +105,28 @@ public class DataJpaLessonTest {
         List<Lesson> lessons = lessonRepository.findAllBySubjectIdAndGroupNumber(sub3.getId(), 1);
         System.out.println(lessons);
         for (Lesson l : lessons) {
-            assertThat(l.getGroupNumber() == 1);
-            assertThat(l.getSubject()).isEqualTo(sub3);
+            Assertions.assertEquals (l.getGroupNumber(),1);
+            Assertions.assertEquals(l.getSubject(),sub3);
         }
         Optional<Lesson> lesson = lessonRepository.findBySubjectIdAndGroupNumber(sub3.getId(), 1);
         if (lesson.isPresent()) {
             Lesson l = lesson.get();
-            assertThat(l.getGroupNumber() == 1);
-            assertThat(l.getSubject()).isEqualTo(sub3);
+            Assertions.assertEquals (l.getGroupNumber(),1);
+            Assertions.assertEquals(l.getSubject(),sub3);
         }
     }
 
     @Test
     public void shouldFindLessonALl() {
         List<Lesson> list = lessonRepository.findAll();
-        assertThat(list.size() == lessonIDs.size());
+        Assertions.assertEquals(list.size(), lessonIDs.size());
     }
 
     @Test
     public void shouldFindByGroupNumber() {
         List<Lesson> lessons = lessonRepository.findLessonsByGroupNumber(1);
         for (Lesson l : lessons) {
-            assertThat(l.getGroupNumber() == 1);
+            Assertions.assertEquals(l.getGroupNumber() ,1);
         }
     }
 
@@ -153,7 +134,7 @@ public class DataJpaLessonTest {
     public void shouldFindByNotGroupNumber() {
         List<Lesson> lessons = lessonRepository.findLessonsByGroupNumberNot(1);
         for (Lesson l : lessons) {
-            assertThat(l.getGroupNumber() != 1);
+            Assertions.assertNotEquals(l.getGroupNumber() , 1);
         }
     }
 
@@ -161,15 +142,27 @@ public class DataJpaLessonTest {
     public void shouldFindBySubjectId() {
         List<Lesson> lessons = lessonRepository.findLessonsBySubject_Id(sub3.getId());
         for (Lesson l : lessons) {
-            assertThat(l.getSubject().getId()).isEqualTo(sub3.getId());
+            Assertions.assertEquals(l.getSubject().getId(), sub3.getId());
+        }
+    }
+
+    @Test
+    public void shouldFindByTeacherLogin(){
+        List <Lesson> lessons = lessonRepository.findByTeacherLogin(tech4.getLogin());
+        for (Lesson l :lessons){
+            Assertions.assertEquals(l.getTeacher().getLogin(),tech4.getLogin());
         }
     }
 
 
-//    List<Lesson> findLessonsBySubject_Id(Long subject_id);
-//    List<Lesson> findByTeacherLogin(String login);
-//    void deleteById(Long id);
-//    void deleteAllBySubject(Subject subject);
+    @Test
+    public void shouldDeleteLessonById() {
+        Long id = lessonIDs.get(0);
+        lessonRepository.deleteById(id );
+        Optional<Lesson> lesson = lessonRepository.findById(id);
+        Assertions.assertFalse(lesson.isPresent());
+    }
+
 
 
 }

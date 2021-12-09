@@ -27,18 +27,18 @@ public class DataJpaUserTest {
     @Autowired
     private UserRepository userRepository;
 
-    static final String LOG1 = "log.a@ukma.edu.ua";
-    static final String LOG2 = "log.b@ukma.edu.ua";
-    static final String LOG3 = "log.c@ukma.edu.ua";
-    static final String LOG4 = "log.d@ukma.edu.ua";
+     final String LOG1 = "log.a@ukma.edu.ua";
+     final String LOG2 = "log.b@ukma.edu.ua";
+     final String LOG3 = "log.c@ukma.edu.ua";
+     final String LOG4 = "log.d@ukma.edu.ua";
 
-    static final String STATUS_STUDENT = "STUDENT";
+     final String STATUS_STUDENT = "STUDENT";
     static final String STATUS_TEACHER = "STUDENT";
 
-    static final String PASSWORD = "Password123";
+     final String PASSWORD = "Password123";
 
 
-    static List<Long>  userIDs = new ArrayList<>();
+     List<Long>  userIDs = new ArrayList<>();
 
     @BeforeEach
     public void createBD() {
@@ -60,7 +60,7 @@ public class DataJpaUserTest {
     @Test
     public void shouldFindUserByLogin(){
         User found = userRepository.findByLogin(LOG1).get();
-        assertThat(found.getLogin()).isEqualTo(LOG1);
+        Assertions.assertEquals(found.getLogin(),LOG1);
     }
 
     @Test
@@ -96,11 +96,11 @@ public class DataJpaUserTest {
     public void shouldFindUserStatus(){
         List <User> teachers = userRepository.findUsersByStatus(STATUS_TEACHER);
         for (User t: teachers){
-            assertThat(t.getStatus()).isEqualTo(STATUS_TEACHER);
+            Assertions.assertEquals(t.getStatus(),STATUS_TEACHER);
         }
         List <User> students = userRepository.findUsersByStatus(STATUS_STUDENT);
         for (User s: students){
-            assertThat(s.getStatus()).isEqualTo(STATUS_STUDENT);
+            Assertions.assertEquals(s.getStatus(),STATUS_STUDENT);
         }
     }
 

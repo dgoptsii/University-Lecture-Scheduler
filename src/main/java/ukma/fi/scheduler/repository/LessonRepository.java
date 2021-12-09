@@ -24,4 +24,5 @@ public interface LessonRepository extends CrudRepository<Lesson, Long> {
     void deleteById(Long id);
     void deleteAllBySubject(Subject subject);
     List<Lesson> findAll();
+
 }

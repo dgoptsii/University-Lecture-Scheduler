@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import ukma.fi.scheduler.controller.dto.LessonDTO;
 import ukma.fi.scheduler.entities.Lesson;
 import ukma.fi.scheduler.entities.Subject;
+import ukma.fi.scheduler.entities.User;
 import ukma.fi.scheduler.exceptionHandlers.exceptions.InvalidData;
 import ukma.fi.scheduler.exceptionHandlers.exceptions.LessonDeleteException;
 import ukma.fi.scheduler.exceptionHandlers.exceptions.LessonNotFoundException;
@@ -81,4 +82,7 @@ public class LessonServiceImpl implements LessonService {
         }
         lessonRepository.delete(lesson);
     }
+
+
+
 }
