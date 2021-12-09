@@ -40,8 +40,13 @@ public class UserServiceTest {
 
 
     @Test
-    public void test() {
+    public void shouldFindExistingUserByLogin() {
         Assertions.assertEquals("login1", userService.findUserByLogin("login1").getLogin());
+    }
+
+    @Test
+    public void shouldReturnNullTryingToFindNotExistingUser(){
+        Assertions.assertNull(userService.findUserByLogin("notExistingLogin"));
     }
 
 }
