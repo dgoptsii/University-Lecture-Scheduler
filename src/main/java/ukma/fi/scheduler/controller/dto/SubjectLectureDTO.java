@@ -1,8 +1,12 @@
 package ukma.fi.scheduler.controller.dto;
 
-import lombok.*;
+import lombok.Data;
 import ukma.fi.scheduler.entities.User;
-import javax.validation.constraints.*;
+
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Data
 public class SubjectLectureDTO {
