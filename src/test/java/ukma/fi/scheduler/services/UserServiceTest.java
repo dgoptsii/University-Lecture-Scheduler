@@ -1,4 +1,4 @@
-package ukma.fi.scheduler.controller;
+package ukma.fi.scheduler.services;
 
 import com.sun.media.sound.InvalidDataException;
 import org.junit.jupiter.api.Assertions;

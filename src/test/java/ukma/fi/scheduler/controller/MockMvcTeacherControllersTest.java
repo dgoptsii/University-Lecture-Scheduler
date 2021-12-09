@@ -64,7 +64,7 @@ public class MockMvcTeacherControllersTest {
         doReturn(new Lesson()).when(lessonService).create(new LessonDTO());
         doReturn(new Subject()).when(subjectService).findSubjectById(any(Long.class));
         doReturn(new ArrayList<Lesson>()).when(lessonService).findAllBySubject_Id(1L);
-        doNothing().when(subjectService).edit(any(Long.class),any(Subject.class));
+        doReturn(true).when(subjectService).edit(any(Long.class),any(Subject.class));
         doNothing().when(subjectService).deleteSubject(any(Long.class));
         doReturn(lesson).when(lessonService).findById(any(Long.class));
         doNothing().when(lessonService).delete(any(Long.class));
