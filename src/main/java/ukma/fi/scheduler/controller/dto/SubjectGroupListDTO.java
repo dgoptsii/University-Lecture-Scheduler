@@ -20,6 +20,8 @@ public class SubjectGroupListDTO {
         this.chooseSubGroup.addAll(dto);
     }
 
+    public void add(SubjectGroupDTO dto)  {this.chooseSubGroup.add(dto);}
+
     public int size(){
         return chooseSubGroup.size();
     }

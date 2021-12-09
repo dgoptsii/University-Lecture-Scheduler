@@ -32,6 +32,7 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private SubjectRepository subjectRepository;
+
     @Autowired
     private SubjectService subjectService;
 
@@ -70,7 +71,6 @@ public class UserServiceImpl implements UserService {
         }
         User user = findUserByLogin(login);
         Map<Subject, Integer> newSubGroupNum = converter.convertSubGroupDto(form);
-        System.out.println(newSubGroupNum);
         newSubGroupNum.forEach((k, v) -> {
             if (v == 0 && user.getGroups().get(k) != null) {
                 user.getGroups().put(k, 0);
@@ -116,7 +116,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public void moveIfGroupsCountChange(Integer moveFrom, Subject sub) {
         List<User> students = findAllStudents();
-        students.stream().filter(s -> s.getGroups().containsKey(sub) && s.getGroups().get(sub).equals(moveFrom)).collect(Collectors.toList());
+        students = students.stream()
+                .filter(s -> s.getGroups().containsKey(sub) && s.getGroups().get(sub).equals(moveFrom))
+                .collect(Collectors.toList());
         students.forEach(s -> s.getGroups().replace(sub, 0));
         userRepository.saveAll(students);
     }
@@ -125,15 +127,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<Subject> findNormativeSubjects(String login) {
         User student = findUserByLogin(login);
-        List<Subject> normative = subjectRepository.findSubjectsBySpecialityAndYear(student.getSpeciality(), student.getYear());
-        System.out.println(normative);
-        return normative;
+        return subjectRepository.findSubjectsBySpecialityAndYear(student.getSpeciality(), student.getYear());
     }
 
     //Find all subjects that is not normative for student (login) - with the subjects that he\her already has
     @Override
     public List<Subject> findNonNormativeSubjectsForUser(String login) {
-        List<Long> normative = findNormativeSubjects(login).stream().map(Subject::getId).collect(Collectors.toList());
+        List<Long> normative = findNormativeSubjects(login).stream()
+                .map(Subject::getId)
+                .collect(Collectors.toList());
         return subjectRepository.findSubjectsByIdNotIn(normative);
     }
 
@@ -163,7 +165,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<Subject> findNonNormativeFreeSubjects(String login) {
         User student = findUserByLogin(login);
-        List<Long> normative = findNormativeSubjects(login).stream().map(Subject::getId).collect(Collectors.toList());
+        List<Long> normative = findNormativeSubjects(login).stream()
+                .map(Subject::getId)
+                .collect(Collectors.toList());
         List<Long> studentSubjects = student.getStudentSubjectsId();
         normative.addAll(studentSubjects);
         return subjectRepository.findSubjectsByIdNotIn(normative);
