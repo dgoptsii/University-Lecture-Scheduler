@@ -3,19 +3,15 @@ package ukma.fi.scheduler.service.impl;
 import com.sun.media.sound.InvalidDataException;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.view.RedirectView;
-import ukma.fi.scheduler.exceptionHandlers.exceptions.SubjectNotFoundException;
-import ukma.fi.scheduler.service.Converters;
 import ukma.fi.scheduler.controller.dto.SubjectGroupDTO;
 import ukma.fi.scheduler.controller.dto.SubjectGroupListDTO;
 import ukma.fi.scheduler.entities.Subject;
 import ukma.fi.scheduler.entities.User;
+import ukma.fi.scheduler.exceptionHandlers.exceptions.SubjectNotFoundException;
 import ukma.fi.scheduler.repository.SubjectRepository;
 import ukma.fi.scheduler.repository.UserRepository;
+import ukma.fi.scheduler.service.Converters;
 import ukma.fi.scheduler.service.SubjectService;
 import ukma.fi.scheduler.service.UserService;
 
@@ -67,9 +63,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public void editSubjectGroup(String login, SubjectGroupListDTO form) throws InvalidDataException {
         SubjectGroupListDTO oldForm = getSubjectGroupDTOS(login);
-        if(form.equals(oldForm)){
+        if (form.equals(oldForm)) {
             return;
-        }else if (form.size() != oldForm.size()){
+        } else if (form.size() != oldForm.size()) {
             throw new InvalidDataException("Input value isn't correct");
         }
         User user = findUserByLogin(login);
@@ -88,18 +84,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void addNonNormativeGroup(String login, Long id) {
+    public void addNonNormativeGroup(String login, Long id) throws InvalidDataException {
         User user = findUserByLogin(login);
         Subject newSub = subjectService.findSubjectById(id);
         if (newSub == null) {
             throw new SubjectNotFoundException("Subject with id = " + id + " not found.");
         }
         if (user.getGroups().containsKey(newSub)) {
-            try {
-                throw new InvalidDataException("User already have this subject.");
-            } catch (InvalidDataException e) {
-                e.printStackTrace();
-            }
+            throw new InvalidDataException("User already have this subject.");
         } else {
             user.getGroups().put(newSub, 0);
         }
@@ -107,18 +99,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteNonNormativeGroup(String login, Long id) {
+    public void deleteNonNormativeGroup(String login, Long id) throws Exception {
         User user = findUserByLogin(login);
         Subject newSub = subjectService.findSubjectById(id);
         if (newSub == null) {
             throw new SubjectNotFoundException("Subject with id = " + id + " not found.");
         }
         if (!user.getGroups().containsKey(newSub)) {
-            try {
-                throw new InvalidDataException("User already doesn't have this subject.");
-            } catch (InvalidDataException e) {
-                e.printStackTrace();
-            }
+            throw new InvalidDataException("User already doesn't have this subject.");
         } else {
             user.getGroups().remove(newSub);
         }
@@ -126,10 +114,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void moveIfGroupsCountChange(Integer moveFrom,Subject sub) {
+    public void moveIfGroupsCountChange(Integer moveFrom, Subject sub) {
         List<User> students = findAllStudents();
         students.stream().filter(s -> s.getGroups().containsKey(sub) && s.getGroups().get(sub).equals(moveFrom)).collect(Collectors.toList());
-        students.forEach(s -> s.getGroups().replace(sub,0));
+        students.forEach(s -> s.getGroups().replace(sub, 0));
         userRepository.saveAll(students);
     }
 

@@ -1,19 +1,16 @@
 package ukma.fi.scheduler.controller;
 
-import com.sun.media.sound.InvalidDataException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.expression.AccessException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.MissingRequestValueException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
-import ukma.fi.scheduler.controller.dto.*;
-import ukma.fi.scheduler.entities.*;
-import ukma.fi.scheduler.exceptionHandlers.exceptions.InvalidData;
-import ukma.fi.scheduler.service.*;
+import ukma.fi.scheduler.controller.dto.SubjectGroupListDTO;
+import ukma.fi.scheduler.entities.Subject;
+import ukma.fi.scheduler.service.ScheduleService;
+import ukma.fi.scheduler.service.UserService;
 
 import java.security.Principal;
 import java.util.List;
@@ -36,8 +33,8 @@ public class StudentController {
     }
 
     @PostMapping("/subject/groups")
-    public RedirectView addStudentGroup(@ModelAttribute SubjectGroupListDTO form, Principal principal) throws Exception{
-        userService.editSubjectGroup(principal.getName(),form);
+    public RedirectView addStudentGroup(@ModelAttribute SubjectGroupListDTO form, Principal principal) throws Exception {
+        userService.editSubjectGroup(principal.getName(), form);
         return new RedirectView("/student/subject/groups");
     }
 
@@ -53,16 +50,15 @@ public class StudentController {
         return mav;
     }
 
-
     @PostMapping("/subject/{id}")
-    public RedirectView addNonNormativeGroup(@PathVariable Long id,Principal principal){
-        userService.addNonNormativeGroup(principal.getName(),id);
+    public RedirectView addNonNormativeGroup(@PathVariable Long id, Principal principal) throws Exception {
+        userService.addNonNormativeGroup(principal.getName(), id);
         return new RedirectView("/student/subject/add");
     }
 
     @DeleteMapping("/subject/{id}")
-    public RedirectView deleteNonNormativeGroup(@PathVariable Long id,Principal principal){
-        userService.deleteNonNormativeGroup(principal.getName(),id);
+    public RedirectView deleteNonNormativeGroup(@PathVariable Long id, Principal principal) throws Exception {
+        userService.deleteNonNormativeGroup(principal.getName(), id);
         return new RedirectView("/student/subject/add");
     }
 
@@ -71,11 +67,6 @@ public class StudentController {
         ModelAndView mav = new ModelAndView("schedule");
         mav.addAllObjects(scheduleService.findLessonsForStudent(principal.getName()));
         return mav;
-    }
-
-    @GetMapping("/test")
-    public void test(Principal principal) throws Exception {
-        throw new AccessException("Afdfsf");
     }
 
     @ModelAttribute("currentUser")

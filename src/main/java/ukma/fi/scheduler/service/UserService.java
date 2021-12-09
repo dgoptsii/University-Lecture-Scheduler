@@ -17,9 +17,9 @@ public interface UserService {
 
     void editSubjectGroup(String login,SubjectGroupListDTO form) throws InvalidDataException;
 
-    void addNonNormativeGroup(String login,Long id);
+    void addNonNormativeGroup(String login,Long id) throws InvalidDataException;
 
-    void deleteNonNormativeGroup(String login,Long id);
+    void deleteNonNormativeGroup(String login,Long id) throws Exception;
 
     void moveIfGroupsCountChange(Integer moveFrom,Subject subject);
 
