@@ -1,6 +1,7 @@
 package ukma.fi.scheduler.entities;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import ukma.fi.scheduler.controller.dto.UserDTO;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ import java.util.stream.Collectors;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -51,7 +53,13 @@ public class User {
     @Column(name = "groupNumber")
     private Map<Subject, Integer> groups;
 
-
+    public User(String login, String name, String surname,String status,String password){
+        this.login=login;
+        this.name = name;
+        this.surname = surname;
+        this.status = status;
+        this.password = password;
+    }
     public User changeUser(UserDTO user) {
         this.name = user.getName();
         this.surname = user.getSurname();
