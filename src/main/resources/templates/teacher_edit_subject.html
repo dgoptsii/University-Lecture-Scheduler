@@ -76,7 +76,7 @@
                         <th:block th:each="lesson : ${lessons}">
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <div class="d-flex flex-column justify-content-between">
-                                    <span  th:text="${'Teacher: '+lesson.getTeacher().getName()}"></span>
+                                    <span  th:text="${'Teacher: '+lesson.getTeacher().getSurname()+' '+lesson.getTeacher().getName()+' '+lesson.getTeacher().getPatronim()}"></span>
 
                                     <span  th:text="${'Lesson number: '+lesson.getLessonNumber()}"></span>
                                     <div th:if="${lesson.getDayOfWeek() == 1 }">
